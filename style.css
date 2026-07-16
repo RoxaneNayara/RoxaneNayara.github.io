@@ -359,10 +359,6 @@ a {
   color: var(--text-soft);
 }
 
-@media (max-width: 900px) {
-  .menu {
-    display: none;
-  }
 
   .hero {
     grid-template-columns: 1fr;
@@ -1260,4 +1256,127 @@ body.dark-theme .case-card p,
 body.dark-theme .education-card p,
 body.dark-theme .course-card p {
   color: var(--text-soft) !important;
+}
+
+/* MENU RESPONSIVO */
+
+.menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+  background: var(--surface);
+  box-shadow: 0 8px 22px rgba(75, 42, 82, 0.08);
+}
+
+.menu-toggle span {
+  width: 19px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--primary);
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.menu-toggle.is-active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.is-active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.is-active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 900px) {
+  .navigation {
+    position: relative;
+  }
+
+  .nav-actions {
+    gap: 12px;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .menu {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: min(320px, calc(100vw - 28px));
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--surface);
+    box-shadow: 0 20px 45px rgba(75, 42, 82, 0.16);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition:
+      opacity 0.22s ease,
+      visibility 0.22s ease,
+      transform 0.22s ease;
+  }
+
+  .menu.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .menu a {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+  }
+
+  .menu a::after {
+    display: none;
+  }
+
+  .menu a:hover {
+    background: var(--surface-soft);
+  }
+}
+
+@media (max-width: 560px) {
+  .menu-toggle,
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .menu {
+    top: calc(100% + 10px);
+  }
+}
+
+/* MENU NO TEMA ESCURO */
+
+body.dark-theme .menu-toggle,
+body.dark-theme .menu {
+  border-color: var(--border);
+  background: var(--surface);
+}
+
+body.dark-theme .menu a:hover {
+  background: var(--surface-soft);
 }
