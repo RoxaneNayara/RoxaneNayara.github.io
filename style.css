@@ -1039,7 +1039,8 @@ a {
   gap: 16px;
 }
 
-.contact-links a {
+.contact-links a,
+.contact-link {
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -1053,7 +1054,8 @@ a {
     background 0.2s ease;
 }
 
-.contact-links a:hover {
+.contact-links a:hover,
+.contact-link:hover {
   transform: translateX(4px);
   background: rgba(255, 255, 255, 0.12);
 }
@@ -1828,4 +1830,53 @@ body.dark-theme .back-to-top:hover {
   .back-to-top {
     transition: none;
   }
+}
+
+/* E-MAIL COPIÁVEL */
+
+.contact-link {
+  width: 100%;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+}
+
+.contact-email {
+  position: relative;
+}
+
+.copy-email-label {
+  margin-top: 6px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.contact-email.is-copied {
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.contact-email.is-copied .copy-email-label {
+  color: #ffffff;
+}
+
+.contact-link:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Texto acessível, invisível visualmente */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
 }
