@@ -1461,3 +1461,28 @@ body.dark-theme .menu a:hover {
   border-color: var(--accent);
   box-shadow: 0 18px 40px rgba(75, 42, 82, 0.12);
 }
+
+/* SEÇÃO ATIVA NO MENU */
+
+.menu a.active {
+  color: var(--primary);
+}
+
+.menu a.active::after {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .menu a.active {
+    color: var(--primary-dark);
+    background: var(--surface-soft);
+  }
+
+  .menu a.active::after {
+    display: none;
+  }
+}
+
+body.dark-theme .menu a.active {
+  color: #efbdf6;
+}
