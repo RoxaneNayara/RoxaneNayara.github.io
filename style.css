@@ -1258,7 +1258,7 @@ body.dark-theme .course-card p {
   color: var(--text-soft) !important;
 }
 
-/* MENU RESPONSIVO */
+/* MENU RESPONSIVO — VERSÃO CORRIGIDA */
 
 .menu-toggle {
   display: none;
@@ -1298,23 +1298,70 @@ body.dark-theme .course-card p {
   transform: translateY(-7px) rotate(-45deg);
 }
 
+/* GARANTE O LAYOUT CORRETO NO DESKTOP */
+
+@media (min-width: 901px) {
+  .menu-toggle {
+    display: none;
+  }
+
+  .menu {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 28px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  .hero {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 80px;
+  }
+
+  .hero-content {
+    text-align: left;
+  }
+
+  .hero-actions {
+    justify-content: flex-start;
+  }
+}
+
+/* CELULAR E TABLET */
+
 @media (max-width: 900px) {
   .navigation {
     position: relative;
   }
 
   .nav-actions {
+    margin-left: auto;
     gap: 12px;
   }
 
   .menu-toggle {
     display: flex;
+    order: 1;
+  }
+
+  .theme-toggle {
+    order: 2;
   }
 
   .menu {
     position: absolute;
     top: calc(100% + 12px);
     right: 0;
+    z-index: 50;
     width: min(320px, calc(100vw - 28px));
     display: flex;
     flex-direction: column;
@@ -1355,6 +1402,25 @@ body.dark-theme .course-card p {
   .menu a:hover {
     background: var(--surface-soft);
   }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    padding-top: 60px;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-description {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 560px) {
@@ -1368,8 +1434,6 @@ body.dark-theme .course-card p {
     top: calc(100% + 10px);
   }
 }
-
-/* MENU NO TEMA ESCURO */
 
 body.dark-theme .menu-toggle,
 body.dark-theme .menu {
