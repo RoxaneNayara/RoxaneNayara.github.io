@@ -36,7 +36,51 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     menuLinks.forEach((link) => {
-      link.addEventListener("click", closeMenu);
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+    
+        const targetId = link.getAttribute("href");
+        const targetSection = document.querySelector(targetId);
+    
+        if (!targetSection) {
+          return;
+        }
+    
+        closeMenu();
+    
+        if (targetId === "#inicio") {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
+    
+          history.replaceState(null, "", targetId);
+          return;
+        }
+    
+        const header = document.querySelector(".header");
+        const headerHeight = header
+          ? header.offsetHeight
+          : 80;
+    
+        const sectionContent =
+          targetSection.querySelector(
+            ".section-heading, .contact-box"
+          ) ?? targetSection;
+    
+        const targetPosition =
+          sectionContent.getBoundingClientRect().top +
+          window.scrollY -
+          headerHeight -
+          28;
+    
+        window.scrollTo({
+          top: targetPosition,
+          behavior: "smooth"
+        });
+    
+        history.replaceState(null, "", targetId);
+      });
     });
 
     document.addEventListener("click", (event) => {
