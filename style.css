@@ -12,6 +12,59 @@
   --max-width: 1180px;
 }
 
+/* TEMA ESCURO */
+
+body.dark-theme {
+  --background: #18131d;
+  --surface: #211a26;
+  --surface-soft: #302438;
+  --text: #f7f0f8;
+  --text-soft: #cbbdce;
+  --primary: #d3a1dc;
+  --primary-dark: #f0c9f5;
+  --accent: #d89ab1;
+  --border: #44344b;
+  --shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme {
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(216, 154, 177, 0.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 10% 70%,
+      rgba(179, 116, 191, 0.12),
+      transparent 25%
+    ),
+    var(--background);
+}
+
+body.dark-theme .header {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  background: rgba(24, 19, 29, 0.9);
+}
+
+body.dark-theme .decorative-shape {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(121, 69, 132, 0.95),
+      rgba(161, 91, 119, 0.82)
+    );
+}
+
+body.dark-theme .contact-box {
+  background:
+    linear-gradient(
+      135deg,
+      #312039,
+      #603765
+    );
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -70,11 +123,20 @@ a {
 }
 
 .logo {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.35rem;
-  font-weight: 700;
+  font-family: "Allura", cursive;
+  font-size: 2.7rem;
+  font-weight: 400;
+  line-height: 1;
   text-decoration: none;
   color: var(--primary-dark);
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.logo:hover {
+  transform: translateY(-1px);
+  color: var(--primary);
 }
 
 .menu {
@@ -1091,5 +1153,60 @@ a {
 
   .profile-image {
     max-height: 430px;
+  }
+}
+
+/* CONTROLES DO CABEÇALHO */
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.theme-toggle {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--primary);
+  background: var(--surface);
+  box-shadow: 0 8px 22px rgba(75, 42, 82, 0.08);
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px) rotate(8deg);
+  border-color: var(--accent);
+  color: var(--primary-dark);
+}
+
+.theme-toggle span {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+@media (max-width: 900px) {
+  .nav-actions {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .logo {
+    font-size: 2.3rem;
+  }
+
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
   }
 }
