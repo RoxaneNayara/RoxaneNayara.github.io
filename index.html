@@ -871,10 +871,29 @@
           <strong>github.com/RoxaneNayara</strong>
         </a>
 
-        <a href="mailto:roxane.nayara@gmail.com">
+          <button
+          id="copy-email"
+          class="contact-link contact-email"
+          type="button"
+          data-email="roxane.nayara@gmail.com"
+          aria-describedby="copy-email-status"
+        >
           <span>E-mail</span>
-          <strong>roxane.nayara@gmail.com</strong>
-        </a>
+        
+          <strong>
+            roxane.nayara@gmail.com
+          </strong>
+        
+          <small class="copy-email-label">
+            Clique para copiar
+          </small>
+        </button>
+        
+        <p
+          id="copy-email-status"
+          class="sr-only"
+          aria-live="polite"
+        ></p>
       </div>
     </div>
   </div>
