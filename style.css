@@ -1880,3 +1880,92 @@ body.dark-theme .back-to-top:hover {
   border: 0;
   clip: rect(0, 0, 0, 0);
 }
+
+/* CARTÃO DE E-MAIL COM DUAS AÇÕES */
+
+.contact-email {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.07);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.contact-email:hover {
+  transform: translateX(4px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.contact-email-link {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-decoration: none;
+}
+
+.contact-email-link span {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.contact-email-link strong {
+  font-size: 0.95rem;
+  overflow-wrap: anywhere;
+  color: #ffffff;
+}
+
+.contact-email-link small {
+  margin-top: 5px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.copy-email-button {
+  flex-shrink: 0;
+  padding: 9px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: transparent;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.copy-email-button:hover,
+.copy-email-button.is-copied {
+  border-color: #ffffff;
+  color: var(--primary-dark);
+  background: #ffffff;
+}
+
+.contact-email-link:focus-visible,
+.copy-email-button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+@media (max-width: 560px) {
+  .contact-email {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
