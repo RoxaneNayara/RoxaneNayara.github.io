@@ -256,70 +256,99 @@ if (
         try {
           await navigator.clipboard.writeText(email);
 
-          /* COPIAR E-MAIL */
-
-const copyEmailButton =
-  document.querySelector("#copy-email");
-
-const copyEmailStatus =
-  document.querySelector("#copy-email-status");
-
-if (copyEmailButton) {
-  copyEmailButton.addEventListener("click", async () => {
-    const email = copyEmailButton.dataset.email;
-
-    try {
-      await navigator.clipboard.writeText(email);
-
-      copyEmailButton.classList.add("is-copied");
-      copyEmailButton.textContent = "Copiado!";
-
-      if (copyEmailStatus) {
-        copyEmailStatus.textContent =
-          `${email} copiado para a área de transferência.`;
-      }
-
-      window.setTimeout(() => {
-        copyEmailButton.classList.remove("is-copied");
-        copyEmailButton.textContent = "Copiar";
-      }, 2200);
-    } catch (error) {
-      copyEmailButton.textContent = "Erro ao copiar";
-
-      if (copyEmailStatus) {
-        copyEmailStatus.textContent =
-          "Não foi possível copiar o e-mail automaticamente.";
-      }
-
-      console.error("Erro ao copiar o e-mail:", error);
-    }
-  });
-}
-
-          
-          copyEmailStatus.textContent =
-            `${email} copiado para a área de transferência.`;
-
-          window.setTimeout(() => {
-            copyEmailButton.classList.remove("is-copied");
-            copyEmailLabel.textContent =
-              "Clique para copiar";
-          }, 2200);
-        } catch (error) {
-          copyEmailLabel.textContent =
-            "Não foi possível copiar";
-
-          copyEmailStatus.textContent =
-            "Não foi possível copiar o e-mail automaticamente.";
-
-          console.error(
-            "Erro ao copiar o e-mail:",
-            error
+      /* COPIAR E-MAIL */
+      
+      const copyEmailButton =
+        document.querySelector("#copy-email");
+      
+      const copyEmailStatus =
+        document.querySelector("#copy-email-status");
+      
+      async function copyTextToClipboard(text) {
+        if (
+          navigator.clipboard &&
+          window.isSecureContext
+        ) {
+          await navigator.clipboard.writeText(text);
+          return;
+        }
+      
+        const temporaryTextArea =
+          document.createElement("textarea");
+      
+        temporaryTextArea.value = text;
+        temporaryTextArea.setAttribute("readonly", "");
+        temporaryTextArea.style.position = "fixed";
+        temporaryTextArea.style.opacity = "0";
+        temporaryTextArea.style.pointerEvents = "none";
+      
+        document.body.appendChild(temporaryTextArea);
+      
+        temporaryTextArea.select();
+        temporaryTextArea.setSelectionRange(
+          0,
+          temporaryTextArea.value.length
+        );
+      
+        const copySucceeded =
+          document.execCommand("copy");
+      
+        temporaryTextArea.remove();
+      
+        if (!copySucceeded) {
+          throw new Error(
+            "O navegador não permitiu copiar o texto."
           );
         }
       }
-    );
-  }
+      
+      if (copyEmailButton) {
+        copyEmailButton.addEventListener(
+          "click",
+          async () => {
+            const email =
+              copyEmailButton.dataset.email;
+      
+            if (!email) {
+              return;
+            }
+      
+            try {
+              await copyTextToClipboard(email);
+      
+              copyEmailButton.classList.add("is-copied");
+              copyEmailButton.textContent = "Copiado!";
+      
+              if (copyEmailStatus) {
+                copyEmailStatus.textContent =
+                  `${email} copiado para a área de transferência.`;
+              }
+      
+              window.setTimeout(() => {
+                copyEmailButton.classList.remove("is-copied");
+                copyEmailButton.textContent = "Copiar";
+              }, 2200);
+            } catch (error) {
+              copyEmailButton.textContent =
+                "Não foi possível copiar";
+      
+              if (copyEmailStatus) {
+                copyEmailStatus.textContent =
+                  "Não foi possível copiar o e-mail automaticamente.";
+              }
+      
+              window.setTimeout(() => {
+                copyEmailButton.textContent = "Copiar";
+              }, 2500);
+      
+              console.error(
+                "Erro ao copiar o e-mail:",
+                error
+              );
+            }
+          }
+        );
+      }
 
   
   /* TEMA CLARO E ESCURO */
