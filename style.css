@@ -1,0 +1,373 @@
+:root {
+  --background: #faf8fc;
+  --surface: #ffffff;
+  --surface-soft: #f2ebf5;
+  --text: #29232e;
+  --text-soft: #6d6472;
+  --primary: #713f78;
+  --primary-dark: #4f2856;
+  --accent: #c894aa;
+  --border: #e7dce9;
+  --shadow: 0 20px 50px rgba(75, 42, 82, 0.12);
+  --max-width: 1180px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family:
+    Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(200, 148, 170, 0.18),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 10% 70%,
+      rgba(113, 63, 120, 0.1),
+      transparent 25%
+    ),
+    var(--background);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+}
+
+.container {
+  width: min(100% - 40px, var(--max-width));
+  margin: 0 auto;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid rgba(231, 220, 233, 0.8);
+  background: rgba(250, 248, 252, 0.88);
+  backdrop-filter: blur(14px);
+}
+
+.navigation {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.logo {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--primary-dark);
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.menu a {
+  position: relative;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text-soft);
+  transition: color 0.2s ease;
+}
+
+.menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.2s ease;
+}
+
+.menu a:hover {
+  color: var(--primary);
+}
+
+.menu a:hover::after {
+  width: 100%;
+}
+
+.hero {
+  min-height: calc(100vh - 76px);
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 80px;
+  padding: 80px 0;
+}
+
+.eyebrow {
+  margin-bottom: 18px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.hero h1 {
+  max-width: 720px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.4rem, 7vw, 6.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  color: var(--primary-dark);
+}
+
+.hero h2 {
+  margin-top: 22px;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.hero-description {
+  max-width: 650px;
+  margin-top: 24px;
+  font-size: 1.08rem;
+  color: var(--text-soft);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 36px;
+}
+
+.button {
+  display: inline-flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  border: 1px solid var(--primary);
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button-primary {
+  color: #ffffff;
+  background: var(--primary);
+  box-shadow: 0 12px 24px rgba(113, 63, 120, 0.22);
+}
+
+.button-primary:hover {
+  background: var(--primary-dark);
+}
+
+.button-secondary {
+  color: var(--primary);
+  background: transparent;
+}
+
+.button-secondary:hover {
+  background: var(--surface);
+  box-shadow: 0 10px 24px rgba(75, 42, 82, 0.08);
+}
+
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.decorative-shape {
+  position: absolute;
+  width: 390px;
+  height: 460px;
+  border-radius: 48% 52% 45% 55% / 52% 40% 60% 48%;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(113, 63, 120, 0.95),
+      rgba(200, 148, 170, 0.82)
+    );
+  transform: rotate(7deg);
+  box-shadow: var(--shadow);
+}
+
+.profile-card {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 340px);
+  min-height: 390px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 32px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow);
+}
+
+.profile-initials {
+  width: 125px;
+  height: 125px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 24px;
+  border-radius: 50%;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary),
+      var(--accent)
+    );
+}
+
+.profile-card h3 {
+  font-size: 1.4rem;
+  color: var(--primary-dark);
+}
+
+.profile-card p {
+  margin-top: 8px;
+  color: var(--text-soft);
+}
+
+.highlights {
+  padding: 32px 0 90px;
+}
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.highlight-item {
+  padding: 26px 22px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: 0 14px 35px rgba(75, 42, 82, 0.06);
+}
+
+.highlight-item strong {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--primary);
+}
+
+.highlight-item span {
+  font-size: 0.94rem;
+  color: var(--text-soft);
+}
+
+@media (max-width: 900px) {
+  .menu {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    padding-top: 60px;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-description {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    min-height: 470px;
+  }
+
+  .highlight-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .container {
+    width: min(100% - 28px, var(--max-width));
+  }
+
+  .navigation {
+    min-height: 68px;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 58px 0 70px;
+  }
+
+  .hero h1 {
+    font-size: 3.35rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .decorative-shape {
+    width: 290px;
+    height: 390px;
+  }
+
+  .profile-card {
+    width: 270px;
+    min-height: 340px;
+    padding: 28px;
+  }
+
+  .highlight-grid {
+    grid-template-columns: 1fr;
+  }
+}
