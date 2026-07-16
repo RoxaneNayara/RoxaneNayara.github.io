@@ -55,6 +55,51 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+    /* DESTAQUE DA SEÇÃO ATIVA */
+
+  const sections = document.querySelectorAll(
+    "main section[id]"
+  );
+
+  const navigationLinks = document.querySelectorAll(
+    "#main-menu a[href^='#']"
+  );
+
+  function activateMenuLink(sectionId) {
+    navigationLinks.forEach((link) => {
+      const linkTarget = link.getAttribute("href");
+
+      link.classList.toggle(
+        "active",
+        linkTarget === `#${sectionId}`
+      );
+    });
+  }
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      const visibleSections = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort(
+          (firstEntry, secondEntry) =>
+            secondEntry.intersectionRatio -
+            firstEntry.intersectionRatio
+        );
+
+      if (visibleSections.length > 0) {
+        activateMenuLink(visibleSections[0].target.id);
+      }
+    },
+    {
+      rootMargin: "-25% 0px -55% 0px",
+      threshold: [0.1, 0.25, 0.5]
+    }
+  );
+
+  sections.forEach((section) => {
+    sectionObserver.observe(section);
+  });
+
   /* TEMA CLARO E ESCURO */
 
   const themeToggle = document.querySelector("#theme-toggle");
