@@ -1210,3 +1210,69 @@ a {
     height: 40px;
   }
 }
+
+/* CORREÇÕES DE CONTRASTE — TEMA ESCURO */
+
+body.dark-theme .highlight-item {
+  border-color: var(--border);
+  background: #2b2230;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.22);
+}
+
+body.dark-theme .highlight-item strong {
+  color: #e5b1ed;
+}
+
+body.dark-theme .highlight-item span {
+  color: #d4c7d7;
+}
+
+/* Botão claro da área de contato */
+
+body.dark-theme .button-light {
+  border-color: #ffffff;
+  color: #3f2747;
+  background: #ffffff;
+}
+
+body.dark-theme .button-light:hover {
+  color: #2d1833;
+  background: #f4eaf6;
+}
+
+/* Botão de contorno da área de contato */
+
+body.dark-theme .button-outline-light {
+  border-color: rgba(255, 255, 255, 0.72);
+  color: #ffffff;
+}
+
+body.dark-theme .button-outline-light:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Links dos contatos */
+
+body.dark-theme .contact-links a {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-theme .contact-links a:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* Cartões gerais */
+
+body.dark-theme .about-card,
+body.dark-theme .timeline-content,
+body.dark-theme .case-card,
+body.dark-theme .skill-card,
+body.dark-theme .education-card,
+body.dark-theme .course-card {
+  border-color: var(--border);
+  background: var(--surface);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.18);
+}
