@@ -992,10 +992,10 @@ a {
 }
 
 .contact-content h2 {
-  max-width: 700px;
+  max-width: 670px;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  line-height: 1.08;
+  font-size: clamp(2.2rem, 4vw, 3.35rem);
+  line-height: 1.06;
   letter-spacing: -0.03em;
 }
 
