@@ -1591,3 +1591,10 @@ body.dark-theme {
     opacity: 0;
   }
 }
+
+.header,
+main,
+.footer {
+  position: relative;
+  z-index: 1;
+}
