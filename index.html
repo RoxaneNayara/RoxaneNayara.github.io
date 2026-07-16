@@ -16,24 +16,49 @@
   <title>Roxane Nayara | Coordenadora de QA</title>
 
   <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Allura&display=swap"
+  rel="stylesheet"
+>
+  
 </head>
 
 <body>
   <header class="header">
     <nav class="navigation container">
-      <a class="logo" href="#inicio">
-        Roxane Nayara
+      <a
+        class="logo"
+        href="#inicio"
+        aria-label="Voltar ao início"
+      >
+        Roxy
       </a>
 
-      <div class="menu">
-        <a href="#inicio">Início</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#experiencia">Experiência</a>
-        <a href="#cases">Cases</a>
-        <a href="#competencias">Competências</a>
-        <a href="#formacao">Formação</a>
-        <a href="#contato">Contato</a>
-      </div>
+          <div class="nav-actions">
+            <div class="menu">
+              <a href="#inicio">Início</a>
+              <a href="#sobre">Sobre</a>
+              <a href="#experiencia">Experiência</a>
+              <a href="#cases">Cases</a>
+              <a href="#competencias">Competências</a>
+              <a href="#formacao">Formação</a>
+              <a href="#contato">Contato</a>
+            </div>
+          
+            <button
+              id="theme-toggle"
+              class="theme-toggle"
+              type="button"
+              aria-label="Ativar tema escuro"
+              aria-pressed="false"
+            >
+              <span aria-hidden="true">☾</span>
+            </button>
+          </div>
     </nav>
   </header>
 
@@ -742,6 +767,8 @@
     </p>
   </div>
 </footer>
+
+    <script src="script.js"></script>
   
 </body>
 </html>
