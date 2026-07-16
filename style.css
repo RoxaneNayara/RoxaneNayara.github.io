@@ -1486,3 +1486,37 @@ body.dark-theme .menu a:hover {
 body.dark-theme .menu a.active {
   color: #efbdf6;
 }
+
+/* TRANSIÇÃO ENTRE OS TEMAS */
+
+body,
+.header,
+.logo,
+.menu,
+.menu a,
+.theme-toggle,
+.menu-toggle,
+.highlight-item,
+.about-section,
+.about-card,
+.experience-section,
+.timeline-content,
+.timeline-tags span,
+.cases-section,
+.case-card,
+.skills-section,
+.skill-card,
+.skill-tags span,
+.education-section,
+.education-card,
+.course-card,
+.contact-section,
+.contact-box,
+.contact-links a,
+.footer {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
