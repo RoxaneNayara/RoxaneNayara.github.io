@@ -1737,3 +1737,17 @@ main section[id] {
 .hero-location span {
   color: var(--accent);
 }
+
+.contact-actions {
+  align-items: flex-start;
+}
+
+.contact-actions .button {
+  width: auto;
+}
+
+@media (max-width: 620px) {
+  .contact-actions .button {
+    width: 100%;
+  }
+}
