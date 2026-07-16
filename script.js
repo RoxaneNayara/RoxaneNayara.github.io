@@ -152,6 +152,93 @@ if (
     element.classList.add("is-visible");
   });
 }
+
+  /* BOTÃO VOLTAR AO TOPO */
+
+  const backToTopButton =
+    document.querySelector("#back-to-top");
+
+  function updateBackToTopButton() {
+    if (!backToTopButton) {
+      return;
+    }
+
+    const shouldShowButton = window.scrollY > 600;
+
+    backToTopButton.classList.toggle(
+      "is-visible",
+      shouldShowButton
+    );
+  }
+
+  if (backToTopButton) {
+    window.addEventListener(
+      "scroll",
+      updateBackToTopButton,
+      { passive: true }
+    );
+
+    backToTopButton.addEventListener("click", () => {
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      window.scrollTo({
+        top: 0,
+        behavior: reduceMotion ? "auto" : "smooth"
+      });
+    });
+
+    updateBackToTopButton();
+  }
+
+  /* COPIAR E-MAIL */
+
+  const copyEmailButton =
+    document.querySelector("#copy-email");
+
+  const copyEmailStatus =
+    document.querySelector("#copy-email-status");
+
+  if (copyEmailButton) {
+    const copyEmailLabel =
+      copyEmailButton.querySelector(".copy-email-label");
+
+    copyEmailButton.addEventListener(
+      "click",
+      async () => {
+        const email =
+          copyEmailButton.dataset.email;
+
+        try {
+          await navigator.clipboard.writeText(email);
+
+          copyEmailButton.classList.add("is-copied");
+          copyEmailLabel.textContent = "E-mail copiado!";
+          copyEmailStatus.textContent =
+            `${email} copiado para a área de transferência.`;
+
+          window.setTimeout(() => {
+            copyEmailButton.classList.remove("is-copied");
+            copyEmailLabel.textContent =
+              "Clique para copiar";
+          }, 2200);
+        } catch (error) {
+          copyEmailLabel.textContent =
+            "Não foi possível copiar";
+
+          copyEmailStatus.textContent =
+            "Não foi possível copiar o e-mail automaticamente.";
+
+          console.error(
+            "Erro ao copiar o e-mail:",
+            error
+          );
+        }
+      }
+    );
+  }
+
   
   /* TEMA CLARO E ESCURO */
 
