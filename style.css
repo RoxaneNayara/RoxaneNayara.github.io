@@ -372,7 +372,6 @@ a {
   }
 }
 
-/* A seção Sobre começa somente depois desta chave */
 
 .about-section {
   padding: 110px 0;
@@ -477,13 +476,15 @@ a {
 }
 
 @media (max-width: 760px) {
-  .experience-section {
-    padding: 85px 0;
-  }
+.experience-section {
+  padding: 110px 0;
+  background: var(--background);
+}
 
-  .timeline {
-    margin-top: 52px;
-  }
+ .timeline {
+  position: relative;
+  margin-top: 70px;
+}
 
   .timeline::before {
     left: 9px;
