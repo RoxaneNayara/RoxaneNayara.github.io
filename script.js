@@ -64,15 +64,14 @@ document.addEventListener("DOMContentLoaded", () => {
           : 80;
     
         const sectionContent =
-          targetSection.querySelector(
-            ".section-heading, .contact-box"
-          ) ?? targetSection;
+          targetSection.querySelector(".scroll-target") ??
+          targetSection;
     
         const targetPosition =
           sectionContent.getBoundingClientRect().top +
           window.scrollY -
           headerHeight -
-          28;
+          16;
     
         window.scrollTo({
           top: targetPosition,
