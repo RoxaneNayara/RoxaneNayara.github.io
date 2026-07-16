@@ -76,29 +76,49 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const sectionObserver = new IntersectionObserver(
-    (entries) => {
-      const visibleSections = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort(
-          (firstEntry, secondEntry) =>
-            secondEntry.intersectionRatio -
-            firstEntry.intersectionRatio
-        );
+  function updateActiveSection() {
+    const headerOffset = 180;
+    const scrollPosition = window.scrollY + headerOffset;
 
-      if (visibleSections.length > 0) {
-        activateMenuLink(visibleSections[0].target.id);
+    let currentSectionId = "inicio";
+
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      const sectionBottom =
+        sectionTop + section.offsetHeight;
+
+      if (
+        scrollPosition >= sectionTop &&
+        scrollPosition < sectionBottom
+      ) {
+        currentSectionId = section.id;
       }
-    },
-    {
-      rootMargin: "-25% 0px -55% 0px",
-      threshold: [0.1, 0.25, 0.5]
+    });
+
+    const nearPageBottom =
+      window.innerHeight + window.scrollY >=
+      document.documentElement.scrollHeight - 10;
+
+    if (nearPageBottom) {
+      currentSectionId = "contato";
     }
+
+    activateMenuLink(currentSectionId);
+  }
+
+  window.addEventListener(
+    "scroll",
+    updateActiveSection,
+    { passive: true }
   );
 
-  sections.forEach((section) => {
-    sectionObserver.observe(section);
-  });
+  window.addEventListener(
+    "resize",
+    updateActiveSection
+  );
+
+  updateActiveSection();
+
 
   /* TEMA CLARO E ESCURO */
 
