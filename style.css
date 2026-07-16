@@ -1603,7 +1603,6 @@ body.dark-theme {
   }
 }
 
-.header,
 main,
 .footer {
   position: relative;
@@ -1673,4 +1672,16 @@ main,
     transform: none;
     transition: none;
   }
+}
+
+/* MANTÉM O CABEÇALHO VISÍVEL DURANTE A ROLAGEM */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.floating-particles {
+  z-index: 0;
 }
