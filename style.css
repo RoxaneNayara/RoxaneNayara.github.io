@@ -1055,3 +1055,41 @@ a {
     text-align: center;
   }
 }
+
+.profile-image-wrapper {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 390px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.profile-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 560px;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 35px rgba(75, 42, 82, 0.22));
+}
+
+@media (max-width: 900px) {
+  .profile-image-wrapper {
+    width: min(100%, 340px);
+  }
+
+  .profile-image {
+    max-height: 500px;
+  }
+}
+
+@media (max-width: 560px) {
+  .profile-image-wrapper {
+    width: min(100%, 290px);
+  }
+
+  .profile-image {
+    max-height: 430px;
+  }
+}
