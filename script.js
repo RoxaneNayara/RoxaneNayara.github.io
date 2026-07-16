@@ -1,64 +1,65 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
+  /* MENU RESPONSIVO */
 
-  document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.querySelector("#menu-toggle");
   const mainMenu = document.querySelector("#main-menu");
   const menuLinks = document.querySelectorAll("#main-menu a");
 
   function closeMenu() {
+    if (!menuToggle || !mainMenu) {
+      return;
+    }
+
     mainMenu.classList.remove("is-open");
     menuToggle.classList.remove("is-active");
     menuToggle.setAttribute("aria-expanded", "false");
     menuToggle.setAttribute("aria-label", "Abrir menu");
   }
 
-  menuToggle.addEventListener("click", () => {
-    const menuIsOpen = mainMenu.classList.toggle("is-open");
+  if (menuToggle && mainMenu) {
+    menuToggle.addEventListener("click", (event) => {
+      event.stopPropagation();
 
-    menuToggle.classList.toggle("is-active", menuIsOpen);
-    menuToggle.setAttribute(
-      "aria-expanded",
-      String(menuIsOpen)
-    );
+      const menuIsOpen = mainMenu.classList.toggle("is-open");
 
-    menuToggle.setAttribute(
-      "aria-label",
-      menuIsOpen ? "Fechar menu" : "Abrir menu"
-    );
-  });
+      menuToggle.classList.toggle("is-active", menuIsOpen);
+      menuToggle.setAttribute(
+        "aria-expanded",
+        String(menuIsOpen)
+      );
+      menuToggle.setAttribute(
+        "aria-label",
+        menuIsOpen ? "Fechar menu" : "Abrir menu"
+      );
+    });
 
-  menuLinks.forEach((link) => {
-    link.addEventListener("click", closeMenu);
-  });
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
 
-  document.addEventListener("click", (event) => {
-    const clickedInsideMenu = mainMenu.contains(event.target);
-    const clickedMenuButton = menuToggle.contains(event.target);
+    document.addEventListener("click", (event) => {
+      const clickedInsideMenu = mainMenu.contains(event.target);
+      const clickedMenuButton = menuToggle.contains(event.target);
 
-    if (!clickedInsideMenu && !clickedMenuButton) {
-      closeMenu();
-    }
-  });
+      if (!clickedInsideMenu && !clickedMenuButton) {
+        closeMenu();
+      }
+    });
 
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 900) {
-      closeMenu();
-    }
-  });
-
-  const themeToggle = document.querySelector("#theme-toggle");
-
-  if (!themeToggle) {
-    console.error("Botão de tema não encontrado.");
-    return;
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 900) {
+        closeMenu();
+      }
+    });
   }
-  
+
+  /* TEMA CLARO E ESCURO */
+
   const themeToggle = document.querySelector("#theme-toggle");
 
   if (!themeToggle) {
-    console.error("Botão de tema não encontrado.");
     return;
   }
 
@@ -72,7 +73,9 @@ document.addEventListener("DOMContentLoaded", () => {
       darkThemeIsActive
     );
 
-    themeIcon.textContent = darkThemeIsActive ? "☀" : "☾";
+    if (themeIcon) {
+      themeIcon.textContent = darkThemeIsActive ? "☀" : "☾";
+    }
 
     themeToggle.setAttribute(
       "aria-label",
