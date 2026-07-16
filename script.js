@@ -1,51 +1,56 @@
 "use strict";
 
-const themeToggle = document.querySelector("#theme-toggle");
-const themeIcon = themeToggle.querySelector("span");
+document.addEventListener("DOMContentLoaded", () => {
+  const themeToggle = document.querySelector("#theme-toggle");
 
-const savedTheme = localStorage.getItem("portfolio-theme");
-const prefersDarkTheme = window.matchMedia(
-  "(prefers-color-scheme: dark)"
-).matches;
+  if (!themeToggle) {
+    console.error("Botão de tema não encontrado.");
+    return;
+  }
 
-const shouldUseDarkTheme =
-  savedTheme === "dark" ||
-  (savedTheme === null && prefersDarkTheme);
+  const themeIcon = themeToggle.querySelector("span");
 
-if (shouldUseDarkTheme) {
-  document.body.classList.add("dark-theme");
-}
+  function applyTheme(theme) {
+    const darkThemeIsActive = theme === "dark";
 
-function updateThemeButton() {
-  const darkThemeIsActive =
-    document.body.classList.contains("dark-theme");
+    document.body.classList.toggle(
+      "dark-theme",
+      darkThemeIsActive
+    );
 
-  themeIcon.textContent = darkThemeIsActive ? "☀" : "☾";
+    themeIcon.textContent = darkThemeIsActive ? "☀" : "☾";
 
-  themeToggle.setAttribute(
-    "aria-label",
-    darkThemeIsActive
-      ? "Ativar tema claro"
-      : "Ativar tema escuro"
-  );
+    themeToggle.setAttribute(
+      "aria-label",
+      darkThemeIsActive
+        ? "Ativar tema claro"
+        : "Ativar tema escuro"
+    );
 
-  themeToggle.setAttribute(
-    "aria-pressed",
-    String(darkThemeIsActive)
-  );
-}
+    themeToggle.setAttribute(
+      "aria-pressed",
+      String(darkThemeIsActive)
+    );
+  }
 
-themeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark-theme");
+  const savedTheme = localStorage.getItem("portfolio-theme");
 
-  const selectedTheme =
-    document.body.classList.contains("dark-theme")
-      ? "dark"
-      : "light";
+  const systemPrefersDark = window.matchMedia(
+    "(prefers-color-scheme: dark)"
+  ).matches;
 
-  localStorage.setItem("portfolio-theme", selectedTheme);
+  const initialTheme =
+    savedTheme ?? (systemPrefersDark ? "dark" : "light");
 
-  updateThemeButton();
+  applyTheme(initialTheme);
+
+  themeToggle.addEventListener("click", () => {
+    const newTheme =
+      document.body.classList.contains("dark-theme")
+        ? "light"
+        : "dark";
+
+    localStorage.setItem("portfolio-theme", newTheme);
+    applyTheme(newTheme);
+  });
 });
-
-updateThemeButton();
