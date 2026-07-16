@@ -378,3 +378,134 @@ a {
   padding: 110px 0;
   background: var(--surface);
 }
+
+.experience-section {
+  padding: 110px 0;
+  background: var(--background);
+}
+
+.timeline {
+  position: relative;
+  margin-top: 70px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  bottom: 12px;
+  left: 206px;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 70px;
+  padding-bottom: 58px;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-marker {
+  position: absolute;
+  top: 8px;
+  left: 197px;
+  z-index: 1;
+  width: 20px;
+  height: 20px;
+  border: 5px solid var(--background);
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
+.timeline-period {
+  padding-top: 4px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: right;
+  color: var(--primary);
+}
+
+.timeline-content {
+  padding: 30px 34px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: 0 14px 35px rgba(75, 42, 82, 0.06);
+}
+
+.timeline-company {
+  margin-bottom: 6px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.timeline-content h3 {
+  margin-bottom: 12px;
+  font-size: 1.45rem;
+  color: var(--primary-dark);
+}
+
+.timeline-content > p:last-of-type {
+  color: var(--text-soft);
+}
+
+.timeline-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 22px;
+}
+
+.timeline-tags span {
+  padding: 7px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: var(--surface-soft);
+}
+
+@media (max-width: 760px) {
+  .experience-section {
+    padding: 85px 0;
+  }
+
+  .timeline {
+    margin-top: 52px;
+  }
+
+  .timeline::before {
+    left: 9px;
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding-left: 38px;
+    padding-bottom: 42px;
+  }
+
+  .timeline-marker {
+    left: 0;
+  }
+
+  .timeline-period {
+    text-align: left;
+  }
+
+  .timeline-content {
+    padding: 24px;
+  }
+}
+
