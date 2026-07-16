@@ -105,14 +105,6 @@ a {
   margin: 0 auto;
 }
 
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  border-bottom: 1px solid rgba(231, 220, 233, 0.8);
-  background: rgba(250, 248, 252, 0.88);
-  backdrop-filter: blur(14px);
-}
 
 .navigation {
   min-height: 76px;
@@ -1554,15 +1546,15 @@ body.dark-theme {
 .floating-particles {
   position: fixed;
   inset: 0;
+  z-index: 20;
   overflow: hidden;
   pointer-events: none;
-  z-index: 0;
 }
 
 .floating-particles span {
   position: absolute;
   left: var(--x);
-  bottom: -70px;
+  top: -70px;
   width: var(--size);
   height: var(--size);
   opacity: 0;
@@ -1584,21 +1576,37 @@ body.dark-theme {
 
 @keyframes floatParticle {
   0% {
-    transform: translate3d(0, 0, 0) scale(0.75) rotate(0deg);
+    transform: translate3d(0, -40px, 0)
+      scale(0.75)
+      rotate(0deg);
     opacity: 0;
   }
 
   12% {
-    opacity: 0.55;
+    opacity: 0.4;
   }
 
   50% {
-    transform: translate3d(18px, -42vh, 0) scale(1) rotate(120deg);
-    opacity: 0.45;
+    transform: translate3d(
+      18px,
+      52vh,
+      0
+    )
+    scale(1)
+    rotate(120deg);
+
+    opacity: 0.35;
   }
 
   100% {
-    transform: translate3d(-16px, -110vh, 0) scale(0.85) rotate(260deg);
+    transform: translate3d(
+      -16px,
+      115vh,
+      0
+    )
+    scale(0.85)
+    rotate(260deg);
+
     opacity: 0;
   }
 }
@@ -1674,14 +1682,39 @@ main,
   }
 }
 
-/* MANTÉM O CABEÇALHO VISÍVEL DURANTE A ROLAGEM */
+/* CABEÇALHO FIXO */
 
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 100;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  border-bottom: 1px solid rgba(231, 220, 233, 0.8);
+  background: rgba(250, 248, 252, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
-.floating-particles {
-  z-index: 0;
+body.dark-theme .header {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  background: rgba(24, 19, 29, 0.94);
+}
+
+body {
+  padding-top: 76px;
+}
+
+main section[id] {
+  scroll-margin-top: 96px;
+}
+
+@media (max-width: 560px) {
+  body {
+    padding-top: 68px;
+  }
+
+  main section[id] {
+    scroll-margin-top: 84px;
+  }
 }
