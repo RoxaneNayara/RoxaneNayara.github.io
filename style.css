@@ -1644,38 +1644,43 @@ main,
 
 /* ANIMAÇÕES DE ENTRADA */
 
+/* ANIMAÇÕES DE ENTRADA — VERSÃO SEGURA */
+
 .reveal {
   opacity: 1;
   transform: none;
 }
 
-.reveal.is-visible {
-  opacity: 1;
-  transform: none;
+body.reveal-ready .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
 }
 
-.reveal.is-visible {
+body.reveal-ready .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.reveal-delay-1 {
+body.reveal-ready .reveal-delay-1 {
   transition-delay: 0.08s;
 }
 
-.reveal-delay-2 {
+body.reveal-ready .reveal-delay-2 {
   transition-delay: 0.16s;
 }
 
-.reveal-delay-3 {
+body.reveal-ready .reveal-delay-3 {
   transition-delay: 0.24s;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal,
-  .reveal-delay-1,
-  .reveal-delay-2,
-  .reveal-delay-3 {
+  body.reveal-ready .reveal,
+  body.reveal-ready .reveal-delay-1,
+  body.reveal-ready .reveal-delay-2,
+  body.reveal-ready .reveal-delay-3 {
     opacity: 1;
     transform: none;
     transition: none;
