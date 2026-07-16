@@ -119,42 +119,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateActiveSection();
 
+/* ANIMAÇÕES DE ENTRADA — REPETIDAS */
 
-    /* ANIMAÇÕES DE ENTRADA — VERSÃO SEGURA */
+const revealElements = document.querySelectorAll(".reveal");
 
-  const revealElements = document.querySelectorAll(".reveal");
+if (
+  revealElements.length > 0 &&
+  "IntersectionObserver" in window
+) {
+  document.body.classList.add("reveal-ready");
 
-  if (
-    revealElements.length > 0 &&
-    "IntersectionObserver" in window
-  ) {
-    document.body.classList.add("reveal-ready");
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle(
+          "is-visible",
+          entry.isIntersecting
+        );
+      });
+    },
+    {
+      threshold: 0.14,
+      rootMargin: "0px 0px -50px 0px"
+    }
+  );
 
-    const revealObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) {
-            return;
-          }
-
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        });
-      },
-      {
-        threshold: 0.12,
-        rootMargin: "0px 0px -40px 0px"
-      }
-    );
-
-    revealElements.forEach((element) => {
-      revealObserver.observe(element);
-    });
-  } else {
-    revealElements.forEach((element) => {
-      element.classList.add("is-visible");
-    });
-  }
+  revealElements.forEach((element) => {
+    revealObserver.observe(element);
+  });
+} else {
+  revealElements.forEach((element) => {
+    element.classList.add("is-visible");
+  });
+}
   
   /* TEMA CLARO E ESCURO */
 
