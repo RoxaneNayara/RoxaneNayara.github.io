@@ -1979,3 +1979,19 @@ body.dark-theme .back-to-top:hover {
     text-align: center;
   }
 }
+
+@media (max-width: 560px) {
+  .contact-email {
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact-email-link {
+    align-items: center;
+    text-align: center;
+  }
+
+  .copy-email-button {
+    align-self: center;
+  }
+}
