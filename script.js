@@ -1,6 +1,60 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
+
+  document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.querySelector("#menu-toggle");
+  const mainMenu = document.querySelector("#main-menu");
+  const menuLinks = document.querySelectorAll("#main-menu a");
+
+  function closeMenu() {
+    mainMenu.classList.remove("is-open");
+    menuToggle.classList.remove("is-active");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Abrir menu");
+  }
+
+  menuToggle.addEventListener("click", () => {
+    const menuIsOpen = mainMenu.classList.toggle("is-open");
+
+    menuToggle.classList.toggle("is-active", menuIsOpen);
+    menuToggle.setAttribute(
+      "aria-expanded",
+      String(menuIsOpen)
+    );
+
+    menuToggle.setAttribute(
+      "aria-label",
+      menuIsOpen ? "Fechar menu" : "Abrir menu"
+    );
+  });
+
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("click", (event) => {
+    const clickedInsideMenu = mainMenu.contains(event.target);
+    const clickedMenuButton = menuToggle.contains(event.target);
+
+    if (!clickedInsideMenu && !clickedMenuButton) {
+      closeMenu();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 900) {
+      closeMenu();
+    }
+  });
+
+  const themeToggle = document.querySelector("#theme-toggle");
+
+  if (!themeToggle) {
+    console.error("Botão de tema não encontrado.");
+    return;
+  }
+  
   const themeToggle = document.querySelector("#theme-toggle");
 
   if (!themeToggle) {
