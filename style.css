@@ -1969,3 +1969,13 @@ body.dark-theme .back-to-top:hover {
     flex-direction: column;
   }
 }
+
+@media (max-width: 900px) {
+  .hero-location {
+    width: 100%;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+  }
+}
