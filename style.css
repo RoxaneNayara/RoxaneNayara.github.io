@@ -1527,3 +1527,67 @@ body,
     transition: none;
   }
 }
+
+/* PARTÍCULAS SUAVES NO FUNDO */
+
+:root {
+  --particle-color: rgba(199, 143, 181, 0.18);
+  --particle-glow: rgba(255, 255, 255, 0.55);
+}
+
+body.dark-theme {
+  --particle-color: rgba(238, 193, 233, 0.14);
+  --particle-glow: rgba(255, 255, 255, 0.35);
+}
+
+.floating-particles {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.floating-particles span {
+  position: absolute;
+  left: var(--x);
+  bottom: -70px;
+  width: var(--size);
+  height: var(--size);
+  opacity: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      var(--particle-glow),
+      var(--particle-color)
+    );
+  filter: blur(0.2px);
+  animation: floatParticle var(--duration) linear infinite;
+  animation-delay: var(--delay);
+}
+
+.floating-particles span:nth-child(3n) {
+  border-radius: 65% 35% 65% 35%;
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.75) rotate(0deg);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: translate3d(18px, -42vh, 0) scale(1) rotate(120deg);
+    opacity: 0.45;
+  }
+
+  100% {
+    transform: translate3d(-16px, -110vh, 0) scale(0.85) rotate(260deg);
+    opacity: 0;
+  }
+}
