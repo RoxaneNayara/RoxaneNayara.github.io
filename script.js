@@ -256,8 +256,47 @@ if (
         try {
           await navigator.clipboard.writeText(email);
 
-          copyEmailButton.classList.add("is-copied");
-          copyEmailLabel.textContent = "E-mail copiado!";
+          /* COPIAR E-MAIL */
+
+const copyEmailButton =
+  document.querySelector("#copy-email");
+
+const copyEmailStatus =
+  document.querySelector("#copy-email-status");
+
+if (copyEmailButton) {
+  copyEmailButton.addEventListener("click", async () => {
+    const email = copyEmailButton.dataset.email;
+
+    try {
+      await navigator.clipboard.writeText(email);
+
+      copyEmailButton.classList.add("is-copied");
+      copyEmailButton.textContent = "Copiado!";
+
+      if (copyEmailStatus) {
+        copyEmailStatus.textContent =
+          `${email} copiado para a área de transferência.`;
+      }
+
+      window.setTimeout(() => {
+        copyEmailButton.classList.remove("is-copied");
+        copyEmailButton.textContent = "Copiar";
+      }, 2200);
+    } catch (error) {
+      copyEmailButton.textContent = "Erro ao copiar";
+
+      if (copyEmailStatus) {
+        copyEmailStatus.textContent =
+          "Não foi possível copiar o e-mail automaticamente.";
+      }
+
+      console.error("Erro ao copiar o e-mail:", error);
+    }
+  });
+}
+
+          
           copyEmailStatus.textContent =
             `${email} copiado para a área de transferência.`;
 
