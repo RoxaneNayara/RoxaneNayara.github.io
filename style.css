@@ -331,52 +331,21 @@ a {
 }
 
 @media (max-width: 560px) {
-  .container {
-    width: min(100% - 28px, var(--max-width));
+  .about-section {
+    padding: 70px 0;
   }
 
-  .navigation {
-    min-height: 68px;
+  .about-container {
+    gap: 42px;
   }
 
-  .hero {
-    min-height: auto;
-    padding: 58px 0 70px;
-  }
-
-  .hero h1 {
-    font-size: 3.35rem;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-  }
-
-  .button {
-    width: 100%;
-  }
-
-  .decorative-shape {
-    width: 290px;
-    height: 390px;
-  }
-
-  .profile-card {
-    width: 270px;
-    min-height: 340px;
-    padding: 28px;
-  }
-
-  .highlight-grid {
+  .about-card {
     grid-template-columns: 1fr;
+    gap: 10px;
   }
 }
 
-
-.about-section {
-  padding: 110px 0;
-  background: var(--surface);
-}
+/* EXPERIÊNCIA */
 
 .experience-section {
   padding: 110px 0;
@@ -476,15 +445,13 @@ a {
 }
 
 @media (max-width: 760px) {
-.experience-section {
-  padding: 110px 0;
-  background: var(--background);
-}
+  .experience-section {
+    padding: 85px 0;
+  }
 
- .timeline {
-  position: relative;
-  margin-top: 70px;
-}
+  .timeline {
+    margin-top: 52px;
+  }
 
   .timeline::before {
     left: 9px;
@@ -509,4 +476,3 @@ a {
     padding: 24px;
   }
 }
-
