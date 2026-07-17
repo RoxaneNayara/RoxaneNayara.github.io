@@ -297,16 +297,12 @@ body.dark-theme .case-tags span {
 
 body.reveal-ready
 .case-content-card.reveal.is-visible:hover {
-  transform: translateY(-6px);
-  border-color: var(--accent);
-  box-shadow: 0 18px 40px rgba(75, 42, 82, 0.1);
+  transform: translateY(-8px);
 }
 
 body.reveal-ready
 .case-summary.reveal.is-visible:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent);
-  box-shadow: 0 24px 55px rgba(75, 42, 82, 0.14);
+  transform: translateY(-8px);
 }
 
 @media (hover: none) {
