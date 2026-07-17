@@ -1263,7 +1263,7 @@ body.dark-theme .course-card p {
   color: var(--text-soft) !important;
 }
 
-/* MENU RESPONSIVO — VERSÃO CORRIGIDA */
+/* MENU RESPONSIVO */
 
 .menu-toggle {
   display: none;
@@ -1646,8 +1646,6 @@ main,
 
 /* ANIMAÇÕES DE ENTRADA */
 
-/* ANIMAÇÕES DE ENTRADA — VERSÃO SEGURA */
-
 .reveal {
   opacity: 1;
   transform: none;
@@ -1994,4 +1992,21 @@ body.dark-theme .back-to-top:hover {
   .copy-email-button {
     align-self: center;
   }
+}
+
+/* Mantém o movimento dos cards após o reveal */
+
+.case-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+body.reveal-ready .case-card.reveal.is-visible:hover {
+  transform: translateY(-8px);
+}
+
+body.reveal-ready .case-card.reveal.is-visible:hover {
+  transform: translateY(-8px) scale(1.01);
 }
