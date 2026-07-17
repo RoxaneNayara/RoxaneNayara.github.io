@@ -2,16 +2,611 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Case profissional de Roxane Nayara sobre a estruturação de um framework Kanban operacional com limites de WIP, políticas explícitas e governança de demandas urgentes."
+  >
+
+  <meta name="author" content="Roxane Nayara">
+
   <meta name="robots" content="noindex, nofollow">
 
-  <title>Kanban Operacional | Roxane Nayara</title>
+  <title>
+    Framework Kanban Operacional | Roxane Nayara
+  </title>
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="../../favicon.png?v=2"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="../../favicon.png?v=2"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../../style.css?v=21"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../cases.css?v=1"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Allura&display=swap"
+    rel="stylesheet"
+  >
 </head>
 
-<body>
+<body class="case-page">
+
+  <div
+    class="floating-particles"
+    aria-hidden="true"
+  >
+    <span style="--x: 6%; --size: 8px; --delay: 0s; --duration: 20s;"></span>
+    <span style="--x: 14%; --size: 10px; --delay: 2s; --duration: 24s;"></span>
+    <span style="--x: 22%; --size: 7px; --delay: 4s; --duration: 18s;"></span>
+    <span style="--x: 31%; --size: 11px; --delay: 1s; --duration: 22s;"></span>
+    <span style="--x: 39%; --size: 8px; --delay: 5s; --duration: 26s;"></span>
+    <span style="--x: 48%; --size: 9px; --delay: 3s; --duration: 21s;"></span>
+    <span style="--x: 57%; --size: 12px; --delay: 6s; --duration: 28s;"></span>
+    <span style="--x: 66%; --size: 7px; --delay: 2.5s; --duration: 19s;"></span>
+    <span style="--x: 74%; --size: 10px; --delay: 7s; --duration: 25s;"></span>
+    <span style="--x: 82%; --size: 8px; --delay: 1.5s; --duration: 20s;"></span>
+    <span style="--x: 90%; --size: 11px; --delay: 4.5s; --duration: 23s;"></span>
+    <span style="--x: 96%; --size: 7px; --delay: 6.5s; --duration: 18s;"></span>
+  </div>
+
+  <header class="header">
+    <nav class="navigation container">
+
+      <a
+        class="logo"
+        href="../../#inicio"
+        aria-label="Voltar para a página inicial"
+      >
+        Roxy
+      </a>
+
+      <div class="nav-actions">
+
+        <button
+          id="menu-toggle"
+          class="menu-toggle"
+          type="button"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="main-menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div
+          id="main-menu"
+          class="menu"
+        >
+          <a href="../../#inicio">Início</a>
+          <a href="../../#sobre">Sobre</a>
+          <a href="../../#experiencia">Experiência</a>
+          <a href="../../#cases">Cases</a>
+          <a href="../../#competencias">Competências</a>
+          <a href="../../#formacao">Formação</a>
+          <a href="../../#contato">Contato</a>
+        </div>
+
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Ativar tema escuro"
+          aria-pressed="false"
+        >
+          <span aria-hidden="true">☾</span>
+        </button>
+
+      </div>
+    </nav>
+  </header>
+
   <main>
-    <h1>Framework Kanban Operacional</h1>
-    <p>Página em desenvolvimento.</p>
+
+    <section
+      id="inicio"
+      class="case-hero"
+    >
+      <div class="container">
+
+        <a
+          class="case-breadcrumb"
+          href="../../#cases"
+        >
+          ← Voltar para todos os cases
+        </a>
+
+        <div class="case-hero-grid">
+
+          <div class="reveal">
+
+            <p class="case-label">
+              Case 11 · Gestão de fluxo
+            </p>
+
+            <h1 class="case-title">
+              Estruturação de Framework Kanban Operacional
+            </h1>
+
+            <p class="case-introduction">
+              Proposta de reorganização de um fluxo operacional
+              complexo, com simplificação das etapas, limites de
+              trabalho em progresso, políticas explícitas e
+              governança para demandas urgentes.
+            </p>
+
+            <div class="case-tags">
+              <span>Kanban</span>
+              <span>Gestão de fluxo</span>
+              <span>Limites de WIP</span>
+              <span>Governança</span>
+              <span>Melhoria contínua</span>
+            </div>
+
+          </div>
+
+          <aside
+            class="case-summary reveal reveal-delay-1"
+            aria-labelledby="resumo-case"
+          >
+            <h2 id="resumo-case">
+              Visão geral
+            </h2>
+
+            <ul class="case-summary-list">
+
+              <li>
+                <strong>Tipo</strong>
+                <span>
+                  Framework operacional e proposta de melhoria
+                </span>
+              </li>
+
+              <li>
+                <strong>Objetivo</strong>
+                <span>
+                  Tornar o fluxo mais claro, previsível e governável
+                </span>
+              </li>
+
+              <li>
+                <strong>Abordagem</strong>
+                <span>
+                  Análise de fluxo, riscos, WIP e políticas de entrada
+                </span>
+              </li>
+
+              <li>
+                <strong>Status</strong>
+                <span>
+                  Estruturação documentada
+                </span>
+              </li>
+
+            </ul>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="contexto"
+      class="case-section"
+    >
+      <div class="container">
+
+        <div class="case-section-heading reveal">
+
+          <p>Contexto</p>
+
+          <h2>
+            Quando o board deixa de apoiar o fluxo e passa a
+            esconder seus problemas.
+          </h2>
+
+          <p class="case-section-description">
+            O cenário analisado apresentava muitas etapas,
+            diferentes tipos de trabalho no mesmo fluxo e baixa
+            visibilidade sobre prioridades, bloqueios e capacidade.
+          </p>
+
+        </div>
+
+        <div class="case-content-grid">
+
+          <article class="case-content-card reveal">
+            <h3>Excesso de colunas</h3>
+
+            <p>
+              O board misturava descoberta, refinamento,
+              desenvolvimento, homologação, deploy, bloqueios
+              e priorização em uma única sequência operacional.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal reveal-delay-1">
+            <h3>Estoque invisível</h3>
+
+            <p>
+              O trabalho permanecia distribuído entre várias
+              etapas, dificultando a leitura do volume real de
+              demandas em andamento.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal">
+            <h3>Urgências sem governança</h3>
+
+            <p>
+              Demandas de última hora podiam entrar no fluxo
+              sem uma política clara de avaliação, priorização
+              ou impacto sobre o trabalho já iniciado.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal reveal-delay-1">
+            <h3>Baixa previsibilidade</h3>
+
+            <p>
+              Sem limites de WIP e critérios claros de entrada
+              e saída, o board dificultava a identificação de
+              gargalos e compromissos reais do time.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="abordagem"
+      class="case-section"
+    >
+      <div class="container">
+
+        <div class="case-section-heading reveal">
+
+          <p>Abordagem</p>
+
+          <h2>
+            Reduzir complexidade sem perder governança.
+          </h2>
+
+          <p class="case-section-description">
+            A proposta reorganiza o fluxo em etapas com objetivos
+            claros e regras explícitas, mantendo os detalhes
+            operacionais como políticas, e não como novas colunas.
+          </p>
+
+        </div>
+
+        <div class="case-content-grid">
+
+          <article class="case-content-card reveal">
+            <h3>Intake e triagem</h3>
+
+            <p>
+              Centralização das novas demandas com descrição
+              mínima, solicitante, impacto e prazo desejado
+              antes da entrada no fluxo.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal reveal-delay-1">
+            <h3>Discovery e refinamento</h3>
+
+            <p>
+              Validação de regra, risco, dependências,
+              critérios de aceite, prioridade e tamanho
+              antes do comprometimento.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal">
+            <h3>Fila comprometida</h3>
+
+            <p>
+              Criação de uma etapa Ready com limite forte,
+              evitando que a fila se transforme em um depósito
+              de demandas sem compromisso real.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal reveal-delay-1">
+            <h3>Execução e validação</h3>
+
+            <p>
+              Organização do trabalho em desenvolvimento,
+              validação e conclusão, com critérios claros
+              para movimentação dos itens.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="interacao"
+      class="case-section"
+    >
+      <div class="container">
+
+        <div class="case-section-heading reveal">
+
+          <p>Demonstração interativa</p>
+
+          <h2>
+            Explore as políticas do fluxo proposto.
+          </h2>
+
+          <p class="case-section-description">
+            Esta área será transformada em uma demonstração
+            navegável, permitindo selecionar cada etapa,
+            consultar políticas e visualizar alertas de WIP.
+          </p>
+
+        </div>
+
+        <div class="case-note reveal">
+          <strong>Em construção:</strong>
+          a interação do board será adicionada após a validação
+          desta estrutura visual e de conteúdo.
+        </div>
+
+      </div>
+    </section>
+
+    <section
+      id="governanca"
+      class="case-section"
+    >
+      <div class="container">
+
+        <div class="case-section-heading reveal">
+
+          <p>Governança</p>
+
+          <h2>
+            O board representa o fluxo. As políticas orientam
+            as decisões.
+          </h2>
+
+        </div>
+
+        <div class="case-content-grid">
+
+          <article class="case-content-card reveal">
+            <h3>Limites de WIP</h3>
+
+            <p>
+              Controle do volume de trabalho simultâneo para
+              reduzir multitarefa, filas internas e aumento
+              do tempo de atravessamento.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal reveal-delay-1">
+            <h3>Classe de serviço urgente</h3>
+
+            <p>
+              Tratamento separado para urgências, com critérios
+              objetivos de entrada, responsável pela aprovação
+              e impacto visível sobre a capacidade.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal">
+            <h3>Políticas explícitas</h3>
+
+            <p>
+              Definição de critérios mínimos para entrada,
+              movimentação, bloqueio, validação e conclusão
+              das demandas.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal reveal-delay-1">
+            <h3>Métricas de fluxo</h3>
+
+            <p>
+              Uso de lead time, cycle time, throughput,
+              envelhecimento dos itens e bloqueios como apoio
+              à melhoria contínua.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="resultados"
+      class="case-section"
+    >
+      <div class="container">
+
+        <div class="case-section-heading reveal">
+
+          <p>Resultados e estágio</p>
+
+          <h2>
+            Benefícios esperados e pontos ainda não avaliados.
+          </h2>
+
+        </div>
+
+        <div class="case-content-grid">
+
+          <article class="case-content-card reveal">
+            <h3>Resultado observado</h3>
+
+            <p>
+              O redesenho tornou a proposta de fluxo mais simples
+              de comunicar e facilitou a identificação das
+              políticas necessárias para sua governança.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal reveal-delay-1">
+            <h3>Resultado esperado</h3>
+
+            <p>
+              Maior visibilidade sobre capacidade, gargalos,
+              bloqueios, prioridades e volume de trabalho
+              em progresso.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal">
+            <h3>Ainda não avaliado</h3>
+
+            <p>
+              Os impactos quantitativos sobre lead time,
+              throughput e previsibilidade dependem da
+              implantação e da coleta contínua de métricas.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal reveal-delay-1">
+            <h3>Próximos passos</h3>
+
+            <p>
+              Validar limites iniciais, acompanhar métricas,
+              revisar políticas e ajustar o fluxo conforme
+              a capacidade e os padrões observados.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="competencias"
+      class="case-section"
+    >
+      <div class="container">
+
+        <div class="case-section-heading reveal">
+
+          <p>Competências demonstradas</p>
+
+          <h2>
+            Gestão de fluxo conectada a governança,
+            qualidade e melhoria contínua.
+          </h2>
+
+        </div>
+
+        <div class="case-tags reveal">
+          <span>Análise de processos</span>
+          <span>Kanban</span>
+          <span>Gestão de capacidade</span>
+          <span>Limites de WIP</span>
+          <span>Políticas explícitas</span>
+          <span>Governança de urgências</span>
+          <span>Métricas de fluxo</span>
+          <span>Análise de riscos</span>
+          <span>Melhoria contínua</span>
+        </div>
+
+        <div class="case-actions reveal">
+
+          <a
+            class="button button-primary"
+            href="https://github.com/RoxaneNayara/portfolio-qa-process-improvement/tree/main/11-framework-kanban-operacional"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ver documentação no GitHub
+          </a>
+
+          <a
+            class="button button-secondary"
+            href="../../#cases"
+          >
+            Voltar para todos os cases
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+
+        <div class="case-note reveal">
+          <strong>Confidencialidade:</strong>
+          este case apresenta uma estrutura profissional de
+          processo sem expor dados, sistemas, clientes ou
+          informações confidenciais de empresas.
+        </div>
+
+      </div>
+    </section>
+
   </main>
+
+  <button
+    id="back-to-top"
+    class="back-to-top"
+    type="button"
+    aria-label="Voltar ao topo"
+    title="Voltar ao topo"
+  >
+    <span aria-hidden="true">↑</span>
+  </button>
+
+  <footer class="footer">
+    <div class="container footer-content">
+
+      <p>
+        © 2026 Roxane Nayara. Alguns direitos reservados.
+      </p>
+
+      <p class="footer-note">
+        Portfólio profissional de QA com foco em processos,
+        governança, rastreabilidade e melhoria contínua.
+      </p>
+
+    </div>
+  </footer>
+
+  <script src="../../script.js?v=17"></script>
+
 </body>
 </html>
