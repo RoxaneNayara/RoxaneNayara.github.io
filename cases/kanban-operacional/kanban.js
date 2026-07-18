@@ -184,16 +184,30 @@ document.addEventListener("DOMContentLoaded", () => {
         `Etapa selecionada: ${policies[columnKey].title}.`;
     }
 
-    if (shouldScroll) {
-      column.scrollIntoView({
+        if (shouldScroll) {
+      const columnLeft = column.offsetLeft;
+    
+      const targetPosition =
+        columnLeft -
+        (columnsContainer.clientWidth / 2) +
+        (column.offsetWidth / 2);
+    
+      const maximumScroll =
+        columnsContainer.scrollWidth -
+        columnsContainer.clientWidth;
+    
+      const safePosition = Math.max(
+        0,
+        Math.min(targetPosition, maximumScroll)
+      );
+    
+      columnsContainer.scrollTo({
+        left: safePosition,
         behavior: prefersReducedMotion()
           ? "auto"
-          : "smooth",
-        block: "nearest",
-        inline: "center"
+          : "smooth"
       });
     }
-  }
 
   columns.forEach((column) => {
     column.addEventListener("click", (event) => {
