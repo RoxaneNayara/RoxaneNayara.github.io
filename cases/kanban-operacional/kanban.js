@@ -1050,6 +1050,20 @@ document.addEventListener("DOMContentLoaded", () => {
   bindBoardInteractions(previousBoard);
   bindBoardInteractions(proposedBoard);
 
+  function resetBoardPosition(activeBoard) {
+  const columnsContainer =
+    activeBoard.querySelector(".kanban-columns");
+
+  if (!columnsContainer) {
+    return;
+  }
+
+    columnsContainer.scrollTo({
+      left: 0,
+      behavior: "auto"
+    });
+  }
+
   function changeView(view) {
     board.dataset.currentView = view;
 
@@ -1094,28 +1108,34 @@ document.addEventListener("DOMContentLoaded", () => {
           : "Visualização atual: fluxo proposto, com políticas explícitas, limites de WIP e raia urgente.";
     }
 
-    const activeBoard = getActiveBoard();
-
-    const columnsContainer =
-      activeBoard.querySelector(
-        ".kanban-columns"
-      );
-
-    if (columnsContainer) {
-      columnsContainer.scrollLeft = 0;
-    }
-
-    const firstColumn =
-      activeBoard.querySelector(
-        ".kanban-column"
-      );
-
-    selectColumn(firstColumn, false);
+      const activeBoard = getActiveBoard();
+      
+      const firstColumn =
+        activeBoard.querySelector(".kanban-column");
+      
+      resetBoardPosition(activeBoard);
+      selectColumn(firstColumn, false);
+      
+      window.requestAnimationFrame(() => {
+        resetBoardPosition(activeBoard);
+      });
+      
+      window.setTimeout(() => {
+        resetBoardPosition(activeBoard);
+      }, 120);
   }
 
   viewButtons.forEach((button) => {
     button.addEventListener("click", () => {
       changeView(button.dataset.view);
+    });
+  });
+
+  window.addEventListener("pageshow", () => {
+  const activeBoard = getActiveBoard();
+
+    window.requestAnimationFrame(() => {
+      resetBoardPosition(activeBoard);
     });
   });
 
