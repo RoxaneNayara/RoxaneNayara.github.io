@@ -359,33 +359,664 @@
     </section>
 
     <section
-      id="interacao"
-      class="case-section"
+  id="interacao"
+  class="case-section kanban-demo-section"
+>
+  <div class="container">
+
+    <div class="case-section-heading reveal">
+
+      <p>Demonstração interativa</p>
+
+      <h2>
+        Explore as políticas do fluxo proposto.
+      </h2>
+
+      <p class="case-section-description">
+        Selecione uma coluna para consultar seu objetivo,
+        critérios de entrada e saída, limite de trabalho
+        em progresso e principais riscos.
+      </p>
+
+    </div>
+
+    <div
+      class="kanban-demo reveal"
+      aria-labelledby="kanban-demo-title"
     >
-      <div class="container">
 
-        <div class="case-section-heading reveal">
+      <div class="kanban-toolbar">
 
-          <p>Demonstração interativa</p>
+        <div>
+          <h3 id="kanban-demo-title">
+            Framework Kanban Operacional
+          </h3>
 
-          <h2>
-            Explore as políticas do fluxo proposto.
-          </h2>
-
-          <p class="case-section-description">
-            Esta área será transformada em uma demonstração
-            navegável, permitindo selecionar cada etapa,
-            consultar políticas e visualizar alertas de WIP.
+          <p>
+            Demonstração conceitual com dados fictícios.
           </p>
-
         </div>
 
-        <div class="case-note reveal">
-          <strong>Em construção:</strong>
-          a interação do board será adicionada após a validação
-          desta estrutura visual e de conteúdo.
+        <div
+          class="kanban-view-toggle"
+          role="group"
+          aria-label="Selecionar visualização do fluxo"
+        >
+          <button
+            class="kanban-view-button"
+            type="button"
+            data-view="anterior"
+            aria-pressed="false"
+          >
+            Fluxo anterior
+          </button>
+
+          <button
+            class="kanban-view-button is-active"
+            type="button"
+            data-view="proposto"
+            aria-pressed="true"
+          >
+            Fluxo proposto
+          </button>
         </div>
 
+      </div>
+
+      <div
+        id="kanban-status"
+        class="kanban-status"
+        aria-live="polite"
+      >
+        Visualização atual: fluxo proposto.
+      </div>
+
+      <div
+        id="kanban-board"
+        class="kanban-board"
+        data-current-view="proposto"
+      >
+
+        <section
+          class="kanban-urgent-lane"
+          aria-labelledby="urgent-lane-title"
+        >
+
+          <div class="kanban-lane-heading">
+            <div>
+              <span class="kanban-lane-label">
+                Classe de serviço
+              </span>
+
+              <h4 id="urgent-lane-title">
+                Expedite · Demandas urgentes
+              </h4>
+            </div>
+
+            <span class="kanban-wip-badge">
+              WIP 1
+            </span>
+          </div>
+
+          <button
+            class="kanban-task-card kanban-task-urgent"
+            type="button"
+            data-task="urgente"
+            aria-label="Abrir detalhes da demanda urgente"
+          >
+            <span class="kanban-task-type">
+              Urgente
+            </span>
+
+            <strong>
+              Incidente crítico em produção
+            </strong>
+
+            <small>
+              Entrada condicionada à aprovação e ao impacto
+              explícito sobre a capacidade.
+            </small>
+          </button>
+
+        </section>
+
+        <div class="kanban-columns">
+
+          <section
+            class="kanban-column is-selected"
+            data-column="triagem"
+            tabindex="0"
+            role="button"
+            aria-pressed="true"
+            aria-labelledby="column-triagem-title"
+          >
+
+            <div class="kanban-column-heading">
+              <div>
+                <span class="kanban-column-step">
+                  01
+                </span>
+
+                <h4 id="column-triagem-title">
+                  Intake / Triagem
+                </h4>
+              </div>
+
+              <span
+                class="kanban-wip-badge"
+                data-wip-current="2"
+                data-wip-limit="4"
+              >
+                2 / 4
+              </span>
+            </div>
+
+            <p class="kanban-column-purpose">
+              Capturar e qualificar novas demandas.
+            </p>
+
+            <div class="kanban-card-list">
+
+              <button
+                class="kanban-task-card"
+                type="button"
+                data-task="cadastro"
+              >
+                <span class="kanban-task-type">
+                  Melhoria
+                </span>
+
+                <strong>
+                  Revisar fluxo de cadastro
+                </strong>
+
+                <small>
+                  Impacto e solicitante registrados.
+                </small>
+              </button>
+
+              <button
+                class="kanban-task-card"
+                type="button"
+                data-task="relatorio"
+              >
+                <span class="kanban-task-type">
+                  Solicitação
+                </span>
+
+                <strong>
+                  Ajustar relatório operacional
+                </strong>
+
+                <small>
+                  Aguardando análise inicial.
+                </small>
+              </button>
+
+            </div>
+
+          </section>
+
+          <section
+            class="kanban-column"
+            data-column="refinamento"
+            tabindex="0"
+            role="button"
+            aria-pressed="false"
+            aria-labelledby="column-refinamento-title"
+          >
+
+            <div class="kanban-column-heading">
+              <div>
+                <span class="kanban-column-step">
+                  02
+                </span>
+
+                <h4 id="column-refinamento-title">
+                  Discovery / Refinamento
+                </h4>
+              </div>
+
+              <span
+                class="kanban-wip-badge"
+                data-wip-current="2"
+                data-wip-limit="3"
+              >
+                2 / 3
+              </span>
+            </div>
+
+            <p class="kanban-column-purpose">
+              Validar regra, risco, dependências e aceite.
+            </p>
+
+            <div class="kanban-card-list">
+
+              <button
+                class="kanban-task-card"
+                type="button"
+                data-task="integracao"
+              >
+                <span class="kanban-task-type">
+                  Integração
+                </span>
+
+                <strong>
+                  Mapear dependências da API
+                </strong>
+
+                <small>
+                  Critérios de aceite em revisão.
+                </small>
+              </button>
+
+              <button
+                class="kanban-task-card"
+                type="button"
+                data-task="permissao"
+              >
+                <span class="kanban-task-type">
+                  Risco
+                </span>
+
+                <strong>
+                  Revisar regras de permissão
+                </strong>
+
+                <small>
+                  Dependência externa identificada.
+                </small>
+              </button>
+
+            </div>
+
+          </section>
+
+          <section
+            class="kanban-column"
+            data-column="ready"
+            tabindex="0"
+            role="button"
+            aria-pressed="false"
+            aria-labelledby="column-ready-title"
+          >
+
+            <div class="kanban-column-heading">
+              <div>
+                <span class="kanban-column-step">
+                  03
+                </span>
+
+                <h4 id="column-ready-title">
+                  Ready
+                </h4>
+              </div>
+
+              <span
+                class="kanban-wip-badge"
+                data-wip-current="2"
+                data-wip-limit="2"
+              >
+                2 / 2
+              </span>
+            </div>
+
+            <p class="kanban-column-purpose">
+              Manter apenas trabalho pronto e comprometido.
+            </p>
+
+            <div class="kanban-card-list">
+
+              <button
+                class="kanban-task-card"
+                type="button"
+                data-task="checkout"
+              >
+                <span class="kanban-task-type">
+                  Evolução
+                </span>
+
+                <strong>
+                  Ajustar validação do checkout
+                </strong>
+
+                <small>
+                  Pronto para desenvolvimento.
+                </small>
+              </button>
+
+              <button
+                class="kanban-task-card"
+                type="button"
+                data-task="auditoria"
+              >
+                <span class="kanban-task-type">
+                  Governança
+                </span>
+
+                <strong>
+                  Criar histórico de auditoria
+                </strong>
+
+                <small>
+                  Critérios e prioridade aprovados.
+                </small>
+              </button>
+
+            </div>
+
+          </section>
+
+          <section
+            class="kanban-column"
+            data-column="desenvolvimento"
+            tabindex="0"
+            role="button"
+            aria-pressed="false"
+            aria-labelledby="column-development-title"
+          >
+
+            <div class="kanban-column-heading">
+              <div>
+                <span class="kanban-column-step">
+                  04
+                </span>
+
+                <h4 id="column-development-title">
+                  Em Desenvolvimento
+                </h4>
+              </div>
+
+              <span
+                class="kanban-wip-badge is-warning"
+                data-wip-current="4"
+                data-wip-limit="3"
+              >
+                4 / 3
+              </span>
+            </div>
+
+            <p class="kanban-column-purpose">
+              Construir a solução com foco no trabalho iniciado.
+            </p>
+
+            <div
+              class="kanban-wip-alert"
+              role="status"
+            >
+              Limite de WIP excedido.
+            </div>
+
+            <div class="kanban-card-list">
+
+              <button
+                class="kanban-task-card"
+                type="button"
+                data-task="filtro"
+              >
+                <span class="kanban-task-type">
+                  Desenvolvimento
+                </span>
+
+                <strong>
+                  Implementar novo filtro
+                </strong>
+
+                <small>
+                  Em construção.
+                </small>
+              </button>
+
+              <button
+                class="kanban-task-card"
+                type="button"
+                data-task="notificacao"
+              >
+                <span class="kanban-task-type">
+                  Desenvolvimento
+                </span>
+
+                <strong>
+                  Ajustar notificações
+                </strong>
+
+                <small>
+                  Em construção.
+                </small>
+              </button>
+
+              <button
+                class="kanban-task-card"
+                type="button"
+                data-task="validacao"
+              >
+                <span class="kanban-task-type">
+                  Correção
+                </span>
+
+                <strong>
+                  Corrigir validação duplicada
+                </strong>
+
+                <small>
+                  Em construção.
+                </small>
+              </button>
+
+              <button
+                class="kanban-task-card"
+                type="button"
+                data-task="exportacao"
+              >
+                <span class="kanban-task-type">
+                  Evolução
+                </span>
+
+                <strong>
+                  Otimizar exportação de dados
+                </strong>
+
+                <small>
+                  Item adicional elevou o WIP.
+                </small>
+              </button>
+
+            </div>
+
+          </section>
+
+          <section
+            class="kanban-column"
+            data-column="validacao"
+            tabindex="0"
+            role="button"
+            aria-pressed="false"
+            aria-labelledby="column-validation-title"
+          >
+
+            <div class="kanban-column-heading">
+              <div>
+                <span class="kanban-column-step">
+                  05
+                </span>
+
+                <h4 id="column-validation-title">
+                  Validação
+                </h4>
+              </div>
+
+              <span
+                class="kanban-wip-badge"
+                data-wip-current="1"
+                data-wip-limit="3"
+              >
+                1 / 3
+              </span>
+            </div>
+
+            <p class="kanban-column-purpose">
+              Validar critérios, riscos e evidências.
+            </p>
+
+            <div class="kanban-card-list">
+
+              <button
+                class="kanban-task-card"
+                type="button"
+                data-task="evidencia"
+              >
+                <span class="kanban-task-type">
+                  Teste
+                </span>
+
+                <strong>
+                  Validar evidências da entrega
+                </strong>
+
+                <small>
+                  Execução em andamento.
+                </small>
+              </button>
+
+            </div>
+
+          </section>
+
+              <section
+                class="kanban-column"
+                data-column="concluido"
+                tabindex="0"
+                role="button"
+                aria-pressed="false"
+                aria-labelledby="column-done-title"
+              >
+    
+                <div class="kanban-column-heading">
+                  <div>
+                    <span class="kanban-column-step">
+                      06
+                    </span>
+    
+                    <h4 id="column-done-title">
+                      Concluído
+                    </h4>
+                  </div>
+    
+                  <span class="kanban-wip-badge">
+                    Saída
+                  </span>
+                </div>
+    
+                <p class="kanban-column-purpose">
+                  Registrar entrega validada e rastreável.
+                </p>
+    
+                <div class="kanban-card-list">
+    
+                  <button
+                    class="kanban-task-card"
+                    type="button"
+                    data-task="busca"
+                  >
+                    <span class="kanban-task-type">
+                      Concluído
+                    </span>
+    
+                    <strong>
+                      Melhorar mecanismo de busca
+                    </strong>
+    
+                    <small>
+                      Validado e finalizado.
+                    </small>
+                  </button>
+    
+                </div>
+    
+              </section>
+    
+            </div>
+    
+          </div>
+    
+          <aside
+            id="kanban-policy-panel"
+            class="kanban-policy-panel"
+            aria-labelledby="policy-panel-title"
+          >
+    
+            <div class="kanban-policy-header">
+    
+              <div>
+                <span class="kanban-policy-eyebrow">
+                  Política da etapa selecionada
+                </span>
+    
+                <h3 id="policy-panel-title">
+                  Intake / Triagem
+                </h3>
+              </div>
+    
+              <span
+                id="policy-wip"
+                class="kanban-policy-wip"
+              >
+                WIP atual: 2 de 4
+              </span>
+    
+            </div>
+    
+            <div class="kanban-policy-grid">
+    
+              <div>
+                <h4>Objetivo</h4>
+    
+                <p id="policy-objective">
+                  Capturar, registrar e qualificar novas demandas
+                  antes que sejam comprometidas pelo time.
+                </p>
+              </div>
+    
+              <div>
+                <h4>Critério de entrada</h4>
+    
+                <p id="policy-entry">
+                  A demanda deve possuir descrição mínima,
+                  solicitante, impacto e prazo desejado.
+                </p>
+              </div>
+    
+              <div>
+                <h4>Critério de saída</h4>
+    
+                <p id="policy-exit">
+                  A demanda segue para refinamento quando possui
+                  contexto suficiente para análise de regra,
+                  risco e dependências.
+                </p>
+              </div>
+    
+              <div>
+                <h4>Risco principal</h4>
+    
+                <p id="policy-risk">
+                  Permitir a entrada de demandas incompletas ou
+                  priorizadas sem avaliação de impacto.
+                </p>
+              </div>
+    
+            </div>
+    
+          </aside>
+    
+          <p class="kanban-demo-note">
+            Esta demonstração representa uma proposta de processo.
+            Os cards, volumes e situações apresentados são fictícios
+            e foram criados exclusivamente para fins de portfólio.
+          </p>
+    
+        </div>
+    
       </div>
     </section>
 
