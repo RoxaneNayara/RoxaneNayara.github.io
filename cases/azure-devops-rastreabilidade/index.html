@@ -354,34 +354,281 @@
       </div>
     </section>
 
-    <section
+       <section
       id="interacao"
-      class="case-section"
+      class="case-section traceability-demo-section"
     >
       <div class="container">
-
+    
         <div class="case-section-heading reveal">
-
+    
           <p>Demonstração interativa</p>
-
+    
           <h2>
             Explore a cadeia de rastreabilidade da validação.
           </h2>
-
+    
           <p class="case-section-description">
             Selecione uma etapa para consultar seu objetivo,
-            os registros realizados, as evidências geradas
-            e o risco controlado.
+            os registros realizados, as evidências geradas,
+            o vínculo com a demanda e o risco controlado.
           </p>
-
+    
         </div>
-
-        <div class="case-note reveal">
-          <strong>Próxima etapa:</strong>
-          esta área receberá o fluxo interativo de rastreabilidade,
-          com dados fictícios e nomenclatura neutralizada.
+    
+        <div
+          class="traceability-demo reveal"
+          aria-labelledby="traceability-title"
+        >
+    
+          <div class="traceability-header">
+    
+            <div>
+              <h3 id="traceability-title">
+                Fluxo rastreável das validações de QA
+              </h3>
+    
+              <p>
+                Demonstração conceitual com dados e nomenclaturas
+                fictícias.
+              </p>
+            </div>
+    
+            <span class="traceability-status">
+              Cadeia completa
+            </span>
+    
+          </div>
+    
+          <div
+            id="traceability-flow"
+            class="traceability-flow"
+            aria-label="Etapas da rastreabilidade"
+          >
+    
+            <button
+              class="traceability-step is-active"
+              type="button"
+              data-step="backlog"
+              aria-pressed="true"
+            >
+              <span class="traceability-step-number">
+                01
+              </span>
+    
+              <strong>
+                Backlog principal
+              </strong>
+    
+              <small>
+                Demanda e contexto centralizados
+              </small>
+            </button>
+    
+            <span
+              class="traceability-connector"
+              aria-hidden="true"
+            >
+              →
+            </span>
+    
+            <button
+              class="traceability-step"
+              type="button"
+              data-step="pair-testing"
+              aria-pressed="false"
+            >
+              <span class="traceability-step-number">
+                02
+              </span>
+    
+              <strong>
+                Pair Testing com Desenvolvimento
+              </strong>
+    
+              <small>
+                Validação colaborativa antecipada
+              </small>
+            </button>
+    
+            <span
+              class="traceability-connector"
+              aria-hidden="true"
+            >
+              →
+            </span>
+    
+            <button
+              class="traceability-step"
+              type="button"
+              data-step="qa-desenvolvimento"
+              aria-pressed="false"
+            >
+              <span class="traceability-step-number">
+                03
+              </span>
+    
+              <strong>
+                QA em desenvolvimento
+              </strong>
+    
+              <small>
+                Testes, documentação e evidências
+              </small>
+            </button>
+    
+            <span
+              class="traceability-connector"
+              aria-hidden="true"
+            >
+              →
+            </span>
+    
+            <button
+              class="traceability-step"
+              type="button"
+              data-step="qa-homologacao"
+              aria-pressed="false"
+            >
+              <span class="traceability-step-number">
+                04
+              </span>
+    
+              <strong>
+                QA em homologação
+              </strong>
+    
+              <small>
+                Confirmação final e evidências
+              </small>
+            </button>
+    
+            <span
+              class="traceability-connector"
+              aria-hidden="true"
+            >
+              →
+            </span>
+    
+            <button
+              class="traceability-step"
+              type="button"
+              data-step="historico"
+              aria-pressed="false"
+            >
+              <span class="traceability-step-number">
+                05
+              </span>
+    
+              <strong>
+                Histórico rastreável
+              </strong>
+    
+              <small>
+                Relações, resultados e evidências
+              </small>
+            </button>
+    
+          </div>
+    
+          <aside
+            id="traceability-panel"
+            class="traceability-panel"
+            aria-labelledby="traceability-panel-title"
+          >
+    
+            <div class="traceability-panel-header">
+    
+              <div>
+                <span class="traceability-panel-eyebrow">
+                  Etapa selecionada
+                </span>
+    
+                <h3 id="traceability-panel-title">
+                  Backlog principal
+                </h3>
+              </div>
+    
+              <span
+                id="traceability-panel-status"
+                class="traceability-panel-status"
+              >
+                Item de origem
+              </span>
+    
+            </div>
+    
+            <div class="traceability-panel-grid">
+    
+              <article>
+                <h4>Objetivo</h4>
+    
+                <p id="traceability-objective">
+                  Centralizar o contexto funcional da demanda e
+                  manter o relacionamento com todas as atividades
+                  de validação.
+                </p>
+              </article>
+    
+              <article>
+                <h4>Registros realizados</h4>
+    
+                <p id="traceability-records">
+                  Descrição da necessidade, critérios de aceite,
+                  prioridade, histórico e relacionamento com as
+                  atividades filhas.
+                </p>
+              </article>
+    
+              <article>
+                <h4>Evidências geradas</h4>
+    
+                <p id="traceability-evidence">
+                  O item principal referencia os resultados e
+                  evidências registrados nas atividades de validação.
+                </p>
+              </article>
+    
+              <article>
+                <h4>Vínculo e rastreabilidade</h4>
+    
+                <p id="traceability-link">
+                  As atividades permanecem vinculadas à demanda
+                  por relacionamento pai-filho.
+                </p>
+              </article>
+    
+              <article>
+                <h4>Risco controlado</h4>
+    
+                <p id="traceability-risk">
+                  Reduz a perda de contexto entre demanda,
+                  execução dos testes e resultado final.
+                </p>
+              </article>
+    
+              <article>
+                <h4>Valor para o processo</h4>
+    
+                <p id="traceability-value">
+                  Facilita a consulta do histórico completo da
+                  entrega em um único fluxo.
+                </p>
+              </article>
+    
+            </div>
+    
+          </aside>
+    
+          <p class="traceability-note">
+            Esta demonstração representa a estrutura do processo.
+            Nomes, identificadores, demandas, resultados e evidências
+            apresentados são fictícios e foram criados exclusivamente
+            para fins de portfólio.
+          </p>
+    
         </div>
-
+    
       </div>
     </section>
 
