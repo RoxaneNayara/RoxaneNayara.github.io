@@ -776,8 +776,9 @@ body.dark-theme .kanban-policy-grid > div {
 
 body.dark-theme
 .kanban-view-button.is-active {
-  color: #281a2d;
-  background: var(--primary-dark);
+  color: #ffffff;
+  background: var(--primary);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
 body.dark-theme
