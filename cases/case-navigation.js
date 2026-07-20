@@ -70,11 +70,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function scrollToSection(target) {
+    const sectionTarget =
+      target.id === "inicio"
+        ? target
+        : target.querySelector(
+            ".case-section-heading, .case-hero-grid"
+          ) ?? target;
+  
     const targetPosition =
-      target.getBoundingClientRect().top +
+      sectionTarget.getBoundingClientRect().top +
       window.scrollY -
-      getFixedOffset();
-
+      getFixedOffset() -
+      12;
+  
     window.scrollTo({
       top: Math.max(0, targetPosition),
       behavior: prefersReducedMotion()
