@@ -168,27 +168,49 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function centerStep(step) {
-    const targetPosition =
-      step.offsetLeft -
-      flow.clientWidth / 2 +
-      step.offsetWidth / 2;
-
-    const maximumScroll =
-      flow.scrollWidth - flow.clientWidth;
-
-    const safePosition = Math.max(
-      0,
-      Math.min(targetPosition, maximumScroll)
-    );
-
-    flow.scrollTo({
-      left: safePosition,
-      behavior: prefersReducedMotion()
-        ? "auto"
-        : "smooth"
-    });
-  }
+    function centerStep(step) {
+      const reduceMotion = prefersReducedMotion();
+      const mobileView = window.innerWidth <= 560;
+    
+      if (mobileView) {
+        const targetPosition =
+          step.offsetLeft -
+          flow.clientWidth / 2 +
+          step.offsetWidth / 2;
+    
+        const maximumScroll =
+          flow.scrollWidth - flow.clientWidth;
+    
+        const safePosition = Math.max(
+          0,
+          Math.min(targetPosition, maximumScroll)
+        );
+    
+        flow.scrollTo({
+          left: safePosition,
+          behavior: reduceMotion ? "auto" : "smooth"
+        });
+    
+        return;
+      }
+    
+      const stepLeft = step.offsetLeft;
+      const stepRight = stepLeft + step.offsetWidth;
+      const visibleLeft = flow.scrollLeft;
+      const visibleRight = visibleLeft + flow.clientWidth;
+    
+      if (stepLeft < visibleLeft) {
+        flow.scrollTo({
+          left: stepLeft,
+          behavior: reduceMotion ? "auto" : "smooth"
+        });
+      } else if (stepRight > visibleRight) {
+        flow.scrollTo({
+          left: stepRight - flow.clientWidth,
+          behavior: reduceMotion ? "auto" : "smooth"
+        });
+      }
+    }
 
   function selectStep(step, shouldScroll = true) {
     if (!step) {
