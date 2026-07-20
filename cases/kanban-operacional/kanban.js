@@ -885,7 +885,7 @@ document.addEventListener("DOMContentLoaded", () => {
       item.limit !== null
     ) {
       policyWip.textContent =
-        `WIP demonstrativo: ${item.current} de ${item.limit}`;
+        `WIP ilustrativo: ${item.current} de ${item.limit}`;
     } else {
       policyWip.textContent = "Etapa de saída";
     }
