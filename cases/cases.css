@@ -473,7 +473,7 @@ body.reveal-ready
 }
 
 .kanban-column {
-  flex: 0 0 250px;
+  flex: 0 0 280px;
 }
 
 .kanban-columns::-webkit-scrollbar {
@@ -545,6 +545,12 @@ body.reveal-ready
   color: var(--primary-dark);
 }
 
+.kanban-column-heading h4 {
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
 .kanban-column-purpose {
   min-height: 66px;
   margin-bottom: 18px;
@@ -555,15 +561,16 @@ body.reveal-ready
 /* WIP */
 
 .kanban-wip-badge {
-  max-width: 118px;
+  max-width: 128px;
   padding: 6px 9px;
   border: 1px solid var(--border);
   border-radius: 14px;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 800;
-  line-height: 1.25;
+  line-height: 1.2;
   text-align: center;
-  overflow-wrap: anywhere;
+  white-space: normal;
+  overflow-wrap: break-word;
   color: var(--primary);
   background: var(--surface-soft);
 }
@@ -928,6 +935,7 @@ body.dark-theme
 }
 
 .kanban-column {
+  flex: 0 0 280px;
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
@@ -938,7 +946,7 @@ body.dark-theme
     padding-right: 18px;
   }
 
- .kanban-column {
+.kanban-column {
    flex: 0 0 calc(100vw - 132px);
    min-width: calc(100vw - 132px);
    max-width: 310px;
