@@ -943,3 +943,38 @@ body.dark-theme
    max-width: 310px;
  }
 }
+
+/* ==================================================
+   MOVIMENTO DOS CARDS DO PAINEL DE POLÍTICAS
+================================================== */
+
+.kanban-policy-grid > div {
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.kanban-policy-grid > div:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: 0 18px 40px rgba(75, 42, 82, 0.12);
+}
+
+@media (hover: none) {
+  .kanban-policy-grid > div:hover {
+    transform: none;
+    border-color: var(--border);
+    box-shadow: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kanban-policy-grid > div {
+    transition: none;
+  }
+
+  .kanban-policy-grid > div:hover {
+    transform: none;
+  }
+}
