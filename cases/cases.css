@@ -946,7 +946,7 @@ body.dark-theme
 }
 
 /* ==================================================
-   MOVIMENTO DOS CARDS DO PAINEL DE POLÍTICAS
+   INTERAÇÃO DOS CARDS DO PAINEL DE POLÍTICAS
 ================================================== */
 
 .kanban-policy-grid > div {
@@ -959,7 +959,9 @@ body.dark-theme
 .kanban-policy-grid > div:hover {
   transform: translateY(-8px);
   border-color: var(--accent);
-  box-shadow: 0 18px 40px rgba(75, 42, 82, 0.12);
+  box-shadow:
+    0 0 0 1px var(--accent),
+    0 18px 40px rgba(75, 42, 82, 0.12);
 }
 
 @media (hover: none) {
