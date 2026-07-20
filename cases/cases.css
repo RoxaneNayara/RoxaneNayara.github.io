@@ -989,3 +989,316 @@ body.dark-theme
     transform: none;
   }
 }
+
+/* ==================================================
+   FLUXO INTERATIVO DE RASTREABILIDADE
+================================================== */
+
+.traceability-demo-section {
+  background: var(--surface);
+}
+
+.traceability-demo {
+  padding: 30px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: var(--background);
+  box-shadow: var(--shadow);
+}
+
+.traceability-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.traceability-header h3 {
+  margin-bottom: 6px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.65rem;
+  color: var(--primary-dark);
+}
+
+.traceability-header p {
+  color: var(--text-soft);
+}
+
+.traceability-status {
+  flex-shrink: 0;
+  padding: 8px 13px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--primary);
+  background: var(--surface-soft);
+}
+
+/* FLUXO */
+
+.traceability-flow {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  padding: 8px 2px 22px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--surface-soft);
+}
+
+.traceability-flow::-webkit-scrollbar {
+  height: 10px;
+}
+
+.traceability-flow::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background: var(--surface-soft);
+}
+
+.traceability-flow::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.traceability-step {
+  flex: 0 0 220px;
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  cursor: pointer;
+  scroll-snap-align: start;
+  text-align: left;
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+.traceability-step:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow:
+    0 0 0 1px var(--accent),
+    0 16px 34px rgba(75, 42, 82, 0.1);
+}
+
+.traceability-step.is-active {
+  border-color: var(--primary);
+  box-shadow:
+    0 0 0 2px rgba(113, 63, 120, 0.14),
+    0 18px 40px rgba(75, 42, 82, 0.12);
+}
+
+.traceability-step:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.traceability-step-number {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.traceability-step strong {
+  font-size: 1rem;
+  line-height: 1.35;
+  color: var(--primary-dark);
+}
+
+.traceability-step small {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-soft);
+}
+
+.traceability-connector {
+  flex: 0 0 auto;
+  align-self: center;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+/* PAINEL */
+
+.traceability-panel {
+  margin-top: 30px;
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--surface);
+}
+
+.traceability-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 22px;
+  margin-bottom: 26px;
+}
+
+.traceability-panel-eyebrow {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.traceability-panel-header h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.55rem;
+  color: var(--primary-dark);
+}
+
+.traceability-panel-status {
+  flex-shrink: 0;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--primary);
+  background: var(--surface-soft);
+}
+
+.traceability-panel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.traceability-panel-grid article {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--background);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.traceability-panel-grid article:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow:
+    0 0 0 1px var(--accent),
+    0 18px 40px rgba(75, 42, 82, 0.12);
+}
+
+.traceability-panel-grid h4 {
+  margin-bottom: 8px;
+  font-size: 0.92rem;
+  color: var(--primary-dark);
+}
+
+.traceability-panel-grid p {
+  font-size: 0.92rem;
+  color: var(--text-soft);
+}
+
+.traceability-note {
+  margin-top: 22px;
+  font-size: 0.82rem;
+  color: var(--text-soft);
+}
+
+/* TEMA ESCURO */
+
+body.dark-theme .traceability-demo {
+  background: var(--background);
+}
+
+body.dark-theme .traceability-step,
+body.dark-theme .traceability-panel {
+  background: var(--surface);
+}
+
+body.dark-theme .traceability-panel-grid article {
+  background: var(--background);
+}
+
+body.dark-theme .traceability-step.is-active {
+  border-color: var(--primary-dark);
+  box-shadow:
+    0 0 0 2px rgba(240, 201, 245, 0.14),
+    0 18px 40px rgba(0, 0, 0, 0.24);
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 900px) {
+  .traceability-demo {
+    padding: 24px;
+  }
+
+  .traceability-header {
+    flex-direction: column;
+  }
+
+  .traceability-panel-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .traceability-demo {
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .traceability-step {
+    flex: 0 0 calc(100vw - 132px);
+    min-width: calc(100vw - 132px);
+    max-width: 310px;
+  }
+
+  .traceability-connector {
+    display: none;
+  }
+
+  .traceability-panel {
+    padding: 22px;
+  }
+
+  .traceability-panel-header {
+    flex-direction: column;
+  }
+}
+
+@media (hover: none) {
+  .traceability-step:hover,
+  .traceability-panel-grid article:hover {
+    transform: none;
+    border-color: var(--border);
+    box-shadow: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .traceability-step,
+  .traceability-panel-grid article {
+    transition: none;
+  }
+
+  .traceability-step:hover,
+  .traceability-panel-grid article:hover {
+    transform: none;
+  }
+}
