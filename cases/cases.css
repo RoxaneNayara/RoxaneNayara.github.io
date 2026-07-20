@@ -918,3 +918,28 @@ body.dark-theme
 .kanban-wip-badge {
   color: #f0c38e;
 }
+
+/* Ajuste da navegação horizontal no celular */
+
+.kanban-columns {
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 2px;
+}
+
+.kanban-column {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+@media (max-width: 560px) {
+  .kanban-columns {
+    gap: 14px;
+    padding-right: 18px;
+  }
+
+  .kanban-column {
+    flex: 0 0 calc(100vw - 112px);
+    min-width: calc(100vw - 112px);
+    max-width: 320px;
+  }
+}
