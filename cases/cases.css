@@ -1302,3 +1302,115 @@ body.dark-theme .traceability-step.is-active {
     transform: none;
   }
 }
+
+/* ==================================================
+   NAVEGAÇÃO INTERNA DAS PÁGINAS DE CASE
+================================================== */
+
+.case-navigation {
+  position: sticky;
+  top: 76px;
+  z-index: 850;
+  border-bottom: 1px solid var(--border);
+  background: rgba(250, 246, 250, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.case-navigation-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.case-navigation-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.case-navigation a {
+  flex: 0 0 auto;
+  padding: 9px 14px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-decoration: none;
+  color: var(--text-soft);
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.case-navigation a:hover {
+  color: var(--primary);
+  background: var(--surface-soft);
+}
+
+.case-navigation a.is-active {
+  color: #ffffff;
+  background: var(--primary);
+}
+
+.case-navigation a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+body.dark-theme .case-navigation {
+  background: rgba(27, 20, 30, 0.94);
+}
+
+body.dark-theme .case-navigation a.is-active {
+  color: #281a2d;
+  background: var(--primary-dark);
+}
+
+.case-page main section[id] {
+  scroll-margin-top: 150px;
+}
+
+@media (max-width: 900px) {
+  .case-navigation {
+    top: 72px;
+  }
+
+  .case-navigation-inner {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .case-page main section[id] {
+    scroll-margin-top: 146px;
+  }
+}
+
+@media (max-width: 560px) {
+  .case-navigation {
+    top: 68px;
+  }
+
+  .case-navigation-inner {
+    gap: 6px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .case-navigation a {
+    padding: 8px 12px;
+    font-size: 0.78rem;
+  }
+
+  .case-page main section[id] {
+    scroll-margin-top: 138px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-navigation a {
+    transition: none;
+  }
+}
