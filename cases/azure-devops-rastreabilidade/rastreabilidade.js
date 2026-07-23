@@ -4,8 +4,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const flow =
     document.querySelector("#traceability-flow");
 
-  const steps =
-    document.querySelectorAll(".traceability-step");
+  const steps = Array.from(
+    document.querySelectorAll(".traceability-step")
+  );
+
+  const previousButton =
+    document.querySelector("#traceability-previous");
+
+  const nextButton =
+    document.querySelector("#traceability-next");
 
   const panelTitle =
     document.querySelector("#traceability-panel-title");
@@ -169,33 +176,37 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function centerStep(step) {
+    if (!step) {
+      return;
+    }
+
     const reduceMotion = prefersReducedMotion();
-  
+
     const flowRect =
       flow.getBoundingClientRect();
-  
+
     const stepRect =
       step.getBoundingClientRect();
-  
+
     const stepCenterInsideFlow =
       stepRect.left -
       flowRect.left +
       flow.scrollLeft +
       stepRect.width / 2;
-  
+
     const targetPosition =
       stepCenterInsideFlow -
       flow.clientWidth / 2;
-  
+
     const maximumScroll =
       flow.scrollWidth -
       flow.clientWidth;
-  
+
     const safePosition = Math.max(
       0,
       Math.min(targetPosition, maximumScroll)
     );
-  
+
     flow.scrollTo({
       left: safePosition,
       behavior: reduceMotion
@@ -203,8 +214,34 @@ document.addEventListener("DOMContentLoaded", () => {
         : "smooth"
     });
   }
-    
-  function selectStep(step, shouldScroll = true) {
+
+  function getSelectedStepIndex() {
+    return steps.findIndex((step) =>
+      step.classList.contains("is-active")
+    );
+  }
+
+  function updateNavigationButtons() {
+    const selectedIndex =
+      getSelectedStepIndex();
+
+    if (previousButton) {
+      previousButton.disabled =
+        selectedIndex <= 0;
+    }
+
+    if (nextButton) {
+      nextButton.disabled =
+        selectedIndex < 0 ||
+        selectedIndex >= steps.length - 1;
+    }
+  }
+
+  function selectStep(
+    step,
+    shouldScroll = true,
+    shouldFocus = false
+  ) {
     if (!step) {
       return;
     }
@@ -223,13 +260,37 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     });
 
-    const stepKey = step.dataset.step;
+    const stepKey =
+      step.dataset.step;
 
     updatePanel(stepKey);
+    updateNavigationButtons();
+
+    if (shouldFocus) {
+      step.focus({
+        preventScroll: true
+      });
+    }
 
     if (shouldScroll) {
       centerStep(step);
     }
+  }
+
+  function selectStepByIndex(index) {
+    const safeIndex = Math.max(
+      0,
+      Math.min(index, steps.length - 1)
+    );
+
+    const selectedStep =
+      steps[safeIndex];
+
+    selectStep(
+      selectedStep,
+      true,
+      true
+    );
   }
 
   steps.forEach((step) => {
@@ -244,46 +305,80 @@ document.addEventListener("DOMContentLoaded", () => {
       ) {
         event.preventDefault();
         selectStep(step);
+        return;
       }
 
       if (
-        event.key === "ArrowRight" ||
-        event.key === "ArrowLeft"
+        event.key !== "ArrowRight" &&
+        event.key !== "ArrowLeft"
       ) {
-        event.preventDefault();
-
-        const stepList = Array.from(steps);
-        const currentIndex =
-          stepList.indexOf(step);
-
-        const direction =
-          event.key === "ArrowRight" ? 1 : -1;
-
-        const nextIndex = Math.max(
-          0,
-          Math.min(
-            currentIndex + direction,
-            stepList.length - 1
-          )
-        );
-
-        const nextStep = stepList[nextIndex];
-
-        nextStep.focus();
-        selectStep(nextStep);
+        return;
       }
+
+      event.preventDefault();
+
+      const currentIndex =
+        steps.indexOf(step);
+
+      const direction =
+        event.key === "ArrowRight"
+          ? 1
+          : -1;
+
+      selectStepByIndex(
+        currentIndex + direction
+      );
     });
   });
 
-  window.requestAnimationFrame(() => {
+  if (previousButton) {
+    previousButton.addEventListener(
+      "click",
+      () => {
+        const selectedIndex =
+          getSelectedStepIndex();
+
+        selectStepByIndex(
+          selectedIndex - 1
+        );
+      }
+    );
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener(
+      "click",
+      () => {
+        const selectedIndex =
+          getSelectedStepIndex();
+
+        selectStepByIndex(
+          selectedIndex + 1
+        );
+      }
+    );
+  }
+
+  function resetInitialState() {
     flow.scrollLeft = 0;
 
-    const firstStep = steps[0];
+    const firstStep =
+      steps[0];
 
-    selectStep(firstStep, false);
+    selectStep(
+      firstStep,
+      false,
+      false
+    );
+  }
+
+  window.requestAnimationFrame(() => {
+    resetInitialState();
   });
 
   window.addEventListener("pageshow", () => {
-    flow.scrollLeft = 0;
+    window.requestAnimationFrame(() => {
+      resetInitialState();
+    });
   });
 });
