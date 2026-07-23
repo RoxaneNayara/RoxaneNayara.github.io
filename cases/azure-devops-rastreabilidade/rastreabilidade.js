@@ -168,28 +168,41 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-    function centerStep(step) {
-      const reduceMotion = prefersReducedMotion();
-      const mobileView = window.innerWidth <= 560;
-    
-      if (mobileView) {
-        const targetPosition =
-          step.offsetLeft -
-          flow.clientWidth / 2 +
-          step.offsetWidth / 2;
-    
-        const maximumScroll =
-          flow.scrollWidth - flow.clientWidth;
-    
-        const safePosition = Math.max(
-          0,
-          Math.min(targetPosition, maximumScroll)
-        );
-    
-        flow.scrollTo({
-          left: safePosition,
-          behavior: reduceMotion ? "auto" : "smooth"
-        });
+  function centerStep(step) {
+    const reduceMotion = prefersReducedMotion();
+  
+    const flowRect =
+      flow.getBoundingClientRect();
+  
+    const stepRect =
+      step.getBoundingClientRect();
+  
+    const stepCenterInsideFlow =
+      stepRect.left -
+      flowRect.left +
+      flow.scrollLeft +
+      stepRect.width / 2;
+  
+    const targetPosition =
+      stepCenterInsideFlow -
+      flow.clientWidth / 2;
+  
+    const maximumScroll =
+      flow.scrollWidth -
+      flow.clientWidth;
+  
+    const safePosition = Math.max(
+      0,
+      Math.min(targetPosition, maximumScroll)
+    );
+  
+    flow.scrollTo({
+      left: safePosition,
+      behavior: reduceMotion
+        ? "auto"
+        : "smooth"
+    });
+  }
     
         return;
       }
