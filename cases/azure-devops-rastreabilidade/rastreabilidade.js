@@ -204,27 +204,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
     
-        return;
-      }
-    
-      const stepLeft = step.offsetLeft;
-      const stepRight = stepLeft + step.offsetWidth;
-      const visibleLeft = flow.scrollLeft;
-      const visibleRight = visibleLeft + flow.clientWidth;
-    
-      if (stepLeft < visibleLeft) {
-        flow.scrollTo({
-          left: stepLeft,
-          behavior: reduceMotion ? "auto" : "smooth"
-        });
-      } else if (stepRight > visibleRight) {
-        flow.scrollTo({
-          left: stepRight - flow.clientWidth,
-          behavior: reduceMotion ? "auto" : "smooth"
-        });
-      }
-    }
-
   function selectStep(step, shouldScroll = true) {
     if (!step) {
       return;
