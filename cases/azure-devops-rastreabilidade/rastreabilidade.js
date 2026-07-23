@@ -358,6 +358,41 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     );
   }
+  
+    let scrollSelectionTimer;
+  
+  function selectNearestVisibleStep() {
+    const flowRect = flow.getBoundingClientRect();
+    const flowCenter = flowRect.left + flowRect.width / 2;
+  
+    let nearestStep = steps[0];
+    let nearestDistance = Number.POSITIVE_INFINITY;
+  
+    steps.forEach((step) => {
+      const stepRect = step.getBoundingClientRect();
+      const stepCenter = stepRect.left + stepRect.width / 2;
+      const distance = Math.abs(stepCenter - flowCenter);
+  
+      if (distance < nearestDistance) {
+        nearestDistance = distance;
+        nearestStep = step;
+      }
+    });
+  
+    selectStep(nearestStep, false, false);
+  }
+  
+  flow.addEventListener(
+    "scroll",
+    () => {
+      window.clearTimeout(scrollSelectionTimer);
+  
+      scrollSelectionTimer = window.setTimeout(() => {
+        selectNearestVisibleStep();
+      }, 140);
+    },
+    { passive: true }
+  );
 
   function resetInitialState() {
     flow.scrollLeft = 0;
