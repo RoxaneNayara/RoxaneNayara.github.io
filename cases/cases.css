@@ -1940,32 +1940,32 @@ body.dark-theme .case-navigation a.is-active {
    ========================================================= */
 
 .quality-flow .quality-step {
-  border: 1px solid rgba(122, 74, 137, 0.38);
+  border: 2px solid rgba(202, 132, 143, 0.55);
   box-shadow:
     0 10px 24px rgba(11, 6, 14, 0.14);
   will-change: transform;
   transition:
     transform 0.3s ease,
     border-color 0.3s ease,
-    background-color 0.3s ease,
+    background 0.3s ease,
     box-shadow 0.3s ease;
 }
 
 .quality-flow .quality-step:hover {
   transform: translateY(-7px);
-  border-color: rgba(146, 84, 165, 0.75);
+  border-color: rgba(221, 146, 157, 0.9);
   box-shadow:
     0 18px 34px rgba(12, 6, 16, 0.28);
 }
 
 .quality-flow .quality-step.is-selected {
   transform: translateY(-5px);
-  border: 1px solid rgba(146, 84, 165, 0.75);
+  border: 2px solid rgba(221, 146, 157, 0.95);
   background:
     linear-gradient(
       145deg,
-      rgba(104, 55, 119, 0.14),
-      rgba(60, 35, 69, 0.08)
+      rgba(190, 111, 129, 0.13),
+      rgba(112, 66, 78, 0.08)
     ),
     var(--card-background);
   box-shadow:
@@ -1974,7 +1974,26 @@ body.dark-theme .case-navigation a.is-active {
 
 .quality-flow .quality-step.is-selected:hover {
   transform: translateY(-9px);
-  border-color: rgba(158, 94, 177, 0.85);
+  border-color: rgba(235, 159, 170, 1);
   box-shadow:
     0 20px 38px rgba(12, 6, 16, 0.34);
+}
+
+/* Cards de informações da etapa */
+
+.quality-information-card {
+  border: 2px solid rgba(202, 132, 143, 0.28);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+.quality-information-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(221, 146, 157, 0.7);
+  background: rgba(190, 111, 129, 0.07);
+  box-shadow:
+    0 16px 30px rgba(12, 6, 16, 0.22);
 }
