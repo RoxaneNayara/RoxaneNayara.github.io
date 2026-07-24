@@ -1,0 +1,41 @@
+<section class="raci-section" aria-labelledby="raci-demo-title">
+  <div class="raci-heading">
+    <p class="section-kicker">Demonstração interativa</p>
+    <h2 id="raci-demo-title">Explore a distribuição de responsabilidades</h2>
+    <p>Selecione uma área e uma atividade para visualizar como os papéis foram distribuídos entre execução, decisão, consulta e comunicação.</p>
+  </div>
+
+  <div class="raci-legend" aria-label="Legenda da matriz RACI">
+    <span><strong>R</strong> Responsável</span>
+    <span><strong>A</strong> Autoridade de decisão</span>
+    <span><strong>C</strong> Consultado</span>
+    <span><strong>I</strong> Informado</span>
+  </div>
+
+  <div class="raci-demo">
+    <div class="raci-areas" id="raci-areas" role="tablist" aria-label="Áreas da matriz"></div>
+
+    <div class="raci-layout">
+      <aside class="raci-activities-panel" aria-labelledby="raci-activities-title">
+        <h3 id="raci-activities-title">Atividades</h3>
+        <div id="raci-activities" class="raci-activities"></div>
+      </aside>
+
+      <article class="raci-detail" aria-live="polite">
+        <p class="raci-detail-label">Atividade selecionada</p>
+        <h3 id="raci-activity-title"></h3>
+        <div class="raci-cards" id="raci-cards"></div>
+
+        <div class="raci-contribution">
+          <h4>Contribuição para o fluxo</h4>
+          <p id="raci-contribution"></p>
+        </div>
+
+        <div class="raci-note" id="raci-note" hidden>
+          <h4>Observação sobre a atribuição</h4>
+          <p id="raci-note-text"></p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
