@@ -1397,6 +1397,7 @@ body.dark-theme .case-navigation a.is-active {
     gap: 6px;
     padding-top: 8px;
     padding-bottom: 8px;
+    scroll-padding-inline: 1rem;
   }
 
   .case-navigation a {
