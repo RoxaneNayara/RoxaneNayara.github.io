@@ -182,22 +182,23 @@ function centerQualityStep(step) {
     return;
   }
 
-  const stepCenter =
-    step.offsetLeft + step.offsetWidth / 2;
+  const flowRectangle = qualityFlow.getBoundingClientRect();
+  const stepRectangle = step.getBoundingClientRect();
 
-  const flowCenter =
-    qualityFlow.clientWidth / 2;
+  const stepPositionInsideFlow =
+    qualityFlow.scrollLeft +
+    stepRectangle.left -
+    flowRectangle.left;
+
+  const targetScroll =
+    stepPositionInsideFlow -
+    (qualityFlow.clientWidth - step.offsetWidth) / 2;
 
   const maximumScroll =
     qualityFlow.scrollWidth - qualityFlow.clientWidth;
 
-  const targetScroll = Math.max(
-    0,
-    Math.min(stepCenter - flowCenter, maximumScroll)
-  );
-
   qualityFlow.scrollTo({
-    left: targetScroll,
+    left: Math.max(0, Math.min(targetScroll, maximumScroll)),
     behavior: "smooth"
   });
 }
