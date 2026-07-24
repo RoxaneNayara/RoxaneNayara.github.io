@@ -1,4 +1,5 @@
 const qualityFlow = document.querySelector("#quality-flow");
+
 const qualitySteps = Array.from(
   document.querySelectorAll(".quality-step")
 );
@@ -44,12 +45,16 @@ const qualityStepData = {
     number: "Etapa 01",
     status: "Critério de entrada",
     title: "Preparação da demanda",
+
     description:
       "Produto organiza as informações necessárias para que a demanda possa ser analisada pelo time.",
+
     objective:
       "Garantir que a demanda possua contexto, regras e condições mínimas antes do refinamento.",
+
     participants:
       "Produto como responsável principal, com apoio de QA e Desenvolvimento quando necessário.",
+
     criteria: [
       "Contexto e objetivo da demanda definidos.",
       "Regras de negócio registradas.",
@@ -57,10 +62,13 @@ const qualityStepData = {
       "Pré-requisitos para testes identificados.",
       "Dados, anexos e referências disponibilizados."
     ],
+
     evidence:
       "Product Backlog Item preenchido, critérios registrados e insumos vinculados.",
+
     risk:
       "Refinamento iniciado com informações incompletas ou condições de teste indefinidas.",
+
     value:
       "A qualidade começa na preparação da demanda, antes de qualquer implementação."
   },
@@ -69,12 +77,16 @@ const qualityStepData = {
     number: "Etapa 02",
     status: "Critério colaborativo",
     title: "Refinamento colaborativo",
+
     description:
       "Produto, QA e Desenvolvimento analisam conjuntamente entendimento, viabilidade, testabilidade e riscos.",
+
     objective:
       "Construir um entendimento compartilhado sobre o que será desenvolvido e como a entrega poderá ser validada.",
+
     participants:
       "Produto, QA e Desenvolvimento, com responsabilidades complementares durante o refinamento.",
+
     criteria: [
       "História, regras e critérios de aceite revisados.",
       "Testabilidade da demanda avaliada.",
@@ -83,10 +95,13 @@ const qualityStepData = {
       "Dependências, riscos e impactos identificados.",
       "Alinhamento realizado entre os participantes."
     ],
+
     evidence:
       "Informações revisadas no backlog, decisões registradas e critérios aceitos pelo time.",
+
     risk:
       "Dúvidas funcionais ou técnicas descobertas apenas durante o desenvolvimento ou os testes.",
+
     value:
       "Antecipa riscos, melhora a testabilidade e distribui a responsabilidade pela qualidade."
   },
@@ -95,12 +110,16 @@ const qualityStepData = {
     number: "Etapa 03",
     status: "Critério de execução",
     title: "Execução comprometida",
+
     description:
       "Desenvolvimento e QA colaboram durante a construção, com testes do desenvolvedor, pair testing e testes de QA no ambiente de desenvolvimento, além da documentação dos resultados.",
+
     objective:
       "Validar a implementação ainda no ambiente de desenvolvimento, combinando testes técnicos, validações colaborativas e testes formais de QA com documentação dos resultados.",
+
     participants:
       "Desenvolvimento como responsável pela construção da solução, com apoio de QA nas validações em desenvolvimento e documentação dos testes.",
+
     criteria: [
       "Implementação realizada conforme os critérios definidos.",
       "Testes do desenvolvedor executados.",
@@ -111,10 +130,13 @@ const qualityStepData = {
       "Problemas identificados comunicados e tratados.",
       "Correções aplicáveis validadas ainda em desenvolvimento."
     ],
+
     evidence:
       "Resultados dos testes do desenvolvedor, registros do pair testing, documentação de QA em desenvolvimento, evidências funcionais e técnicas produzidas durante a execução.",
+
     risk:
       "A entrega avançar sem validação suficiente em desenvolvimento, sem documentação dos testes ou com falhas descobertas apenas em etapas posteriores.",
+
     value:
       "Antecipa defeitos, fortalece a colaboração entre Desenvolvimento e QA e mantém rastreabilidade das validações realizadas durante a construção."
   },
@@ -123,12 +145,16 @@ const qualityStepData = {
     number: "Etapa 04",
     status: "Critério de saída",
     title: "Revisão e validação",
+
     description:
       "Após a revisão técnica, o item passa por smoke tests e documentação no ambiente de homologação.",
+
     objective:
       "Confirmar o funcionamento da entrega no ambiente de homologação antes de sua liberação para os testes do solicitante.",
+
     participants:
       "Desenvolvimento e QA, com participação de Produto nos aceites e validações aplicáveis.",
+
     criteria: [
       "Desenvolvimento concluído.",
       "Code review e pull request realizados.",
@@ -139,10 +165,13 @@ const qualityStepData = {
       "Bugs aplicáveis corrigidos e retestados.",
       "Informações necessárias para a liberação registradas."
     ],
+
     evidence:
       "Resultados dos smoke tests, documentação de QA, evidências funcionais, registros de correções e informações de liberação.",
+
     risk:
       "O solicitante receber uma entrega sem validação mínima no ambiente de homologação ou sem evidências suficientes.",
+
     value:
       "Confirma a estabilidade básica da entrega em homologação e estabelece uma liberação controlada para o solicitante."
   }
@@ -160,7 +189,9 @@ function updateQualityNavigationButtons(index) {
   }
 
   qualityPreviousButton.disabled = index === 0;
-  qualityNextButton.disabled = index === qualitySteps.length - 1;
+
+  qualityNextButton.disabled =
+    index === qualitySteps.length - 1;
 }
 
 function updateQualityCriteria(criteria) {
@@ -172,38 +203,47 @@ function updateQualityCriteria(criteria) {
 
   criteria.forEach((criterion) => {
     const listItem = document.createElement("li");
+
     listItem.textContent = criterion;
+
     qualityPanelCriteria.appendChild(listItem);
   });
 }
 
 function centerQualityStep(step) {
-  if (!qualityFlow || !step) {
+  if (
+    !qualityFlow ||
+    !step ||
+    window.innerWidth <= 720
+  ) {
     return;
   }
 
-  const flowRectangle = qualityFlow.getBoundingClientRect();
-  const stepRectangle = step.getBoundingClientRect();
+  const maximumScroll =
+    qualityFlow.scrollWidth -
+    qualityFlow.clientWidth;
 
-  const stepPositionInsideFlow =
-    qualityFlow.scrollLeft +
-    stepRectangle.left -
-    flowRectangle.left;
+  if (maximumScroll <= 0) {
+    return;
+  }
 
   const targetScroll =
-    stepPositionInsideFlow -
+    step.offsetLeft -
     (qualityFlow.clientWidth - step.offsetWidth) / 2;
 
-  const maximumScroll =
-    qualityFlow.scrollWidth - qualityFlow.clientWidth;
-
   qualityFlow.scrollTo({
-    left: Math.max(0, Math.min(targetScroll, maximumScroll)),
+    left: Math.max(
+      0,
+      Math.min(targetScroll, maximumScroll)
+    ),
     behavior: "smooth"
   });
 }
 
-function selectQualityStep(step, shouldFocus = false) {
+function selectQualityStep(
+  step,
+  shouldFocus = false
+) {
   if (!step) {
     return;
   }
@@ -218,44 +258,75 @@ function selectQualityStep(step, shouldFocus = false) {
   qualitySteps.forEach((currentStep) => {
     const isSelected = currentStep === step;
 
-    currentStep.classList.toggle("is-selected", isSelected);
+    currentStep.classList.toggle(
+      "is-selected",
+      isSelected
+    );
+
     currentStep.setAttribute(
       "aria-pressed",
       String(isSelected)
     );
   });
 
-  qualityPanelNumber.textContent = data.number;
-  qualityPanelStatus.textContent = data.status;
-  qualityPanelTitle.textContent = data.title;
-  qualityPanelDescription.textContent = data.description;
-  qualityPanelObjective.textContent = data.objective;
-  qualityPanelParticipants.textContent = data.participants;
-  qualityPanelEvidence.textContent = data.evidence;
-  qualityPanelRisk.textContent = data.risk;
-  qualityPanelValue.textContent = data.value;
+  qualityPanelNumber.textContent =
+    data.number;
+
+  qualityPanelStatus.textContent =
+    data.status;
+
+  qualityPanelTitle.textContent =
+    data.title;
+
+  qualityPanelDescription.textContent =
+    data.description;
+
+  qualityPanelObjective.textContent =
+    data.objective;
+
+  qualityPanelParticipants.textContent =
+    data.participants;
+
+  qualityPanelEvidence.textContent =
+    data.evidence;
+
+  qualityPanelRisk.textContent =
+    data.risk;
+
+  qualityPanelValue.textContent =
+    data.value;
 
   updateQualityCriteria(data.criteria);
 
-  const selectedIndex = qualitySteps.indexOf(step);
+  const selectedIndex =
+    qualitySteps.indexOf(step);
 
-  updateQualityNavigationButtons(selectedIndex);
+  updateQualityNavigationButtons(
+    selectedIndex
+  );
 
-if (window.innerWidth > 720) {
   centerQualityStep(step);
-}
 
   if (shouldFocus) {
     step.focus();
   }
 }
 
-function selectQualityStepByIndex(index, shouldFocus = false) {
-  if (index < 0 || index >= qualitySteps.length) {
+function selectQualityStepByIndex(
+  index,
+  shouldFocus = false
+) {
+  if (
+    index < 0 ||
+    index >= qualitySteps.length
+  ) {
     return;
   }
 
-  selectQualityStep(qualitySteps[index], shouldFocus);
+  selectQualityStep(
+    qualitySteps[index],
+    shouldFocus
+  );
 }
 
 qualitySteps.forEach((step, index) => {
@@ -263,60 +334,94 @@ qualitySteps.forEach((step, index) => {
     selectQualityStep(step);
   });
 
-  step.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowRight") {
-      event.preventDefault();
-      selectQualityStepByIndex(index + 1, true);
-    }
+  step.addEventListener(
+    "keydown",
+    (event) => {
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
 
-    if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      selectQualityStepByIndex(index - 1, true);
-    }
+        selectQualityStepByIndex(
+          index + 1,
+          true
+        );
+      }
 
-    if (event.key === "Home") {
-      event.preventDefault();
-      selectQualityStepByIndex(0, true);
-    }
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
 
-    if (event.key === "End") {
-      event.preventDefault();
-      selectQualityStepByIndex(
-        qualitySteps.length - 1,
-        true
-      );
+        selectQualityStepByIndex(
+          index - 1,
+          true
+        );
+      }
+
+      if (event.key === "Home") {
+        event.preventDefault();
+
+        selectQualityStepByIndex(
+          0,
+          true
+        );
+      }
+
+      if (event.key === "End") {
+        event.preventDefault();
+
+        selectQualityStepByIndex(
+          qualitySteps.length - 1,
+          true
+        );
+      }
     }
-  });
+  );
 });
 
 if (qualityPreviousButton) {
-  qualityPreviousButton.addEventListener("click", () => {
-    const selectedIndex = getSelectedQualityStepIndex();
+  qualityPreviousButton.addEventListener(
+    "click",
+    () => {
+      const selectedIndex =
+        getSelectedQualityStepIndex();
 
-    selectQualityStepByIndex(selectedIndex - 1);
-  });
+      selectQualityStepByIndex(
+        selectedIndex - 1
+      );
+    }
+  );
 }
 
 if (qualityNextButton) {
-  qualityNextButton.addEventListener("click", () => {
-    const selectedIndex = getSelectedQualityStepIndex();
+  qualityNextButton.addEventListener(
+    "click",
+    () => {
+      const selectedIndex =
+        getSelectedQualityStepIndex();
 
-    selectQualityStepByIndex(selectedIndex + 1);
-  });
+      selectQualityStepByIndex(
+        selectedIndex + 1
+      );
+    }
+  );
 }
 
 function resetQualityFlow() {
-  if (!qualityFlow || qualitySteps.length === 0) {
+  if (
+    !qualityFlow ||
+    qualitySteps.length === 0
+  ) {
     return;
   }
 
-  selectQualityStep(qualitySteps[0]);
+  qualityFlow.scrollLeft = 0;
 
-  window.requestAnimationFrame(() => {
-    qualityFlow.scrollLeft = 0;
-  });
+  selectQualityStep(
+    qualitySteps[0]
+  );
 }
 
-window.addEventListener("pageshow", resetQualityFlow);
+window.addEventListener(
+  "pageshow",
+  resetQualityFlow
+);
 
 resetQualityFlow();
