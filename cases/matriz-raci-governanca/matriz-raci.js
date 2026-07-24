@@ -292,7 +292,7 @@
 
   const roleLabels = {
     R: "Responsável",
-    A: "Autoridade de decisão",
+    A: "Autoridade",
     C: "Consultado",
     I: "Informado",
   };
