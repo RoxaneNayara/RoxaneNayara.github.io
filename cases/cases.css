@@ -1997,3 +1997,18 @@ body.dark-theme .case-navigation a.is-active {
   box-shadow:
     0 16px 30px rgba(12, 6, 16, 0.22);
 }
+
+@media (max-width: 720px) {
+  .quality-demo {
+    gap: 1.25rem;
+  }
+
+  .quality-flow {
+    min-height: 0;
+    height: auto;
+    margin-top: 0;
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+    align-content: flex-start;
+  }
+}
