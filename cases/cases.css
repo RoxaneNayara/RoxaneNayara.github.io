@@ -1557,11 +1557,11 @@ body.dark-theme .case-navigation a.is-active {
   cursor: pointer;
   scroll-snap-align: center;
   box-shadow: var(--card-shadow);
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    background 0.25s ease,
-    box-shadow 0.25s ease;
+   transition:
+     transform 0.3s ease,
+     border-color 0.3s ease,
+     background 0.3s ease,
+     box-shadow 0.3s ease;
 }
 
 .quality-step:hover {
