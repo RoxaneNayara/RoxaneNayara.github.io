@@ -96,26 +96,27 @@ const qualityStepData = {
     status: "Critério de execução",
     title: "Execução comprometida",
     description:
-      "Desenvolvimento e QA colaboram durante a construção, realizando testes e documentação no ambiente de desenvolvimento.",
+      "Desenvolvimento e QA colaboram durante a construção, com testes do desenvolvedor, pair testing e testes de QA no ambiente de desenvolvimento, além da documentação dos resultados.",
     objective:
-      "Validar antecipadamente a implementação no ambiente de desenvolvimento e registrar os resultados antes da revisão formal.",
+      "Validar a implementação ainda no ambiente de desenvolvimento, combinando testes técnicos, validações colaborativas e testes formais de QA com documentação dos resultados.",
     participants:
-      "Desenvolvimento como responsável pela implementação e QA atuando nos testes, na documentação e nas validações antecipadas.",
+      "Desenvolvimento como responsável pela construção da solução, com apoio de QA nas validações em desenvolvimento e documentação dos testes.",
     criteria: [
       "Implementação realizada conforme os critérios definidos.",
       "Testes do desenvolvedor executados.",
       "Pair testing realizado quando aplicável.",
       "Testes de QA executados no ambiente de desenvolvimento.",
-      "Resultados e evidências dos testes documentados.",
+      "Resultados dos testes documentados.",
+      "Evidências da validação registradas.",
       "Problemas identificados comunicados e tratados.",
-      "Correções aplicáveis validadas no ambiente de desenvolvimento."
+      "Correções aplicáveis validadas ainda em desenvolvimento."
     ],
     evidence:
-      "Resultados dos testes do desenvolvedor, registros do pair testing, documentação de QA e evidências geradas no ambiente de desenvolvimento.",
+      "Resultados dos testes do desenvolvedor, registros do pair testing, documentação de QA em desenvolvimento, evidências funcionais e técnicas produzidas durante a execução.",
     risk:
-      "Problemas chegarem à revisão formal sem validação antecipada ou sem documentação suficiente.",
+      "A entrega avançar sem validação suficiente em desenvolvimento, sem documentação dos testes ou com falhas descobertas apenas em etapas posteriores.",
     value:
-      "Aproxima QA e Desenvolvimento, antecipa defeitos e mantém rastreabilidade das validações realizadas durante a construção."
+      "Antecipa defeitos, fortalece a colaboração entre Desenvolvimento e QA e mantém rastreabilidade das validações realizadas durante a construção."
   },
 
   revisao: {
