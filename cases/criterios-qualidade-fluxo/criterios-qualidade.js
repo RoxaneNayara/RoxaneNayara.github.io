@@ -201,23 +201,6 @@ function centerQualityStep(step) {
   });
 }
 
-  const flowRectangle = qualityFlow.getBoundingClientRect();
-  const stepRectangle = step.getBoundingClientRect();
-
-  const currentScroll = qualityFlow.scrollLeft;
-
-  const targetScroll =
-    currentScroll +
-    stepRectangle.left -
-    flowRectangle.left -
-    (flowRectangle.width - stepRectangle.width) / 2;
-
-  qualityFlow.scrollTo({
-    left: targetScroll,
-    behavior: "smooth"
-  });
-}
-
 function selectQualityStep(step, shouldFocus = false) {
   if (!step) {
     return;
