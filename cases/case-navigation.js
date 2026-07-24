@@ -1,16 +1,18 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const header =
-    document.querySelector(".header");
+  const header = document.querySelector(".header");
 
   const caseNavigation =
     document.querySelector(".case-navigation");
 
+  const navigationInner =
+    document.querySelector(".case-navigation-inner");
+
   const links = Array.from(
     document.querySelectorAll(
-      ".case-navigation a[href^='#']"
-    )
+      ".case-navigation a[href^='#']",
+    ),
   );
 
   if (!caseNavigation || links.length === 0) {
@@ -27,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function prefersReducedMotion() {
     return window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
   }
 
@@ -41,6 +43,28 @@ document.addEventListener("DOMContentLoaded", () => {
     return headerHeight + navigationHeight + 16;
   }
 
+  function centerActiveLink(link) {
+    if (!navigationInner) {
+      return;
+    }
+
+    const containerWidth =
+      navigationInner.clientWidth;
+
+    const linkCenter =
+      link.offsetLeft + link.offsetWidth / 2;
+
+    const targetScroll =
+      linkCenter - containerWidth / 2;
+
+    navigationInner.scrollTo({
+      left: Math.max(0, targetScroll),
+      behavior: prefersReducedMotion()
+        ? "auto"
+        : "smooth",
+    });
+  }
+
   function activateLink(sectionId) {
     links.forEach((link) => {
       const isActive =
@@ -49,45 +73,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
       link.classList.toggle(
         "is-active",
-        isActive
-      );
-
-      link.setAttribute(
-        "aria-current",
-        isActive ? "location" : "false"
+        isActive,
       );
 
       if (isActive) {
-        link.scrollIntoView({
-          behavior: prefersReducedMotion()
-            ? "auto"
-            : "smooth",
-          block: "nearest",
-          inline: "center"
-        });
+        link.setAttribute(
+          "aria-current",
+          "location",
+        );
+
+        centerActiveLink(link);
+      } else {
+        link.removeAttribute("aria-current");
       }
     });
   }
 
+  function getSectionReference(section) {
+    if (section.id === "inicio") {
+      return section;
+    }
+
+    return (
+      section.querySelector(
+        ".case-section-heading, .case-hero-grid",
+      ) ?? section
+    );
+  }
+
   function scrollToSection(target) {
     const sectionTarget =
-      target.id === "inicio"
-        ? target
-        : target.querySelector(
-            ".case-section-heading, .case-hero-grid"
-          ) ?? target;
-  
+      getSectionReference(target);
+
     const targetPosition =
       sectionTarget.getBoundingClientRect().top +
       window.scrollY -
       getFixedOffset() -
       12;
-  
+
     window.scrollTo({
       top: Math.max(0, targetPosition),
       behavior: prefersReducedMotion()
         ? "auto"
-        : "smooth"
+        : "smooth",
     });
   }
 
@@ -105,16 +133,18 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      scrollToSection(target);
       activateLink(target.id);
+      scrollToSection(target);
 
       history.replaceState(
         null,
         "",
-        targetId
+        targetId,
       );
     });
   });
+
+  let updateScheduled = false;
 
   function updateActiveSection() {
     const triggerPosition =
@@ -124,8 +154,11 @@ document.addEventListener("DOMContentLoaded", () => {
       sections[0]?.id ?? "inicio";
 
     sections.forEach((section) => {
+      const reference =
+        getSectionReference(section);
+
       const sectionTop =
-        section.getBoundingClientRect().top;
+        reference.getBoundingClientRect().top;
 
       if (sectionTop <= triggerPosition) {
         currentSectionId = section.id;
@@ -145,15 +178,28 @@ document.addEventListener("DOMContentLoaded", () => {
     activateLink(currentSectionId);
   }
 
+  function requestActiveSectionUpdate() {
+    if (updateScheduled) {
+      return;
+    }
+
+    updateScheduled = true;
+
+    window.requestAnimationFrame(() => {
+      updateActiveSection();
+      updateScheduled = false;
+    });
+  }
+
   window.addEventListener(
     "scroll",
-    updateActiveSection,
-    { passive: true }
+    requestActiveSectionUpdate,
+    { passive: true },
   );
 
   window.addEventListener(
     "resize",
-    updateActiveSection
+    requestActiveSectionUpdate,
   );
 
   window.addEventListener("pageshow", () => {
@@ -165,8 +211,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (target) {
         window.requestAnimationFrame(() => {
-          scrollToSection(target);
           activateLink(target.id);
+          scrollToSection(target);
         });
 
         return;
