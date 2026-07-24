@@ -1576,17 +1576,17 @@ body.dark-theme .case-navigation a.is-active {
 
 .quality-step.is-selected {
   transform: translateY(-6px);
-  border-color: rgba(79, 40, 92, 0.95);
+  border: 2px solid rgba(110, 56, 128, 0.95);
   background:
     linear-gradient(
       145deg,
-      rgba(108, 55, 125, 0.14),
-      rgba(67, 38, 76, 0.08)
+      rgba(94, 48, 110, 0.18),
+      rgba(49, 29, 57, 0.12)
     ),
     var(--card-background);
   box-shadow:
-    0 16px 32px rgba(20, 10, 24, 0.28),
-    inset 0 0 0 1px rgba(79, 40, 92, 0.28);
+    0 16px 34px rgba(12, 6, 16, 0.34),
+    inset 0 0 0 1px rgba(87, 42, 102, 0.35);
 }
 
 .quality-step-number {
