@@ -399,30 +399,275 @@
       class="case-section"
     >
       <div class="container">
-
+    
         <div class="case-section-heading reveal">
-
+    
           <p>Demonstração interativa</p>
-
+    
           <h2>
             Explore os critérios de qualidade aplicados
             em cada etapa.
           </h2>
-
+    
           <p class="case-section-description">
-            A demonstração permitirá consultar objetivo,
-            participantes, critérios obrigatórios, evidências
-            esperadas, riscos e valor para a qualidade.
+            Selecione uma etapa para consultar seu objetivo,
+            participantes, critérios, evidências, riscos
+            e contribuição para a qualidade.
           </p>
-
+    
         </div>
-
-        <div class="case-note reveal">
-          <strong>Próxima etapa:</strong>
-          esta área receberá o fluxo interativo com quatro
-          quality gates e a saída para homologação do solicitante.
+    
+        <div class="quality-demo reveal">
+    
+          <div
+            id="quality-flow"
+            class="quality-flow"
+            role="list"
+            aria-label="Etapas dos critérios de qualidade"
+          >
+    
+            <button
+              class="quality-step is-selected"
+              type="button"
+              data-step="preparacao"
+              aria-pressed="true"
+              role="listitem"
+            >
+              <span class="quality-step-number">01</span>
+    
+              <span class="quality-step-content">
+                <strong>Preparação da demanda</strong>
+                <small>Produto estrutura as condições iniciais</small>
+              </span>
+            </button>
+    
+            <span
+              class="quality-flow-arrow"
+              aria-hidden="true"
+            >
+              →
+            </span>
+    
+            <button
+              class="quality-step"
+              type="button"
+              data-step="refinamento"
+              aria-pressed="false"
+              role="listitem"
+            >
+              <span class="quality-step-number">02</span>
+    
+              <span class="quality-step-content">
+                <strong>Refinamento colaborativo</strong>
+                <small>Produto, QA e Desenvolvimento avaliam juntos</small>
+              </span>
+            </button>
+    
+            <span
+              class="quality-flow-arrow"
+              aria-hidden="true"
+            >
+              →
+            </span>
+    
+            <button
+              class="quality-step"
+              type="button"
+              data-step="execucao"
+              aria-pressed="false"
+              role="listitem"
+            >
+              <span class="quality-step-number">03</span>
+    
+              <span class="quality-step-content">
+                <strong>Execução comprometida</strong>
+                <small>Construção com validações antecipadas</small>
+              </span>
+            </button>
+    
+            <span
+              class="quality-flow-arrow"
+              aria-hidden="true"
+            >
+              →
+            </span>
+    
+            <button
+              class="quality-step"
+              type="button"
+              data-step="revisao"
+              aria-pressed="false"
+              role="listitem"
+            >
+              <span class="quality-step-number">04</span>
+    
+              <span class="quality-step-content">
+                <strong>Revisão e validação</strong>
+                <small>Testes, evidências e liberação interna</small>
+              </span>
+            </button>
+    
+          </div>
+    
+          <div
+            class="quality-controls"
+            aria-label="Navegação entre as etapas"
+          >
+            <button
+              id="quality-previous"
+              class="quality-navigation-button"
+              type="button"
+              disabled
+            >
+              ← Etapa anterior
+            </button>
+    
+            <button
+              id="quality-next"
+              class="quality-navigation-button"
+              type="button"
+            >
+              Próxima etapa →
+            </button>
+          </div>
+    
+          <div class="quality-details-layout">
+    
+            <article
+              id="quality-panel"
+              class="quality-panel"
+              aria-live="polite"
+            >
+              <div class="quality-panel-header">
+    
+                <span
+                  id="quality-panel-number"
+                  class="quality-panel-number"
+                >
+                  Etapa 01
+                </span>
+    
+                <span
+                  id="quality-panel-status"
+                  class="quality-panel-status"
+                >
+                  Critério de entrada
+                </span>
+    
+              </div>
+    
+              <h3 id="quality-panel-title">
+                Preparação da demanda
+              </h3>
+    
+              <p
+                id="quality-panel-description"
+                class="quality-panel-description"
+              >
+                Produto organiza as informações necessárias
+                para que a demanda possa ser analisada pelo time.
+              </p>
+    
+              <div class="quality-information-grid">
+    
+                <section class="quality-information-card">
+                  <h4>Objetivo</h4>
+    
+                  <p id="quality-panel-objective">
+                    Garantir que a demanda possua contexto,
+                    regras e condições mínimas antes do refinamento.
+                  </p>
+                </section>
+    
+                <section class="quality-information-card">
+                  <h4>Participantes</h4>
+    
+                  <p id="quality-panel-participants">
+                    Produto como responsável principal, com apoio
+                    de QA e Desenvolvimento quando necessário.
+                  </p>
+                </section>
+    
+                <section class="quality-information-card quality-information-wide">
+                  <h4>Critérios avaliados</h4>
+    
+                  <ul id="quality-panel-criteria">
+                    <li>Contexto e objetivo da demanda definidos.</li>
+                    <li>Regras de negócio registradas.</li>
+                    <li>Critérios de aceite claros.</li>
+                    <li>Pré-requisitos para testes identificados.</li>
+                    <li>Dados, anexos e referências disponibilizados.</li>
+                  </ul>
+                </section>
+    
+                <section class="quality-information-card">
+                  <h4>Evidências esperadas</h4>
+    
+                  <p id="quality-panel-evidence">
+                    Product Backlog Item preenchido, critérios
+                    registrados e insumos vinculados.
+                  </p>
+                </section>
+    
+                <section class="quality-information-card">
+                  <h4>Risco sem o critério</h4>
+    
+                  <p id="quality-panel-risk">
+                    Refinamento iniciado com informações incompletas
+                    ou condições de teste indefinidas.
+                  </p>
+                </section>
+    
+                <section class="quality-information-card quality-information-wide">
+                  <h4>Valor para a qualidade</h4>
+    
+                  <p id="quality-panel-value">
+                    A qualidade começa na preparação da demanda,
+                    antes de qualquer implementação.
+                  </p>
+                </section>
+    
+              </div>
+            </article>
+    
+            <aside class="quality-release-card">
+    
+              <span class="quality-release-icon" aria-hidden="true">
+                ✓
+              </span>
+    
+              <p>Saída do fluxo interno</p>
+    
+              <h3>
+                Liberado para homologação
+              </h3>
+    
+              <p>
+                Após o cumprimento dos critérios de revisão
+                e validação, o item é disponibilizado para
+                os testes do solicitante.
+              </p>
+    
+              <ul>
+                <li>Validações internas concluídas.</li>
+                <li>Evidências registradas.</li>
+                <li>Correções aplicáveis retestadas.</li>
+                <li>Item liberado pelo time de QA.</li>
+              </ul>
+    
+            </aside>
+    
+          </div>
+    
+          <div class="case-note">
+            <strong>Observação:</strong>
+            os nomes das etapas e os exemplos foram neutralizados
+            para preservar informações internas, mantendo a lógica
+            real do processo implantado.
+          </div>
+    
         </div>
-
+    
       </div>
     </section>
 
