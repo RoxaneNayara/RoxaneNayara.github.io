@@ -238,7 +238,10 @@ function selectQualityStep(step, shouldFocus = false) {
   const selectedIndex = qualitySteps.indexOf(step);
 
   updateQualityNavigationButtons(selectedIndex);
-  centerQualityStep(step);
+
+  if (window.innerWidth > 720 || selectedIndex > 0) {
+    centerQualityStep(step);
+  }
 
   if (shouldFocus) {
     step.focus();
@@ -301,9 +304,18 @@ if (qualityNextButton) {
 }
 
 function resetQualityFlow() {
+  if (qualityFlow) {
+    qualityFlow.scrollLeft = 0;
+  }
+
   selectQualityStepByIndex(0);
+
+  window.setTimeout(() => {
+    if (qualityFlow) {
+      qualityFlow.scrollLeft = 0;
+    }
+  }, 100);
 }
 
 window.addEventListener("pageshow", resetQualityFlow);
-
-resetQualityFlow();
+window.addEventListener("load", resetQualityFlow);
