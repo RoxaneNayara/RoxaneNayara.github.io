@@ -192,3 +192,33 @@
   .raci-legend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .raci-legend span { border-radius: 0.75rem; }
 }
+
+.raci-card-heading h4 {
+  font-size: 0.95rem;
+  line-height: 1.25;
+}
+
+.raci-card li,
+.raci-card p {
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.raci-card {
+  padding: 0.9rem;
+}
+
+.raci-card ul {
+  padding-left: 1rem;
+}
+
+@media (max-width: 560px) {
+  .raci-card-heading h4 {
+    font-size: 0.9rem;
+  }
+
+  .raci-card li,
+  .raci-card p {
+    font-size: 0.88rem;
+  }
+}
