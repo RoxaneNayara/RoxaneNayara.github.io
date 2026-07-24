@@ -182,6 +182,25 @@ function centerQualityStep(step) {
     return;
   }
 
+  const maximumScroll =
+    qualityFlow.scrollWidth - qualityFlow.clientWidth;
+
+  const targetScroll =
+    step.offsetLeft -
+    qualityFlow.clientWidth / 2 +
+    step.offsetWidth / 2;
+
+  const normalizedScroll = Math.max(
+    0,
+    Math.min(targetScroll, maximumScroll)
+  );
+
+  qualityFlow.scrollTo({
+    left: normalizedScroll,
+    behavior: "smooth"
+  });
+}
+
   const flowRectangle = qualityFlow.getBoundingClientRect();
   const stepRectangle = step.getBoundingClientRect();
 
