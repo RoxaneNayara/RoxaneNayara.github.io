@@ -2012,3 +2012,71 @@ body.dark-theme .case-navigation a.is-active {
     align-content: flex-start;
   }
 }
+
+/* =========================================================
+   FLUXO DE QUALIDADE — COMPORTAMENTO MOBILE
+   Exibe somente a etapa selecionada
+   ========================================================= */
+
+@media (max-width: 720px) {
+  .quality-demo {
+    display: grid;
+    gap: 1.25rem;
+    width: 100%;
+  }
+
+  .quality-flow {
+    display: block;
+    width: 100%;
+    min-height: 0;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  .quality-flow .quality-step {
+    display: none;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    min-height: 130px;
+    margin: 0;
+    padding: 1.15rem;
+    transform: none;
+  }
+
+  .quality-flow .quality-step.is-selected {
+    display: flex;
+    transform: none;
+  }
+
+  .quality-flow .quality-step:hover,
+  .quality-flow .quality-step.is-selected:hover {
+    transform: none;
+  }
+
+  .quality-flow-arrow {
+    display: none;
+  }
+
+  .quality-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .quality-navigation-button {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 460px) {
+  .quality-controls {
+    grid-template-columns: 1fr;
+  }
+}
