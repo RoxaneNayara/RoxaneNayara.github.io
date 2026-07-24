@@ -1940,7 +1940,7 @@ body.dark-theme .case-navigation a.is-active {
    ========================================================= */
 
 .quality-flow .quality-step {
-  border: 2px solid rgba(202, 132, 143, 0.55);
+  border: 2px solid var(--border-color);
   box-shadow:
     0 10px 24px rgba(11, 6, 14, 0.14);
   will-change: transform;
@@ -1960,12 +1960,12 @@ body.dark-theme .case-navigation a.is-active {
 
 .quality-flow .quality-step.is-selected {
   transform: translateY(-5px);
-  border: 2px solid rgba(221, 146, 157, 0.95);
+  border: 2px solid var(--border-color);
   background:
     linear-gradient(
       145deg,
-      rgba(190, 111, 129, 0.13),
-      rgba(112, 66, 78, 0.08)
+      rgba(190, 111, 129, 0.1),
+      rgba(112, 66, 78, 0.05)
     ),
     var(--card-background);
   box-shadow:
@@ -1974,7 +1974,7 @@ body.dark-theme .case-navigation a.is-active {
 
 .quality-flow .quality-step.is-selected:hover {
   transform: translateY(-9px);
-  border-color: rgba(235, 159, 170, 1);
+  border-color: rgba(221, 146, 157, 0.95);
   box-shadow:
     0 20px 38px rgba(12, 6, 16, 0.34);
 }
@@ -1982,7 +1982,7 @@ body.dark-theme .case-navigation a.is-active {
 /* Cards de informações da etapa */
 
 .quality-information-card {
-  border: 2px solid rgba(202, 132, 143, 0.28);
+  border: 2px solid var(--border-color);
   transition:
     transform 0.3s ease,
     border-color 0.3s ease,
