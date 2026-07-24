@@ -182,21 +182,22 @@ function centerQualityStep(step) {
     return;
   }
 
+  const stepCenter =
+    step.offsetLeft + step.offsetWidth / 2;
+
+  const flowCenter =
+    qualityFlow.clientWidth / 2;
+
   const maximumScroll =
     qualityFlow.scrollWidth - qualityFlow.clientWidth;
 
-  const targetScroll =
-    step.offsetLeft -
-    qualityFlow.clientWidth / 2 +
-    step.offsetWidth / 2;
-
-  const normalizedScroll = Math.max(
+  const targetScroll = Math.max(
     0,
-    Math.min(targetScroll, maximumScroll)
+    Math.min(stepCenter - flowCenter, maximumScroll)
   );
 
   qualityFlow.scrollTo({
-    left: normalizedScroll,
+    left: targetScroll,
     behavior: "smooth"
   });
 }
@@ -304,18 +305,17 @@ if (qualityNextButton) {
 }
 
 function resetQualityFlow() {
-  if (qualityFlow) {
-    qualityFlow.scrollLeft = 0;
+  if (!qualityFlow || qualitySteps.length === 0) {
+    return;
   }
 
-  selectQualityStepByIndex(0);
+  selectQualityStep(qualitySteps[0]);
 
-  window.setTimeout(() => {
-    if (qualityFlow) {
-      qualityFlow.scrollLeft = 0;
-    }
-  }, 100);
+  window.requestAnimationFrame(() => {
+    qualityFlow.scrollLeft = 0;
+  });
 }
 
 window.addEventListener("pageshow", resetQualityFlow);
-window.addEventListener("load", resetQualityFlow);
+
+resetQualityFlow();
