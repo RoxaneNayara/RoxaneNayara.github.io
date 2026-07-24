@@ -241,9 +241,9 @@ function selectQualityStep(step, shouldFocus = false) {
 
   updateQualityNavigationButtons(selectedIndex);
 
-  if (window.innerWidth > 720 || selectedIndex > 0) {
-    centerQualityStep(step);
-  }
+if (window.innerWidth > 720) {
+  centerQualityStep(step);
+}
 
   if (shouldFocus) {
     step.focus();
