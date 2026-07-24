@@ -96,25 +96,26 @@ const qualityStepData = {
     status: "Critério de execução",
     title: "Execução comprometida",
     description:
-      "Desenvolvimento e QA colaboram durante a construção, realizando validações antecipadas.",
+      "Desenvolvimento e QA colaboram durante a construção, realizando testes e documentação no ambiente de desenvolvimento.",
     objective:
-      "Identificar inconsistências durante o desenvolvimento, antes da etapa formal de revisão e validação.",
+      "Validar antecipadamente a implementação no ambiente de desenvolvimento e registrar os resultados antes da revisão formal.",
     participants:
-      "Desenvolvimento como responsável pela implementação e QA apoiando as validações antecipadas.",
+      "Desenvolvimento como responsável pela implementação e QA atuando nos testes, na documentação e nas validações antecipadas.",
     criteria: [
       "Implementação realizada conforme os critérios definidos.",
       "Testes do desenvolvedor executados.",
       "Pair testing realizado quando aplicável.",
-      "Comportamentos principais avaliados antecipadamente.",
+      "Testes de QA executados no ambiente de desenvolvimento.",
+      "Resultados e evidências dos testes documentados.",
       "Problemas identificados comunicados e tratados.",
-      "Evidências técnicas registradas."
+      "Correções aplicáveis validadas no ambiente de desenvolvimento."
     ],
     evidence:
-      "Resultados dos testes do desenvolvedor, registros do pair testing e evidências da implementação.",
+      "Resultados dos testes do desenvolvedor, registros do pair testing, documentação de QA e evidências geradas no ambiente de desenvolvimento.",
     risk:
-      "Problemas simples chegarem à validação formal, aumentando o retrabalho e o tempo de correção.",
+      "Problemas chegarem à revisão formal sem validação antecipada ou sem documentação suficiente.",
     value:
-      "Aproxima QA e Desenvolvimento e reduz a concentração dos testes apenas no final."
+      "Aproxima QA e Desenvolvimento, antecipa defeitos e mantém rastreabilidade das validações realizadas durante a construção."
   },
 
   revisao: {
@@ -122,26 +123,27 @@ const qualityStepData = {
     status: "Critério de saída",
     title: "Revisão e validação",
     description:
-      "O item passa por revisão técnica, testes de QA, registro de evidências e validações em homologação.",
+      "Após a revisão técnica, o item passa por smoke tests e documentação no ambiente de homologação.",
     objective:
-      "Confirmar que a entrega atende aos critérios definidos antes de ser liberada para o solicitante.",
+      "Confirmar o funcionamento da entrega no ambiente de homologação antes de sua liberação para os testes do solicitante.",
     participants:
-      "Desenvolvimento e QA, com participação de Produto nos aceites aplicáveis.",
+      "Desenvolvimento e QA, com participação de Produto nos aceites e validações aplicáveis.",
     criteria: [
       "Desenvolvimento concluído.",
       "Code review e pull request realizados.",
-      "Testes de QA executados e documentados.",
+      "Validações no ambiente de desenvolvimento concluídas.",
+      "Smoke tests executados no ambiente de homologação.",
+      "Resultados e evidências da homologação documentados.",
       "Critérios de aceite avaliados.",
       "Bugs aplicáveis corrigidos e retestados.",
-      "Testes no ambiente de homologação concluídos.",
-      "Evidências e informações de liberação registradas."
+      "Informações necessárias para a liberação registradas."
     ],
     evidence:
-      "Resultados dos testes, evidências funcionais, registros de correções e documentação de liberação.",
+      "Resultados dos smoke tests, documentação de QA, evidências funcionais, registros de correções e informações de liberação.",
     risk:
-      "O solicitante receber uma entrega sem validação interna suficiente ou sem rastreabilidade.",
+      "O solicitante receber uma entrega sem validação mínima no ambiente de homologação ou sem evidências suficientes.",
     value:
-      "Estabelece uma liberação controlada, baseada em critérios verificáveis e evidências."
+      "Confirma a estabilidade básica da entrega em homologação e estabelece uma liberação controlada para o solicitante."
   }
 };
 
