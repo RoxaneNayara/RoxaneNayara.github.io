@@ -187,6 +187,11 @@
   color: #7c3aed;
 }
 
+.tmmi-status-em-revisao {
+  background: color-mix(in srgb, #2563eb 14%, transparent);
+  color: #2563eb;
+}
+
 .tmmi-evolution,
 .tmmi-method-note {
   margin-top: 1rem;
