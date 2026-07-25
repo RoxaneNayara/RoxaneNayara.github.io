@@ -3,15 +3,15 @@
     {
       title: "Compartilhamento de conhecimento",
       topics: [
-        {
-          title: "Papo em Produção",
-          need:
-            "Criar um espaço em que diferentes áreas de TI pudessem apresentar temas e compartilhar conhecimento.",
-          action:
-            "Foi criada uma iniciativa interna aberta à participação de profissionais de diferentes times.",
-          contribution:
-            "Ampliou a circulação de conhecimento e aproximou especialidades dentro de Tecnologia."
-        },
+          {
+            title: "Webinar interno",
+            need:
+              "Criar um espaço em que diferentes áreas de TI pudessem apresentar temas e compartilhar conhecimento.",
+            action:
+              "A iniciativa foi idealizada, estruturada e viabilizada em conjunto com as lideranças, com participação de profissionais de diferentes times.",
+            contribution:
+              "Ampliou a circulação de conhecimento e aproximou especialidades dentro de Tecnologia."
+          },
         {
           title: "Participação de diferentes áreas",
           need:
@@ -31,7 +31,7 @@
           need:
             "Revisar práticas de trabalho, participação de QA e organização das cerimônias.",
           action:
-            "Foram realizadas reuniões sobre board, dailies, planning, review, retrospectiva e refinamento.",
+           "Foram realizadas reuniões sobre board, dailies, planning, review, retrospectiva e refinamento.",
           contribution:
             "Apoiou maior clareza sobre fluxo, responsabilidades e momentos de colaboração."
         },
@@ -63,7 +63,8 @@
           need:
             "Consolidar práticas esperadas ao longo do ciclo de desenvolvimento.",
           action:
-            "O checklist reuniu shift-left, refinamento, planejamento, Pair Testing, dailies, retrospectivas e Smoke Tests.",
+            action:
+             "O checklist reuniu shift-left, refinamento e planejamento de demandas, pair testing, reporte diário, retrospectivas e smoke tests.",
           contribution:
             "Ajudou a padronizar a participação de QA e a construção da qualidade desde o início."
         },
