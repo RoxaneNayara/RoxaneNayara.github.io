@@ -13,7 +13,7 @@
           code: "SG1",
           title: "Estabelecer uma Política de Teste",
           initial: "Lacuna identificada",
-          current: "Realizado"
+          current: "Atendido"
         },
         {
           code: "SG2",
@@ -25,7 +25,7 @@
           code: "SG3",
           title: "Estabelecer indicadores de desempenho de teste",
           initial: "Atendido",
-          current: "Realizado"
+          current: "Atendido"
         }
       ]
     },
@@ -48,25 +48,25 @@
           code: "SG2",
           title: "Estabelecer uma abordagem de teste",
           initial: "Atendido",
-          current: "Realizado"
+          current: "Atendido"
         },
         {
           code: "SG3",
           title: "Estabelecer estimativas de teste",
           initial: "Atendido",
-          current: "Realizado"
+          current: "Atendido"
         },
         {
           code: "SG4",
           title: "Desenvolver um plano de teste",
           initial: "Lacuna identificada",
-          current: "Realizado"
+          current: "Atendido"
         },
         {
           code: "SG5",
           title: "Obter compromisso com o plano de teste",
           initial: "Atendido",
-          current: "Realizado"
+          current: "Atendido"
         }
       ]
     },
@@ -83,7 +83,7 @@
           code: "SG1",
           title: "Monitorar o progresso do teste em relação ao plano",
           initial: "Lacuna identificada",
-          current: "Realizado"
+          current: "Atendido"
         },
         {
           code: "SG2",
@@ -96,7 +96,7 @@
           code: "SG3",
           title: "Gerenciar as ações corretivas para encerramento",
           initial: "Atendido",
-          current: "Em andamento"
+          current: "Em revisão"
         }
       ]
     },
@@ -114,25 +114,25 @@
           title:
             "Realizar análise e modelagem do teste usando técnicas de projeto de teste",
           initial: "Lacuna identificada",
-          current: "Realizado"
+          current: "Atendido"
         },
         {
           code: "SG2",
           title: "Implementar o teste",
           initial: "Atendido",
-          current: "Realizado"
+          current: "Atendido"
         },
         {
           code: "SG3",
           title: "Executar os testes",
           initial: "Atendido",
-          current: "Realizado"
+          current: "Atendido"
         },
         {
           code: "SG4",
           title: "Gerenciar os incidentes de teste para o encerramento",
           initial: "Atendido",
-          current: "Realizado"
+          current: "Atendido"
         }
       ]
     },
@@ -149,13 +149,13 @@
           code: "SG1",
           title: "Desenvolver requisitos do ambiente de teste",
           initial: "Atendido",
-          current: "Em andamento"
+          current: "Em revisão"
         },
         {
           code: "SG2",
           title: "Executar a implementação do ambiente de teste",
           initial: "Atendido",
-          current: "Em andamento"
+          current: "Em revisão"
         },
         {
           code: "SG3",
@@ -223,18 +223,26 @@
   function renderArea() {
     const area = tmmiData[selectedAreaIndex];
     const completed = area.goals.filter(
-      (goal) => goal.current === "Realizado"
+      (goal) =>
+        goal.current === "Realizado" ||
+        goal.current === "Atendido"
     ).length;
-    const inProgress = area.goals.filter(
-      (goal) => goal.current === "Em andamento"
+    
+    const inEvolution = area.goals.filter(
+      (goal) =>
+        goal.current === "Em andamento" ||
+        goal.current === "Em revisão"
     ).length;
 
     codeElement.textContent = area.code;
     titleElement.textContent = area.title;
     descriptionElement.textContent = area.description;
     goalsCountElement.textContent = `${area.goals.length} objetivos específicos`;
-    completedCountElement.textContent = `${completed} realizados`;
-    progressCountElement.textContent = `${inProgress} em andamento`;
+    completedCountElement.textContent =
+      `${completed} atendidos ou realizados`;
+    
+    progressCountElement.textContent =
+      `${inEvolution} em andamento ou revisão`;
     evolutionElement.textContent = area.evolution;
 
     goalsElement.innerHTML = area.goals
