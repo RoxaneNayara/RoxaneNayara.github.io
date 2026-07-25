@@ -8,7 +8,8 @@
           need:
             "Criar um espaço em que diferentes áreas de TI pudessem apresentar temas e compartilhar conhecimento.",
           action:
-            "A iniciativa foi idealizada, estruturada e viabilizada em conjunto com as lideranças, com participação de profissionais de diferentes times.",
+           action:
+            "A iniciativa foi idealizada, estruturada e viabilizada em conjunto com as lideranças, com participação de profissionais de diferentes times dentro da área de Tecnologia.",
           contribution:
             "Ampliou a circulação de conhecimento e aproximou especialidades dentro de Tecnologia."
         },
