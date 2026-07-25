@@ -3,15 +3,15 @@
     {
       title: "Compartilhamento de conhecimento",
       topics: [
-          {
-            title: "Webinar interno",
-            need:
-              "Criar um espaço em que diferentes áreas de TI pudessem apresentar temas e compartilhar conhecimento.",
-            action:
-              "A iniciativa foi idealizada, estruturada e viabilizada em conjunto com as lideranças, com participação de profissionais de diferentes times.",
-            contribution:
-              "Ampliou a circulação de conhecimento e aproximou especialidades dentro de Tecnologia."
-          },
+        {
+          title: "Webinar interno",
+          need:
+            "Criar um espaço em que diferentes áreas de TI pudessem apresentar temas e compartilhar conhecimento.",
+          action:
+            "A iniciativa foi idealizada, estruturada e viabilizada em conjunto com as lideranças, com participação de profissionais de diferentes times.",
+          contribution:
+            "Ampliou a circulação de conhecimento e aproximou especialidades dentro de Tecnologia."
+        },
         {
           title: "Participação de diferentes áreas",
           need:
@@ -31,7 +31,7 @@
           need:
             "Revisar práticas de trabalho, participação de QA e organização das cerimônias.",
           action:
-           "Foram realizadas reuniões sobre board, dailies, planning, review, retrospectiva e refinamento.",
+            "Foram realizadas reuniões sobre board, cerimônias Scrum e refinamento de demandas.",
           contribution:
             "Apoiou maior clareza sobre fluxo, responsabilidades e momentos de colaboração."
         },
@@ -63,8 +63,7 @@
           need:
             "Consolidar práticas esperadas ao longo do ciclo de desenvolvimento.",
           action:
-            action:
-             "O checklist reuniu shift-left, refinamento e planejamento de demandas, pair testing, reporte diário, retrospectivas e smoke tests.",
+            "O checklist reuniu shift-left, refinamento e planejamento de demandas, pair testing, reporte diário, retrospectivas e smoke tests.",
           contribution:
             "Ajudou a padronizar a participação de QA e a construção da qualidade desde o início."
         },
@@ -73,7 +72,7 @@
           need:
             "Definir como resultados, evidências e insumos deveriam ser registrados e comunicados.",
           action:
-            "Foram organizadas orientações para documentação de resultados, anexos, Smoke Tests e comportamentos inesperados.",
+            "Foram organizadas orientações para documentação de resultados, anexos, smoke tests e comportamentos inesperados.",
           contribution:
             "Favoreceu rastreabilidade, comunicação e organização dos artefatos de teste."
         },
