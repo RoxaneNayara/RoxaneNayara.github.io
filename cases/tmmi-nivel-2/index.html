@@ -1,0 +1,46 @@
+<section class="tmmi-section" aria-labelledby="tmmi-demo-title">
+  <div class="tmmi-heading">
+    <p class="section-kicker">Demonstração interativa</p>
+    <h2 id="tmmi-demo-title">Compare o diagnóstico inicial com o estado atual</h2>
+    <p>
+      Selecione uma área de processo para visualizar os objetivos específicos,
+      a situação identificada no diagnóstico inicial e a evolução registrada
+      posteriormente.
+    </p>
+  </div>
+
+  <div
+    id="tmmi-areas"
+    class="tmmi-areas"
+    role="tablist"
+    aria-label="Áreas de processo do TMMi nível 2"
+  ></div>
+
+  <div class="tmmi-demo">
+    <header class="tmmi-summary">
+      <p class="tmmi-pa-label" id="tmmi-pa-code"></p>
+      <h3 id="tmmi-pa-title"></h3>
+      <p id="tmmi-pa-description"></p>
+
+      <div class="tmmi-summary-badges" aria-label="Resumo do estado atual">
+        <span id="tmmi-goals-count"></span>
+        <span id="tmmi-completed-count"></span>
+        <span id="tmmi-progress-count"></span>
+      </div>
+    </header>
+
+    <div id="tmmi-goals" class="tmmi-goals" aria-live="polite"></div>
+
+    <section class="tmmi-evolution" aria-labelledby="tmmi-evolution-title">
+      <h4 id="tmmi-evolution-title">Evolução após o diagnóstico</h4>
+      <p id="tmmi-evolution-text"></p>
+    </section>
+
+    <aside class="tmmi-method-note">
+      <strong>Observação metodológica:</strong>
+      esta visualização representa um diagnóstico interno e o acompanhamento
+      posterior das práticas. Não corresponde a avaliação formal, certificação
+      ou reconhecimento oficial de nível TMMi.
+    </aside>
+  </div>
+</section>
