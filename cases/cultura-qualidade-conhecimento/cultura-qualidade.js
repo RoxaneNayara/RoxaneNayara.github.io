@@ -3,17 +3,16 @@
     {
       title: "Compartilhamento de conhecimento",
       topics: [
-        {
-          title: "Webinar interno",
-          need:
-            "Criar um espaço em que diferentes áreas de TI pudessem apresentar temas e compartilhar conhecimento.",
-          action:
-           action:
-            "A iniciativa foi idealizada, estruturada e viabilizada em conjunto com as lideranças, com participação de profissionais de diferentes times dentro da área de Tecnologia.",
-          contribution:
-            "Ampliou a circulação de conhecimento e aproximou especialidades dentro de Tecnologia."
-        },
-        {
+            {
+              title: "Webinar interno",
+              need:
+                "Criar um espaço em que diferentes áreas de TI pudessem apresentar temas e compartilhar conhecimento.",
+              action:
+                "A iniciativa foi idealizada, estruturada e viabilizada em conjunto com as lideranças, com participação de profissionais de diferentes times dentro da área de Tecnologia.",
+              contribution:
+                "Ampliou a circulação de conhecimento e aproximou especialidades dentro de Tecnologia."
+            },
+          {
           title: "Participação de diferentes áreas",
           need:
             "Evitar que o conhecimento permanecesse concentrado apenas dentro de cada time.",
