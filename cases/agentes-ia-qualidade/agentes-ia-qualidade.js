@@ -67,7 +67,7 @@
           input:
             "<pre><code>function calcularDesconto(cliente) {\n  if (cliente.tipo === \"premium\") {\n    return cliente.valor * 0.9;\n  }\n\n  if (cliente.tipo === \"premium\") {\n    return cliente.valor * 0.85;\n  }\n\n  return cliente.valor;\n}</code></pre>",
           analysis:
-            "<ul><li>A segunda condição é duplicada e nunca será alcançada.</li><li>A regra de desconto está ambígua.</li><li>Percentuais fixos não expressam seu significado.</li><li>Não há validação de cliente, tipo ou valor.</li><li>Faltam testes para categorias válidas, desconhecidas e entradas inválidas.</li></ul>",
+            "<ul><li>A segunda condição é duplicada e nunca será alcançada.</li><li>A regra de desconto está ambígua.</li><li>Os fatores numéricos 0.9 e 0.85 não expressam claramente a regra de desconto.</li><li>Não há validação de cliente, tipo ou valor.</li><li>Faltam testes para categorias válidas, desconhecidas e entradas inválidas.</li></ul>",
           references:
             "<ul><li>Legibilidade, consistência e manutenção.</li><li>Eliminação de código inalcançável e duplicado.</li><li>Nomes expressivos e regras explícitas.</li><li>Análise estática e cobertura de testes.</li></ul>",
           validation:
@@ -78,7 +78,7 @@
           input:
             "<pre><code>async function buscarPedido(id) {\n  const response = await fetch(`/pedidos/${id}`);\n  return response.json();\n}</code></pre>",
           analysis:
-            "<ul><li>Não existe verificação de sucesso da resposta.</li><li>Falhas de rede e respostas inválidas não são tratadas.</li><li>O identificador não é validado.</li><li>Não há comportamento definido para pedido inexistente.</li><li>Logs e informações de diagnóstico precisam evitar exposição de dados sensíveis.</li></ul>",
+            "<ul><li>Não existe verificação de sucesso da resposta.</li><li>Falhas de rede e respostas inválidas não são tratadas.</li><li>O identificador não é validado.</li><li>Não há comportamento definido para pedido inexistente.</li><li>Caso sejam adicionados logs para diagnóstico, eles devem evitar tokens, dados pessoais e detalhes internos.</li></ul>",
           references:
             "<ul><li>Confiabilidade, segurança e capacidade de diagnóstico.</li><li>Tratamento explícito de erros e estados inesperados.</li><li>Validação de entradas e respostas.</li><li>Revisão segura de código e proteção de dados.</li></ul>",
           validation:
@@ -89,7 +89,7 @@
           input:
             "<pre><code>function finalizarCompra() {\n  const total = document.querySelector(\"#total\").innerText;\n\n  if (total > 0) {\n    enviarPedido(total);\n    alert(\"Compra concluída\");\n  }\n}</code></pre>",
           analysis:
-            "<ul><li>A função mistura interface, regra, integração e mensagem.</li><li>O valor é texto e não é convertido explicitamente.</li><li>O sucesso é exibido sem aguardar o envio.</li><li>Entradas ausentes, inválidas e falhas de integração não são tratadas.</li><li>O acoplamento dificulta testes unitários e manutenção.</li></ul>",
+            "<ul><li>A função mistura interface, regra, integração e mensagem.</li><li>O valor obtido da interface é uma string e depende de conversão implícita, o que pode falhar com formatos monetários, conteúdo vazio ou texto inválido.</li><li>A mensagem de sucesso é exibida antes de a operação assíncrona ser concluída e sem verificar se o pedido foi aceito.</li><li>Elemento ausente, valor inválido e falhas de integração não são tratados.</li><li>O acoplamento dificulta testes unitários e manutenção.</li></ul>",
           references:
             "<ul><li>Separação de responsabilidades e baixo acoplamento.</li><li>Legibilidade, testabilidade e manutenção.</li><li>Validação explícita de tipos e estados.</li><li>Testes de sucesso, falha e entradas inválidas.</li></ul>",
           validation:
