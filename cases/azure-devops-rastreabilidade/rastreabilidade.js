@@ -358,7 +358,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     );
   }
-  
+
   function resetInitialState() {
     flow.scrollLeft = 0;
 
