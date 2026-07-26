@@ -243,3 +243,20 @@
     width: 100%;
   }
 }
+
+
+/* AJUSTE DE ESPAÇAMENTO — LINHA EVOLUTIVA */
+
+.timeline-item {
+  display: grid;
+  gap: 0.7rem;
+  padding: 1rem;
+}
+
+.timeline-item strong {
+  margin: 0;
+}
+
+.timeline-items {
+  padding-bottom: 0.25rem;
+}
