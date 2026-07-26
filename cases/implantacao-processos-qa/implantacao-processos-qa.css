@@ -215,21 +215,34 @@
   }
 }
 
-/* ==================================================
-   V8 — INTERAÇÃO DEFINITIVA DOS CARDS
-   Seletores diretos, sem dependência de classes JS.
-================================================== */
 
-.implementation-card,
-.governance-card,
-.security-card,
-.autonomy-card,
-.metric-card,
-.quality-flow article,
+/* PADRÃO DE INTERAÇÃO DO SITE — TODOS OS CARDS DAS SEÇÕES */
+
+body.reveal-ready .implementation-card.reveal.is-visible:hover,
+body.reveal-ready .governance-card.reveal.is-visible:hover,
+body.reveal-ready .security-card.reveal.is-visible:hover,
+body.reveal-ready .autonomy-card.reveal.is-visible:hover,
+body.reveal-ready .metric-card.reveal.is-visible:hover,
+body.reveal-ready .quality-flow.reveal.is-visible article:hover,
+body.reveal-ready .evolution-demo.reveal.is-visible .evolution-item:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: 0 18px 40px rgba(75, 42, 82, 0.12);
+}
+
+body.reveal-ready .implementation-card.reveal.is-visible:hover::before,
+body.reveal-ready .governance-card.reveal.is-visible:hover::before,
+body.reveal-ready .security-card.reveal.is-visible:hover::before,
+body.reveal-ready .autonomy-card.reveal.is-visible:hover::before,
+body.reveal-ready .metric-card.reveal.is-visible:hover::before,
+body.reveal-ready .quality-flow.reveal.is-visible article:hover::before,
+body.reveal-ready .evolution-demo.reveal.is-visible .evolution-item:hover::before {
+  transform: scaleY(1);
+}
+
 .evolution-item {
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--border);
   transition:
     transform 0.3s ease,
     border-color 0.3s ease,
@@ -237,22 +250,44 @@
     background-color 0.3s ease;
 }
 
-.implementation-card::before,
-.governance-card::before,
-.security-card::before,
-.autonomy-card::before,
-.metric-card::before,
-.quality-flow article::before,
 .evolution-item::before {
   content: "";
   position: absolute;
   inset: 0 auto 0 0;
-  width: 4px;
+  width: 3px;
   background: var(--accent);
   transform: scaleY(0);
   transform-origin: bottom;
   transition: transform 0.3s ease;
 }
+
+@media (hover: none) {
+  body.reveal-ready .implementation-card.reveal.is-visible:hover,
+  body.reveal-ready .governance-card.reveal.is-visible:hover,
+  body.reveal-ready .security-card.reveal.is-visible:hover,
+  body.reveal-ready .autonomy-card.reveal.is-visible:hover,
+  body.reveal-ready .metric-card.reveal.is-visible:hover,
+  body.reveal-ready .quality-flow.reveal.is-visible article:hover,
+  body.reveal-ready .evolution-demo.reveal.is-visible .evolution-item:hover {
+    transform: translateY(0);
+    border-color: var(--border);
+    box-shadow: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.reveal-ready .implementation-card.reveal.is-visible:hover,
+  body.reveal-ready .governance-card.reveal.is-visible:hover,
+  body.reveal-ready .security-card.reveal.is-visible:hover,
+  body.reveal-ready .autonomy-card.reveal.is-visible:hover,
+  body.reveal-ready .metric-card.reveal.is-visible:hover,
+  body.reveal-ready .quality-flow.reveal.is-visible article:hover,
+  body.reveal-ready .evolution-demo.reveal.is-visible .evolution-item:hover {
+    transform: none;
+  }
+}
+
+/* VERSÃO 9 — HOVER SEM ALTERAR O LAYOUT */
 
 @media (hover: hover) and (pointer: fine) {
   .implementation-card:hover,
@@ -262,54 +297,23 @@
   .metric-card:hover,
   .quality-flow article:hover,
   .evolution-item:hover {
-    transform: translateY(-8px) !important;
+    transform: translateY(-6px) !important;
     border-color: var(--accent) !important;
     box-shadow:
       0 0 0 1px var(--accent),
-      0 18px 40px rgba(75, 42, 82, 0.16) !important;
-    background:
-      color-mix(in srgb, var(--accent) 4%, var(--surface)) !important;
-  }
-
-  .implementation-card:hover::before,
-  .governance-card:hover::before,
-  .security-card:hover::before,
-  .autonomy-card:hover::before,
-  .metric-card:hover::before,
-  .quality-flow article:hover::before,
-  .evolution-item:hover::before {
-    transform: scaleY(1);
+      0 16px 34px rgba(75, 42, 82, 0.16) !important;
   }
 }
 
-/* Feedback em dispositivos de toque */
-.implementation-card:active,
-.governance-card:active,
-.security-card:active,
-.autonomy-card:active,
-.metric-card:active,
-.quality-flow article:active,
-.evolution-item:active {
-  transform: translateY(-4px);
-  border-color: var(--accent);
-  box-shadow: 0 0 0 1px var(--accent);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .implementation-card,
-  .governance-card,
-  .security-card,
-  .autonomy-card,
-  .metric-card,
-  .quality-flow article,
-  .evolution-item,
-  .implementation-card::before,
-  .governance-card::before,
-  .security-card::before,
-  .autonomy-card::before,
-  .metric-card::before,
-  .quality-flow article::before,
-  .evolution-item::before {
-    transition: none;
-  }
+.implementation-card,
+.governance-card,
+.security-card,
+.autonomy-card,
+.metric-card,
+.quality-flow article,
+.evolution-item {
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
