@@ -42,7 +42,7 @@
           analysis:
             "<ul><li>Alteração antes e depois da confirmação.</li><li>Endereço incompleto, inválido ou fora da área atendida.</li><li>Recalcular frete, prazo e tributos quando aplicável.</li><li>Falha ao salvar e concorrência entre sessões.</li><li>Preservar histórico e garantir consistência do pedido.</li><li>Validar autorização para alterar dados do pedido.</li></ul>",
           references:
-            "<ul><li>Análise baseada em risco.</li><li>Cenários positivos, negativos, alternativos e de exceção.</li><li>Confiabilidade, segurança, compatibilidade e integridade dos dados.</li><li>Técnicas de projeto de testes reconhecidas internacionalmente.</li></ul>",
+            "<ul><li>Análise baseada em risco.</li><li>Cenários positivos, negativos, alternativos e de exceção.</li><li>Confiabilidade, segurança, compatibilidade e integridade dos dados.</li><li>Técnicas de projeto de testes previstas na ISO/IEC/IEEE 29119-4 e difundidas pelo ISTQB.</li></ul>",
           validation:
             "<p>O time deve priorizar cenários conforme impacto, probabilidade, arquitetura e regras logísticas reais.</p>"
         },
@@ -87,9 +87,9 @@
         {
           title: "O código está testável e consistente?",
           input:
-            "<pre><code>function finalizarCompra() {\n  const total = document.querySelector(\"#total\").innerText;\n\n  if (total > 0) {\n    enviarPedido(total);\n    alert(\"Compra concluída\");\n  }\n}</code></pre>",
+            "<pre><code>async function finalizarCompra() {\n  const totalElement = document.querySelector(\"#total\");\n  const total = totalElement?.innerText;\n\n  if (total > 0) {\n    enviarPedido(total);\n    alert(\"Compra concluída\");\n  }\n}</code></pre><p class=\"simulation-code-context\">Considere que enviarPedido() retorna uma Promise.</p>",
           analysis:
-            "<ul><li>A função mistura interface, regra, integração e mensagem.</li><li>O valor obtido da interface é uma string e depende de conversão implícita, o que pode falhar com formatos monetários, conteúdo vazio ou texto inválido.</li><li>A mensagem de sucesso é exibida antes de a operação assíncrona ser concluída e sem verificar se o pedido foi aceito.</li><li>Elemento ausente, valor inválido e falhas de integração não são tratados.</li><li>O acoplamento dificulta testes unitários e manutenção.</li></ul>",
+            "<ul><li>A função mistura interface, regra, integração e mensagem.</li><li>O valor obtido da interface é uma string e depende de conversão implícita, o que pode falhar com formatos monetários, conteúdo vazio ou texto inválido.</li><li>A mensagem de sucesso é exibida antes de a operação assíncrona ser concluída e sem verificar se o pedido foi aceito.</li><li>Elemento ausente, valor inválido e falhas de integração não são tratados adequadamente.</li><li>O acoplamento dificulta testes unitários e manutenção.</li></ul>",
           references:
             "<ul><li>Separação de responsabilidades e baixo acoplamento.</li><li>Legibilidade, testabilidade e manutenção.</li><li>Validação explícita de tipos e estados.</li><li>Testes de sucesso, falha e entradas inválidas.</li></ul>",
           validation:
