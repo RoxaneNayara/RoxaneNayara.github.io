@@ -357,3 +357,44 @@
     font-size: 0.82rem;
   }
 }
+
+
+/* AJUSTES DE LEGIBILIDADE — SIMULAÇÕES */
+
+.simulation-card,
+.simulation-entry {
+  font-size: 0.93rem;
+}
+
+.simulation-card li,
+.simulation-card p,
+.simulation-entry p {
+  line-height: 1.55;
+}
+
+.simulation-code-context {
+  margin: 0.7rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-style: italic;
+}
+
+.simulation-sources {
+  margin: 0.75rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .simulation-card,
+  .simulation-entry {
+    font-size: 0.88rem;
+  }
+
+  .simulation-sources {
+    font-size: 0.74rem;
+    text-align: left;
+  }
+}
