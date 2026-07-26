@@ -306,3 +306,35 @@
     align-self: start;
   }
 }
+
+
+/* AJUSTE DEFINITIVO — CARDS COM ALTURA IGUAL À MAIOR LINHA */
+
+.timeline-items {
+  grid-auto-rows: 1fr;
+}
+
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  min-height: 0;
+  gap: 0.65rem;
+  padding: 1rem 1.1rem;
+}
+
+.timeline-item strong,
+.timeline-item span {
+  align-self: stretch;
+}
+
+@media (max-width: 900px) {
+  .timeline-items {
+    grid-auto-rows: 1fr;
+  }
+
+  .timeline-item {
+    min-height: 0;
+  }
+}
