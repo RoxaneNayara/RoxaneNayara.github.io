@@ -338,3 +338,33 @@
     min-height: 0;
   }
 }
+
+
+/* AJUSTE FINAL MOBILE — UNIFORMIDADE DOS CARDS */
+
+@media (max-width: 900px) {
+  .timeline-item {
+    min-height: 7.2rem;
+    justify-content: center;
+  }
+}
+
+
+/* AJUSTE DEFINITIVO — ALINHAMENTO SUPERIOR DOS CARDS */
+
+.timeline-item {
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+.timeline-item strong,
+.timeline-item span {
+  align-self: flex-start;
+}
+
+@media (max-width: 900px) {
+  .timeline-item {
+    justify-content: flex-start;
+    align-content: flex-start;
+  }
+}
