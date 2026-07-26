@@ -368,3 +368,17 @@
     align-content: flex-start;
   }
 }
+
+
+/* AJUSTE DE COMPACTAÇÃO — CARDS DA LINHA EVOLUTIVA */
+
+.timeline-item {
+  padding: 0.85rem 1rem;
+}
+
+@media (max-width: 900px) {
+  .timeline-item {
+    min-height: 6.2rem;
+    padding: 0.85rem 1rem;
+  }
+}
