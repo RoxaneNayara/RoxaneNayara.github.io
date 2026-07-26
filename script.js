@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
         sectionContent.getBoundingClientRect().top +
         window.scrollY -
         headerHeight -
-        16;
+        40;
 
       window.scrollTo({
         top: targetPosition,
