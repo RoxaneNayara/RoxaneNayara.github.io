@@ -345,3 +345,63 @@ body.reveal-ready .evolution-demo.reveal.is-visible .evolution-item:hover::befor
       0 16px 34px rgba(75, 42, 82, 0.16) !important;
   }
 }
+
+
+/* VERSÃO 11 — PADRÃO ÚNICO DE BORDA PARA TODOS OS CARDS */
+
+.case-summary::before,
+.case-content-card::before,
+.implementation-card::before,
+.governance-card::before,
+.security-card::before,
+.autonomy-card::before,
+.metric-card::before,
+.quality-flow article::before,
+.evolution-item::before {
+  display: none !important;
+}
+
+.case-summary,
+.case-content-card,
+.implementation-card,
+.governance-card,
+.security-card,
+.autonomy-card,
+.metric-card,
+.quality-flow article,
+.evolution-item {
+  border-width: 1px !important;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .case-summary:hover,
+  .case-content-card:hover,
+  .implementation-card:hover,
+  .governance-card:hover,
+  .security-card:hover,
+  .autonomy-card:hover,
+  .metric-card:hover,
+  .quality-flow article:hover,
+  .evolution-item:hover {
+    transform: translateY(-6px) !important;
+    border: 1px solid var(--accent) !important;
+    box-shadow: 0 14px 30px rgba(75, 42, 82, 0.15) !important;
+  }
+}
+
+.case-summary:active,
+.case-content-card:active,
+.implementation-card:active,
+.governance-card:active,
+.security-card:active,
+.autonomy-card:active,
+.metric-card:active,
+.quality-flow article:active,
+.evolution-item:active {
+  border: 1px solid var(--accent) !important;
+}
