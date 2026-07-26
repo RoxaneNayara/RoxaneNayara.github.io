@@ -398,3 +398,40 @@
     text-align: left;
   }
 }
+
+
+/* AJUSTES FINAIS — NAVEGAÇÃO E REFERÊNCIAS */
+
+.simulation-sources {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.simulation-sources span {
+  display: block;
+}
+
+.simulation-sources strong {
+  color: var(--text);
+  font-weight: 800;
+}
+
+@media (max-width: 900px) {
+  .case-navigation-inner {
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: 20px;
+    overscroll-behavior-inline: contain;
+  }
+
+  .case-navigation a {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  }
+}
+
+@media (max-width: 640px) {
+  .simulation-sources {
+    gap: 0.45rem;
+    padding-inline: 0.2rem;
+  }
+}
