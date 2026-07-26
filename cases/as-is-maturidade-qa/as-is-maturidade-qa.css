@@ -1,0 +1,245 @@
+/* CASE — DIAGNÓSTICO AS-IS E MATURIDADE DE QA */
+
+.diagnostic-dimensions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.dimension-card,
+.action-card {
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 1.1rem;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.dimension-card > span {
+  display: inline-flex;
+  margin-bottom: 0.65rem;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.dimension-card h3,
+.action-card h3 {
+  margin: 0 0 0.8rem;
+}
+
+.dimension-card ul,
+.action-card ul {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
+.diagnostic-cycle {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.diagnostic-cycle article {
+  position: relative;
+  padding: 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--surface);
+}
+
+.diagnostic-cycle article > span {
+  display: inline-grid;
+  width: 2.1rem;
+  height: 2.1rem;
+  margin-bottom: 0.7rem;
+  place-items: center;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.diagnostic-cycle h3 {
+  margin: 0 0 0.5rem;
+}
+
+.diagnostic-cycle p {
+  margin: 0;
+}
+
+.status-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.25rem;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.status::before {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 999px;
+  content: "";
+}
+
+.status-red::before {
+  background: #d66b75;
+}
+
+.status-yellow::before {
+  background: #d6ad42;
+}
+
+.status-green::before {
+  background: #6ca77a;
+}
+
+.timeline-demo {
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 1.2rem;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.timeline-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.2rem;
+}
+
+.timeline-tab {
+  min-height: 3.2rem;
+  padding: 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.timeline-tab:hover,
+.timeline-tab.is-selected {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 11%, transparent);
+}
+
+.timeline-panel {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.timeline-label,
+.action-label {
+  margin: 0 0 0.3rem;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.timeline-panel h3 {
+  margin: 0 0 0.65rem;
+}
+
+.timeline-items {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.timeline-item {
+  padding: 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+  background: var(--background);
+}
+
+.timeline-item strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--accent);
+}
+
+.action-columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.case-quote {
+  margin-top: 1.5rem;
+  padding: 1.3rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 0 1rem 1rem 0;
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface));
+}
+
+.case-quote p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.confidentiality-note {
+  margin-top: 1.5rem;
+}
+
+#atuacao .case-note,
+#resultados .case-note {
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .diagnostic-dimensions,
+  .diagnostic-cycle,
+  .action-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .timeline-items {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .timeline-demo {
+    padding: 0.9rem;
+  }
+
+  .timeline-tabs {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-tab {
+    text-align: left;
+  }
+
+  .status {
+    width: 100%;
+  }
+}
