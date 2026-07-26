@@ -1,891 +1,427 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <meta
-    name="description"
-    content="Case profissional de Roxane Nayara sobre critérios de qualidade compartilhados entre Produto, QA e Desenvolvimento ao longo do fluxo de entrega."
-  >
-
-  <meta name="author" content="Roxane Nayara">
-
-  <meta name="robots" content="noindex, nofollow">
-
-  <title>
-    Critérios de Qualidade Compartilhados ao Longo do Fluxo |
-    Roxane Nayara
-  </title>
-
-  <link
-    rel="icon"
-    type="image/png"
-    href="../../favicon.png?v=2"
-  >
-
-  <link
-    rel="apple-touch-icon"
-    href="../../favicon.png?v=2"
-  >
-
-  <link
-    rel="stylesheet"
-    href="../../style.css?v=21"
-  >
-
-  <link
-    rel="stylesheet"
-    href="../cases.css?v=21"
-  >
-
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Allura&display=swap"
-    rel="stylesheet"
-  >
-</head>
-
-<body class="case-page">
-
-  <div
-    class="floating-particles"
-    aria-hidden="true"
-  >
-    <span style="--x: 6%; --size: 8px; --delay: 0s; --duration: 20s;"></span>
-    <span style="--x: 14%; --size: 10px; --delay: 2s; --duration: 24s;"></span>
-    <span style="--x: 22%; --size: 7px; --delay: 4s; --duration: 18s;"></span>
-    <span style="--x: 31%; --size: 11px; --delay: 1s; --duration: 22s;"></span>
-    <span style="--x: 39%; --size: 8px; --delay: 5s; --duration: 26s;"></span>
-    <span style="--x: 48%; --size: 9px; --delay: 3s; --duration: 21s;"></span>
-    <span style="--x: 57%; --size: 12px; --delay: 6s; --duration: 28s;"></span>
-    <span style="--x: 66%; --size: 7px; --delay: 2.5s; --duration: 19s;"></span>
-    <span style="--x: 74%; --size: 10px; --delay: 7s; --duration: 25s;"></span>
-    <span style="--x: 82%; --size: 8px; --delay: 1.5s; --duration: 20s;"></span>
-    <span style="--x: 90%; --size: 11px; --delay: 4.5s; --duration: 23s;"></span>
-    <span style="--x: 96%; --size: 7px; --delay: 6.5s; --duration: 18s;"></span>
-  </div>
-
-  <header class="header">
-    <nav class="navigation container">
-
-      <a
-        class="logo"
-        href="../../#inicio"
-        aria-label="Voltar para a página inicial"
-      >
-        Roxy
-      </a>
-
-      <div class="nav-actions">
-
-        <button
-          id="menu-toggle"
-          class="menu-toggle"
-          type="button"
-          aria-label="Abrir menu"
-          aria-expanded="false"
-          aria-controls="main-menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-
-        <div
-          id="main-menu"
-          class="menu"
-        >
-          <a href="../../#inicio">Início</a>
-          <a href="../../#sobre">Sobre</a>
-          <a href="../../#experiencia">Experiência</a>
-          <a href="../../#cases">Cases</a>
-          <a href="../../#competencias">Competências</a>
-          <a href="../../#formacao">Formação</a>
-          <a href="../../#contato">Contato</a>
-        </div>
-
-        <button
-          id="theme-toggle"
-          class="theme-toggle"
-          type="button"
-          aria-label="Ativar tema escuro"
-          aria-pressed="false"
-        >
-          <span aria-hidden="true">☾</span>
-        </button>
-
-      </div>
-    </nav>
-  </header>
-
-  <nav
-    class="case-navigation"
-    aria-label="Navegação desta página"
-  >
-    <div class="container case-navigation-inner">
-
-      <a href="#inicio">
-        Visão geral
-      </a>
-
-      <a href="#contexto">
-        Contexto
-      </a>
-
-      <a href="#estrutura">
-        Estrutura
-      </a>
-
-      <a href="#interacao">
-        Demonstração
-      </a>
-
-      <a href="#beneficios">
-        Benefícios
-      </a>
-
-      <a href="#resultados">
-        Resultados
-      </a>
-
-      <a href="#competencias">
-        Competências
-      </a>
-
-    </div>
-  </nav>
-
-  <main>
-
-    <section
-      id="inicio"
-      class="case-hero"
-    >
-      <div class="container">
-
-        <a
-          class="case-breadcrumb"
-          href="../../#cases"
-        >
-          ← Voltar para todos os cases
-        </a>
-
-        <div class="case-hero-grid">
-
-          <div class="reveal">
-
-            <p class="case-label">
-              Case 04 · Qualidade compartilhada
-            </p>
-
-            <h1 class="case-title">
-              Critérios de Qualidade Compartilhados ao Longo do Fluxo
-            </h1>
-
-            <p class="case-introduction">
-              Estruturação de políticas explícitas para apoiar
-              Produto, QA e Desenvolvimento desde a preparação
-              da demanda até sua liberação para homologação.
-            </p>
-
-            <div class="case-tags">
-              <span>Qualidade compartilhada</span>
-              <span>Definition of Done</span>
-              <span>Políticas explícitas</span>
-              <span>Shift-left</span>
-              <span>Three Amigos</span>
-              <span>Quality gates</span>
-            </div>
-
-          </div>
-
-          <aside
-            class="case-summary reveal reveal-delay-1"
-            aria-labelledby="resumo-case"
-          >
-            <h2 id="resumo-case">
-              Visão geral
-            </h2>
-
-            <ul class="case-summary-list">
-
-              <li>
-                <strong>Participantes</strong>
-                <span>
-                  Produto, QA e Desenvolvimento
-                </span>
-              </li>
-
-              <li>
-                <strong>Aplicação</strong>
-                <span>
-                  Critérios de passagem ao longo do fluxo
-                </span>
-              </li>
-
-              <li>
-                <strong>Objetivo</strong>
-                <span>
-                  Prevenir avanço de demandas incompletas
-                </span>
-              </li>
-
-              <li>
-                <strong>Saída</strong>
-                <span>
-                  Item liberado para homologação do solicitante
-                </span>
-              </li>
-
-            </ul>
-          </aside>
-
-        </div>
-      </div>
-    </section>
-
-    <section
-      id="contexto"
-      class="case-section"
-    >
-      <div class="container">
-
-        <div class="case-section-heading reveal">
-
-          <p>Contexto</p>
-
-          <h2>
-            Qualidade não deveria começar somente quando
-            o desenvolvimento termina.
-          </h2>
-
-          <p class="case-section-description">
-            Sem critérios compartilhados, demandas podem avançar
-            com regras incompletas, pré-requisitos indefinidos,
-            riscos não avaliados ou evidências insuficientes.
-          </p>
-
-        </div>
-
-        <div class="case-content-grid">
-
-          <article class="case-content-card reveal">
-            <h3>Demandas pouco preparadas</h3>
-
-            <p>
-              Informações, critérios de aceite, pré-requisitos
-              e dados para testes podiam chegar incompletos
-              às etapas seguintes.
-            </p>
-          </article>
-
-          <article class="case-content-card reveal reveal-delay-1">
-            <h3>Validação tardia</h3>
-
-            <p>
-              Dúvidas e inconsistências identificadas apenas
-              durante os testes aumentavam o risco de retrabalho.
-            </p>
-          </article>
-
-          <article class="case-content-card reveal">
-            <h3>Responsabilidade fragmentada</h3>
-
-            <p>
-              A qualidade podia ser interpretada como uma
-              responsabilidade exclusiva do time de QA.
-            </p>
-          </article>
-
-          <article class="case-content-card reveal reveal-delay-1">
-            <h3>Passagem sem evidência</h3>
-
-            <p>
-              A movimentação dos itens precisava estar ligada
-              ao cumprimento de critérios verificáveis.
-            </p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section
-      id="estrutura"
-      class="case-section"
-    >
-      <div class="container">
-
-        <div class="case-section-heading reveal">
-
-          <p>Estrutura aplicada</p>
-
-          <h2>
-            Critérios diferentes para responsabilidades
-            diferentes, conectados em um único fluxo.
-          </h2>
-
-          <p class="case-section-description">
-            Cada etapa passou a possuir condições de entrada,
-            atividades esperadas, evidências e critérios para
-            que o item pudesse avançar.
-          </p>
-
-        </div>
-
-        <div class="case-content-grid">
-
-          <article class="case-content-card reveal">
-            <h3>Preparação da demanda</h3>
-
-            <p>
-              Produto organiza contexto, regras de negócio,
-              critérios de aceite, pré-requisitos, anexos
-              e insumos necessários para validação.
-            </p>
-          </article>
-
-          <article class="case-content-card reveal reveal-delay-1">
-            <h3>Refinamento colaborativo</h3>
-
-            <p>
-              Produto, QA e Desenvolvimento analisam entendimento,
-              testabilidade, viabilidade, dependências, riscos
-              e critérios de aceite.
-            </p>
-          </article>
-
-          <article class="case-content-card reveal">
-            <h3>Execução comprometida</h3>
-
-            <p>
-              Desenvolvimento e QA colaboram durante a construção,
-              incluindo pair testing e validações antecipadas
-              no ambiente de desenvolvimento.
-            </p>
-          </article>
-
-          <article class="case-content-card reveal reveal-delay-1">
-            <h3>Revisão e validação</h3>
-
-            <p>
-              Revisão técnica, testes de QA, documentação,
-              evidências, correções e testes em homologação
-              antecedem a liberação.
-            </p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section
-      id="interacao"
-      class="case-section"
-    >
-      <div class="container">
-    
-        <div class="case-section-heading reveal">
-    
-          <p>Demonstração interativa</p>
-    
-          <h2>
-            Explore os critérios de qualidade aplicados
-            em cada etapa.
-          </h2>
-    
-          <p class="case-section-description">
-            Selecione uma etapa para consultar seu objetivo,
-            participantes, critérios, evidências, riscos
-            e contribuição para a qualidade.
-          </p>
-    
-        </div>
-    
-        <div class="quality-demo">
-    
-          <div
-            id="quality-flow"
-            class="quality-flow"
-            role="list"
-            aria-label="Etapas dos critérios de qualidade"
-          >
-    
-            <button
-              class="quality-step is-selected"
-              type="button"
-              data-step="preparacao"
-              aria-pressed="true"
-              role="listitem"
-            >
-              <span class="quality-step-number">01</span>
-    
-              <span class="quality-step-content">
-                <strong>Preparação da demanda</strong>
-                <small>Produto estrutura as condições iniciais</small>
-              </span>
-            </button>
-    
-            <span
-              class="quality-flow-arrow"
-              aria-hidden="true"
-            >
-              →
-            </span>
-    
-            <button
-              class="quality-step"
-              type="button"
-              data-step="refinamento"
-              aria-pressed="false"
-              role="listitem"
-            >
-              <span class="quality-step-number">02</span>
-    
-              <span class="quality-step-content">
-                <strong>Refinamento colaborativo</strong>
-                <small>Produto, QA e Desenvolvimento avaliam juntos</small>
-              </span>
-            </button>
-    
-            <span
-              class="quality-flow-arrow"
-              aria-hidden="true"
-            >
-              →
-            </span>
-    
-            <button
-              class="quality-step"
-              type="button"
-              data-step="execucao"
-              aria-pressed="false"
-              role="listitem"
-            >
-              <span class="quality-step-number">03</span>
-    
-              <span class="quality-step-content">
-                <strong>Execução comprometida</strong>
-                <small>Validações em desenvolvimento e documentação</small>
-              </span>
-            </button>
-    
-            <span
-              class="quality-flow-arrow"
-              aria-hidden="true"
-            >
-              →
-            </span>
-    
-            <button
-              class="quality-step"
-              type="button"
-              data-step="revisao"
-              aria-pressed="false"
-              role="listitem"
-            >
-              <span class="quality-step-number">04</span>
-    
-              <span class="quality-step-content">
-                <strong>Revisão e validação</strong>
-                <small>Smoke tests, documentação e liberação interna</small>
-              </span>
-            </button>
-    
-          </div>
-    
-          <div
-            class="quality-controls"
-            aria-label="Navegação entre as etapas"
-          >
-            <button
-              id="quality-previous"
-              class="quality-navigation-button"
-              type="button"
-              disabled
-            >
-              ← Etapa anterior
-            </button>
-    
-            <button
-              id="quality-next"
-              class="quality-navigation-button"
-              type="button"
-            >
-              Próxima etapa →
-            </button>
-          </div>
-    
-          <div class="quality-details-layout">
-    
-            <article
-              id="quality-panel"
-              class="quality-panel"
-              aria-live="polite"
-            >
-              <div class="quality-panel-header">
-    
-                <span
-                  id="quality-panel-number"
-                  class="quality-panel-number"
-                >
-                  Etapa 01
-                </span>
-    
-                <span
-                  id="quality-panel-status"
-                  class="quality-panel-status"
-                >
-                  Critério de entrada
-                </span>
-    
-              </div>
-    
-              <h3 id="quality-panel-title">
-                Preparação da demanda
-              </h3>
-    
-              <p
-                id="quality-panel-description"
-                class="quality-panel-description"
-              >
-                Produto organiza as informações necessárias
-                para que a demanda possa ser analisada pelo time.
-              </p>
-    
-              <div class="quality-information-grid">
-    
-                <section class="quality-information-card">
-                  <h4>Objetivo</h4>
-    
-                  <p id="quality-panel-objective">
-                    Garantir que a demanda possua contexto,
-                    regras e condições mínimas antes do refinamento.
-                  </p>
-                </section>
-    
-                <section class="quality-information-card">
-                  <h4>Participantes</h4>
-    
-                  <p id="quality-panel-participants">
-                    Produto como responsável principal, com apoio
-                    de QA e Desenvolvimento quando necessário.
-                  </p>
-                </section>
-    
-                <section class="quality-information-card quality-information-wide">
-                  <h4>Critérios avaliados</h4>
-    
-                  <ul id="quality-panel-criteria">
-                    <li>Contexto e objetivo da demanda definidos.</li>
-                    <li>Regras de negócio registradas.</li>
-                    <li>Critérios de aceite claros.</li>
-                    <li>Pré-requisitos para testes identificados.</li>
-                    <li>Dados, anexos e referências disponibilizados.</li>
-                  </ul>
-                </section>
-    
-                <section class="quality-information-card">
-                  <h4>Evidências esperadas</h4>
-    
-                  <p id="quality-panel-evidence">
-                    Product Backlog Item preenchido, critérios
-                    registrados e insumos vinculados.
-                  </p>
-                </section>
-    
-                <section class="quality-information-card">
-                  <h4>Risco sem o critério</h4>
-    
-                  <p id="quality-panel-risk">
-                    Refinamento iniciado com informações incompletas
-                    ou condições de teste indefinidas.
-                  </p>
-                </section>
-    
-                <section class="quality-information-card quality-information-wide">
-                  <h4>Valor para a qualidade</h4>
-    
-                  <p id="quality-panel-value">
-                    A qualidade começa na preparação da demanda,
-                    antes de qualquer implementação.
-                  </p>
-                </section>
-    
-              </div>
-            </article>
-    
-            <aside class="quality-release-card">
-    
-              <span class="quality-release-icon" aria-hidden="true">
-                ✓
-              </span>
-    
-              <p>Saída do fluxo interno</p>
-    
-              <h3>
-                Liberado para homologação
-              </h3>
-    
-              <p>
-                Após o cumprimento dos critérios de revisão
-                e validação, o item é disponibilizado para
-                os testes do solicitante.
-              </p>
-    
-              <ul>
-                <li>Validações internas concluídas.</li>
-                <li>Evidências registradas.</li>
-                <li>Correções aplicáveis retestadas.</li>
-                <li>Item liberado pelo time de QA.</li>
-              </ul>
-    
-            </aside>
-    
-          </div>
-    
-          <div class="case-note">
-            <strong>Observação:</strong>
-            os nomes das etapas e os exemplos foram neutralizados
-            para preservar informações internas, mantendo a lógica
-            real do processo implantado.
-          </div>
-    
-        </div>
-    
-      </div>
-    </section>
-
-    <section
-      id="beneficios"
-      class="case-section"
-    >
-      <div class="container">
-
-        <div class="case-section-heading reveal">
-
-          <p>Benefícios observados</p>
-
-          <h2>
-            Qualidade construída durante o fluxo,
-            não inspecionada apenas no final.
-          </h2>
-
-        </div>
-
-        <div class="case-content-grid">
-
-          <article class="case-content-card reveal">
-            <h3>Clareza de passagem</h3>
-
-            <p>
-              O time passa a compreender o que precisa ser
-              atendido antes de movimentar uma demanda.
-            </p>
-          </article>
-
-          <article class="case-content-card reveal reveal-delay-1">
-            <h3>Colaboração entre papéis</h3>
-
-            <p>
-              Produto, QA e Desenvolvimento participam da
-              avaliação e aplicação dos critérios de qualidade.
-            </p>
-          </article>
-
-          <article class="case-content-card reveal">
-            <h3>Antecipação de riscos</h3>
-
-            <p>
-              Testabilidade, dependências, dados e pré-requisitos
-              são avaliados antes da validação final.
-            </p>
-          </article>
-
-          <article class="case-content-card reveal reveal-delay-1">
-            <h3>Liberação mais segura</h3>
-
-            <p>
-              O item chega à homologação do solicitante após
-              revisão, testes, evidências e correções aplicáveis.
-            </p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section
-      id="resultados"
-      class="case-section"
-    >
-      <div class="container">
-
-        <div class="case-section-heading reveal">
-
-          <p>Resultados e estágio</p>
-
-          <h2>
-            Resultados observados e impactos ainda
-            não avaliados por métricas formais.
-          </h2>
-
-        </div>
-
-        <div class="case-content-grid">
-
-          <article class="case-content-card reveal">
-            <h3>Resultado observado</h3>
-
-            <p>
-              As etapas passaram a possuir critérios explícitos
-              para preparação, refinamento, execução e validação.
-            </p>
-          </article>
-
-          <article class="case-content-card reveal reveal-delay-1">
-            <h3>Benefício observado</h3>
-
-            <p>
-              A responsabilidade pela qualidade ficou distribuída
-              entre Produto, QA e Desenvolvimento.
-            </p>
-          </article>
-
-          <article class="case-content-card reveal">
-            <h3>Resultado esperado</h3>
-
-            <p>
-              Redução de dúvidas tardias, retrabalho, movimentações
-              indevidas e liberações sem evidências suficientes.
-            </p>
-          </article>
-
-          <article class="case-content-card reveal reveal-delay-1">
-            <h3>Ainda não mensurado</h3>
-
-            <p>
-              Os impactos quantitativos sobre retrabalho,
-              defeitos e tempo de atravessamento ainda não
-              foram avaliados por métricas formais.
-            </p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section
-      id="competencias"
-      class="case-section"
-    >
-      <div class="container">
-
-        <div class="case-section-heading reveal">
-
-          <p>Competências demonstradas</p>
-
-          <h2>
-            Governança de qualidade conectada a colaboração,
-            testabilidade e prevenção de riscos.
-          </h2>
-
-        </div>
-
-        <div class="case-tags reveal">
-          <span>Definition of Done</span>
-          <span>Critérios de qualidade</span>
-          <span>Políticas explícitas</span>
-          <span>Quality gates</span>
-          <span>Shift-left</span>
-          <span>Three Amigos</span>
-          <span>Pair testing</span>
-          <span>Análise de testabilidade</span>
-          <span>Governança de QA</span>
-          <span>Gestão de riscos</span>
-        </div>
-
-        <div class="case-actions reveal">
-
-          <a
-            class="button button-primary"
-            href="https://github.com/RoxaneNayara/portfolio-qa-process-improvement/tree/main/04-definition-of-done-qualidade"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Ver documentação no GitHub
-          </a>
-
-          <a
-            class="button button-secondary"
-            href="../../#cases"
-          >
-            Voltar para todos os cases
-          </a>
-
-        </div>
-
-      </div>
-    </section>
-
-    <section class="case-section">
-      <div class="container">
-
-        <div class="case-note reveal">
-          <strong>Confidencialidade:</strong>
-          este case apresenta a lógica do processo com etapas,
-          critérios e exemplos neutralizados, sem reproduzir
-          nomes internos, demandas, sistemas ou dados de empresas.
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <button
-    id="back-to-top"
-    class="back-to-top"
-    type="button"
-    aria-label="Voltar ao topo"
-    title="Voltar ao topo"
-  >
-    <span aria-hidden="true">↑</span>
-  </button>
-
-  <footer class="footer">
-    <div class="container footer-content">
-
-      <p>
-        © 2026 Roxane Nayara. Alguns direitos reservados.
-      </p>
-
-      <p class="footer-note">
-        Portfólio profissional de QA com foco em processos,
-        governança, rastreabilidade e melhoria contínua.
-      </p>
-
-    </div>
-  </footer>
-
-  <script src="../../script.js?v=17"></script>
-  <script src="../case-navigation.js?v=4"></script>
-  <script src="criterios-qualidade.js?v=10"></script>
-
-</body>
-</html>
+const qualityFlow = document.querySelector("#quality-flow");
+
+const qualitySteps = Array.from(
+  document.querySelectorAll(".quality-step")
+);
+
+const qualityPreviousButton =
+  document.querySelector("#quality-previous");
+
+const qualityNextButton =
+  document.querySelector("#quality-next");
+
+const qualityPanelNumber =
+  document.querySelector("#quality-panel-number");
+
+const qualityPanelStatus =
+  document.querySelector("#quality-panel-status");
+
+const qualityPanelTitle =
+  document.querySelector("#quality-panel-title");
+
+const qualityPanelDescription =
+  document.querySelector("#quality-panel-description");
+
+const qualityPanelObjective =
+  document.querySelector("#quality-panel-objective");
+
+const qualityPanelParticipants =
+  document.querySelector("#quality-panel-participants");
+
+const qualityPanelCriteria =
+  document.querySelector("#quality-panel-criteria");
+
+const qualityPanelEvidence =
+  document.querySelector("#quality-panel-evidence");
+
+const qualityPanelRisk =
+  document.querySelector("#quality-panel-risk");
+
+const qualityPanelValue =
+  document.querySelector("#quality-panel-value");
+
+const qualityStepData = {
+  preparacao: {
+    number: "Etapa 01",
+    status: "Critério de entrada",
+    title: "Preparação da demanda",
+
+    description:
+      "Produto organiza as informações necessárias para que a demanda possa ser analisada pelo time.",
+
+    objective:
+      "Garantir que a demanda possua contexto, regras e condições mínimas antes do refinamento.",
+
+    participants:
+      "Produto como responsável principal, com apoio de QA e Desenvolvimento quando necessário.",
+
+    criteria: [
+      "Contexto e objetivo da demanda definidos.",
+      "Regras de negócio registradas.",
+      "Critérios de aceite claros.",
+      "Pré-requisitos para testes identificados.",
+      "Dados, anexos e referências disponibilizados."
+    ],
+
+    evidence:
+      "Product Backlog Item preenchido, critérios registrados e insumos vinculados.",
+
+    risk:
+      "Refinamento iniciado com informações incompletas ou condições de teste indefinidas.",
+
+    value:
+      "A qualidade começa na preparação da demanda, antes de qualquer implementação."
+  },
+
+  refinamento: {
+    number: "Etapa 02",
+    status: "Critério colaborativo",
+    title: "Refinamento colaborativo",
+
+    description:
+      "Produto, QA e Desenvolvimento analisam conjuntamente entendimento, viabilidade, testabilidade e riscos.",
+
+    objective:
+      "Construir um entendimento compartilhado sobre o que será desenvolvido e como a entrega poderá ser validada.",
+
+    participants:
+      "Produto, QA e Desenvolvimento, com responsabilidades complementares durante o refinamento.",
+
+    criteria: [
+      "História, regras e critérios de aceite revisados.",
+      "Testabilidade da demanda avaliada.",
+      "Pré-requisitos internos e externos revisados.",
+      "Viabilidade técnica analisada.",
+      "Dependências, riscos e impactos identificados.",
+      "Alinhamento realizado entre os participantes."
+    ],
+
+    evidence:
+      "Informações revisadas no backlog, decisões registradas e critérios aceitos pelo time.",
+
+    risk:
+      "Dúvidas funcionais ou técnicas descobertas apenas durante o desenvolvimento ou os testes.",
+
+    value:
+      "Antecipa riscos, melhora a testabilidade e distribui a responsabilidade pela qualidade."
+  },
+
+  execucao: {
+    number: "Etapa 03",
+    status: "Critério de execução",
+    title: "Execução comprometida",
+
+    description:
+      "Desenvolvimento e QA colaboram durante a construção, com testes do desenvolvedor, pair testing e testes de QA no ambiente de desenvolvimento, além da documentação dos resultados.",
+
+    objective:
+      "Validar a implementação ainda no ambiente de desenvolvimento, combinando testes técnicos, validações colaborativas e testes formais de QA com documentação dos resultados.",
+
+    participants:
+      "Desenvolvimento como responsável pela construção da solução, com apoio de QA nas validações em desenvolvimento e documentação dos testes.",
+
+    criteria: [
+      "Implementação realizada conforme os critérios definidos.",
+      "Testes do desenvolvedor executados.",
+      "Pair testing realizado quando aplicável.",
+      "Testes de QA executados no ambiente de desenvolvimento.",
+      "Resultados dos testes documentados.",
+      "Evidências da validação registradas.",
+      "Problemas identificados comunicados e tratados.",
+      "Correções aplicáveis validadas ainda em desenvolvimento."
+    ],
+
+    evidence:
+      "Resultados dos testes do desenvolvedor, registros do pair testing, documentação de QA em desenvolvimento, evidências funcionais e técnicas produzidas durante a execução.",
+
+    risk:
+      "A entrega avançar sem validação suficiente em desenvolvimento, sem documentação dos testes ou com falhas descobertas apenas em etapas posteriores.",
+
+    value:
+      "Antecipa defeitos, fortalece a colaboração entre Desenvolvimento e QA e mantém rastreabilidade das validações realizadas durante a construção."
+  },
+
+  revisao: {
+    number: "Etapa 04",
+    status: "Critério de saída",
+    title: "Revisão e validação",
+
+    description:
+      "Após a revisão técnica, o item passa por smoke tests e documentação no ambiente de homologação.",
+
+    objective:
+      "Confirmar o funcionamento da entrega no ambiente de homologação antes de sua liberação para os testes do solicitante.",
+
+    participants:
+      "Desenvolvimento e QA, com participação de Produto nos aceites e validações aplicáveis.",
+
+    criteria: [
+      "Desenvolvimento concluído.",
+      "Code review e pull request realizados.",
+      "Validações no ambiente de desenvolvimento concluídas.",
+      "Smoke tests executados no ambiente de homologação.",
+      "Resultados e evidências da homologação documentados.",
+      "Critérios de aceite avaliados.",
+      "Bugs aplicáveis corrigidos e retestados.",
+      "Informações necessárias para a liberação registradas."
+    ],
+
+    evidence:
+      "Resultados dos smoke tests, documentação de QA, evidências funcionais, registros de correções e informações de liberação.",
+
+    risk:
+      "O solicitante receber uma entrega sem validação mínima no ambiente de homologação ou sem evidências suficientes.",
+
+    value:
+      "Confirma a estabilidade básica da entrega em homologação e estabelece uma liberação controlada para o solicitante."
+  }
+};
+
+function getSelectedQualityStepIndex() {
+  return qualitySteps.findIndex((step) =>
+    step.classList.contains("is-selected")
+  );
+}
+
+function updateQualityNavigationButtons(index) {
+  if (!qualityPreviousButton || !qualityNextButton) {
+    return;
+  }
+
+  qualityPreviousButton.disabled = index === 0;
+
+  qualityNextButton.disabled =
+    index === qualitySteps.length - 1;
+}
+
+function updateQualityCriteria(criteria) {
+  if (!qualityPanelCriteria) {
+    return;
+  }
+
+  qualityPanelCriteria.innerHTML = "";
+
+  criteria.forEach((criterion) => {
+    const listItem = document.createElement("li");
+
+    listItem.textContent = criterion;
+
+    qualityPanelCriteria.appendChild(listItem);
+  });
+}
+
+function centerQualityStep(step) {
+  if (
+    !qualityFlow ||
+    !step ||
+    window.innerWidth <= 720
+  ) {
+    return;
+  }
+
+  const maximumScroll =
+    qualityFlow.scrollWidth -
+    qualityFlow.clientWidth;
+
+  if (maximumScroll <= 0) {
+    return;
+  }
+
+  const targetScroll =
+    step.offsetLeft -
+    (qualityFlow.clientWidth - step.offsetWidth) / 2;
+
+  qualityFlow.scrollTo({
+    left: Math.max(
+      0,
+      Math.min(targetScroll, maximumScroll)
+    ),
+    behavior: "smooth"
+  });
+}
+
+function selectQualityStep(
+  step,
+  shouldFocus = false
+) {
+  if (!step) {
+    return;
+  }
+
+  const stepKey = step.dataset.step;
+  const data = qualityStepData[stepKey];
+
+  if (!data) {
+    return;
+  }
+
+  qualitySteps.forEach((currentStep) => {
+    const isSelected = currentStep === step;
+
+    currentStep.classList.toggle(
+      "is-selected",
+      isSelected
+    );
+
+    currentStep.setAttribute(
+      "aria-pressed",
+      String(isSelected)
+    );
+  });
+
+  qualityPanelNumber.textContent =
+    data.number;
+
+  qualityPanelStatus.textContent =
+    data.status;
+
+  qualityPanelTitle.textContent =
+    data.title;
+
+  qualityPanelDescription.textContent =
+    data.description;
+
+  qualityPanelObjective.textContent =
+    data.objective;
+
+  qualityPanelParticipants.textContent =
+    data.participants;
+
+  qualityPanelEvidence.textContent =
+    data.evidence;
+
+  qualityPanelRisk.textContent =
+    data.risk;
+
+  qualityPanelValue.textContent =
+    data.value;
+
+  updateQualityCriteria(data.criteria);
+
+  const selectedIndex =
+    qualitySteps.indexOf(step);
+
+  updateQualityNavigationButtons(
+    selectedIndex
+  );
+
+  centerQualityStep(step);
+
+  if (shouldFocus) {
+    step.focus();
+  }
+}
+
+function selectQualityStepByIndex(
+  index,
+  shouldFocus = false
+) {
+  if (
+    index < 0 ||
+    index >= qualitySteps.length
+  ) {
+    return;
+  }
+
+  selectQualityStep(
+    qualitySteps[index],
+    shouldFocus
+  );
+}
+
+qualitySteps.forEach((step, index) => {
+  step.addEventListener("click", () => {
+    selectQualityStep(step);
+  });
+
+  step.addEventListener(
+    "keydown",
+    (event) => {
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+
+        selectQualityStepByIndex(
+          index + 1,
+          true
+        );
+      }
+
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+
+        selectQualityStepByIndex(
+          index - 1,
+          true
+        );
+      }
+
+      if (event.key === "Home") {
+        event.preventDefault();
+
+        selectQualityStepByIndex(
+          0,
+          true
+        );
+      }
+
+      if (event.key === "End") {
+        event.preventDefault();
+
+        selectQualityStepByIndex(
+          qualitySteps.length - 1,
+          true
+        );
+      }
+    }
+  );
+});
+
+if (qualityPreviousButton) {
+  qualityPreviousButton.addEventListener(
+    "click",
+    () => {
+      const selectedIndex =
+        getSelectedQualityStepIndex();
+
+      selectQualityStepByIndex(
+        selectedIndex - 1
+      );
+    }
+  );
+}
+
+if (qualityNextButton) {
+  qualityNextButton.addEventListener(
+    "click",
+    () => {
+      const selectedIndex =
+        getSelectedQualityStepIndex();
+
+      selectQualityStepByIndex(
+        selectedIndex + 1
+      );
+    }
+  );
+}
+
+function resetQualityFlow() {
+  if (
+    !qualityFlow ||
+    qualitySteps.length === 0
+  ) {
+    return;
+  }
+
+  qualityFlow.scrollLeft = 0;
+
+  selectQualityStep(
+    qualitySteps[0]
+  );
+}
+
+window.addEventListener(
+  "pageshow",
+  resetQualityFlow
+);
+
+resetQualityFlow();
