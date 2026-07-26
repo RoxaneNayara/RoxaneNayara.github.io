@@ -290,3 +290,19 @@
     padding: 1.1rem;
   }
 }
+
+
+/* AJUSTE FINAL MOBILE — CARDS DA LINHA EVOLUTIVA */
+
+@media (max-width: 900px) {
+  .timeline-item {
+    min-height: auto;
+    gap: 0.55rem;
+    padding: 1rem 1.1rem;
+  }
+
+  .timeline-item strong,
+  .timeline-item span {
+    align-self: start;
+  }
+}
