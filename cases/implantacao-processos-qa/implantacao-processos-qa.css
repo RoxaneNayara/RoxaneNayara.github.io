@@ -214,3 +214,102 @@
     text-align: left;
   }
 }
+
+/* ==================================================
+   V8 — INTERAÇÃO DEFINITIVA DOS CARDS
+   Seletores diretos, sem dependência de classes JS.
+================================================== */
+
+.implementation-card,
+.governance-card,
+.security-card,
+.autonomy-card,
+.metric-card,
+.quality-flow article,
+.evolution-item {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.implementation-card::before,
+.governance-card::before,
+.security-card::before,
+.autonomy-card::before,
+.metric-card::before,
+.quality-flow article::before,
+.evolution-item::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .implementation-card:hover,
+  .governance-card:hover,
+  .security-card:hover,
+  .autonomy-card:hover,
+  .metric-card:hover,
+  .quality-flow article:hover,
+  .evolution-item:hover {
+    transform: translateY(-8px) !important;
+    border-color: var(--accent) !important;
+    box-shadow:
+      0 0 0 1px var(--accent),
+      0 18px 40px rgba(75, 42, 82, 0.16) !important;
+    background:
+      color-mix(in srgb, var(--accent) 4%, var(--surface)) !important;
+  }
+
+  .implementation-card:hover::before,
+  .governance-card:hover::before,
+  .security-card:hover::before,
+  .autonomy-card:hover::before,
+  .metric-card:hover::before,
+  .quality-flow article:hover::before,
+  .evolution-item:hover::before {
+    transform: scaleY(1);
+  }
+}
+
+/* Feedback em dispositivos de toque */
+.implementation-card:active,
+.governance-card:active,
+.security-card:active,
+.autonomy-card:active,
+.metric-card:active,
+.quality-flow article:active,
+.evolution-item:active {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .implementation-card,
+  .governance-card,
+  .security-card,
+  .autonomy-card,
+  .metric-card,
+  .quality-flow article,
+  .evolution-item,
+  .implementation-card::before,
+  .governance-card::before,
+  .security-card::before,
+  .autonomy-card::before,
+  .metric-card::before,
+  .quality-flow article::before,
+  .evolution-item::before {
+    transition: none;
+  }
+}
