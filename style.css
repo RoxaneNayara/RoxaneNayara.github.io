@@ -75,6 +75,14 @@ html {
   scroll-behavior: smooth;
 }
 
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+
 body {
   min-height: 100vh;
   font-family:
@@ -352,7 +360,7 @@ a {
 }
 
 @media (max-width: 900px) {
-  .hero {
+.hero {
     grid-template-columns: 1fr;
     gap: 60px;
     padding-top: 60px;
@@ -412,6 +420,16 @@ a {
   color: var(--primary-dark);
   max-width: 980px;
 }
+
+
+.hero h1,
+.hero h2,
+.section-heading h2 {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
 
 .skills-section .section-heading h2 {
   max-width: 900px;
@@ -1994,6 +2012,19 @@ body.dark-theme .back-to-top:hover {
   }
 }
 
+/* Mantém o movimento dos cards após o reveal */
+
+.case-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+body.reveal-ready .case-card.reveal.is-visible:hover {
+  transform: translateY(-8px) scale(1.01);
+}
+
 /* ==================================================
    REVEAL GERAL
 ================================================== */
@@ -2098,4 +2129,25 @@ body.dark-theme .back-to-top:hover {
   #formacao article.reveal.is-visible:hover {
     transform: translateY(0);
   }
+}
+
+
+@media (max-width: 900px) {
+  .section-heading h2 {
+    font-size: clamp(2rem, 7vw, 3rem);
+  }
+}
+
+
+
+/* BORDAS ROSÉ PADRONIZADAS */
+
+.highlight-item,
+.about-card,
+.timeline-content,
+.case-card,
+.skill-card,
+.education-card,
+.course-card {
+  border-color: var(--accent);
 }
