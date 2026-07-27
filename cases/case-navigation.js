@@ -71,8 +71,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       event.preventDefault();
 
+      const visibleTarget =
+        target.querySelector(
+          ".case-section-heading, .case-hero-grid, .case-breadcrumb"
+        ) ?? target;
+
       const top =
-        target.getBoundingClientRect().top +
+        visibleTarget.getBoundingClientRect().top +
         window.scrollY -
         getOffset();
 
@@ -119,6 +124,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (active) {
         link.setAttribute("aria-current", "page");
+
+        const navigationRect =
+          navigation.getBoundingClientRect();
+        const linkRect =
+          link.getBoundingClientRect();
+
+        const isPartiallyHidden =
+          linkRect.left < navigationRect.left + 12 ||
+          linkRect.right > navigationRect.right - 12;
+
+        if (isPartiallyHidden) {
+          link.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "center"
+          });
+        }
       } else {
         link.removeAttribute("aria-current");
       }
