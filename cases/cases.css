@@ -2348,3 +2348,41 @@ body.dark-theme .traceability-panel-grid article {
     padding-bottom: 32px;
   }
 }
+
+/* CORREÇÃO DEFINITIVA DO VÃO — SOMENTE CASE 05 */
+
+#estrutura:has(+ #interacao .raci-demo) {
+  padding-bottom: 18px !important;
+}
+
+#interacao:has(.raci-demo) {
+  padding-top: 18px !important;
+}
+
+#estrutura:has(+ #interacao .raci-demo) .case-note {
+  margin-bottom: 0 !important;
+}
+
+#interacao:has(.raci-demo) .case-section-heading {
+  margin-top: 0 !important;
+}
+
+@media (max-width: 900px) {
+  #estrutura:has(+ #interacao .raci-demo) {
+    padding-bottom: 14px !important;
+  }
+
+  #interacao:has(.raci-demo) {
+    padding-top: 14px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  #estrutura:has(+ #interacao .raci-demo) {
+    padding-bottom: 10px !important;
+  }
+
+  #interacao:has(.raci-demo) {
+    padding-top: 10px !important;
+  }
+}
