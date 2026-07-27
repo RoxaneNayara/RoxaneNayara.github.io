@@ -78,7 +78,7 @@
       href="favicon.png?v=2"
     >
 
-  <link rel="stylesheet" href="style.css?v=26">
+  <link rel="stylesheet" href="style.css?v=27">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -91,6 +91,23 @@
 </head>
 
 <body>
+
+  <script>
+    (() => {
+      const savedTheme = localStorage.getItem("portfolio-theme");
+      const systemPrefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      const initialTheme =
+        savedTheme ?? (systemPrefersDark ? "dark" : "light");
+
+      document.body.classList.toggle(
+        "dark-theme",
+        initialTheme === "dark"
+      );
+    })();
+  </script>
+
 
   <div class="floating-particles" aria-hidden="true">
   <span style="--x: 6%; --size: 8px; --delay: 0s; --duration: 20s;"></span>
@@ -492,7 +509,7 @@
     </div>
 
     <div class="cases-grid">
-      <article class="case-card reveal">
+      <article id="case-01" class="case-card reveal">
         <span class="case-number">01</span>
         <h3>Diagnóstico AS-IS e Evolução da Maturidade de Testes</h3>
         <p>
@@ -506,7 +523,7 @@
         </a>
       </article>
 
-      <article class="case-card reveal">
+      <article id="case-02" class="case-card reveal">
         <span class="case-number">02</span>
         <h3>Implantação e Consolidação de Processos de QA</h3>
         <p>
@@ -520,7 +537,7 @@
         </a>
       </article>
 
-      <article class="case-card reveal">
+      <article id="case-03" class="case-card reveal">
         <span class="case-number">03</span>
         <h3>Azure DevOps e Rastreabilidade das Validações de QA</h3>
         <p>
@@ -534,7 +551,7 @@
         </a>
       </article>
 
-      <article class="case-card reveal">
+      <article id="case-04" class="case-card reveal">
         <span class="case-number">04</span>
         <h3>Critérios de Qualidade Compartilhados ao Longo do Fluxo</h3>
         <p>
@@ -548,7 +565,7 @@
         </a>
       </article>
 
-      <article class="case-card reveal">
+      <article id="case-05" class="case-card reveal">
         <span class="case-number">05</span>
         <h3>Matriz RACI para Governança e Responsabilidades no Fluxo de Qualidade</h3>
         <p>
@@ -562,7 +579,7 @@
         </a>
       </article>
 
-      <article class="case-card reveal">
+      <article id="case-06" class="case-card reveal">
         <span class="case-number">06</span>
         <h3>Avaliação de Aderência ao TMMi Nível 2 e Evolução da Governança de Testes</h3>
         <p>
@@ -576,7 +593,7 @@
         </a>
       </article>
 
-      <article class="case-card reveal">
+      <article id="case-07" class="case-card reveal">
         <span class="case-number">07</span>
         <h3>Da POC à Implantação de Testes Automatizados de API com Playwright</h3>
         <p>
@@ -590,7 +607,7 @@
         </a>
       </article>
 
-     <article class="case-card reveal">
+     <article id="case-08" class="case-card reveal">
         <span class="case-number">08</span>
       
         <h3>Onboarding de Quality Assurance para Novos Colaboradores de TI</h3>
@@ -607,7 +624,7 @@
         </a>
       </article>
       
-      <article class="case-card reveal">
+      <article id="case-09" class="case-card reveal">
         <span class="case-number">09</span>
       
         <h3>Cultura de Qualidade e Compartilhamento de Conhecimento em TI</h3>
@@ -625,7 +642,7 @@
         </a>
       </article>
       
-      <article class="case-card reveal">
+      <article id="case-10" class="case-card reveal">
         <span class="case-number">10</span>
       
         <h3>Liderança e Estruturação do Processo Seletivo de QA</h3>
@@ -642,7 +659,7 @@
           Ver case completo
         </a>
       </article>
-      <article class="case-card reveal">
+      <article id="case-11" class="case-card reveal">
   <span class="case-number">11</span>
   <h3>Estruturação de Framework Kanban Operacional</h3>
   <p>
@@ -657,7 +674,7 @@
   </a>
       </article>
       
-      <article class="case-card reveal">
+      <article id="case-12" class="case-card reveal">
         <span class="case-number">12</span>
         <h3>Agentes de Inteligência Artificial Aplicados à Qualidade de Software</h3>
         <p>
@@ -948,7 +965,7 @@
   </div>
 </footer>
 
-    <script src="script.js?v=19"></script>
+    <script src="script.js?v=20"></script>
   
 </body>
 </html>
