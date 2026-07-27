@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return (
       (header ? header.offsetHeight : 76) +
       navigation.offsetHeight +
-      14
+      28
     );
   }
 
