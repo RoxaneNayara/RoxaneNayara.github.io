@@ -2034,3 +2034,23 @@ body.dark-theme .traceability-panel-grid article {
     padding-top: 55px;
   }
 }
+
+
+
+/* AJUSTE FINAL DO MENU INTERNO */
+
+.case-navigation-inner {
+  width: 100%;
+  max-width: none;
+  padding-right: 24px;
+  padding-left: 24px;
+  scroll-padding-inline: 24px;
+}
+
+@media (max-width: 560px) {
+  .case-navigation-inner {
+    padding-right: 16px;
+    padding-left: 16px;
+    scroll-padding-inline: 16px;
+  }
+}
