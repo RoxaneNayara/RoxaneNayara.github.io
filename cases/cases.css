@@ -2397,3 +2397,40 @@ body.dark-theme.case-raci-page .raci-detail {
     padding-bottom: 34px;
   }
 }
+
+/* CORREÇÃO RESPONSIVA DOS HEROS — CASES 05 E 09 */
+
+@media (max-width: 620px) {
+  .case-hero-grid,
+  .case-hero-grid > *,
+  .case-summary {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .case-title {
+    max-width: 100%;
+    font-size: clamp(2.45rem, 12vw, 3.4rem);
+    line-height: 1.02;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    hyphens: auto;
+  }
+
+  .case-introduction,
+  .case-summary-list li,
+  .case-summary-list span {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .case-summary {
+    width: 100%;
+  }
+}
+
+@media (max-width: 390px) {
+  .case-title {
+    font-size: clamp(2.15rem, 11.5vw, 2.8rem);
+  }
+}
