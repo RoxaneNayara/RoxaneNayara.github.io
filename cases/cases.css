@@ -4,13 +4,13 @@
 ================================================== */
 
 .case-page {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* CAPA DO CASE */
 
 .case-hero {
-  padding: 40px 0 80px;
+  padding: 20px 0 72px;
 }
 
 .case-breadcrumb {
@@ -239,7 +239,7 @@ body.dark-theme .case-tags span {
 
 @media (max-width: 900px) {
   .case-hero {
-    padding: 36px 0 70px;
+    padding: 22px 0 64px;
   }
 
   .case-hero-grid {
@@ -254,7 +254,7 @@ body.dark-theme .case-tags span {
 
 @media (max-width: 560px) {
   .case-hero {
-    padding: 28px 0 64px;
+    padding: 18px 0 58px;
   }
 
   .case-title {
@@ -1308,9 +1308,12 @@ body.dark-theme .traceability-step.is-active {
 ================================================== */
 
 .case-navigation {
-  position: sticky;
+  position: fixed;
   top: 76px;
+  left: 0;
+  right: 0;
   z-index: 850;
+  width: 100%;
   border-bottom: 1px solid var(--border);
   background: rgba(250, 246, 250, 0.94);
   backdrop-filter: blur(14px);
@@ -1985,5 +1988,49 @@ body.dark-theme .quality-information-card {
   .quality-information-card,
   .quality-navigation-button {
     transition: none;
+  }
+}
+
+
+
+/* BORDAS ROSÉ FINAIS — PÁGINAS DE CASE */
+
+.case-summary,
+.case-content-card,
+.quality-information-card,
+.traceability-panel-grid article {
+  border-color: var(--accent);
+}
+
+body.dark-theme .case-summary,
+body.dark-theme .case-content-card,
+body.dark-theme .quality-information-card,
+body.dark-theme .traceability-panel-grid article {
+  border-color: var(--accent) !important;
+}
+
+
+
+
+
+/* MENU INTERNO FIXO DOS CASES */
+
+.case-page main {
+  padding-top: 61px;
+}
+
+.case-navigation {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .case-page main {
+    padding-top: 59px;
+  }
+}
+
+@media (max-width: 560px) {
+  .case-page main {
+    padding-top: 55px;
   }
 }
