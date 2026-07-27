@@ -2218,16 +2218,52 @@ main section[id] {
 
 
 
-/* AJUSTE DE ESPAÇAMENTO DA HERO */
+/* AJUSTES DEFINITIVOS — HERO, CASES E RETORNO */
+
+.hero {
+  min-height: auto;
+  padding-top: 42px;
+  padding-bottom: 70px;
+}
 
 .hero .eyebrow {
   margin-bottom: 8px;
 }
 
-
-
-/* AJUSTE DE ENTRADA DA SEÇÃO DE CASES */
-
 .cases-section {
-  padding-top: 82px;
+  padding-top: 72px;
+}
+
+.case-card {
+  scroll-margin-top: 112px;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    padding-top: 32px;
+    padding-bottom: 60px;
+  }
+
+  .cases-section {
+    padding-top: 62px;
+  }
+
+  .case-card {
+    scroll-margin-top: 104px;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero {
+    padding-top: 24px;
+    padding-bottom: 52px;
+  }
+
+  .cases-section {
+    padding-top: 54px;
+  }
+
+  .case-card {
+    scroll-margin-top: 96px;
+  }
 }
