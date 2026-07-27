@@ -51,8 +51,13 @@ document.addEventListener("DOMContentLoaded", () => {
   function scrollToTarget(target, updateHash = true) {
     if (!target) return;
 
+    const visibleTarget =
+      target.querySelector(
+        ".scroll-target, .section-heading, .contact-box"
+      ) ?? target;
+
     const top =
-      target.getBoundingClientRect().top +
+      visibleTarget.getBoundingClientRect().top +
       window.scrollY -
       getHeaderOffset();
 
@@ -327,13 +332,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!target) return;
 
     window.requestAnimationFrame(() => {
+      const top =
+        target.getBoundingClientRect().top +
+        window.scrollY -
+        getHeaderOffset() -
+        8;
+
       window.scrollTo({
-        top:
-          target.getBoundingClientRect().top +
-          window.scrollY -
-          getHeaderOffset(),
+        top,
         behavior: "auto"
       });
+
       target.classList.add("is-visible");
     });
   }
