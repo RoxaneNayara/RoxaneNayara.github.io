@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function getHeaderOffset() {
     const header = document.querySelector(".header");
-    return (header ? header.offsetHeight : 76) + 18;
+    return (header ? header.offsetHeight : 76) + 34;
   }
 
   function scrollToTarget(target, updateHash = true) {
