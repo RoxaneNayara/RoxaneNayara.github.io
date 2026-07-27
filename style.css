@@ -2215,3 +2215,19 @@ main section[id] {
     scroll-margin-top: 104px;
   }
 }
+
+
+
+/* AJUSTE DE ESPAÇAMENTO DA HERO */
+
+.hero .eyebrow {
+  margin-bottom: 8px;
+}
+
+
+
+/* AJUSTE DE ENTRADA DA SEÇÃO DE CASES */
+
+.cases-section {
+  padding-top: 82px;
+}
