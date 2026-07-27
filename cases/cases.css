@@ -2319,3 +2319,32 @@ body.dark-theme .traceability-panel-grid article {
     border-radius: 0.75rem;
   }
 }
+
+/* AJUSTE DE ESPAÇAMENTO — SOMENTE CASE 05 */
+
+.case-page:has(.raci-demo) #estrutura,
+.case-page:has(.raci-demo) #interacao {
+  padding-top: 72px;
+  padding-bottom: 48px;
+}
+
+.case-page:has(.raci-demo) #estrutura .case-note,
+.case-page:has(.raci-demo) #interacao .raci-note {
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .case-page:has(.raci-demo) #estrutura,
+  .case-page:has(.raci-demo) #interacao {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width: 560px) {
+  .case-page:has(.raci-demo) #estrutura,
+  .case-page:has(.raci-demo) #interacao {
+    padding-top: 48px;
+    padding-bottom: 32px;
+  }
+}
