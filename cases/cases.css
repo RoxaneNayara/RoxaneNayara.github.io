@@ -2374,3 +2374,26 @@ body.dark-theme.case-raci-page .raci-detail {
     padding-top: 34px;
   }
 }
+
+/* CASE 05 — RESPIRO FINAL DA DEMONSTRAÇÃO */
+
+.case-raci-page #interacao {
+  padding-bottom: 56px;
+}
+
+.case-raci-page #interacao > .container > .case-note:last-child {
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .case-raci-page #interacao {
+    padding-bottom: 44px;
+  }
+}
+
+@media (max-width: 560px) {
+  .case-raci-page #interacao {
+    padding-bottom: 34px;
+  }
+}
