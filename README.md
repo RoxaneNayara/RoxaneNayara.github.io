@@ -1,6 +1,6 @@
 <p align="center">
   <img
-    src="./docs/images/social-preview-site-roxane.jpg"
+    src="./docs/images/social-preview-site-roxane.png"
     alt="Roxane Nayara — QA Lead e Coordenadora de QA"
     width="100%"
   />
