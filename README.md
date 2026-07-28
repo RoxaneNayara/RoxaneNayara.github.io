@@ -169,21 +169,3 @@ Coordenadora de QA
 ## Direitos autorais
 
 © 2026 Roxane Nayara. Todos os direitos reservados.
-
-Este projeto foi desenvolvido para apresentação profissional e composição de portfólio.
-
-````
-
-No GitHub:
-
-```text
-Add file → Create new file
-````
-
-Nome do arquivo:
-
-```text
-README.md
-```
-
-Cole tudo de uma vez e faça o commit.
