@@ -69,7 +69,7 @@ A estrutura também deve incluir a nova pasta do banner:
 RoxaneNayara.github.io/
 ├── docs/
 │   └── images/
-│       └── banner-site-profissional.jpg
+│       └── social-preview-site-roxane.jpg
 ├── index.html
 ├── style.css
 ├── script.js
@@ -78,6 +78,7 @@ RoxaneNayara.github.io/
 ├── preview-portfolio.png
 ├── curriculo-roxane-nayara.pdf
 └── README.md
+```
 
 A estrutura pode variar conforme novas melhorias e arquivos sejam adicionados.
 
