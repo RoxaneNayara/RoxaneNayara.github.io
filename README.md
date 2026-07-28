@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/badge/QA%20Lead-Coordenadora%20de%20QA-8B4CCB" alt="QA Lead e Coordenadora de QA" />
   <img src="https://img.shields.io/badge/GitHub%20Pages-Publicado-2EA44F?logo=github" alt="Site publicado no GitHub Pages" />
   <img src="https://img.shields.io/badge/Responsivo-Desktop%20%7C%20Tablet%20%7C%20Mobile-6F42C1" alt="Layout responsivo" />
-  <img src="https://img.shields.io/badge/Acessibilidade-em%20evolução-blueviolet" alt="Acessibilidade em evolução" />
+  <img src="https://img.shields.io/badge/Acessibilidade-recursos%20implementados-blueviolet" alt="Recursos de acessibilidade implementados" />
   <img src="https://img.shields.io/badge/HTML%20%7C%20CSS%20%7C%20JavaScript-Sem%20frameworks-orange" alt="HTML CSS e JavaScript" />
 </p>
 
