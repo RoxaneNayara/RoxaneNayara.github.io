@@ -1,15 +1,15 @@
-# Portfólio Profissional — Roxane Nayara
+<p align="center">
+  <img
+    src="./docs/images/banner-site-profissional.jpg"
+    alt="Roxane Nayara — QA Lead e Coordenadora de QA"
+    width="100%"
+  />
+</p>
 
-Site portfólio profissional desenvolvido para apresentar minha trajetória como Coordenadora de QA, minhas competências, experiências e projetos relacionados à qualidade de software, processos, governança e melhoria contínua.
-
-🔗 **Acesse o site:**  
-https://roxanenayara.github.io/
-
----
 
 ## Sobre o projeto
 
-Este portfólio foi criado para reunir, em um único espaço, informações sobre minha atuação profissional em Quality Assurance.
+Este portfólio foi criado para reunir, em um único espaço, informações sobre minha atuação em **liderança de QA e coordenação de Qualidade de Software**.
 
 O conteúdo apresenta minha experiência com:
 
@@ -62,8 +62,14 @@ O projeto foi desenvolvido sem frameworks, utilizando HTML, CSS e JavaScript pur
 
 ## Estrutura do projeto
 
+
+A estrutura também deve incluir a nova pasta do banner:
+
 ```text
 RoxaneNayara.github.io/
+├── docs/
+│   └── images/
+│       └── banner-site-profissional.jpg
 ├── index.html
 ├── style.css
 ├── script.js
@@ -72,7 +78,6 @@ RoxaneNayara.github.io/
 ├── preview-portfolio.png
 ├── curriculo-roxane-nayara.pdf
 └── README.md
-````
 
 A estrutura pode variar conforme novas melhorias e arquivos sejam adicionados.
 
@@ -86,13 +91,13 @@ Os cases profissionais apresentados no site estão documentados em um repositór
 
 Entre os temas abordados estão:
 
-1. Diagnóstico AS-IS e maturidade de QA
+1. Diagnóstico AS-IS e maturidade de testes
 2. Implantação de processos de QA
 3. Azure DevOps e rastreabilidade
 4. Definition of Done
 5. Matriz RACI e governança
 6. TMMi e maturidade de testes
-7. POC de automação com Playwright
+7. POC de Automação com Playwright
 8. Onboarding e capacitação de QA
 9. Cultura de qualidade e compartilhamento de conhecimento
 10. Liderança e processo seletivo de QA
@@ -150,18 +155,19 @@ O projeto inclui cuidados como:
 
 ## Próximas evoluções
 
-* execução de testes finais de responsividade;
-* revisão de acessibilidade;
-* otimização de imagens e desempenho;
-* acompanhamento de métricas de acesso;
-* melhorias contínuas de conteúdo e experiência.
+- acompanhamento contínuo de responsividade e acessibilidade;
+- otimização de imagens e desempenho;
+- acompanhamento de métricas de acesso;
+- atualização de conteúdos, cases e projetos;
+- melhorias contínuas de experiência e manutenção.
 
 ---
 
 ## Contato
 
 **Roxane Nayara**
-Coordenadora de QA
+
+QA Lead | Coordenadora de QA
 
 * LinkedIn: [https://www.linkedin.com/in/roxanenayara](https://www.linkedin.com/in/roxanenayara)
 * GitHub: [https://github.com/RoxaneNayara](https://github.com/RoxaneNayara)
@@ -172,3 +178,5 @@ Coordenadora de QA
 ## Direitos autorais
 
 © 2026 Roxane Nayara. Todos os direitos reservados.
+
+Este projeto foi desenvolvido para apresentação profissional e composição de portfólio. A reprodução, distribuição ou utilização do conteúdo e da identidade visual deve ser previamente autorizada.
