@@ -23,7 +23,8 @@ O conteúdo apresenta minha experiência com:
 - Azure DevOps;
 - documentação e evidências de testes;
 - onboarding e cultura de qualidade;
-- automação de testes com Playwright e C#;
+- participação em POC profissional de automação com Playwright e C#;
+- projeto autoral de automação Web com Playwright e TypeScript;
 - melhoria contínua.
 
 ---
@@ -95,6 +96,8 @@ Entre os temas abordados estão:
 8. Onboarding e capacitação de QA
 9. Cultura de qualidade e compartilhamento de conhecimento
 10. Liderança e processo seletivo de QA
+11. Framework Kanban Operacional
+12. Configuração de Agente de IA Especializado em Qualidade de Software
 
 ---
 
