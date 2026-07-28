@@ -869,9 +869,10 @@ a {
 
 .education-content {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 60px;
-  margin-top: 70px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px;
+  margin-top: 56px;
+  align-items: start;
 }
 
 .education-column {
@@ -888,16 +889,24 @@ a {
 
 .education-list,
 .course-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 18px;
+}
+
+.education-list {
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+.course-list {
+  grid-template-rows: repeat(3, minmax(0, 1fr));
 }
 
 .education-card {
   display: grid;
   grid-template-columns: 75px 1fr;
   gap: 22px;
-  min-height: 210px;
+  min-height: 0;
+  height: 100%;
   padding: 28px;
   border: 1px solid var(--border);
   border-radius: 24px;
@@ -949,7 +958,8 @@ a {
   grid-template-columns: 52px 1fr;
   gap: 20px;
   align-items: start;
-  min-height: 110px;
+  min-height: 0;
+  height: 100%;
   padding: 24px;
   border: 1px solid var(--border);
   border-radius: 22px;
@@ -2219,8 +2229,22 @@ main section[id] {
 .hero h2,
 .section-heading h2 {
   max-width: 100%;
-  overflow-wrap: anywhere;
-  hyphens: auto;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+@media (min-width: 901px) {
+  .section-heading h2 {
+    font-size: clamp(2.8rem, 4vw, 4.6rem);
+    line-height: 1.05;
+    max-width: 1050px;
+  }
+
+  .experience-section .section-heading h2,
+  .skills-section .section-heading h2 {
+    max-width: 1100px;
+  }
 }
 
 @media (max-width: 900px) {
