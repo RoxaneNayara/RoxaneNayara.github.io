@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
           link.scrollIntoView({
             behavior: "smooth",
             block: "nearest",
-            inline: "center"
+            inline: "nearest"
           });
         }
       } else {
