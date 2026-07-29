@@ -190,12 +190,12 @@
 .action-columns {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  align-items: start;
+  align-items: stretch;
   gap: 1rem;
 }
 
 .action-card {
-  height: auto;
+  height: 100%;
   min-height: 0;
 }
 
