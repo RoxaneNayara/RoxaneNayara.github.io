@@ -177,6 +177,27 @@
   const progressCountElement = document.querySelector("#tmmi-progress-count");
   const evolutionElement = document.querySelector("#tmmi-evolution-text");
 
+  const detailElement =
+  titleElement.closest(".tmmi-detail") ||
+  goalsElement.parentElement;
+
+  const controlsElement =
+    document.createElement("div");
+  
+  controlsElement.className = "tmmi-controls";
+  
+  controlsElement.setAttribute(
+    "aria-label",
+    "Navegação entre áreas de processo"
+  );
+  
+  if (detailElement) {
+    detailElement.insertAdjacentElement(
+      "beforeend",
+      controlsElement
+    );
+  }
+
   if (
     !areasElement ||
     !codeElement ||
@@ -275,9 +296,45 @@
       .join("");
   }
 
+  function renderControls() {
+  const area = tmmiData[selectedAreaIndex];
+
+  controlsElement.innerHTML = `
+    <button
+      class="tmmi-control-button"
+      type="button"
+      data-tmmi-direction="previous"
+      ${selectedAreaIndex === 0 ? "disabled" : ""}
+    >
+      ← Anterior
+    </button>
+
+    <span class="tmmi-control-status">
+      ${area.code}
+      ·
+      ${selectedAreaIndex + 1} de
+      ${tmmiData.length}
+    </span>
+
+    <button
+      class="tmmi-control-button"
+      type="button"
+      data-tmmi-direction="next"
+      ${
+        selectedAreaIndex === tmmiData.length - 1
+          ? "disabled"
+          : ""
+      }
+    >
+      Próximo →
+    </button>
+  `;
+}
+
   function render() {
     renderAreas();
     renderArea();
+    renderControls();
   }
 
   areasElement.addEventListener("click", (event) => {
@@ -290,6 +347,37 @@
     selectedAreaIndex = Number(button.dataset.areaIndex);
     render();
   });
+
+  controlsElement.addEventListener(
+    "click",
+    (event) => {
+      const button = event.target.closest(
+        "[data-tmmi-direction]"
+      );
+  
+      if (!button || button.disabled) {
+        return;
+      }
+  
+      const direction =
+        button.dataset.tmmiDirection;
+  
+      const newIndex =
+        direction === "next"
+          ? selectedAreaIndex + 1
+          : selectedAreaIndex - 1;
+  
+      if (
+        newIndex < 0 ||
+        newIndex >= tmmiData.length
+      ) {
+        return;
+      }
+  
+      selectedAreaIndex = newIndex;
+      render();
+    }
+  );
 
   render();
 })();
