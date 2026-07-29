@@ -637,7 +637,6 @@
       }
 
       render();
-      scrollToDetail();
     }
   );
 
