@@ -494,3 +494,17 @@ body.reveal-ready .evolution-demo.reveal.is-visible .evolution-item:hover::befor
     justify-self: stretch;
   }
 }
+
+/* CASE 02 — CONTROLES SOMENTE EM TELAS RESPONSIVAS */
+
+@media (min-width: 901px) {
+  .evolution-demo .evolution-controls {
+    display: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .evolution-demo .evolution-controls {
+    display: grid !important;
+  }
+}
