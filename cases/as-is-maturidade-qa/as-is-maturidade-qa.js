@@ -211,8 +211,10 @@ function scrollToPanel() {
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-  const panelElement =
-    titleElement.closest(".timeline-panel");
+const panelElement =
+  titleElement
+    .closest(".timeline-panel")
+    ?.querySelector(".timeline-label");
 
   if (!panelElement) {
     return;
@@ -227,7 +229,7 @@ function scrollToPanel() {
   const offset =
     (header?.offsetHeight ?? 76) +
     (caseNavigation?.offsetHeight ?? 0) +
-    48;
+    24;
 
   const top =
     panelElement.getBoundingClientRect().top +
