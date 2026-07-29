@@ -237,3 +237,102 @@
     outline-offset: 3px;
   }
 }
+
+.axis-controls {
+  display: none;
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto
+    minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.axis-control-button {
+  min-height: 2.9rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  color: var(--primary);
+  background: var(--surface);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 800;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.axis-control-button:first-child {
+  justify-self: start;
+}
+
+.axis-control-button:last-child {
+  justify-self: end;
+}
+
+.axis-control-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  background: var(--surface-soft);
+}
+
+.axis-control-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.axis-control-button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.axis-control-status {
+  color: var(--text-soft);
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-align: center;
+  white-space: nowrap;
+  margin: 0;
+}
+
+/* tablet e celular */
+@media (max-width: 1024px) {
+  .axis-controls {
+    display: grid;
+  }
+}
+
+/* celular */
+@media (max-width: 640px) {
+  .axis-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .axis-control-status {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+    width: 100%;
+  }
+
+  .axis-control-button {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.7rem 0.65rem;
+    border-radius: 0.9rem;
+    font-size: 0.82rem;
+  }
+
+  .axis-control-button:first-child,
+  .axis-control-button:last-child {
+    justify-self: stretch;
+  }
+}
