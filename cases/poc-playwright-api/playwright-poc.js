@@ -184,22 +184,6 @@
   const currentStateElement =
     document.querySelector("#poc-current-state");
 
-  const comparisonControlsElement =
-  document.createElement("div");
-
-comparisonControlsElement.className =
-  "poc-comparison-controls";
-
-comparisonControlsElement.setAttribute(
-  "aria-label",
-  "Navegação entre critérios da comparação"
-);
-
-comparisonCardsElement.insertAdjacentElement(
-  "afterend",
-  comparisonControlsElement
-);
-
   if (
     viewButtons.length === 0 ||
     !comparisonView ||
@@ -212,6 +196,22 @@ comparisonCardsElement.insertAdjacentElement(
   ) {
     return;
   }
+
+    const comparisonControlsElement =
+    document.createElement("div");
+  
+  comparisonControlsElement.className =
+    "poc-comparison-controls";
+  
+  comparisonControlsElement.setAttribute(
+    "aria-label",
+    "Navegação entre critérios da comparação"
+  );
+  
+  comparisonCardsElement.insertAdjacentElement(
+    "afterend",
+    comparisonControlsElement
+  );
 
   let selectedCriterionIndex = 0;
 
@@ -376,9 +376,7 @@ comparisonCardsElement.insertAdjacentElement(
   }
 
     function renderSelectedComparison() {
-    renderCriteria();
-    renderComparison();
-    renderComparisonControls();
+    renderSelectedComparison();
   }
 
     function scrollToComparisonStart() {
@@ -410,6 +408,41 @@ comparisonCardsElement.insertAdjacentElement(
         : "smooth"
     });
   }
+
+    comparisonControlsElement.addEventListener(
+    "click",
+    (event) => {
+      const button = event.target.closest(
+        "[data-comparison-direction]"
+      );
+  
+      if (!button || button.disabled) {
+        return;
+      }
+  
+      const direction =
+        button.dataset.comparisonDirection;
+  
+      const newIndex =
+        direction === "next"
+          ? selectedCriterionIndex + 1
+          : selectedCriterionIndex - 1;
+  
+      if (
+        newIndex < 0 ||
+        newIndex >= comparisonData.length
+      ) {
+        return;
+      }
+  
+      selectedCriterionIndex = newIndex;
+      renderSelectedComparison();
+  
+      requestAnimationFrame(() => {
+        scrollToComparisonStart();
+      });
+    }
+  );
 
   renderSelectedComparison();
   renderEvolution();
