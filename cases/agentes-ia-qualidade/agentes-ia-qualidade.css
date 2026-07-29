@@ -438,7 +438,6 @@
 
 /* CASE 12 — CONTEXTO E NAVEGAÇÃO DAS SIMULAÇÕES */
 
-.simulation-mobile-context,
 .simulation-controls {
   display: none;
 }
@@ -522,17 +521,6 @@
     text-align: left;
   }
 
-  .simulation-agent-button::before {
-    display: block;
-    margin-bottom: 0.25rem;
-    color: var(--accent);
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    content: "Agente";
-  }
-
   .simulation-questions {
     gap: 0.75rem;
   }
@@ -551,41 +539,6 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
     content: "Pergunta";
-  }
-
-  .simulation-mobile-context {
-    display: grid;
-    gap: 0.25rem;
-    margin-bottom: 1rem;
-    padding: 0.9rem 1rem;
-    border: 1px solid var(--border);
-    border-radius: 0.9rem;
-    background:
-      color-mix(
-        in srgb,
-        var(--accent) 7%,
-        var(--surface)
-      );
-  }
-
-  .simulation-mobile-context p {
-    margin: 0;
-    color: var(--accent);
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-  }
-
-  .simulation-mobile-context strong {
-    color: var(--text);
-    font-size: 1rem;
-  }
-
-  .simulation-mobile-context span {
-    color: var(--text-soft);
-    font-size: 0.82rem;
-    font-weight: 700;
   }
 
   .simulation-controls {
@@ -616,5 +569,28 @@
   .simulation-control-button:first-child,
   .simulation-control-button:last-child {
     justify-self: stretch;
+  }
+
+  /* AGENTE SELECIONADO — DESTAQUE DIFERENTE DA PERGUNTA */
+
+  .simulation-agent-button.is-selected {
+    border-color: var(--accent);
+    background:
+      color-mix(
+        in srgb,
+        var(--accent) 20%,
+        var(--surface)
+      );
+    color: var(--text);
+  }
+  
+  .simulation-question-button.is-selected {
+    border-color: var(--accent);
+    background:
+      color-mix(
+        in srgb,
+        var(--accent) 9%,
+        var(--surface)
+      );
   }
 }
