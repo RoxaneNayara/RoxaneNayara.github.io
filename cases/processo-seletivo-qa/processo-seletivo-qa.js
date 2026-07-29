@@ -64,6 +64,22 @@
     return;
   }
 
+  const controlsElement =
+    document.createElement("div");
+
+  controlsElement.className =
+    "selection-controls";
+
+  controlsElement.setAttribute(
+    "aria-label",
+    "Navegação entre eixos da avaliação técnica"
+  );
+
+  cardsElement.insertAdjacentElement(
+    "afterend",
+    controlsElement
+  );
+
   let selectedIndex = 0;
 
   function renderAreas() {
@@ -71,10 +87,16 @@
       .map(
         (item, index) => `
           <button
-            class="selection-area-button${index === selectedIndex ? " is-selected" : ""}"
+            class="selection-area-button${
+              index === selectedIndex
+                ? " is-selected"
+                : ""
+            }"
             type="button"
             role="tab"
-            aria-selected="${index === selectedIndex}"
+            aria-selected="${
+              index === selectedIndex
+            }"
             data-selection-index="${index}"
           >
             ${item.title}
@@ -100,28 +122,154 @@
         <span>${item.method}</span>
       </article>
 
-      <article class="selection-info-card selection-info-card-highlight">
+      <article
+        class="selection-info-card
+          selection-info-card-highlight"
+      >
         <p>Como atuei</p>
         <span>${item.action}</span>
       </article>
     `;
   }
 
-  areasElement.addEventListener("click", (event) => {
-    const button =
-      event.target.closest("[data-selection-index]");
+  function renderControls() {
+    controlsElement.innerHTML = `
+      <button
+        class="selection-control-button"
+        type="button"
+        data-selection-direction="previous"
+        ${selectedIndex === 0 ? "disabled" : ""}
+      >
+        ← Anterior
+      </button>
 
-    if (!button) {
+      <span class="selection-control-status">
+        Eixo ${selectedIndex + 1}
+        de ${selectionData.length}
+      </span>
+
+      <button
+        class="selection-control-button"
+        type="button"
+        data-selection-direction="next"
+        ${
+          selectedIndex === selectionData.length - 1
+            ? "disabled"
+            : ""
+        }
+      >
+        Próximo →
+      </button>
+    `;
+  }
+
+  function render() {
+    renderAreas();
+    renderPanel();
+    renderControls();
+  }
+
+  function scrollToSelectedAxis() {
+    if (
+      !window.matchMedia(
+        "(max-width: 1024px)"
+      ).matches
+    ) {
       return;
     }
 
-    selectedIndex =
-      Number(button.dataset.selectionIndex);
+    const prefersReducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
 
-    renderAreas();
-    renderPanel();
-  });
+    const header =
+      document.querySelector(".header");
 
-  renderAreas();
-  renderPanel();
+    const caseNavigation =
+      document.querySelector(
+        ".case-navigation"
+      );
+
+    const selectedLabel =
+      titleElement.previousElementSibling;
+
+    const targetElement =
+      selectedLabel instanceof HTMLElement
+        ? selectedLabel
+        : titleElement;
+
+    const offset =
+      (header?.offsetHeight ?? 76) +
+      (caseNavigation?.offsetHeight ?? 0) +
+      24;
+
+    const top =
+      targetElement.getBoundingClientRect().top +
+      window.scrollY -
+      offset;
+
+    window.scrollTo({
+      top,
+      behavior: prefersReducedMotion
+        ? "auto"
+        : "smooth"
+    });
+  }
+
+  areasElement.addEventListener(
+    "click",
+    (event) => {
+      const button = event.target.closest(
+        "[data-selection-index]"
+      );
+
+      if (!button) {
+        return;
+      }
+
+      selectedIndex = Number(
+        button.dataset.selectionIndex
+      );
+
+      render();
+    }
+  );
+
+  controlsElement.addEventListener(
+    "click",
+    (event) => {
+      const button = event.target.closest(
+        "[data-selection-direction]"
+      );
+
+      if (!button || button.disabled) {
+        return;
+      }
+
+      const direction =
+        button.dataset.selectionDirection;
+
+      const newIndex =
+        direction === "next"
+          ? selectedIndex + 1
+          : selectedIndex - 1;
+
+      if (
+        newIndex < 0 ||
+        newIndex >= selectionData.length
+      ) {
+        return;
+      }
+
+      selectedIndex = newIndex;
+      render();
+
+      requestAnimationFrame(() => {
+        scrollToSelectedAxis();
+      });
+    }
+  );
+
+  render();
 })();
