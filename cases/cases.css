@@ -1560,7 +1560,7 @@ body.dark-theme .case-navigation a.is-active {
   gap: 16px;
   min-height: 148px;
   padding: 20px;
-  border: 2px solid rgba(177, 112, 153, 0.38);
+  border: 1px solid var(--border);
   border-radius: 20px;
   cursor: pointer;
   scroll-snap-align: center;
@@ -1583,6 +1583,8 @@ body.dark-theme .case-navigation a.is-active {
 }
 
 .quality-step.is-selected {
+  border-color: var(--accent);
+  border-width: 2px;
   background:
     linear-gradient(
       145deg,
