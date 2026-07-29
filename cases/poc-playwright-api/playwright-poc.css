@@ -245,21 +245,28 @@
 
   .poc-criteria,
   #poc-criteria {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.65rem;
   }
-
+  
   .poc-criterion-button {
-    width: auto;
-    min-height: 0;
-    flex: 0 1 auto;
-    padding: 0.65rem 0.9rem;
-    border-radius: 999px;
+    width: 100%;
+    min-height: 3.5rem;
+    padding: 0.65rem 0.75rem;
+    border-radius: 0.85rem;
     text-align: center;
     white-space: normal;
+    line-height: 1.25;
   }
 
+    @media (max-width: 360px) {
+    .poc-criteria,
+    #poc-criteria {
+      grid-template-columns: 1fr;
+    }
+  }
+  
   .poc-result-card span,
   .poc-timeline-item p,
   .poc-state-card p {
