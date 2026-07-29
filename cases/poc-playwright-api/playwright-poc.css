@@ -85,7 +85,7 @@
 
 .poc-comparison-cards {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
 }
 
@@ -198,8 +198,15 @@
   margin-top: 1.5rem;
 }
 
+/* RESULTADO DO CRITÉRIO */
+
+.poc-result-card-conclusion {
+  grid-column: 1 / -1;
+}
+
+/* TABLET */
+
 @media (max-width: 980px) {
-  .poc-comparison-cards,
   .poc-state-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -209,54 +216,11 @@
   }
 }
 
-.poc-criteria {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem;
-}
-
-.poc-criterion-button {
-  width: auto;
-  flex: 0 1 auto;
-  padding: 0.65rem 0.9rem;
-  border-radius: 999px;
-  text-align: center;
-}
-
-  .poc-result-card span,
-  .poc-timeline-item p,
-  .poc-state-card p {
-    font-size: 0.92rem;
-  }
-}
-
-/* CRITÉRIOS — MANTER BOTÕES COMPACTOS */
-
-#poc-criteria {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-}
-
-.poc-criterion-button {
-  width: auto;
-  min-height: 0;
-  padding: 0.7rem 1rem;
-  border-radius: 999px;
-  white-space: normal;
-}
-
-/* RESULTADO DO CRITÉRIO */
-
-.poc-result-card-conclusion {
-  grid-column: 1 / -1;
-}
+/* CELULAR E TELAS INTERMEDIÁRIAS */
 
 @media (max-width: 760px) {
-  #poc-comparison-cards {
-    display: grid;
+  .poc-comparison-cards {
     grid-template-columns: 1fr;
-    gap: 1rem;
   }
 
   .poc-result-card,
@@ -264,7 +228,22 @@
     grid-column: auto;
     width: 100%;
   }
+}
 
+/* CELULAR MENOR */
+
+@media (max-width: 560px) {
+  .poc-demo {
+    padding: 0.9rem;
+  }
+
+  .poc-view-tabs,
+  .poc-state-grid,
+  .poc-timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .poc-criteria,
   #poc-criteria {
     display: flex;
     flex-wrap: wrap;
@@ -273,7 +252,17 @@
 
   .poc-criterion-button {
     width: auto;
+    min-height: 0;
     flex: 0 1 auto;
     padding: 0.65rem 0.9rem;
+    border-radius: 999px;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .poc-result-card span,
+  .poc-timeline-item p,
+  .poc-state-card p {
+    font-size: 0.92rem;
   }
 }
