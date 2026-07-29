@@ -495,41 +495,42 @@
     renderControls();
   }
 
-  function scrollToDetail() {
-    if (!detailElement) {
-      return;
-    }
+ function scrollToDetail() {
+  const activitiesPanel =
+    document.querySelector(".raci-activities-panel");
 
-    const prefersReducedMotion =
-      window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches;
-
-    const header =
-      document.querySelector(".header");
-
-    const caseNavigation =
-      document.querySelector(
-        ".case-navigation"
-      );
-
-    const offset =
-      (header?.offsetHeight ?? 76) +
-      (caseNavigation?.offsetHeight ?? 0) +
-      24;
-
-    const top =
-      detailElement.getBoundingClientRect().top +
-      window.scrollY -
-      offset;
-
-    window.scrollTo({
-      top,
-      behavior: prefersReducedMotion
-        ? "auto"
-        : "smooth",
-    });
+  if (!activitiesPanel) {
+    return;
   }
+
+  const prefersReducedMotion =
+    window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+  const header =
+    document.querySelector(".header");
+
+  const caseNavigation =
+    document.querySelector(".case-navigation");
+
+  const offset =
+    (header?.offsetHeight ?? 76) +
+    (caseNavigation?.offsetHeight ?? 0) +
+    24;
+
+  const top =
+    activitiesPanel.getBoundingClientRect().top +
+    window.scrollY -
+    offset;
+
+  window.scrollTo({
+    top,
+    behavior: prefersReducedMotion
+      ? "auto"
+      : "smooth"
+  });
+}
 
   function moveToPreviousActivity() {
     if (selectedActivityIndex > 0) {
