@@ -229,7 +229,7 @@
     const offset =
       (header?.offsetHeight ?? 76) +
       (navigation?.offsetHeight ?? 0) +
-      20;
+      48;
 
     const top =
       panelElement.getBoundingClientRect().top +
