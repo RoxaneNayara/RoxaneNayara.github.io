@@ -2183,8 +2183,7 @@ body.reveal-ready .case-card.reveal.is-visible:hover {
 }
 
 
-
-/* BORDAS ROSÉ PADRONIZADAS */
+/* BORDAS INTERATIVAS — HOME */
 
 .highlight-item,
 .about-card,
@@ -2193,21 +2192,17 @@ body.reveal-ready .case-card.reveal.is-visible:hover {
 .skill-card,
 .education-card,
 .course-card {
-  border-color: var(--accent);
+  border: 1px solid var(--border);
 }
 
-
-
-/* BORDAS ROSÉ FINAIS — HOME */
-
-.highlight-item,
-.about-card,
-.timeline-content,
-.case-card,
-.skill-card,
-.education-card,
-.course-card {
-  border: 1px solid var(--accent);
+.highlight-item:hover,
+.about-card:hover,
+.timeline-content:hover,
+.case-card:hover,
+.skill-card:hover,
+.education-card:hover,
+.course-card:hover {
+  border-color: var(--accent);
 }
 
 body.dark-theme .highlight-item,
@@ -2217,6 +2212,16 @@ body.dark-theme .case-card,
 body.dark-theme .skill-card,
 body.dark-theme .education-card,
 body.dark-theme .course-card {
+  border-color: var(--border) !important;
+}
+
+body.dark-theme .highlight-item:hover,
+body.dark-theme .about-card:hover,
+body.dark-theme .timeline-content:hover,
+body.dark-theme .case-card:hover,
+body.dark-theme .skill-card:hover,
+body.dark-theme .education-card:hover,
+body.dark-theme .course-card:hover {
   border-color: var(--accent) !important;
 }
 
