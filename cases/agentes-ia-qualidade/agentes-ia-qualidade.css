@@ -530,17 +530,6 @@
     text-align: left;
   }
 
-  .simulation-question-button::before {
-    display: block;
-    margin-bottom: 0.25rem;
-    color: var(--accent);
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    content: "Pergunta";
-  }
-
   .simulation-controls {
     grid-template-columns:
       repeat(2, minmax(0, 1fr));
@@ -556,6 +545,7 @@
     overflow: hidden;
     font-size: 0.8rem;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .simulation-control-button {
@@ -571,7 +561,7 @@
     justify-self: stretch;
   }
 
-  /* AGENTE SELECIONADO — DESTAQUE DIFERENTE DA PERGUNTA */
+  /* Agente selecionado — destaque mais forte */
 
   .simulation-agent-button.is-selected {
     border-color: var(--accent);
@@ -583,7 +573,9 @@
       );
     color: var(--text);
   }
-  
+
+  /* Pergunta selecionada — destaque mais suave */
+
   .simulation-question-button.is-selected {
     border-color: var(--accent);
     background:
