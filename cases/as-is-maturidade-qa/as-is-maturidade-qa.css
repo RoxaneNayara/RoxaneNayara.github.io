@@ -230,32 +230,26 @@
   }
 
   .action-columns {
-    align-items: start;
-    gap: 0.8rem;
+    gap: 0.7rem;
   }
 
   .action-card {
-    height: auto;
+    height: 100%;
     min-height: 0;
-    padding: 1rem;
+    padding: 0.95rem 1rem;
   }
 
   .action-card h3 {
-    margin-bottom: 0.55rem;
+    margin-bottom: 0.45rem;
   }
 
   .action-card ul {
-    gap: 0.4rem;
+    gap: 0.25rem;
   }
 
-  .timeline-tabs {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .action-card li {
+    line-height: 1.35;
   }
-
-  .timeline-items {
-    grid-template-columns: 1fr;
-  }
-}
 
   .timeline-tabs {
     grid-template-columns: repeat(2, minmax(0, 1fr));
