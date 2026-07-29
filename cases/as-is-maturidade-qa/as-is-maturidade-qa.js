@@ -178,7 +178,7 @@
         data-timeline-direction="previous"
         ${isFirst ? "disabled" : ""}
       >
-        ← Período anterior
+        ← Anterior
       </button>
 
       <span class="timeline-control-status">
@@ -194,7 +194,7 @@
         data-timeline-direction="next"
         ${isLast ? "disabled" : ""}
       >
-        Próximo período →
+        Próximo →
       </button>
     `;
   }
