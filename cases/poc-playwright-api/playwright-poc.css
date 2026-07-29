@@ -367,3 +367,9 @@
     justify-self: stretch;
   }
 }
+
+@media (min-width: 981px) {
+  .poc-comparison-controls {
+    display: none;
+  }
+}
