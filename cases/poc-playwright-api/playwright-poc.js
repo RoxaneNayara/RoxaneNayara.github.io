@@ -329,121 +329,128 @@
     });
   });
 
-  criteriaElement.addEventListener("click", (event) => {
-    const button =
-      event.target.closest("[data-criterion-index]");
+  criteriaElement.addEventListener(
+  "click",
+  (event) => {
+    const button = event.target.closest(
+      "[data-criterion-index]"
+    );
 
     if (!button) {
       return;
     }
 
-    selectedCriterionIndex =
-      Number(button.dataset.criterionIndex);
+    selectedCriterionIndex = Number(
+      button.dataset.criterionIndex
+    );
 
-    renderCriteria();
-    renderComparison();
-  });
-  
-    function renderComparisonControls() {
-    comparisonControlsElement.innerHTML = `
-      <button
-        class="poc-comparison-control-button"
-        type="button"
-        data-comparison-direction="previous"
-        ${selectedCriterionIndex === 0 ? "disabled" : ""}
-      >
-        ← Anterior
-      </button>
-  
-      <span class="poc-comparison-control-status">
-        Critério ${selectedCriterionIndex + 1}
-        de ${comparisonData.length}
-      </span>
-  
-      <button
-        class="poc-comparison-control-button"
-        type="button"
-        data-comparison-direction="next"
-        ${
-          selectedCriterionIndex === comparisonData.length - 1
-            ? "disabled"
-            : ""
-        }
-      >
-        Próximo →
-      </button>
-    `;
-  }
-
-    function renderSelectedComparison() {
     renderSelectedComparison();
   }
+);
 
-    function scrollToComparisonStart() {
-    const prefersReducedMotion =
-      window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches;
-  
-    const header =
-      document.querySelector(".header");
-  
-    const caseNavigation =
-      document.querySelector(".case-navigation");
-  
-    const offset =
-      (header?.offsetHeight ?? 76) +
-      (caseNavigation?.offsetHeight ?? 0) +
-      24;
-  
-    const top =
-      criterionTitleElement.getBoundingClientRect().top +
-      window.scrollY -
-      offset;
-  
-    window.scrollTo({
-      top,
-      behavior: prefersReducedMotion
-        ? "auto"
-        : "smooth"
+function renderComparisonControls() {
+  comparisonControlsElement.innerHTML = `
+    <button
+      class="poc-comparison-control-button"
+      type="button"
+      data-comparison-direction="previous"
+      ${selectedCriterionIndex === 0 ? "disabled" : ""}
+    >
+      ← Anterior
+    </button>
+
+    <span class="poc-comparison-control-status">
+      Critério ${selectedCriterionIndex + 1}
+      de ${comparisonData.length}
+    </span>
+
+    <button
+      class="poc-comparison-control-button"
+      type="button"
+      data-comparison-direction="next"
+      ${
+        selectedCriterionIndex ===
+        comparisonData.length - 1
+          ? "disabled"
+          : ""
+      }
+    >
+      Próximo →
+    </button>
+  `;
+}
+
+function renderSelectedComparison() {
+  renderCriteria();
+  renderComparison();
+  renderComparisonControls();
+}
+
+function scrollToComparisonStart() {
+  const prefersReducedMotion =
+    window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+  const header =
+    document.querySelector(".header");
+
+  const caseNavigation =
+    document.querySelector(".case-navigation");
+
+  const offset =
+    (header?.offsetHeight ?? 76) +
+    (caseNavigation?.offsetHeight ?? 0) +
+    24;
+
+  const top =
+    criterionTitleElement.getBoundingClientRect().top +
+    window.scrollY -
+    offset;
+
+  window.scrollTo({
+    top,
+    behavior: prefersReducedMotion
+      ? "auto"
+      : "smooth"
+  });
+}
+
+comparisonControlsElement.addEventListener(
+  "click",
+  (event) => {
+    const button = event.target.closest(
+      "[data-comparison-direction]"
+    );
+
+    if (!button || button.disabled) {
+      return;
+    }
+
+    const direction =
+      button.dataset.comparisonDirection;
+
+    const newIndex =
+      direction === "next"
+        ? selectedCriterionIndex + 1
+        : selectedCriterionIndex - 1;
+
+    if (
+      newIndex < 0 ||
+      newIndex >= comparisonData.length
+    ) {
+      return;
+    }
+
+    selectedCriterionIndex = newIndex;
+    renderSelectedComparison();
+
+    requestAnimationFrame(() => {
+      scrollToComparisonStart();
     });
   }
+);
 
-    comparisonControlsElement.addEventListener(
-    "click",
-    (event) => {
-      const button = event.target.closest(
-        "[data-comparison-direction]"
-      );
-  
-      if (!button || button.disabled) {
-        return;
-      }
-  
-      const direction =
-        button.dataset.comparisonDirection;
-  
-      const newIndex =
-        direction === "next"
-          ? selectedCriterionIndex + 1
-          : selectedCriterionIndex - 1;
-  
-      if (
-        newIndex < 0 ||
-        newIndex >= comparisonData.length
-      ) {
-        return;
-      }
-  
-      selectedCriterionIndex = newIndex;
-      renderSelectedComparison();
-  
-      requestAnimationFrame(() => {
-        scrollToComparisonStart();
-      });
-    }
-  );
-
-  renderSelectedComparison();
-  renderEvolution();
+renderSelectedComparison();
+renderEvolution();
 })();
