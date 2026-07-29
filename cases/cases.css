@@ -2735,18 +2735,25 @@ body.dark-theme.case-raci-page .raci-detail {
   }
 }
 
-/* CASE 11 — COLUNAS MAIS ESTREITAS E COM TAMANHO PADRÃO */
+/* CASE 11 — COLUNAS ESTREITAS E COM ALTURA UNIFORME */
 
 @media (max-width: 1024px) {
+  .kanban-columns {
+    align-items: stretch;
+  }
+
   .kanban-column {
+    display: flex;
     flex: 0 0 19rem;
+    flex-direction: column;
+
     width: 19rem;
     min-width: 19rem;
     max-width: 19rem;
 
     height: auto;
-    min-height: 0;
-    align-self: flex-start;
+    min-height: 31rem;
+    align-self: stretch;
   }
 
   .kanban-column-heading {
@@ -2758,6 +2765,9 @@ body.dark-theme.case-raci-page .raci-detail {
   }
 
   .kanban-card-list {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
     gap: 0.75rem;
   }
 
@@ -2776,13 +2786,27 @@ body.dark-theme.case-raci-page .raci-detail {
 
 @media (max-width: 640px) {
   .kanban-column {
-    flex: 0 0 min(18rem, calc(100vw - 5rem));
-    width: min(18rem, calc(100vw - 5rem));
-    min-width: min(18rem, calc(100vw - 5rem));
-    max-width: min(18rem, calc(100vw - 5rem));
+    flex-basis: min(
+      18rem,
+      calc(100vw - 5rem)
+    );
 
-    height: auto;
-    min-height: 0;
+    width: min(
+      18rem,
+      calc(100vw - 5rem)
+    );
+
+    min-width: min(
+      18rem,
+      calc(100vw - 5rem)
+    );
+
+    max-width: min(
+      18rem,
+      calc(100vw - 5rem)
+    );
+
+    min-height: 29rem;
   }
 
   .kanban-urgent-lane {
