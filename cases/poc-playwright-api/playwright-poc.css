@@ -1,0 +1,375 @@
+/* CASE — POC E IMPLANTAÇÃO DE AUTOMAÇÃO DE API */
+
+.poc-demo {
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 1.2rem;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.poc-view-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.poc-view-button,
+.poc-criterion-button {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.poc-view-button {
+  min-height: 3.25rem;
+  padding: 0.8rem 1rem;
+  border-radius: 0.85rem;
+  font-weight: 800;
+}
+
+.poc-view-button:hover,
+.poc-criterion-button:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.poc-view-button.is-selected,
+.poc-criterion-button.is-selected {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.poc-view > h3 {
+  margin-top: 0;
+}
+
+.poc-criteria {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+}
+
+.poc-criterion-button {
+  padding: 0.65rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.poc-comparison-panel {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.poc-selected-label {
+  margin: 0 0 0.25rem;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.poc-comparison-panel > h3 {
+  margin-top: 0;
+}
+
+.poc-comparison-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.poc-result-card,
+.poc-timeline-item,
+.poc-state-card {
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--background);
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.poc-result-card:hover,
+.poc-timeline-item:hover,
+.poc-state-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.poc-result-card > p {
+  margin: 0 0 0.35rem;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.poc-result-card h4 {
+  margin: 0 0 0.6rem;
+}
+
+.poc-result-card span {
+  line-height: 1.6;
+}
+
+.poc-result-card-conclusion {
+  grid-column: 1 / -1;
+  background: color-mix(
+    in srgb,
+    var(--accent) 8%,
+    var(--background)
+  );
+}
+
+.poc-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.poc-timeline-item h4,
+.poc-state-card h4 {
+  margin: 0.7rem 0 0.45rem;
+}
+
+.poc-timeline-item p,
+.poc-state-card p {
+  margin: 0;
+}
+
+.poc-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.4rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.poc-status-validado-na-poc {
+  background: color-mix(in srgb, #2563eb 15%, transparent);
+  color: #2563eb;
+}
+
+.poc-status-selecionado {
+  background: color-mix(in srgb, #7c3aed 15%, transparent);
+  color: #7c3aed;
+}
+
+.poc-status-implantado,
+.poc-status-em-funcionamento,
+.poc-status-mantido {
+  background: color-mix(in srgb, #2e8b57 16%, transparent);
+  color: #2e8b57;
+}
+
+.poc-status-em-implantacao {
+  background: color-mix(in srgb, #b45309 16%, transparent);
+  color: #b45309;
+}
+
+.poc-current-state {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.poc-current-state > h3 {
+  margin-top: 0;
+}
+
+.poc-state-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+#estrutura .case-note,
+#resultados .case-note {
+  margin-top: 1.5rem;
+}
+
+/* RESULTADO DO CRITÉRIO */
+/* TABLET */
+
+@media (max-width: 980px) {
+  .poc-state-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .poc-timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* CELULAR E TELAS INTERMEDIÁRIAS */
+
+@media (max-width: 760px) {
+  .poc-comparison-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .poc-result-card,
+  .poc-result-card-conclusion {
+    grid-column: auto;
+    width: 100%;
+  }
+}
+
+/* CELULAR MENOR */
+
+@media (max-width: 560px) {
+  .poc-demo {
+    padding: 0.9rem;
+  }
+
+  .poc-view-tabs,
+  .poc-state-grid,
+  .poc-timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .poc-criteria,
+  #poc-criteria {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+  
+  .poc-criterion-button {
+    width: 100%;
+    min-height: 3.5rem;
+    padding: 0.65rem 0.75rem;
+    border-radius: 0.85rem;
+    text-align: center;
+    white-space: normal;
+    line-height: 1.25;
+  }
+
+    @media (max-width: 360px) {
+    .poc-criteria,
+    #poc-criteria {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .poc-result-card span,
+  .poc-timeline-item p,
+  .poc-state-card p {
+    font-size: 0.92rem;
+  }
+}
+
+/* CASE 07 — NAVEGAÇÃO ENTRE CRITÉRIOS DA POC */
+
+.poc-comparison-controls {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto
+    minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.poc-comparison-control-button {
+  min-height: 2.9rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--primary);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 800;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.poc-comparison-control-button:first-child {
+  justify-self: start;
+}
+
+.poc-comparison-control-button:last-child {
+  justify-self: end;
+}
+
+.poc-comparison-control-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  background: var(--surface-soft);
+}
+
+.poc-comparison-control-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.poc-comparison-control-button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.poc-comparison-control-status {
+  color: var(--text-soft);
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-align: center;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .poc-comparison-controls {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .poc-comparison-control-status {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+    width: 100%;
+  }
+
+  .poc-comparison-control-button {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.7rem 0.65rem;
+    border-radius: 0.9rem;
+    font-size: 0.82rem;
+  }
+
+  .poc-comparison-control-button:first-child,
+  .poc-comparison-control-button:last-child {
+    justify-self: stretch;
+  }
+}
+
+@media (min-width: 981px) {
+  .poc-comparison-controls {
+    display: none;
+  }
+}

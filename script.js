@@ -1,8 +1,6 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
-  /* MENU RESPONSIVO */
-
   const menuToggle = document.querySelector("#menu-toggle");
   const mainMenu = document.querySelector("#main-menu");
   const menuLinks = document.querySelectorAll(
@@ -10,9 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   function closeMenu() {
-    if (!menuToggle || !mainMenu) {
-      return;
-    }
+    if (!menuToggle || !mainMenu) return;
 
     mainMenu.classList.remove("is-open");
     menuToggle.classList.remove("is-active");
@@ -24,100 +20,90 @@ document.addEventListener("DOMContentLoaded", () => {
     menuToggle.addEventListener("click", (event) => {
       event.stopPropagation();
 
-      const menuIsOpen =
-        mainMenu.classList.toggle("is-open");
-
-      menuToggle.classList.toggle(
-        "is-active",
-        menuIsOpen
-      );
-
-      menuToggle.setAttribute(
-        "aria-expanded",
-        String(menuIsOpen)
-      );
-
+      const isOpen = mainMenu.classList.toggle("is-open");
+      menuToggle.classList.toggle("is-active", isOpen);
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
       menuToggle.setAttribute(
         "aria-label",
-        menuIsOpen ? "Fechar menu" : "Abrir menu"
+        isOpen ? "Fechar menu" : "Abrir menu"
       );
     });
 
     document.addEventListener("click", (event) => {
-      const clickedInsideMenu =
-        mainMenu.contains(event.target);
-
-      const clickedMenuButton =
-        menuToggle.contains(event.target);
-
-      if (!clickedInsideMenu && !clickedMenuButton) {
+      if (
+        !mainMenu.contains(event.target) &&
+        !menuToggle.contains(event.target)
+      ) {
         closeMenu();
       }
     });
 
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 900) {
-        closeMenu();
-      }
+      if (window.innerWidth > 900) closeMenu();
     });
   }
 
-  /* NAVEGAÇÃO DAS SEÇÕES */
+  function getHeaderOffset() {
+    const header = document.querySelector(".header");
+    return (header ? header.offsetHeight : 76) + 34;
+  }
+
+  function scrollToTarget(target, updateHash = true) {
+    if (!target) return;
+
+    const visibleTarget =
+      target.querySelector(
+        ".scroll-target, .section-heading, .contact-box"
+      ) ?? target;
+
+    const top =
+      visibleTarget.getBoundingClientRect().top +
+      window.scrollY -
+      getHeaderOffset();
+
+    window.scrollTo({
+      top,
+      behavior: window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches
+        ? "auto"
+        : "smooth"
+    });
+
+    if (updateHash && target.id) {
+      history.replaceState(null, "", `#${target.id}`);
+    }
+  }
 
   menuLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
-      event.preventDefault();
-
       const targetId = link.getAttribute("href");
-      const targetSection =
-        document.querySelector(targetId);
+      const target = document.querySelector(targetId);
 
-      if (!targetSection) {
-        return;
-      }
+      if (!target) return;
 
+      event.preventDefault();
       closeMenu();
-
-      if (targetId === "#inicio") {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
-
-        history.replaceState(null, "", targetId);
-        return;
-      }
-
-      const header = document.querySelector(".header");
-      const headerHeight = header
-        ? header.offsetHeight
-        : 80;
-
-      const sectionContent =
-        targetSection.querySelector(
-          ".scroll-target, .section-heading, .contact-box"
-        ) ?? targetSection;
-
-      const targetPosition =
-        sectionContent.getBoundingClientRect().top +
-        window.scrollY -
-        headerHeight -
-        16;
-
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth"
-      });
-
-      history.replaceState(null, "", targetId);
+      scrollToTarget(target);
     });
   });
 
-  /* DESTAQUE DA SEÇÃO ATIVA */
+  document
+    .querySelectorAll('.hero-actions a[href^="#"]')
+    .forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const target = document.querySelector(
+          link.getAttribute("href")
+        );
 
-  const sections = document.querySelectorAll(
-    "main section[id]"
-  );
+        if (!target) return;
+
+        event.preventDefault();
+        scrollToTarget(target);
+      });
+    });
+
+  const sections = document.querySelectorAll("main section[id]");
 
   function activateMenuLink(sectionId) {
     menuLinks.forEach((link) => {
@@ -129,65 +115,48 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateActiveSection() {
-    const header = document.querySelector(".header");
-
-    const headerOffset =
-      (header ? header.offsetHeight : 80) + 40;
-
     const scrollPosition =
-      window.scrollY + headerOffset;
+      window.scrollY + getHeaderOffset() + 22;
 
     let currentSectionId = "inicio";
 
     sections.forEach((section) => {
-      const sectionTop = section.offsetTop;
-      const sectionBottom =
-        sectionTop + section.offsetHeight;
+      const top = section.offsetTop;
+      const bottom = top + section.offsetHeight;
 
       if (
-        scrollPosition >= sectionTop &&
-        scrollPosition < sectionBottom
+        scrollPosition >= top &&
+        scrollPosition < bottom
       ) {
         currentSectionId = section.id;
       }
     });
 
-    const nearPageBottom =
+    const nearBottom =
       window.innerHeight + window.scrollY >=
       document.documentElement.scrollHeight - 10;
 
-    if (nearPageBottom) {
-      currentSectionId = "contato";
-    }
+    if (nearBottom) currentSectionId = "contato";
 
     activateMenuLink(currentSectionId);
   }
 
-  window.addEventListener(
-    "scroll",
-    updateActiveSection,
-    { passive: true }
-  );
-
-  window.addEventListener(
-    "resize",
-    updateActiveSection
-  );
-
+  window.addEventListener("scroll", updateActiveSection, {
+    passive: true
+  });
+  window.addEventListener("resize", updateActiveSection);
   updateActiveSection();
-
-  /* ANIMAÇÕES REVEAL */
 
   const revealElements =
     document.querySelectorAll(".reveal");
 
   if (
-    revealElements.length > 0 &&
+    revealElements.length &&
     "IntersectionObserver" in window
   ) {
     document.body.classList.add("reveal-ready");
 
-    const revealObserver = new IntersectionObserver(
+    const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           entry.target.classList.toggle(
@@ -203,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     revealElements.forEach((element) => {
-      revealObserver.observe(element);
+      observer.observe(element);
     });
   } else {
     revealElements.forEach((element) => {
@@ -211,205 +180,173 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* BOTÃO VOLTAR AO TOPO */
+  const backToTop = document.querySelector("#back-to-top");
 
-  const backToTopButton =
-    document.querySelector("#back-to-top");
+  function updateBackToTop() {
+    if (!backToTop) return;
 
-  function updateBackToTopButton() {
-    if (!backToTopButton) {
-      return;
-    }
-
-    backToTopButton.classList.toggle(
+    backToTop.classList.toggle(
       "is-visible",
       window.scrollY > 600
     );
   }
 
-  if (backToTopButton) {
-    window.addEventListener(
-      "scroll",
-      updateBackToTopButton,
-      { passive: true }
-    );
+  if (backToTop) {
+    window.addEventListener("scroll", updateBackToTop, {
+      passive: true
+    });
 
-    backToTopButton.addEventListener("click", () => {
-      const reduceMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches;
-
+    backToTop.addEventListener("click", () => {
       window.scrollTo({
         top: 0,
-        behavior: reduceMotion ? "auto" : "smooth"
+        behavior: window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches
+          ? "auto"
+          : "smooth"
       });
     });
 
-    updateBackToTopButton();
+    updateBackToTop();
   }
-
-  /* COPIAR E-MAIL */
 
   const copyEmailButton =
     document.querySelector("#copy-email");
-
   const copyEmailStatus =
     document.querySelector("#copy-email-status");
 
-  async function copyTextToClipboard(text) {
-    if (
-      navigator.clipboard &&
-      window.isSecureContext
-    ) {
+  async function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
       await navigator.clipboard.writeText(text);
       return;
     }
 
-    const temporaryTextArea =
-      document.createElement("textarea");
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.select();
 
-    temporaryTextArea.value = text;
-    temporaryTextArea.setAttribute("readonly", "");
-    temporaryTextArea.style.position = "fixed";
-    temporaryTextArea.style.opacity = "0";
+    const copied = document.execCommand("copy");
+    textarea.remove();
 
-    document.body.appendChild(temporaryTextArea);
-
-    temporaryTextArea.select();
-    temporaryTextArea.setSelectionRange(
-      0,
-      temporaryTextArea.value.length
-    );
-
-    const copySucceeded =
-      document.execCommand("copy");
-
-    temporaryTextArea.remove();
-
-    if (!copySucceeded) {
-      throw new Error(
-        "O navegador não permitiu copiar o texto."
-      );
+    if (!copied) {
+      throw new Error("Não foi possível copiar.");
     }
   }
 
   if (copyEmailButton) {
-    copyEmailButton.addEventListener(
-      "click",
-      async () => {
-        const email =
-          copyEmailButton.dataset.email;
+    copyEmailButton.addEventListener("click", async () => {
+      const email = copyEmailButton.dataset.email;
+      if (!email) return;
 
-        if (!email) {
-          return;
+      try {
+        await copyText(email);
+        copyEmailButton.classList.add("is-copied");
+        copyEmailButton.textContent = "Copiado!";
+
+        if (copyEmailStatus) {
+          copyEmailStatus.textContent =
+            `${email} copiado para a área de transferência.`;
         }
 
-        try {
-          await copyTextToClipboard(email);
+        window.setTimeout(() => {
+          copyEmailButton.classList.remove("is-copied");
+          copyEmailButton.textContent = "Copiar";
+        }, 2200);
+      } catch (error) {
+        copyEmailButton.textContent = "Erro ao copiar";
 
-          copyEmailButton.classList.add("is-copied");
-          copyEmailButton.textContent = "Copiado!";
-
-          if (copyEmailStatus) {
-            copyEmailStatus.textContent =
-              `${email} copiado para a área de transferência.`;
-          }
-
-          window.setTimeout(() => {
-            copyEmailButton.classList.remove(
-              "is-copied"
-            );
-
-            copyEmailButton.textContent = "Copiar";
-          }, 2200);
-        } catch (error) {
-          copyEmailButton.textContent =
-            "Erro ao copiar";
-
-          if (copyEmailStatus) {
-            copyEmailStatus.textContent =
-              "Não foi possível copiar o e-mail automaticamente.";
-          }
-
-          window.setTimeout(() => {
-            copyEmailButton.textContent = "Copiar";
-          }, 2500);
-
-          console.error(
-            "Erro ao copiar o e-mail:",
-            error
-          );
+        if (copyEmailStatus) {
+          copyEmailStatus.textContent =
+            "Não foi possível copiar o e-mail automaticamente.";
         }
+
+        window.setTimeout(() => {
+          copyEmailButton.textContent = "Copiar";
+        }, 2500);
+
+        console.error(error);
       }
-    );
+    });
   }
 
-  /* TEMA CLARO E ESCURO */
+  const themeToggle = document.querySelector("#theme-toggle");
 
-  const themeToggle =
-    document.querySelector("#theme-toggle");
+  if (themeToggle) {
+    const themeIcon = themeToggle.querySelector("span");
 
-  if (!themeToggle) {
-    return;
-  }
+    function applyTheme(theme) {
+      const isDark = theme === "dark";
 
-  const themeIcon =
-    themeToggle.querySelector("span");
+      document.body.classList.toggle("dark-theme", isDark);
 
-  function applyTheme(theme) {
-    const darkThemeIsActive =
-      theme === "dark";
+      if (themeIcon) {
+        themeIcon.textContent = isDark ? "☀" : "☾";
+      }
 
-    document.body.classList.toggle(
-      "dark-theme",
-      darkThemeIsActive
-    );
-
-    if (themeIcon) {
-      themeIcon.textContent =
-        darkThemeIsActive ? "☀" : "☾";
+      themeToggle.setAttribute(
+        "aria-label",
+        isDark ? "Ativar tema claro" : "Ativar tema escuro"
+      );
+      themeToggle.setAttribute(
+        "aria-pressed",
+        String(isDark)
+      );
     }
 
-    themeToggle.setAttribute(
-      "aria-label",
-      darkThemeIsActive
-        ? "Ativar tema claro"
-        : "Ativar tema escuro"
+    const savedTheme =
+      localStorage.getItem("portfolio-theme");
+    const systemPrefersDark =
+      window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+
+    applyTheme(
+      savedTheme ??
+        (systemPrefersDark ? "dark" : "light")
     );
 
-    themeToggle.setAttribute(
-      "aria-pressed",
-      String(darkThemeIsActive)
-    );
+    themeToggle.addEventListener("click", () => {
+      const nextTheme =
+        document.body.classList.contains("dark-theme")
+          ? "light"
+          : "dark";
+
+      localStorage.setItem(
+        "portfolio-theme",
+        nextTheme
+      );
+      applyTheme(nextTheme);
+    });
   }
 
-  const savedTheme =
-    localStorage.getItem("portfolio-theme");
+  function positionFromHash() {
+    const hash = window.location.hash;
 
-  const systemPrefersDark =
-    window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
+    if (!/^#case-\d{2}$/.test(hash)) return;
 
-  const initialTheme =
-    savedTheme ??
-    (systemPrefersDark ? "dark" : "light");
+    const target = document.querySelector(hash);
+    if (!target) return;
 
-  applyTheme(initialTheme);
+    window.requestAnimationFrame(() => {
+      const top =
+        target.getBoundingClientRect().top +
+        window.scrollY -
+        getHeaderOffset() -
+        8;
 
-  themeToggle.addEventListener("click", () => {
-    const newTheme =
-      document.body.classList.contains(
-        "dark-theme"
-      )
-        ? "light"
-        : "dark";
+      window.scrollTo({
+        top,
+        behavior: "auto"
+      });
 
-    localStorage.setItem(
-      "portfolio-theme",
-      newTheme
-    );
+      target.classList.add("is-visible");
+    });
+  }
 
-    applyTheme(newTheme);
-  });
+  window.addEventListener("pageshow", positionFromHash);
+  positionFromHash();
 });

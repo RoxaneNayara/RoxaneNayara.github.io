@@ -1,0 +1,338 @@
+/* CASE — CULTURA DE QUALIDADE E CONHECIMENTO */
+
+.culture-demo {
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 1.2rem;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.culture-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.culture-tab-button,
+.culture-topic-button {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.culture-tab-button {
+  min-height: 3.5rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.9rem;
+  font-weight: 800;
+}
+
+.culture-topic-button {
+  padding: 0.65rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.culture-tab-button:hover,
+.culture-topic-button:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.culture-tab-button.is-selected,
+.culture-topic-button.is-selected {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.culture-panel {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.culture-selected-label {
+  margin: 0 0 0.15rem;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.culture-panel > h3 {
+  margin: 0 0 0.9rem;
+}
+
+.culture-topic-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+}
+
+.culture-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.culture-info-card {
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--background);
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.culture-info-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.culture-info-card > p {
+  margin: 0 0 0.55rem;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.culture-info-card span {
+  line-height: 1.6;
+}
+
+.culture-info-card-highlight {
+  background: color-mix(
+    in srgb,
+    var(--accent) 8%,
+    var(--background)
+  );
+}
+
+#frentes .case-note,
+#resultados .case-note {
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 980px) {
+  .culture-tabs {
+    grid-template-columns: 1fr;
+  }
+
+  .culture-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .culture-info-card-highlight {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .culture-demo {
+    padding: 0.9rem;
+  }
+
+  .culture-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .culture-topic-buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .culture-topic-button {
+    border-radius: 0.8rem;
+    text-align: left;
+  }
+
+  .culture-info-card-highlight {
+    grid-column: auto;
+  }
+
+  .culture-info-card span {
+    font-size: 0.92rem;
+  }
+}
+
+/* CASE 09 — NAVEGAÇÃO ENTRE TÓPICOS */
+
+.culture-controls {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .culture-controls {
+    display: grid;
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .culture-control-status {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+    width: 100%;
+    overflow: hidden;
+    color: var(--text-soft);
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .culture-control-button {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.7rem 0.65rem;
+    border: 1px solid var(--border);
+    border-radius: 0.9rem;
+    background: var(--surface);
+    color: var(--primary);
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 800;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+  .culture-control-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    background: var(--surface-soft);
+  }
+
+  .culture-control-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+
+  .culture-control-button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+}
+
+.axis-controls {
+  display: none;
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto
+    minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.axis-control-button {
+  min-height: 2.9rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  color: var(--primary);
+  background: var(--surface);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 800;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.axis-control-button:first-child {
+  justify-self: start;
+}
+
+.axis-control-button:last-child {
+  justify-self: end;
+}
+
+.axis-control-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  background: var(--surface-soft);
+}
+
+.axis-control-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.axis-control-button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.axis-control-status {
+  color: var(--text-soft);
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-align: center;
+  white-space: nowrap;
+  margin: 0;
+}
+
+/* tablet e celular */
+@media (max-width: 1024px) {
+  .axis-controls {
+    display: grid;
+  }
+}
+
+/* celular */
+@media (max-width: 640px) {
+  .axis-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .axis-control-status {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+    width: 100%;
+  }
+
+  .axis-control-button {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.7rem 0.65rem;
+    border-radius: 0.9rem;
+    font-size: 0.82rem;
+  }
+
+  .axis-control-button:first-child,
+  .axis-control-button:last-child {
+    justify-self: stretch;
+  }
+}

@@ -4,34 +4,28 @@
   <meta charset="UTF-8">
 
   <meta
+    name="description"
+    content="Portfólio profissional de Roxane Nayara, QA Lead e Coordenadora de QA com foco em liderança, processos, governança, maturidade de testes e melhoria contínua."
+  >
+
+
+  <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
   >
-
-  <meta
-    name="description"
-    content="Portfólio profissional de Roxane Nayara, Coordenadora de QA com foco em processos, governança e melhoria contínua."
-  >
-
-  <title>Roxane Nayara | Coordenadora de QA</title>
-
-        <meta
-        name="description"
-        content="Portfólio profissional de Roxane Nayara, Coordenadora de QA com foco em processos, governança, maturidade de testes e melhoria contínua."
-      >
-      
-      <meta name="author" content="Roxane Nayara">
+<title>Roxane Nayara | QA Lead e Coordenadora de QA</title>
+<meta name="author" content="Roxane Nayara">
       
       <meta property="og:type" content="website">
       
       <meta
         property="og:title"
-        content="Roxane Nayara | Coordenadora de QA"
+        content="Roxane Nayara | QA Lead e Coordenadora de QA"
       >
       
       <meta
         property="og:description"
-        content="Conheça meus cases de qualidade de software, processos, governança, liderança e melhoria contínua."
+        content="Conheça meus cases de liderança de QA, processos, governança, rastreabilidade e melhoria contínua."
       >
       
       <meta
@@ -53,12 +47,12 @@
       
       <meta
         name="twitter:title"
-        content="Roxane Nayara | Coordenadora de QA"
+        content="Roxane Nayara | QA Lead e Coordenadora de QA"
       >
       
       <meta
         name="twitter:description"
-        content="Cases de qualidade de software, processos, governança, liderança e melhoria contínua."
+        content="Cases de liderança de QA, processos, governança, rastreabilidade e melhoria contínua."
       >
       
       <meta
@@ -70,21 +64,21 @@
       rel="icon"
       type="image/png"
       sizes="512x512"
-      href="/favicon.png?v=2"
+      href="favicon.png?v=2"
     >
     
     <link
       rel="shortcut icon"
       type="image/png"
-      href="/favicon.png?v=2"
+      href="favicon.png?v=2"
     >
     
     <link
       rel="apple-touch-icon"
-      href="/favicon.png?v=2"
+      href="favicon.png?v=2"
     >
 
-  <link rel="stylesheet" href="style.css?v=21">
+  <link rel="stylesheet" href="style.css?v=27">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -97,6 +91,23 @@
 </head>
 
 <body>
+
+  <script>
+    (() => {
+      const savedTheme = localStorage.getItem("portfolio-theme");
+      const systemPrefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      const initialTheme =
+        savedTheme ?? (systemPrefersDark ? "dark" : "light");
+
+      document.body.classList.toggle(
+        "dark-theme",
+        initialTheme === "dark"
+      );
+    })();
+  </script>
+
 
   <div class="floating-particles" aria-hidden="true">
   <span style="--x: 6%; --size: 8px; --delay: 0s; --duration: 20s;"></span>
@@ -170,7 +181,7 @@
         <h1>Roxane Nayara</h1>
 
         <h2>
-          Coordenadora de QA
+          QA Lead | Coordenadora de QA
         </h2>
 
             <p class="hero-description">
@@ -188,9 +199,7 @@
         <div class="hero-actions">
           <a
             class="button button-primary"
-            href="https://github.com/RoxaneNayara/portfolio-qa-process-improvement"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#cases"
           >
             Conheça meus cases
           </a>
@@ -275,29 +284,30 @@
 
       <div class="about-text">
         <p>
-          Sou Coordenadora de QA com experiência em liderança
-          de times, estruturação e evolução de processos de qualidade,
-          governança, rastreabilidade e melhoria contínua.
+          Atuo como Coordenadora de QA, liderando times e estruturando
+          processos de qualidade, governança, rastreabilidade
+          e melhoria contínua.
         </p>
       
         <p>
-          Minha atuação envolve diagnóstico de maturidade,
-          planejamento de testes, definição de responsabilidades,
-          documentação, gestão de riscos, acompanhamento das entregas
-          e melhoria do fluxo de trabalho.
+          Minha experiência inclui diagnóstico de maturidade,
+          planejamento e estratégia de testes, definição de responsabilidades,
+          gestão de riscos, documentação, evidências
+          e acompanhamento do fluxo de trabalho.
         </p>
       
         <p>
-          Também participo da estruturação de práticas Scrum, Kanban
-          e da aplicação responsável de inteligência artificial
-          como apoio à análise de processos, regras de negócio,
-          critérios de aceite e planejamento de testes.
+          Também participo da evolução de práticas Scrum e Kanban
+          e da configuração de agentes de inteligência artificial
+          aplicados à Qualidade de Software, com foco na análise de processos,
+          regras de negócio, critérios de aceite, planejamento de testes
+          e identificação de riscos.
         </p>
       
         <p>
-          Acredito em qualidade como uma responsabilidade
-          compartilhada entre QA, Produto, Desenvolvimento
-          e Gestão, presente durante todo o ciclo de desenvolvimento.
+          Acredito na qualidade como uma responsabilidade compartilhada
+          entre QA, Produto, Desenvolvimento e Gestão,
+          presente durante todo o ciclo de desenvolvimento.
         </p>
       </div>
 
@@ -416,7 +426,7 @@
               <p>
                 Diagnóstico AS-IS, implantação de processos de QA,
                 evolução da documentação de testes, rastreabilidade,
-                Definition of Done, Matriz RACI e apoio à automação.
+                Critérios de Qualidade Compartilhados ao Longo do Fluxo, Matriz RACI e apoio à automação.
               </p>
 
               <div class="timeline-tags">
@@ -494,148 +504,131 @@
       <p class="section-eyebrow">Cases de QA</p>
 
       <h2>
-        Projetos que demonstram minha atuação em processos,
+        Cases que demonstram minha atuação em processos,
         governança e melhoria contínua.
       </h2>
     </div>
 
     <div class="cases-grid">
-      <article class="case-card reveal">
+      <article id="case-01" class="case-card reveal">
         <span class="case-number">01</span>
-        <h3>Diagnóstico AS-IS e Maturidade de QA</h3>
+        <h3>Diagnóstico AS-IS e Evolução da Maturidade de Testes</h3>
         <p>
           Mapeamento do cenário atual, identificação de lacunas,
-          riscos, dependências e oportunidades de evolução.
+          riscos, dependências e oportunidades de evolução da maturidade.
         </p>
         <a
-          href="https://github.com/RoxaneNayara/portfolio-qa-process-improvement/tree/main/01-as-is-maturidade-qa"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="cases/as-is-maturidade-qa/index.html?v=25"
         >
-          Ver case no GitHub
+          Ver case completo
         </a>
       </article>
 
-      <article class="case-card reveal">
+      <article id="case-02" class="case-card reveal">
         <span class="case-number">02</span>
-        <h3>Implantação de Processos de QA</h3>
+        <h3>Implantação e Consolidação de Processos de QA</h3>
         <p>
-          Estruturação de práticas de qualidade, planejamento,
-          documentação, evidências e fluxo de validação.
+          Estruturação e consolidação de práticas de qualidade,
+          documentação, governança, indicadores e autonomia do time.
         </p>
         <a
-          href="https://github.com/RoxaneNayara/portfolio-qa-process-improvement/tree/main/02-implantacao-processos-qa"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="cases/implantacao-processos-qa/index.html?v=25"
         >
-          Ver case no GitHub
+          Ver case completo
         </a>
       </article>
 
-      <article class="case-card reveal">
+      <article id="case-03" class="case-card reveal">
         <span class="case-number">03</span>
-        <h3>Azure DevOps e Rastreabilidade</h3>
+        <h3>Azure DevOps e Rastreabilidade das Validações de QA</h3>
         <p>
-          Organização de cards, bugs, evidências, histórico,
-          status e rastreabilidade das validações.
+          Evolução de controles manuais para um fluxo com atividades,
+          resultados e evidências vinculados ao backlog principal.
         </p>
         <a
-          href="https://github.com/RoxaneNayara/portfolio-qa-process-improvement/tree/main/03-azure-devops-rastreabilidade"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="cases/azure-devops-rastreabilidade/index.html?v=25"
         >
-          Ver case no GitHub
+          Ver case completo
         </a>
       </article>
 
-      <article class="case-card reveal">
+      <article id="case-04" class="case-card reveal">
         <span class="case-number">04</span>
-        <h3>Definition of Done</h3>
+        <h3>Critérios de Qualidade Compartilhados ao Longo do Fluxo</h3>
         <p>
-          Definição de critérios de qualidade para melhorar
-          previsibilidade, clareza e responsabilidade compartilhada.
+          Políticas explícitas e critérios de passagem para integrar
+          Produto, QA e Desenvolvimento ao longo da entrega.
         </p>
         <a
-          href="https://github.com/RoxaneNayara/portfolio-qa-process-improvement/tree/main/04-definition-of-done-qualidade"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="cases/criterios-qualidade-fluxo/index.html?v=25"
         >
-          Ver case no GitHub
+          Ver case completo
         </a>
       </article>
 
-      <article class="case-card reveal">
+      <article id="case-05" class="case-card reveal">
         <span class="case-number">05</span>
-        <h3>Matriz RACI e Governança</h3>
+        <h3>Matriz RACI para Governança e Responsabilidades no Fluxo de Qualidade</h3>
         <p>
           Estruturação de responsabilidades entre QA,
           Desenvolvimento, Produto e Gestão.
         </p>
         <a
-          href="https://github.com/RoxaneNayara/portfolio-qa-process-improvement/tree/main/05-matriz-raci-governanca"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="cases/matriz-raci-governanca/index.html?v=25"
         >
-          Ver case no GitHub
+          Ver case completo
         </a>
       </article>
 
-      <article class="case-card reveal">
+      <article id="case-06" class="case-card reveal">
         <span class="case-number">06</span>
-        <h3>TMMi e Evolução da Maturidade</h3>
+        <h3>Avaliação de Aderência ao TMMi Nível 2 e Evolução da Governança de Testes</h3>
         <p>
-          Estudo de aderência, análise de práticas e evolução
-          gradual da maturidade dos processos de teste.
+          Diagnóstico de aderência ao TMMi Nível 2 e organização
+          de práticas para evolução gradual dos processos de teste.
         </p>
         <a
-          href="https://github.com/RoxaneNayara/portfolio-qa-process-improvement/tree/main/06-tmmi-maturidade-testes"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="cases/tmmi-nivel-2/index.html?v=25"
         >
-          Ver case no GitHub
+          Ver case completo
         </a>
       </article>
 
-      <article class="case-card reveal">
+      <article id="case-07" class="case-card reveal">
         <span class="case-number">07</span>
-        <h3>POC com Playwright</h3>
+        <h3>Da POC à Implantação de Testes Automatizados de API com Playwright</h3>
         <p>
-          Apoio à avaliação e escolha do Playwright para
-          automação de testes Web e API com C#.
+          Avaliação técnica e apoio à escolha do Playwright para
+          automação de testes Web e API.
         </p>
         <a
-          href="https://github.com/RoxaneNayara/portfolio-qa-process-improvement/tree/main/07-poc-automacao-playwright"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="cases/poc-playwright-api/index.html?v=25"
         >
-          Ver case no GitHub
+          Ver case completo
         </a>
       </article>
 
-     <article class="case-card reveal">
+     <article id="case-08" class="case-card reveal">
         <span class="case-number">08</span>
       
-        <h3>Onboarding e Capacitação de QA</h3>
+        <h3>Onboarding de Quality Assurance para Novos Colaboradores de TI</h3>
       
         <p>
-          Estruturação do onboarding, capacitação de profissionais
-          e disseminação de práticas para apoiar a integração ao
-          processo de qualidade.
+          Estruturação do onboarding, capacitação e integração de
+          profissionais ao processo de qualidade e ao contexto de TI.
         </p>
       
         <a
-          href="https://github.com/RoxaneNayara/portfolio-qa-process-improvement/tree/main/08-onboarding-capacitacao-qa"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="cases/onboarding-qa-ti/index.html?v=25"
         >
-          Ver case no GitHub
+          Ver case completo
         </a>
       </article>
       
-      <article class="case-card reveal">
+      <article id="case-09" class="case-card reveal">
         <span class="case-number">09</span>
       
-        <h3>Cultura de Qualidade e Conhecimento</h3>
+        <h3>Cultura de Qualidade e Compartilhamento de Conhecimento em TI</h3>
       
         <p>
           Disseminação de boas práticas, compartilhamento de
@@ -644,18 +637,16 @@
         </p>
       
         <a
-          href="https://github.com/RoxaneNayara/portfolio-qa-process-improvement/tree/main/09-cultura-qualidade-conhecimento"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="cases/cultura-qualidade-conhecimento/index.html?v=25"
         >
-          Ver case no GitHub
+          Ver case completo
         </a>
       </article>
       
-      <article class="case-card reveal">
+      <article id="case-10" class="case-card reveal">
         <span class="case-number">10</span>
       
-        <h3>Liderança e Processo Seletivo de QA</h3>
+        <h3>Liderança e Estruturação do Processo Seletivo de QA</h3>
       
         <p>
           Participação na seleção técnica de profissionais,
@@ -664,14 +655,12 @@
         </p>
       
         <a
-          href="https://github.com/RoxaneNayara/portfolio-qa-process-improvement/tree/main/10-lideranca-processo-seletivo-qa"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="cases/processo-seletivo-qa/index.html?v=25"
         >
-          Ver case no GitHub
+          Ver case completo
         </a>
       </article>
-      <article class="case-card reveal">
+      <article id="case-11" class="case-card reveal">
   <span class="case-number">11</span>
   <h3>Estruturação de Framework Kanban Operacional</h3>
   <p>
@@ -680,28 +669,23 @@
     e métricas de fluxo e qualidade.
   </p>
   <a
-    href="https://github.com/RoxaneNayara/portfolio-qa-process-improvement/tree/main/11-framework-kanban-operacional"
-    target="_blank"
-    rel="noopener noreferrer"
+    href="cases/kanban-operacional/index.html?v=25"
   >
-    Ver case no GitHub
+    Ver case completo
   </a>
       </article>
       
-      <article class="case-card reveal">
+      <article id="case-12" class="case-card reveal">
         <span class="case-number">12</span>
-        <h3>Configuração de Agente de IA para Qualidade de Software</h3>
+        <h3>Agentes de Inteligência Artificial Aplicados à Qualidade de Software</h3>
         <p>
-          Configuração de agente especializado para apoiar análises
-          de processos, regras de negócio, critérios de aceite,
-          planejamento de testes, riscos e melhoria contínua.
+          Configuração de agentes especializados para apoiar análises
+          de qualidade, processos, código, riscos e melhoria contínua.
         </p>
         <a
-          href="https://github.com/RoxaneNayara/portfolio-qa-process-improvement/tree/main/12-configuracao-agente-ia-qa"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="cases/agentes-ia-qualidade/index.html?v=25"
         >
-          Ver case no GitHub
+          Ver case completo
         </a>
       </article>
     </div>
@@ -982,7 +966,7 @@
   </div>
 </footer>
 
-    <script src="script.js?v=17"></script>
+    <script src="script.js?v=21"></script>
   
 </body>
 </html>

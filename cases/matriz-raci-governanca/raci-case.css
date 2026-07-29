@@ -1,0 +1,318 @@
+/* CASE — MATRIZ RACI E GOVERNANÇA
+   Adicionar ao final de cases/cases.css */
+
+.raci-section { margin-top: 3rem; }
+.raci-heading { max-width: 780px; margin-bottom: 1.5rem; }
+
+.raci-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.raci-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.raci-legend strong,
+.raci-letter {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--surface);
+  font-weight: 900;
+}
+
+.raci-legend strong { width: 1.7rem; height: 1.7rem; }
+
+.raci-demo {
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.raci-areas {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+
+.raci-area-button,
+.raci-activity-button {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+
+.raci-area-button {
+  min-height: 3.25rem;
+  padding: 0.75rem;
+  border-radius: 0.8rem;
+  font-weight: 700;
+}
+
+.raci-area-button:hover,
+.raci-activity-button:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.raci-area-button.is-selected,
+.raci-activity-button.is-selected {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.raci-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.85fr) minmax(0, 2fr);
+  gap: 1rem;
+}
+
+.raci-activities-panel,
+.raci-detail {
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--background);
+}
+
+.raci-activities-panel,
+.raci-detail { padding: 1rem; }
+
+.raci-activities-panel h3,
+.raci-detail > h3 { margin-top: 0; }
+
+.raci-activities { display: grid; gap: 0.6rem; }
+
+.raci-activity-button {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  border-radius: 0.75rem;
+  text-align: left;
+  font: inherit;
+}
+
+.raci-detail-label {
+  margin: 0 0 0.35rem;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.raci-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+
+.raci-card {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+  background: var(--surface);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.raci-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+
+.raci-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.75rem;
+}
+
+.raci-card-heading h4 { margin: 0; font-size: 0.95rem; }
+.raci-letter { width: 2rem; height: 2rem; }
+.raci-card ul { margin: 0; padding-left: 1.1rem; }
+.raci-card li + li { margin-top: 0.35rem; }
+
+.raci-empty {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.raci-contribution,
+.raci-note {
+  padding: 1rem;
+  border-radius: 0.9rem;
+}
+
+.raci-contribution {
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+.raci-note {
+  margin-top: 0.8rem;
+  border: 1px dashed var(--border);
+  background: var(--surface);
+}
+
+.raci-contribution h4,
+.raci-note h4 { margin: 0 0 0.35rem; }
+
+.raci-contribution p,
+.raci-note p { margin: 0; }
+
+@media (max-width: 980px) {
+  .raci-areas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .raci-layout { grid-template-columns: 1fr; }
+  .raci-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  .raci-demo { padding: 0.85rem; }
+  .raci-areas,
+  .raci-cards { grid-template-columns: 1fr; }
+  .raci-area-button { min-height: auto; }
+  .raci-legend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .raci-legend span { border-radius: 0.75rem; }
+}
+
+.raci-card-heading h4 {
+  font-size: 0.95rem;
+  line-height: 1.25;
+}
+
+.raci-card li,
+.raci-card p {
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.raci-card {
+  padding: 0.9rem;
+}
+
+.raci-card ul {
+  padding-left: 1rem;
+}
+
+@media (max-width: 560px) {
+  .raci-card-heading h4 {
+    font-size: 0.9rem;
+  }
+
+  .raci-card li,
+  .raci-card p {
+    font-size: 0.88rem;
+  }
+}
+
+/* NAVEGAÇÃO ENTRE ATIVIDADES DA MATRIZ RACI */
+
+.raci-controls {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto
+    minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.raci-control-button {
+  min-height: 2.9rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  color: var(--primary);
+  background: var(--surface);
+  font: inherit;
+  font-weight: 800;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.raci-control-button:first-child {
+  justify-self: start;
+}
+
+.raci-control-button:last-child {
+  justify-self: end;
+}
+
+.raci-control-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  background: var(--surface-soft);
+}
+
+.raci-control-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.raci-control-button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.raci-control-status {
+  max-width: 30rem;
+  overflow: hidden;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-soft);
+}
+
+@media (max-width: 640px) {
+  .raci-controls {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+    margin-bottom: 0.5rem;
+  }
+
+  .raci-control-status {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+    width: 100%;
+  }
+
+  .raci-control-button {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.7rem 0.65rem;
+    border-radius: 0.9rem;
+    font-size: 0.82rem;
+  }
+
+  .raci-control-button:first-child,
+  .raci-control-button:last-child {
+    justify-self: stretch;
+  }
+}

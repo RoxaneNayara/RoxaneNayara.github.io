@@ -1,0 +1,510 @@
+/* CASE — IMPLANTAÇÃO E CONSOLIDAÇÃO DE PROCESSOS DE QA */
+
+.implementation-grid,
+.governance-grid,
+.security-grid,
+.autonomy-grid,
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.implementation-card,
+.governance-card,
+.security-card,
+.autonomy-card,
+.metric-card {
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 1.1rem;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.implementation-card > span,
+.metric-card > span {
+  display: inline-flex;
+  margin-bottom: 0.65rem;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.implementation-card h3,
+.governance-card h3,
+.security-card h3,
+.autonomy-card h3,
+.metric-card h3 {
+  margin: 0 0 0.65rem;
+}
+
+.implementation-card p,
+.governance-card p,
+.security-card p,
+.autonomy-card p,
+.metric-card p {
+  margin: 0;
+}
+
+.quality-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.quality-flow article {
+  padding: 1.15rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--surface);
+}
+
+.quality-flow article > span {
+  display: inline-grid;
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: 0.7rem;
+  place-items: center;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.quality-flow h3 {
+  margin: 0 0 0.45rem;
+}
+
+.quality-flow p {
+  margin: 0;
+}
+
+.evolution-demo {
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 1.2rem;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.evolution-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.2rem;
+}
+
+.evolution-tab {
+  min-height: 3.2rem;
+  padding: 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.evolution-tab:hover,
+.evolution-tab.is-selected {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 11%, transparent);
+}
+
+.evolution-panel {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.evolution-label {
+  margin: 0 0 0.3rem;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.evolution-panel h3 {
+  margin: 0 0 0.65rem;
+}
+
+.evolution-items {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.evolution-item {
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+  background: var(--background);
+}
+
+.evolution-item strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--accent);
+}
+
+.case-quote {
+  margin-top: 1.5rem;
+  padding: 1.3rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 0 1rem 1rem 0;
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface));
+}
+
+.case-quote p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.confidentiality-note {
+  margin-top: 1.5rem;
+}
+
+#governanca .case-note,
+#seguranca .case-note {
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 1000px) {
+  .quality-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .implementation-grid,
+  .governance-grid,
+  .security-grid,
+  .autonomy-grid,
+  .metrics-grid,
+  .quality-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .evolution-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .evolution-items {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .evolution-demo {
+    padding: 0.9rem;
+  }
+
+  .evolution-tabs {
+    grid-template-columns: 1fr;
+  }
+
+  .evolution-tab {
+    text-align: left;
+  }
+}
+
+
+/* PADRÃO DE INTERAÇÃO DO SITE — TODOS OS CARDS DAS SEÇÕES */
+
+body.reveal-ready .implementation-card.reveal.is-visible:hover,
+body.reveal-ready .governance-card.reveal.is-visible:hover,
+body.reveal-ready .security-card.reveal.is-visible:hover,
+body.reveal-ready .autonomy-card.reveal.is-visible:hover,
+body.reveal-ready .metric-card.reveal.is-visible:hover,
+body.reveal-ready .quality-flow.reveal.is-visible article:hover,
+body.reveal-ready .evolution-demo.reveal.is-visible .evolution-item:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: 0 18px 40px rgba(75, 42, 82, 0.12);
+}
+
+body.reveal-ready .implementation-card.reveal.is-visible:hover::before,
+body.reveal-ready .governance-card.reveal.is-visible:hover::before,
+body.reveal-ready .security-card.reveal.is-visible:hover::before,
+body.reveal-ready .autonomy-card.reveal.is-visible:hover::before,
+body.reveal-ready .metric-card.reveal.is-visible:hover::before,
+body.reveal-ready .quality-flow.reveal.is-visible article:hover::before,
+body.reveal-ready .evolution-demo.reveal.is-visible .evolution-item:hover::before {
+  transform: scaleY(1);
+}
+
+.evolution-item {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.evolution-item::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease;
+}
+
+@media (hover: none) {
+  body.reveal-ready .implementation-card.reveal.is-visible:hover,
+  body.reveal-ready .governance-card.reveal.is-visible:hover,
+  body.reveal-ready .security-card.reveal.is-visible:hover,
+  body.reveal-ready .autonomy-card.reveal.is-visible:hover,
+  body.reveal-ready .metric-card.reveal.is-visible:hover,
+  body.reveal-ready .quality-flow.reveal.is-visible article:hover,
+  body.reveal-ready .evolution-demo.reveal.is-visible .evolution-item:hover {
+    transform: translateY(0);
+    border-color: var(--border);
+    box-shadow: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.reveal-ready .implementation-card.reveal.is-visible:hover,
+  body.reveal-ready .governance-card.reveal.is-visible:hover,
+  body.reveal-ready .security-card.reveal.is-visible:hover,
+  body.reveal-ready .autonomy-card.reveal.is-visible:hover,
+  body.reveal-ready .metric-card.reveal.is-visible:hover,
+  body.reveal-ready .quality-flow.reveal.is-visible article:hover,
+  body.reveal-ready .evolution-demo.reveal.is-visible .evolution-item:hover {
+    transform: none;
+  }
+}
+
+/* VERSÃO 9 — HOVER SEM ALTERAR O LAYOUT */
+
+@media (hover: hover) and (pointer: fine) {
+  .implementation-card:hover,
+  .governance-card:hover,
+  .security-card:hover,
+  .autonomy-card:hover,
+  .metric-card:hover,
+  .quality-flow article:hover,
+  .evolution-item:hover {
+    transform: translateY(-6px) !important;
+    border-color: var(--accent) !important;
+    box-shadow:
+      0 0 0 1px var(--accent),
+      0 16px 34px rgba(75, 42, 82, 0.16) !important;
+  }
+}
+
+.implementation-card,
+.governance-card,
+.security-card,
+.autonomy-card,
+.metric-card,
+.quality-flow article,
+.evolution-item {
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* VERSÃO 10 — BORDA UNIFORME NO HOVER */
+
+.implementation-card::before,
+.governance-card::before,
+.security-card::before,
+.autonomy-card::before,
+.metric-card::before,
+.quality-flow article::before,
+.evolution-item::before {
+  display: none !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .implementation-card:hover,
+  .governance-card:hover,
+  .security-card:hover,
+  .autonomy-card:hover,
+  .metric-card:hover,
+  .quality-flow article:hover,
+  .evolution-item:hover {
+    border: 1px solid var(--accent) !important;
+    box-shadow:
+      0 0 0 1px var(--accent),
+      0 16px 34px rgba(75, 42, 82, 0.16) !important;
+  }
+}
+
+
+/* VERSÃO 11 — PADRÃO ÚNICO DE BORDA PARA TODOS OS CARDS */
+
+.case-summary::before,
+.case-content-card::before,
+.implementation-card::before,
+.governance-card::before,
+.security-card::before,
+.autonomy-card::before,
+.metric-card::before,
+.quality-flow article::before,
+.evolution-item::before {
+  display: none !important;
+}
+
+.case-summary,
+.case-content-card,
+.implementation-card,
+.governance-card,
+.security-card,
+.autonomy-card,
+.metric-card,
+.quality-flow article,
+.evolution-item {
+  border-width: 1px !important;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .case-summary:hover,
+  .case-content-card:hover,
+  .implementation-card:hover,
+  .governance-card:hover,
+  .security-card:hover,
+  .autonomy-card:hover,
+  .metric-card:hover,
+  .quality-flow article:hover,
+  .evolution-item:hover {
+    transform: translateY(-6px) !important;
+    border: 1px solid var(--accent) !important;
+    box-shadow: 0 14px 30px rgba(75, 42, 82, 0.15) !important;
+  }
+}
+
+.case-summary:active,
+.case-content-card:active,
+.implementation-card:active,
+.governance-card:active,
+.security-card:active,
+.autonomy-card:active,
+.metric-card:active,
+.quality-flow article:active,
+.evolution-item:active {
+  border: 1px solid var(--accent) !important;
+}
+
+/* CONTROLES DA EVOLUÇÃO POR PERÍODO */
+
+.evolution-controls {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto
+    minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.evolution-control-button {
+  min-height: 2.9rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  color: var(--primary);
+  background: var(--surface);
+  font: inherit;
+  font-weight: 800;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.evolution-control-button:first-child {
+  justify-self: start;
+}
+
+.evolution-control-button:last-child {
+  justify-self: end;
+}
+
+.evolution-control-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  background: var(--surface-soft);
+}
+
+.evolution-control-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.evolution-control-button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.evolution-control-status {
+  font-size: 0.85rem;
+  font-weight: 800;
+  white-space: nowrap;
+  color: var(--text-soft);
+}
+
+@media (max-width: 640px) {
+  .evolution-controls {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+    margin-bottom: 1.5rem;
+  }
+
+  .evolution-control-status {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+  }
+
+  .evolution-control-button {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.7rem 0.65rem;
+    border-radius: 0.9rem;
+    font-size: 0.82rem;
+  }
+
+  .evolution-control-button:first-child,
+  .evolution-control-button:last-child {
+    justify-self: stretch;
+  }
+}
+
+/* CASE 02 — CONTROLES SOMENTE EM TELAS RESPONSIVAS */
+
+@media (min-width: 901px) {
+  .evolution-demo .evolution-controls {
+    display: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .evolution-demo .evolution-controls {
+    display: grid !important;
+  }
+}
