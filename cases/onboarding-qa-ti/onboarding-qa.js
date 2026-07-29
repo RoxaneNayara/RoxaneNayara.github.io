@@ -64,6 +64,22 @@
     return;
   }
 
+  const controlsElement =
+    document.createElement("div");
+
+  controlsElement.className =
+    "onboarding-controls";
+
+  controlsElement.setAttribute(
+    "aria-label",
+    "Navegação entre temas do onboarding"
+  );
+
+  cardsElement.insertAdjacentElement(
+    "afterend",
+    controlsElement
+  );
+
   let selectedIndex = 0;
 
   function renderSteps() {
@@ -71,10 +87,16 @@
       .map(
         (item, index) => `
           <button
-            class="onboarding-step-button${index === selectedIndex ? " is-selected" : ""}"
+            class="onboarding-step-button${
+              index === selectedIndex
+                ? " is-selected"
+                : ""
+            }"
             type="button"
             role="tab"
-            aria-selected="${index === selectedIndex}"
+            aria-selected="${
+              index === selectedIndex
+            }"
             data-onboarding-index="${index}"
           >
             <span>${index + 1}</span>
@@ -108,21 +130,132 @@
     `;
   }
 
-  stepsElement.addEventListener("click", (event) => {
-    const button =
-      event.target.closest("[data-onboarding-index]");
+  function renderControls() {
+    controlsElement.innerHTML = `
+      <button
+        class="onboarding-control-button"
+        type="button"
+        data-onboarding-direction="previous"
+        ${selectedIndex === 0 ? "disabled" : ""}
+      >
+        ← Anterior
+      </button>
 
-    if (!button) {
+      <span class="onboarding-control-status">
+        Tema ${selectedIndex + 1}
+        de ${onboardingData.length}
+      </span>
+
+      <button
+        class="onboarding-control-button"
+        type="button"
+        data-onboarding-direction="next"
+        ${
+          selectedIndex === onboardingData.length - 1
+            ? "disabled"
+            : ""
+        }
+      >
+        Próximo →
+      </button>
+    `;
+  }
+
+  function render() {
+    renderSteps();
+    renderPanel();
+    renderControls();
+  }
+
+  function scrollToSelectedTheme() {
+    if (
+      !window.matchMedia("(max-width: 760px)").matches
+    ) {
       return;
     }
 
-    selectedIndex =
-      Number(button.dataset.onboardingIndex);
+    const prefersReducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
 
-    renderSteps();
-    renderPanel();
-  });
+    const header =
+      document.querySelector(".header");
 
-  renderSteps();
-  renderPanel();
+    const caseNavigation =
+      document.querySelector(".case-navigation");
+
+    const offset =
+      (header?.offsetHeight ?? 76) +
+      (caseNavigation?.offsetHeight ?? 0) +
+      24;
+
+    const top =
+      titleElement.getBoundingClientRect().top +
+      window.scrollY -
+      offset;
+
+    window.scrollTo({
+      top,
+      behavior: prefersReducedMotion
+        ? "auto"
+        : "smooth"
+    });
+  }
+
+  stepsElement.addEventListener(
+    "click",
+    (event) => {
+      const button = event.target.closest(
+        "[data-onboarding-index]"
+      );
+
+      if (!button) {
+        return;
+      }
+
+      selectedIndex = Number(
+        button.dataset.onboardingIndex
+      );
+
+      render();
+    }
+  );
+
+  controlsElement.addEventListener(
+    "click",
+    (event) => {
+      const button = event.target.closest(
+        "[data-onboarding-direction]"
+      );
+
+      if (!button || button.disabled) {
+        return;
+      }
+
+      const direction =
+        button.dataset.onboardingDirection;
+
+      const newIndex =
+        direction === "next"
+          ? selectedIndex + 1
+          : selectedIndex - 1;
+
+      if (
+        newIndex < 0 ||
+        newIndex >= onboardingData.length
+      ) {
+        return;
+      }
+
+      selectedIndex = newIndex;
+      render();
+
+      requestAnimationFrame(() => {
+        scrollToSelectedTheme();
+      });
+    }
+  );
+
+  render();
 })();
