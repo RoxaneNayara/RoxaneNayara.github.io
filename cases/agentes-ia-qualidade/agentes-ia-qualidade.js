@@ -259,17 +259,6 @@
       return;
     }
 
-    const contextElement =
-      document.createElement("div");
-
-    contextElement.className =
-      "simulation-mobile-context";
-
-    selectedLabelElement.insertAdjacentElement(
-      "beforebegin",
-      contextElement
-    );
-
     const controlsElement =
       document.createElement("div");
 
@@ -361,22 +350,6 @@
         item.validation;
     }
 
-    function renderContext() {
-      const agent =
-        simulationData[selectedAgentIndex];
-
-      contextElement.innerHTML = `
-        <p>Agente selecionado</p>
-        <strong>${agent.title}</strong>
-
-        <span>
-          Simulação
-          ${selectedQuestionIndex + 1}
-          de ${agent.questions.length}
-        </span>
-      `;
-    }
-
     function isFirstSimulation() {
       return (
         selectedAgentIndex === 0 &&
@@ -444,7 +417,6 @@
       renderAgents();
       renderQuestions();
       renderPanel();
-      renderContext();
       renderControls();
     }
 
