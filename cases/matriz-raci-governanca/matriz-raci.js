@@ -320,22 +320,42 @@
   let selectedAreaIndex = 0;
   let selectedActivityIndex = 0;
 
+  const detailElement = titleElement.closest(".raci-detail");
+  const controlsElement = document.createElement("div");
+
+  controlsElement.className = "raci-controls";
+  controlsElement.setAttribute(
+    "aria-label",
+    "Navegação entre atividades da matriz"
+  );
+
+  if (detailElement) {
+    detailElement.insertAdjacentElement(
+      "beforeend",
+      controlsElement
+    );
+  }
+
   function renderAreas() {
     areasElement.innerHTML = raciData
       .map(
         (area, index) => `
           <button
             class="raci-area-button${
-              index === selectedAreaIndex ? " is-selected" : ""
+              index === selectedAreaIndex
+                ? " is-selected"
+                : ""
             }"
             type="button"
             role="tab"
-            aria-selected="${index === selectedAreaIndex}"
+            aria-selected="${
+              index === selectedAreaIndex
+            }"
             data-area-index="${index}"
           >
             ${area.label}
           </button>
-        `,
+        `
       )
       .join("");
   }
@@ -343,29 +363,34 @@
   function renderActivities() {
     const currentArea = raciData[selectedAreaIndex];
 
-    activitiesElement.innerHTML = currentArea.activities
-      .map(
-        (activity, index) => `
-          <button
-            class="raci-activity-button${
-              index === selectedActivityIndex ? " is-selected" : ""
-            }"
-            type="button"
-            data-activity-index="${index}"
-          >
-            ${activity.title}
-          </button>
-        `,
-      )
-      .join("");
+    activitiesElement.innerHTML =
+      currentArea.activities
+        .map(
+          (activity, index) => `
+            <button
+              class="raci-activity-button${
+                index === selectedActivityIndex
+                  ? " is-selected"
+                  : ""
+              }"
+              type="button"
+              data-activity-index="${index}"
+            >
+              ${activity.title}
+            </button>
+          `
+        )
+        .join("");
   }
 
   function renderDetail() {
     const activity =
-      raciData[selectedAreaIndex].activities[selectedActivityIndex];
+      raciData[selectedAreaIndex]
+        .activities[selectedActivityIndex];
 
     titleElement.textContent = activity.title;
-    contributionElement.textContent = activity.contribution;
+    contributionElement.textContent =
+      activity.contribution;
 
     cardsElement.innerHTML = ["R", "A", "C", "I"]
       .map((role) => {
@@ -375,7 +400,12 @@
           values.length > 0
             ? `
               <ul>
-                ${values.map((value) => `<li>${value}</li>`).join("")}
+                ${values
+                  .map(
+                    (value) =>
+                      `<li>${value}</li>`
+                  )
+                  .join("")}
               </ul>
             `
             : `
@@ -385,9 +415,14 @@
             `;
 
         return `
-          <section class="raci-card raci-card-${role.toLowerCase()}">
+          <section
+            class="raci-card raci-card-${role.toLowerCase()}"
+          >
             <div class="raci-card-heading">
-              <span class="raci-letter">${role}</span>
+              <span class="raci-letter">
+                ${role}
+              </span>
+
               <h4>${roleLabels[role]}</h4>
             </div>
 
@@ -398,7 +433,8 @@
       .join("");
 
     if (activity.note) {
-      noteTextElement.textContent = activity.note;
+      noteTextElement.textContent =
+        activity.note;
       noteElement.hidden = false;
     } else {
       noteTextElement.textContent = "";
@@ -406,36 +442,203 @@
     }
   }
 
+  function renderControls() {
+    const currentArea =
+      raciData[selectedAreaIndex];
+
+    const isFirst =
+      selectedAreaIndex === 0 &&
+      selectedActivityIndex === 0;
+
+    const isLastArea =
+      selectedAreaIndex === raciData.length - 1;
+
+    const isLastActivity =
+      selectedActivityIndex ===
+      currentArea.activities.length - 1;
+
+    const isLast =
+      isLastArea && isLastActivity;
+
+    controlsElement.innerHTML = `
+      <button
+        class="raci-control-button"
+        type="button"
+        data-raci-direction="previous"
+        ${isFirst ? "disabled" : ""}
+      >
+        ← Anterior
+      </button>
+
+      <span class="raci-control-status">
+        ${currentArea.label}
+        ·
+        ${selectedActivityIndex + 1} de
+        ${currentArea.activities.length}
+      </span>
+
+      <button
+        class="raci-control-button"
+        type="button"
+        data-raci-direction="next"
+        ${isLast ? "disabled" : ""}
+      >
+        Próximo →
+      </button>
+    `;
+  }
+
   function render() {
     renderAreas();
     renderActivities();
     renderDetail();
+    renderControls();
   }
 
-  areasElement.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-area-index]");
-
-    if (!button) {
+  function scrollToDetail() {
+    if (!detailElement) {
       return;
     }
 
-    selectedAreaIndex = Number(button.dataset.areaIndex);
-    selectedActivityIndex = 0;
+    const prefersReducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
 
-    render();
-  });
+    const header =
+      document.querySelector(".header");
 
-  activitiesElement.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-activity-index]");
+    const caseNavigation =
+      document.querySelector(
+        ".case-navigation"
+      );
 
-    if (!button) {
-      return;
+    const offset =
+      (header?.offsetHeight ?? 76) +
+      (caseNavigation?.offsetHeight ?? 0) +
+      24;
+
+    const top =
+      detailElement.getBoundingClientRect().top +
+      window.scrollY -
+      offset;
+
+    window.scrollTo({
+      top,
+      behavior: prefersReducedMotion
+        ? "auto"
+        : "smooth",
+    });
+  }
+
+  function moveToPreviousActivity() {
+    if (selectedActivityIndex > 0) {
+      selectedActivityIndex -= 1;
+      return true;
     }
 
-    selectedActivityIndex = Number(button.dataset.activityIndex);
+    if (selectedAreaIndex > 0) {
+      selectedAreaIndex -= 1;
 
-    render();
-  });
+      const previousArea =
+        raciData[selectedAreaIndex];
+
+      selectedActivityIndex =
+        previousArea.activities.length - 1;
+
+      return true;
+    }
+
+    return false;
+  }
+
+  function moveToNextActivity() {
+    const currentArea =
+      raciData[selectedAreaIndex];
+
+    if (
+      selectedActivityIndex <
+      currentArea.activities.length - 1
+    ) {
+      selectedActivityIndex += 1;
+      return true;
+    }
+
+    if (
+      selectedAreaIndex <
+      raciData.length - 1
+    ) {
+      selectedAreaIndex += 1;
+      selectedActivityIndex = 0;
+      return true;
+    }
+
+    return false;
+  }
+
+  areasElement.addEventListener(
+    "click",
+    (event) => {
+      const button = event.target.closest(
+        "[data-area-index]"
+      );
+
+      if (!button) {
+        return;
+      }
+
+      selectedAreaIndex = Number(
+        button.dataset.areaIndex
+      );
+
+      selectedActivityIndex = 0;
+      render();
+    }
+  );
+
+  activitiesElement.addEventListener(
+    "click",
+    (event) => {
+      const button = event.target.closest(
+        "[data-activity-index]"
+      );
+
+      if (!button) {
+        return;
+      }
+
+      selectedActivityIndex = Number(
+        button.dataset.activityIndex
+      );
+
+      render();
+    }
+  );
+
+  controlsElement.addEventListener(
+    "click",
+    (event) => {
+      const button = event.target.closest(
+        "[data-raci-direction]"
+      );
+
+      if (!button || button.disabled) {
+        return;
+      }
+
+      const moved =
+        button.dataset.raciDirection === "next"
+          ? moveToNextActivity()
+          : moveToPreviousActivity();
+
+      if (!moved) {
+        return;
+      }
+
+      render();
+      scrollToDetail();
+    }
+  );
 
   render();
 })();
