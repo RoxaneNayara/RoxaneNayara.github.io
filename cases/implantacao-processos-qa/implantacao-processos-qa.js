@@ -102,11 +102,17 @@
     }
   ];
 
-  const tabsElement = document.querySelector("#evolution-tabs");
-  const titleElement = document.querySelector("#evolution-title");
+  const tabsElement =
+    document.querySelector("#evolution-tabs");
+
+  const titleElement =
+    document.querySelector("#evolution-title");
+
   const descriptionElement =
     document.querySelector("#evolution-description");
-  const itemsElement = document.querySelector("#evolution-items");
+
+  const itemsElement =
+    document.querySelector("#evolution-items");
 
   if (
     !tabsElement ||
@@ -119,15 +125,37 @@
 
   let selectedIndex = 0;
 
+  const controlsElement =
+    document.createElement("div");
+
+  controlsElement.className =
+    "evolution-controls";
+
+  controlsElement.setAttribute(
+    "aria-label",
+    "Navegação entre períodos"
+  );
+
+  itemsElement.insertAdjacentElement(
+    "afterend",
+    controlsElement
+  );
+
   function renderTabs() {
     tabsElement.innerHTML = evolutionData
       .map(
         (item, index) => `
           <button
-            class="evolution-tab${index === selectedIndex ? " is-selected" : ""}"
+            class="evolution-tab${
+              index === selectedIndex
+                ? " is-selected"
+                : ""
+            }"
             type="button"
             role="tab"
-            aria-selected="${index === selectedIndex}"
+            aria-selected="${
+              index === selectedIndex
+            }"
             data-evolution-index="${index}"
           >
             ${item.year}
@@ -141,7 +169,8 @@
     const item = evolutionData[selectedIndex];
 
     titleElement.textContent = item.title;
-    descriptionElement.textContent = item.description;
+    descriptionElement.textContent =
+      item.description;
 
     itemsElement.innerHTML = item.items
       .map(
@@ -155,18 +184,145 @@
       .join("");
   }
 
-  tabsElement.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-evolution-index]");
+  function renderControls() {
+    const isFirst = selectedIndex === 0;
+    const isLast =
+      selectedIndex === evolutionData.length - 1;
 
-    if (!button) {
+    controlsElement.innerHTML = `
+      <button
+        class="evolution-control-button"
+        type="button"
+        data-evolution-direction="previous"
+        ${isFirst ? "disabled" : ""}
+      >
+        ← Anterior
+      </button>
+
+      <span class="evolution-control-status">
+        ${evolutionData[selectedIndex].year}
+        ·
+        ${selectedIndex + 1} de
+        ${evolutionData.length}
+      </span>
+
+      <button
+        class="evolution-control-button"
+        type="button"
+        data-evolution-direction="next"
+        ${isLast ? "disabled" : ""}
+      >
+        Próximo →
+      </button>
+    `;
+  }
+
+  function renderEvolution() {
+    renderTabs();
+    renderPanel();
+    renderControls();
+  }
+
+  function scrollToPanel() {
+    const prefersReducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+    const panelElement =
+      titleElement
+        .closest(".evolution-panel")
+        ?.querySelector(".evolution-label");
+
+    if (!panelElement) {
       return;
     }
 
-    selectedIndex = Number(button.dataset.evolutionIndex);
-    renderTabs();
-    renderPanel();
-  });
+    const header =
+      document.querySelector(".header");
 
-  renderTabs();
-  renderPanel();
+    const caseNavigation =
+      document.querySelector(
+        ".case-navigation"
+      );
+
+    const offset =
+      (header?.offsetHeight ?? 76) +
+      (caseNavigation?.offsetHeight ?? 0) +
+      24;
+
+    const top =
+      panelElement.getBoundingClientRect().top +
+      window.scrollY -
+      offset;
+
+    window.scrollTo({
+      top,
+      behavior: prefersReducedMotion
+        ? "auto"
+        : "smooth"
+    });
+  }
+
+  function changePeriod(
+    newIndex,
+    shouldScroll
+  ) {
+    if (
+      newIndex < 0 ||
+      newIndex >= evolutionData.length
+    ) {
+      return;
+    }
+
+    selectedIndex = newIndex;
+    renderEvolution();
+
+    if (shouldScroll) {
+      scrollToPanel();
+    }
+  }
+
+  tabsElement.addEventListener(
+    "click",
+    (event) => {
+      const button = event.target.closest(
+        "[data-evolution-index]"
+      );
+
+      if (!button) {
+        return;
+      }
+
+      changePeriod(
+        Number(button.dataset.evolutionIndex),
+        false
+      );
+    }
+  );
+
+  controlsElement.addEventListener(
+    "click",
+    (event) => {
+      const button = event.target.closest(
+        "[data-evolution-direction]"
+      );
+
+      if (!button || button.disabled) {
+        return;
+      }
+
+      const direction =
+        button.dataset.evolutionDirection;
+
+      const newIndex =
+        direction === "next"
+          ? selectedIndex + 1
+          : selectedIndex - 1;
+
+      changePeriod(newIndex, true);
+    }
+  );
+
+  renderEvolution();
 })();
