@@ -581,8 +581,11 @@
     background:
       color-mix(
         in srgb,
-        var(--accent) 9%,
+        var(--text) 7%,
         var(--surface)
       );
+    color: var(--text);
+    box-shadow:
+      inset 3px 0 0 var(--accent);
   }
 }
