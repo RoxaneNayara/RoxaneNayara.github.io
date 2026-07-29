@@ -3,16 +3,16 @@
     {
       title: "Compartilhamento de conhecimento",
       topics: [
-            {
-              title: "Webinar interno",
-              need:
-                "Criar um espaço em que diferentes áreas de TI pudessem apresentar temas e compartilhar conhecimento.",
-              action:
-                "A iniciativa foi idealizada, estruturada e viabilizada em conjunto com as lideranças, com participação de profissionais de diferentes times dentro da área de Tecnologia.",
-              contribution:
-                "Ampliou a circulação de conhecimento e aproximou especialidades dentro de Tecnologia."
-            },
-          {
+        {
+          title: "Webinar interno",
+          need:
+            "Criar um espaço em que diferentes áreas de TI pudessem apresentar temas e compartilhar conhecimento.",
+          action:
+            "A iniciativa foi idealizada, estruturada e viabilizada em conjunto com as lideranças, com participação de profissionais de diferentes times dentro da área de Tecnologia.",
+          contribution:
+            "Ampliou a circulação de conhecimento e aproximou especialidades dentro de Tecnologia."
+        },
+        {
           title: "Participação de diferentes áreas",
           need:
             "Evitar que o conhecimento permanecesse concentrado apenas dentro de cada time.",
@@ -137,6 +137,22 @@
     return;
   }
 
+  const controlsElement =
+    document.createElement("div");
+
+  controlsElement.className =
+    "culture-controls";
+
+  controlsElement.setAttribute(
+    "aria-label",
+    "Navegação entre tópicos de cultura de qualidade"
+  );
+
+  cardsElement.insertAdjacentElement(
+    "afterend",
+    controlsElement
+  );
+
   let selectedTabIndex = 0;
   let selectedTopicIndex = 0;
 
@@ -145,10 +161,16 @@
       .map(
         (item, index) => `
           <button
-            class="culture-tab-button${index === selectedTabIndex ? " is-selected" : ""}"
+            class="culture-tab-button${
+              index === selectedTabIndex
+                ? " is-selected"
+                : ""
+            }"
             type="button"
             role="tab"
-            aria-selected="${index === selectedTabIndex}"
+            aria-selected="${
+              index === selectedTabIndex
+            }"
             data-culture-tab="${index}"
           >
             ${item.title}
@@ -159,28 +181,36 @@
   }
 
   function renderTopics() {
-    const selectedTab = cultureData[selectedTabIndex];
+    const selectedTab =
+      cultureData[selectedTabIndex];
 
-    titleElement.textContent = selectedTab.title;
+    titleElement.textContent =
+      selectedTab.title;
 
-    topicButtonsElement.innerHTML = selectedTab.topics
-      .map(
-        (topic, index) => `
-          <button
-            class="culture-topic-button${index === selectedTopicIndex ? " is-selected" : ""}"
-            type="button"
-            data-culture-topic="${index}"
-          >
-            ${topic.title}
-          </button>
-        `
-      )
-      .join("");
+    topicButtonsElement.innerHTML =
+      selectedTab.topics
+        .map(
+          (topic, index) => `
+            <button
+              class="culture-topic-button${
+                index === selectedTopicIndex
+                  ? " is-selected"
+                  : ""
+              }"
+              type="button"
+              data-culture-topic="${index}"
+            >
+              ${topic.title}
+            </button>
+          `
+        )
+        .join("");
   }
 
   function renderCards() {
     const topic =
-      cultureData[selectedTabIndex].topics[selectedTopicIndex];
+      cultureData[selectedTabIndex]
+        .topics[selectedTopicIndex];
 
     cardsElement.innerHTML = `
       <article class="culture-info-card">
@@ -193,47 +223,231 @@
         <span>${topic.action}</span>
       </article>
 
-      <article class="culture-info-card culture-info-card-highlight">
+      <article
+        class="culture-info-card culture-info-card-highlight"
+      >
         <p>Contribuição para a área</p>
         <span>${topic.contribution}</span>
       </article>
     `;
   }
 
-  tabsElement.addEventListener("click", (event) => {
-    const button =
-      event.target.closest("[data-culture-tab]");
+  function renderControls() {
+    const currentTab =
+      cultureData[selectedTabIndex];
 
-    if (!button) {
-      return;
-    }
+    const isFirst =
+      selectedTabIndex === 0 &&
+      selectedTopicIndex === 0;
 
-    selectedTabIndex =
-      Number(button.dataset.cultureTab);
+    const isLastTab =
+      selectedTabIndex ===
+      cultureData.length - 1;
 
-    selectedTopicIndex = 0;
+    const isLastTopic =
+      selectedTopicIndex ===
+      currentTab.topics.length - 1;
 
+    const isLast =
+      isLastTab && isLastTopic;
+
+    controlsElement.innerHTML = `
+      <button
+        class="culture-control-button"
+        type="button"
+        data-culture-direction="previous"
+        ${isFirst ? "disabled" : ""}
+      >
+        ← Anterior
+      </button>
+
+      <span class="culture-control-status">
+        ${currentTab.title}
+        ·
+        ${selectedTopicIndex + 1} de
+        ${currentTab.topics.length}
+      </span>
+
+      <button
+        class="culture-control-button"
+        type="button"
+        data-culture-direction="next"
+        ${isLast ? "disabled" : ""}
+      >
+        Próximo →
+      </button>
+    `;
+  }
+
+  function render() {
     renderTabs();
     renderTopics();
     renderCards();
-  });
+    renderControls();
+  }
 
-  topicButtonsElement.addEventListener("click", (event) => {
-    const button =
-      event.target.closest("[data-culture-topic]");
+  function moveToPreviousTopic() {
+    if (selectedTopicIndex > 0) {
+      selectedTopicIndex -= 1;
+      return true;
+    }
 
-    if (!button) {
+    if (selectedTabIndex > 0) {
+      selectedTabIndex -= 1;
+
+      const previousTab =
+        cultureData[selectedTabIndex];
+
+      selectedTopicIndex =
+        previousTab.topics.length - 1;
+
+      return true;
+    }
+
+    return false;
+  }
+
+  function moveToNextTopic() {
+    const currentTab =
+      cultureData[selectedTabIndex];
+
+    if (
+      selectedTopicIndex <
+      currentTab.topics.length - 1
+    ) {
+      selectedTopicIndex += 1;
+      return true;
+    }
+
+    if (
+      selectedTabIndex <
+      cultureData.length - 1
+    ) {
+      selectedTabIndex += 1;
+      selectedTopicIndex = 0;
+
+      return true;
+    }
+
+    return false;
+  }
+
+  function scrollToSelectedFront() {
+    if (
+      !window.matchMedia(
+        "(max-width: 760px)"
+      ).matches
+    ) {
       return;
     }
 
-    selectedTopicIndex =
-      Number(button.dataset.cultureTopic);
+    const prefersReducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
 
-    renderTopics();
-    renderCards();
-  });
+    const header =
+      document.querySelector(".header");
 
-  renderTabs();
-  renderTopics();
-  renderCards();
+    const caseNavigation =
+      document.querySelector(
+        ".case-navigation"
+      );
+
+    const selectedLabel =
+      titleElement.previousElementSibling;
+
+    const targetElement =
+      selectedLabel instanceof HTMLElement
+        ? selectedLabel
+        : titleElement;
+
+    const offset =
+      (header?.offsetHeight ?? 76) +
+      (caseNavigation?.offsetHeight ?? 0) +
+      24;
+
+    const top =
+      targetElement.getBoundingClientRect().top +
+      window.scrollY -
+      offset;
+
+    window.scrollTo({
+      top,
+      behavior: prefersReducedMotion
+        ? "auto"
+        : "smooth"
+    });
+  }
+
+  tabsElement.addEventListener(
+    "click",
+    (event) => {
+      const button = event.target.closest(
+        "[data-culture-tab]"
+      );
+
+      if (!button) {
+        return;
+      }
+
+      selectedTabIndex = Number(
+        button.dataset.cultureTab
+      );
+
+      selectedTopicIndex = 0;
+
+      render();
+    }
+  );
+
+  topicButtonsElement.addEventListener(
+    "click",
+    (event) => {
+      const button = event.target.closest(
+        "[data-culture-topic]"
+      );
+
+      if (!button) {
+        return;
+      }
+
+      selectedTopicIndex = Number(
+        button.dataset.cultureTopic
+      );
+
+      render();
+    }
+  );
+
+  controlsElement.addEventListener(
+    "click",
+    (event) => {
+      const button = event.target.closest(
+        "[data-culture-direction]"
+      );
+
+      if (!button || button.disabled) {
+        return;
+      }
+
+      const moved =
+        button.dataset.cultureDirection ===
+        "next"
+          ? moveToNextTopic()
+          : moveToPreviousTopic();
+
+      if (!moved) {
+        return;
+      }
+
+      render();
+
+      requestAnimationFrame(() => {
+        scrollToSelectedFront();
+      });
+    }
+  );
+
+  render();
 })();
