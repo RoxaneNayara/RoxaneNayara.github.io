@@ -209,27 +209,19 @@
   }
 }
 
-@media (max-width: 560px) {
-  .poc-demo {
-    padding: 0.9rem;
-  }
+.poc-criteria {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
 
-  .poc-view-tabs,
-  .poc-comparison-cards,
-  .poc-state-grid,
-  .poc-timeline {
-    grid-template-columns: 1fr;
-  }
-
-  .poc-criteria {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .poc-criterion-button {
-    border-radius: 0.8rem;
-    text-align: left;
-  }
+.poc-criterion-button {
+  width: auto;
+  flex: 0 1 auto;
+  padding: 0.65rem 0.9rem;
+  border-radius: 999px;
+  text-align: center;
+}
 
   .poc-result-card span,
   .poc-timeline-item p,
