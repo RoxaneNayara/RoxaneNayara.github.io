@@ -435,3 +435,186 @@
     padding-inline: 0.2rem;
   }
 }
+
+/* CASE 12 — CONTEXTO E NAVEGAÇÃO DAS SIMULAÇÕES */
+
+.simulation-mobile-context,
+.simulation-controls {
+  display: none;
+}
+
+/* Tablet e celular */
+
+@media (max-width: 1024px) {
+  .simulation-controls {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 1fr)
+      auto
+      minmax(0, 1fr);
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .simulation-control-button {
+    min-height: 2.9rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--primary);
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 800;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+  .simulation-control-button:first-child {
+    justify-self: start;
+  }
+
+  .simulation-control-button:last-child {
+    justify-self: end;
+  }
+
+  .simulation-control-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    background: var(--surface-soft);
+  }
+
+  .simulation-control-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+
+  .simulation-control-button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .simulation-control-status {
+    color: var(--text-soft);
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-align: center;
+    white-space: nowrap;
+  }
+}
+
+/* Celular */
+
+@media (max-width: 640px) {
+  .simulation-agents {
+    gap: 0.75rem;
+  }
+
+  .simulation-agent-button {
+    position: relative;
+    text-align: left;
+  }
+
+  .simulation-agent-button::before {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--accent);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    content: "Agente";
+  }
+
+  .simulation-questions {
+    gap: 0.75rem;
+  }
+
+  .simulation-question-button {
+    position: relative;
+    text-align: left;
+  }
+
+  .simulation-question-button::before {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--accent);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    content: "Pergunta";
+  }
+
+  .simulation-mobile-context {
+    display: grid;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.9rem;
+    background:
+      color-mix(
+        in srgb,
+        var(--accent) 7%,
+        var(--surface)
+      );
+  }
+
+  .simulation-mobile-context p {
+    margin: 0;
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .simulation-mobile-context strong {
+    color: var(--text);
+    font-size: 1rem;
+  }
+
+  .simulation-mobile-context span {
+    color: var(--text-soft);
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .simulation-controls {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .simulation-control-status {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+    width: 100%;
+    overflow: hidden;
+    font-size: 0.8rem;
+    text-overflow: ellipsis;
+  }
+
+  .simulation-control-button {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.7rem 0.65rem;
+    border-radius: 0.9rem;
+    font-size: 0.82rem;
+  }
+
+  .simulation-control-button:first-child,
+  .simulation-control-button:last-child {
+    justify-self: stretch;
+  }
+}
