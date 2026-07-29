@@ -858,6 +858,22 @@ document.addEventListener("DOMContentLoaded", () => {
     `
   );
 
+    const controlsElement =
+    document.createElement("div");
+
+  controlsElement.className =
+    "kanban-stage-controls";
+
+  controlsElement.setAttribute(
+    "aria-label",
+    "Navegação entre etapas do fluxo Kanban"
+  );
+
+  board.insertAdjacentElement(
+    "afterend",
+    controlsElement
+  );
+
   function getCurrentFlow() {
     return board.dataset.currentView === "anterior"
       ? previousFlow
@@ -868,6 +884,30 @@ document.addEventListener("DOMContentLoaded", () => {
     return board.dataset.currentView === "anterior"
       ? previousBoard
       : proposedBoard;
+  }
+
+  function getActiveColumns() {
+    return Array.from(
+      getActiveBoard().querySelectorAll(
+        ".kanban-column"
+      )
+    );
+  }
+
+  function getSelectedColumn() {
+    return getActiveBoard().querySelector(
+      ".kanban-column.is-selected"
+    );
+  }
+
+  function getSelectedIndex() {
+    const columns = getActiveColumns();
+    const selectedColumn = getSelectedColumn();
+
+    const index =
+      columns.indexOf(selectedColumn);
+
+    return index >= 0 ? index : 0;
   }
 
   function updatePolicy(item) {
@@ -887,7 +927,8 @@ document.addEventListener("DOMContentLoaded", () => {
       policyWip.textContent =
         `WIP ilustrativo: ${item.current} de ${item.limit}`;
     } else {
-      policyWip.textContent = "Etapa de saída";
+      policyWip.textContent =
+        "Etapa de saída";
     }
 
     policyObjective.textContent =
@@ -903,10 +944,136 @@ document.addEventListener("DOMContentLoaded", () => {
       item.policy.risk;
   }
 
+  function renderStageControls() {
+    const flow = getCurrentFlow();
+    const selectedIndex = getSelectedIndex();
+
+    controlsElement.innerHTML = `
+      <button
+        class="kanban-stage-control-button"
+        type="button"
+        data-kanban-direction="previous"
+        ${selectedIndex === 0 ? "disabled" : ""}
+      >
+        ← Anterior
+      </button>
+
+      <span class="kanban-stage-control-status">
+        Etapa ${selectedIndex + 1}
+        de ${flow.length}
+      </span>
+
+      <button
+        class="kanban-stage-control-button"
+        type="button"
+        data-kanban-direction="next"
+        ${
+          selectedIndex === flow.length - 1
+            ? "disabled"
+            : ""
+        }
+      >
+        Próxima →
+      </button>
+    `;
+  }
+
+  function centerSelectedColumn(
+    column,
+    behavior = "smooth"
+  ) {
+    const container =
+      column?.closest(".kanban-columns");
+
+    if (!container || !column) {
+      return;
+    }
+
+    const targetPosition =
+      column.offsetLeft -
+      container.offsetLeft -
+      container.clientWidth / 2 +
+      column.offsetWidth / 2;
+
+    const maximumScroll =
+      Math.max(
+        0,
+        container.scrollWidth -
+          container.clientWidth
+      );
+
+    const safePosition =
+      Math.max(
+        0,
+        Math.min(
+          targetPosition,
+          maximumScroll
+        )
+      );
+
+    const prefersReducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+    container.scrollTo({
+      left: safePosition,
+      behavior: prefersReducedMotion
+        ? "auto"
+        : behavior
+    });
+  }
+
+  function scrollPageToColumn(column) {
+    if (
+      !column ||
+      !window.matchMedia(
+        "(max-width: 1024px)"
+      ).matches
+    ) {
+      return;
+    }
+
+    const header =
+      document.querySelector(".header");
+
+    const caseNavigation =
+      document.querySelector(
+        ".case-navigation"
+      );
+
+    const offset =
+      (header?.offsetHeight ?? 76) +
+      (caseNavigation?.offsetHeight ?? 0) +
+      18;
+
+    const top =
+      column.getBoundingClientRect().top +
+      window.scrollY -
+      offset;
+
+    const prefersReducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+    window.scrollTo({
+      top,
+      behavior: prefersReducedMotion
+        ? "auto"
+        : "smooth"
+    });
+  }
+
   function selectColumn(
     column,
-    shouldScroll = true
+    options = {}
   ) {
+    const {
+      center = true,
+      scrollPage = false
+    } = options;
+
     if (!column) {
       return;
     }
@@ -914,7 +1081,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document
       .querySelectorAll(".kanban-column")
       .forEach((item) => {
-        const selected = item === column;
+        const selected =
+          item === column;
 
         item.classList.toggle(
           "is-selected",
@@ -927,12 +1095,15 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       });
 
-    const currentFlow = getCurrentFlow();
+    const currentFlow =
+      getCurrentFlow();
 
-    const selectedItem = currentFlow.find(
-      (item) =>
-        item.key === column.dataset.column
-    );
+    const selectedItem =
+      currentFlow.find(
+        (item) =>
+          item.key ===
+          column.dataset.column
+      );
 
     updatePolicy(selectedItem);
 
@@ -941,44 +1112,22 @@ document.addEventListener("DOMContentLoaded", () => {
         `Etapa selecionada: ${selectedItem.title}.`;
     }
 
-    if (shouldScroll) {
-      const container =
-        column.closest(".kanban-columns");
+    renderStageControls();
 
-      if (!container) {
-        return;
-      }
+    if (center) {
+      centerSelectedColumn(column);
+    }
 
-      const targetPosition =
-        column.offsetLeft -
-        container.offsetLeft -
-        container.clientWidth / 2 +
-        column.offsetWidth / 2;
-
-      const maximumScroll =
-        container.scrollWidth -
-        container.clientWidth;
-
-      const safePosition = Math.max(
-        0,
-        Math.min(
-          targetPosition,
-          maximumScroll
-        )
-      );
-
-      container.scrollTo({
-        left: safePosition,
-        behavior: window.matchMedia(
-          "(prefers-reduced-motion: reduce)"
-        ).matches
-          ? "auto"
-          : "smooth"
-      });
+    if (scrollPage) {
+      window.setTimeout(() => {
+        scrollPageToColumn(column);
+      }, 180);
     }
   }
 
-  function bindBoardInteractions(container) {
+  function bindBoardInteractions(
+    container
+  ) {
     const columns =
       container.querySelectorAll(
         ".kanban-column"
@@ -987,16 +1136,7 @@ document.addEventListener("DOMContentLoaded", () => {
     columns.forEach((column) => {
       column.addEventListener(
         "click",
-        (event) => {
-          if (
-            event.target.closest(
-              ".kanban-task-card"
-            )
-          ) {
-            selectColumn(column);
-            return;
-          }
-
+        () => {
           selectColumn(column);
         }
       );
@@ -1010,25 +1150,31 @@ document.addEventListener("DOMContentLoaded", () => {
           ) {
             event.preventDefault();
             selectColumn(column);
+            return;
           }
 
           if (
-            event.key === "ArrowRight" ||
-            event.key === "ArrowLeft"
+            event.key !== "ArrowRight" &&
+            event.key !== "ArrowLeft"
           ) {
-            event.preventDefault();
+            return;
+          }
 
-            const list = Array.from(columns);
+          event.preventDefault();
 
-            const currentIndex =
-              list.indexOf(column);
+          const list =
+            Array.from(columns);
 
-            const direction =
-              event.key === "ArrowRight"
-                ? 1
-                : -1;
+          const currentIndex =
+            list.indexOf(column);
 
-            const nextIndex = Math.max(
+          const direction =
+            event.key === "ArrowRight"
+              ? 1
+              : -1;
+
+          const nextIndex =
+            Math.max(
               0,
               Math.min(
                 currentIndex + direction,
@@ -1036,12 +1182,12 @@ document.addEventListener("DOMContentLoaded", () => {
               )
             );
 
-            const nextColumn =
-              list[nextIndex];
+          const nextColumn =
+            list[nextIndex];
 
-            nextColumn.focus();
-            selectColumn(nextColumn);
-          }
+          nextColumn.focus();
+
+          selectColumn(nextColumn);
         }
       );
     });
@@ -1050,13 +1196,17 @@ document.addEventListener("DOMContentLoaded", () => {
   bindBoardInteractions(previousBoard);
   bindBoardInteractions(proposedBoard);
 
-  function resetBoardPosition(activeBoard) {
-  const columnsContainer =
-    activeBoard.querySelector(".kanban-columns");
+  function resetBoardPosition(
+    activeBoard
+  ) {
+    const columnsContainer =
+      activeBoard.querySelector(
+        ".kanban-columns"
+      );
 
-  if (!columnsContainer) {
-    return;
-  }
+    if (!columnsContainer) {
+      return;
+    }
 
     columnsContainer.scrollTo({
       left: 0,
@@ -1108,36 +1258,123 @@ document.addEventListener("DOMContentLoaded", () => {
           : "Visualização atual: fluxo proposto, com políticas explícitas, limites de WIP e raia urgente.";
     }
 
-      const activeBoard = getActiveBoard();
-      
-      const firstColumn =
-        activeBoard.querySelector(".kanban-column");
-      
+    const activeBoard =
+      getActiveBoard();
+
+    const firstColumn =
+      activeBoard.querySelector(
+        ".kanban-column"
+      );
+
+    resetBoardPosition(activeBoard);
+
+    selectColumn(firstColumn, {
+      center: false,
+      scrollPage: false
+    });
+
+    window.requestAnimationFrame(
+      () => {
+        resetBoardPosition(activeBoard);
+      }
+    );
+
+    window.setTimeout(() => {
       resetBoardPosition(activeBoard);
-      selectColumn(firstColumn, false);
-      
-      window.requestAnimationFrame(() => {
-        resetBoardPosition(activeBoard);
-      });
-      
-      window.setTimeout(() => {
-        resetBoardPosition(activeBoard);
-      }, 120);
+    }, 120);
   }
 
+  controlsElement.addEventListener(
+    "click",
+    (event) => {
+      const button =
+        event.target.closest(
+          "[data-kanban-direction]"
+        );
+
+      if (
+        !button ||
+        button.disabled
+      ) {
+        return;
+      }
+
+      const columns =
+        getActiveColumns();
+
+      const selectedIndex =
+        getSelectedIndex();
+
+      const nextIndex =
+        button.dataset.kanbanDirection ===
+        "next"
+          ? selectedIndex + 1
+          : selectedIndex - 1;
+
+      if (
+        nextIndex < 0 ||
+        nextIndex >= columns.length
+      ) {
+        return;
+      }
+
+      const nextColumn =
+        columns[nextIndex];
+
+      selectColumn(nextColumn, {
+        center: true,
+        scrollPage: true
+      });
+    }
+  );
+
   viewButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      changeView(button.dataset.view);
-    });
+    button.addEventListener(
+      "click",
+      () => {
+        changeView(
+          button.dataset.view
+        );
+      }
+    );
   });
 
-  window.addEventListener("pageshow", () => {
-  const activeBoard = getActiveBoard();
+  window.addEventListener(
+    "pageshow",
+    () => {
+      const activeBoard =
+        getActiveBoard();
 
-    window.requestAnimationFrame(() => {
-      resetBoardPosition(activeBoard);
-    });
-  });
+      window.requestAnimationFrame(
+        () => {
+          resetBoardPosition(
+            activeBoard
+          );
+        }
+      );
+    }
+  );
+
+  window.addEventListener(
+    "resize",
+    () => {
+      const selectedColumn =
+        getSelectedColumn();
+
+      if (
+        selectedColumn &&
+        window.matchMedia(
+          "(max-width: 1024px)"
+        ).matches
+      ) {
+        centerSelectedColumn(
+          selectedColumn,
+          "auto"
+        );
+      }
+    }
+  );
 
   changeView("proposto");
 });
+
