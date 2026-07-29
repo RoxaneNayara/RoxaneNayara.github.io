@@ -331,3 +331,17 @@
     justify-self: stretch;
   }
 }
+
+.poc-result-card-conclusion {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 760px) {
+  .poc-comparison-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .poc-result-card-conclusion {
+    grid-column: auto;
+  }
+}
