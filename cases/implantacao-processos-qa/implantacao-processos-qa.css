@@ -405,3 +405,92 @@ body.reveal-ready .evolution-demo.reveal.is-visible .evolution-item:hover::befor
 .evolution-item:active {
   border: 1px solid var(--accent) !important;
 }
+
+/* CONTROLES DA EVOLUÇÃO POR PERÍODO */
+
+.evolution-controls {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto
+    minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.evolution-control-button {
+  min-height: 2.9rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  color: var(--primary);
+  background: var(--surface);
+  font: inherit;
+  font-weight: 800;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.evolution-control-button:first-child {
+  justify-self: start;
+}
+
+.evolution-control-button:last-child {
+  justify-self: end;
+}
+
+.evolution-control-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  background: var(--surface-soft);
+}
+
+.evolution-control-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.evolution-control-button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.evolution-control-status {
+  font-size: 0.85rem;
+  font-weight: 800;
+  white-space: nowrap;
+  color: var(--text-soft);
+}
+
+@media (max-width: 640px) {
+  .evolution-controls {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+    margin-bottom: 1.5rem;
+  }
+
+  .evolution-control-status {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+  }
+
+  .evolution-control-button {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.7rem 0.65rem;
+    border-radius: 0.9rem;
+    font-size: 0.82rem;
+  }
+
+  .evolution-control-button:first-child,
+  .evolution-control-button:last-child {
+    justify-self: stretch;
+  }
+}
