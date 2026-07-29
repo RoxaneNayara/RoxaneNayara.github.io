@@ -100,11 +100,20 @@
   ];
 
   function setupAgentDemo() {
-    const tabsElement = document.querySelector("#ai-tabs");
-    const titleElement = document.querySelector("#ai-title");
-    const cardsElement = document.querySelector("#ai-cards");
+    const tabsElement =
+      document.querySelector("#ai-tabs");
 
-    if (!tabsElement || !titleElement || !cardsElement) {
+    const titleElement =
+      document.querySelector("#ai-title");
+
+    const cardsElement =
+      document.querySelector("#ai-cards");
+
+    if (
+      !tabsElement ||
+      !titleElement ||
+      !cardsElement
+    ) {
       return;
     }
 
@@ -115,10 +124,16 @@
         .map(
           (item, index) => `
             <button
-              class="ai-tab-button${index === selectedIndex ? " is-selected" : ""}"
+              class="ai-tab-button${
+                index === selectedIndex
+                  ? " is-selected"
+                  : ""
+              }"
               type="button"
               role="tab"
-              aria-selected="${index === selectedIndex}"
+              aria-selected="${
+                index === selectedIndex
+              }"
               data-agent-index="${index}"
             >
               ${item.title}
@@ -144,24 +159,35 @@
           <span>${item.support}</span>
         </article>
 
-        <article class="ai-info-card ai-info-card-highlight">
+        <article
+          class="ai-info-card
+            ai-info-card-highlight"
+        >
           <p>Validação necessária</p>
           <span>${item.validation}</span>
         </article>
       `;
     }
 
-    tabsElement.addEventListener("click", (event) => {
-      const button = event.target.closest("[data-agent-index]");
+    tabsElement.addEventListener(
+      "click",
+      (event) => {
+        const button = event.target.closest(
+          "[data-agent-index]"
+        );
 
-      if (!button) {
-        return;
+        if (!button) {
+          return;
+        }
+
+        selectedIndex = Number(
+          button.dataset.agentIndex
+        );
+
+        renderTabs();
+        renderPanel();
       }
-
-      selectedIndex = Number(button.dataset.agentIndex);
-      renderTabs();
-      renderPanel();
-    });
+    );
 
     renderTabs();
     renderPanel();
@@ -169,37 +195,96 @@
 
   function setupSimulationDemo() {
     const agentsElement =
-      document.querySelector("#simulation-agents");
+      document.querySelector(
+        "#simulation-agents"
+      );
 
     const questionsElement =
-      document.querySelector("#simulation-questions");
+      document.querySelector(
+        "#simulation-questions"
+      );
+
+    const panelElement =
+      document.querySelector(
+        ".simulation-panel"
+      );
+
+    const selectedLabelElement =
+      document.querySelector(
+        ".simulation-selected-label"
+      );
 
     const titleElement =
-      document.querySelector("#simulation-title");
+      document.querySelector(
+        "#simulation-title"
+      );
 
     const inputElement =
-      document.querySelector("#simulation-input");
+      document.querySelector(
+        "#simulation-input"
+      );
 
     const analysisElement =
-      document.querySelector("#simulation-analysis");
+      document.querySelector(
+        "#simulation-analysis"
+      );
 
     const referencesElement =
-      document.querySelector("#simulation-references");
+      document.querySelector(
+        "#simulation-references"
+      );
 
     const validationElement =
-      document.querySelector("#simulation-validation");
+      document.querySelector(
+        "#simulation-validation"
+      );
+
+    const responseGridElement =
+      document.querySelector(
+        ".simulation-response-grid"
+      );
 
     if (
       !agentsElement ||
       !questionsElement ||
+      !panelElement ||
+      !selectedLabelElement ||
       !titleElement ||
       !inputElement ||
       !analysisElement ||
       !referencesElement ||
-      !validationElement
+      !validationElement ||
+      !responseGridElement
     ) {
       return;
     }
+
+    const contextElement =
+      document.createElement("div");
+
+    contextElement.className =
+      "simulation-mobile-context";
+
+    selectedLabelElement.insertAdjacentElement(
+      "beforebegin",
+      contextElement
+    );
+
+    const controlsElement =
+      document.createElement("div");
+
+    controlsElement.className =
+      "simulation-controls";
+
+    controlsElement.setAttribute(
+      "aria-label",
+      "Navegação entre simulações"
+    );
+
+    responseGridElement.insertAdjacentElement(
+      "afterend",
+      controlsElement
+    );
 
     let selectedAgentIndex = 0;
     let selectedQuestionIndex = 0;
@@ -209,10 +294,16 @@
         .map(
           (agent, index) => `
             <button
-              class="simulation-agent-button${index === selectedAgentIndex ? " is-selected" : ""}"
+              class="simulation-agent-button${
+                index === selectedAgentIndex
+                  ? " is-selected"
+                  : ""
+              }"
               type="button"
               role="tab"
-              aria-selected="${index === selectedAgentIndex}"
+              aria-selected="${
+                index === selectedAgentIndex
+              }"
               data-simulation-agent="${index}"
             >
               ${agent.title}
@@ -223,21 +314,30 @@
     }
 
     function renderQuestions() {
-      const agent = simulationData[selectedAgentIndex];
+      const agent =
+        simulationData[selectedAgentIndex];
 
-      questionsElement.innerHTML = agent.questions
-        .map(
-          (question, index) => `
-            <button
-              class="simulation-question-button${index === selectedQuestionIndex ? " is-selected" : ""}"
-              type="button"
-              data-simulation-question="${index}"
-            >
-              ${question.title}
-            </button>
-          `
-        )
-        .join("");
+      questionsElement.innerHTML =
+        agent.questions
+          .map(
+            (question, index) => `
+              <button
+                class="simulation-question-button${
+                  index === selectedQuestionIndex
+                    ? " is-selected"
+                    : ""
+                }"
+                type="button"
+                aria-pressed="${
+                  index === selectedQuestionIndex
+                }"
+                data-simulation-question="${index}"
+              >
+                ${question.title}
+              </button>
+            `
+          )
+          .join("");
     }
 
     function renderPanel() {
@@ -245,49 +345,267 @@
         simulationData[selectedAgentIndex]
           .questions[selectedQuestionIndex];
 
-      titleElement.textContent = item.title;
-      inputElement.innerHTML = item.input;
-      analysisElement.innerHTML = item.analysis;
-      referencesElement.innerHTML = item.references;
-      validationElement.innerHTML = item.validation;
+      titleElement.textContent =
+        item.title;
+
+      inputElement.innerHTML =
+        item.input;
+
+      analysisElement.innerHTML =
+        item.analysis;
+
+      referencesElement.innerHTML =
+        item.references;
+
+      validationElement.innerHTML =
+        item.validation;
     }
 
-    agentsElement.addEventListener("click", (event) => {
-      const button =
-        event.target.closest("[data-simulation-agent]");
+    function renderContext() {
+      const agent =
+        simulationData[selectedAgentIndex];
 
-      if (!button) {
-        return;
-      }
+      contextElement.innerHTML = `
+        <p>Agente selecionado</p>
+        <strong>${agent.title}</strong>
 
-      selectedAgentIndex =
-        Number(button.dataset.simulationAgent);
+        <span>
+          Simulação
+          ${selectedQuestionIndex + 1}
+          de ${agent.questions.length}
+        </span>
+      `;
+    }
 
-      selectedQuestionIndex = 0;
+    function isFirstSimulation() {
+      return (
+        selectedAgentIndex === 0 &&
+        selectedQuestionIndex === 0
+      );
+    }
 
+    function isLastSimulation() {
+      const lastAgentIndex =
+        simulationData.length - 1;
+
+      const lastQuestionIndex =
+        simulationData[lastAgentIndex]
+          .questions.length - 1;
+
+      return (
+        selectedAgentIndex ===
+          lastAgentIndex &&
+        selectedQuestionIndex ===
+          lastQuestionIndex
+      );
+    }
+
+    function renderControls() {
+      const agent =
+        simulationData[selectedAgentIndex];
+
+      controlsElement.innerHTML = `
+        <button
+          class="simulation-control-button"
+          type="button"
+          data-simulation-direction="previous"
+          ${
+            isFirstSimulation()
+              ? "disabled"
+              : ""
+          }
+        >
+          ← Anterior
+        </button>
+
+        <span class="simulation-control-status">
+          ${agent.title}
+          ·
+          ${selectedQuestionIndex + 1}
+          de ${agent.questions.length}
+        </span>
+
+        <button
+          class="simulation-control-button"
+          type="button"
+          data-simulation-direction="next"
+          ${
+            isLastSimulation()
+              ? "disabled"
+              : ""
+          }
+        >
+          Próxima →
+        </button>
+      `;
+    }
+
+    function render() {
       renderAgents();
       renderQuestions();
       renderPanel();
-    });
+      renderContext();
+      renderControls();
+    }
 
-    questionsElement.addEventListener("click", (event) => {
-      const button =
-        event.target.closest("[data-simulation-question]");
+    function moveToPreviousSimulation() {
+      if (selectedQuestionIndex > 0) {
+        selectedQuestionIndex -= 1;
+        return true;
+      }
 
-      if (!button) {
+      if (selectedAgentIndex > 0) {
+        selectedAgentIndex -= 1;
+
+        const previousAgent =
+          simulationData[selectedAgentIndex];
+
+        selectedQuestionIndex =
+          previousAgent.questions.length - 1;
+
+        return true;
+      }
+
+      return false;
+    }
+
+    function moveToNextSimulation() {
+      const currentAgent =
+        simulationData[selectedAgentIndex];
+
+      if (
+        selectedQuestionIndex <
+        currentAgent.questions.length - 1
+      ) {
+        selectedQuestionIndex += 1;
+        return true;
+      }
+
+      if (
+        selectedAgentIndex <
+        simulationData.length - 1
+      ) {
+        selectedAgentIndex += 1;
+        selectedQuestionIndex = 0;
+        return true;
+      }
+
+      return false;
+    }
+
+    function scrollToSimulationPanel() {
+      if (
+        !window.matchMedia(
+          "(max-width: 1024px)"
+        ).matches
+      ) {
         return;
       }
 
-      selectedQuestionIndex =
-        Number(button.dataset.simulationQuestion);
+      const header =
+        document.querySelector(".header");
 
-      renderQuestions();
-      renderPanel();
-    });
+      const caseNavigation =
+        document.querySelector(
+          ".case-navigation"
+        );
 
-    renderAgents();
-    renderQuestions();
-    renderPanel();
+      const offset =
+        (header?.offsetHeight ?? 76) +
+        (caseNavigation?.offsetHeight ?? 0) +
+        20;
+
+      const top =
+        panelElement
+          .getBoundingClientRect()
+          .top +
+        window.scrollY -
+        offset;
+
+      const reducedMotion =
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+      window.scrollTo({
+        top,
+        behavior: reducedMotion
+          ? "auto"
+          : "smooth"
+      });
+    }
+
+    agentsElement.addEventListener(
+      "click",
+      (event) => {
+        const button = event.target.closest(
+          "[data-simulation-agent]"
+        );
+
+        if (!button) {
+          return;
+        }
+
+        selectedAgentIndex = Number(
+          button.dataset.simulationAgent
+        );
+
+        selectedQuestionIndex = 0;
+        render();
+      }
+    );
+
+    questionsElement.addEventListener(
+      "click",
+      (event) => {
+        const button = event.target.closest(
+          "[data-simulation-question]"
+        );
+
+        if (!button) {
+          return;
+        }
+
+        selectedQuestionIndex = Number(
+          button.dataset
+            .simulationQuestion
+        );
+
+        render();
+      }
+    );
+
+    controlsElement.addEventListener(
+      "click",
+      (event) => {
+        const button = event.target.closest(
+          "[data-simulation-direction]"
+        );
+
+        if (!button || button.disabled) {
+          return;
+        }
+
+        const moved =
+          button.dataset
+            .simulationDirection ===
+          "next"
+            ? moveToNextSimulation()
+            : moveToPreviousSimulation();
+
+        if (!moved) {
+          return;
+        }
+
+        render();
+
+        requestAnimationFrame(() => {
+          scrollToSimulationPanel();
+        });
+      }
+    );
+
+    render();
   }
 
   setupAgentDemo();
