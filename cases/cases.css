@@ -1993,19 +1993,33 @@ body.dark-theme .quality-information-card {
 
 
 
-/* BORDAS ROSÉ FINAIS — PÁGINAS DE CASE */
+/* BORDAS INTERATIVAS — PÁGINAS DE CASE */
 
 .case-summary,
 .case-content-card,
 .quality-information-card,
 .traceability-panel-grid article {
-  border-color: var(--accent);
+  border-color: var(--border);
 }
 
 body.dark-theme .case-summary,
 body.dark-theme .case-content-card,
 body.dark-theme .quality-information-card,
 body.dark-theme .traceability-panel-grid article {
+  border-color: var(--border) !important;
+}
+
+.case-summary:hover,
+.case-content-card:hover,
+.quality-information-card:hover,
+.traceability-panel-grid article:hover {
+  border-color: var(--accent);
+}
+
+body.dark-theme .case-summary:hover,
+body.dark-theme .case-content-card:hover,
+body.dark-theme .quality-information-card:hover,
+body.dark-theme .traceability-panel-grid article:hover {
   border-color: var(--accent) !important;
 }
 
