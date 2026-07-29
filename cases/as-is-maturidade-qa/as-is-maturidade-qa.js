@@ -111,15 +111,33 @@
 
   let selectedIndex = 0;
 
+  const controlsElement = document.createElement("div");
+  controlsElement.className = "timeline-controls";
+  controlsElement.setAttribute(
+    "aria-label",
+    "Navegação entre períodos"
+  );
+
+  itemsElement.insertAdjacentElement(
+    "afterend",
+    controlsElement
+  );
+
   function renderTabs() {
     tabsElement.innerHTML = timelineData
       .map(
         (item, index) => `
           <button
-            class="timeline-tab${index === selectedIndex ? " is-selected" : ""}"
+            class="timeline-tab${
+              index === selectedIndex
+                ? " is-selected"
+                : ""
+            }"
             type="button"
             role="tab"
-            aria-selected="${index === selectedIndex}"
+            aria-selected="${
+              index === selectedIndex
+            }"
             data-timeline-index="${index}"
           >
             ${item.year}
@@ -133,7 +151,8 @@
     const item = timelineData[selectedIndex];
 
     titleElement.textContent = item.title;
-    descriptionElement.textContent = item.description;
+    descriptionElement.textContent =
+      item.description;
 
     itemsElement.innerHTML = item.items
       .map(
@@ -147,18 +166,140 @@
       .join("");
   }
 
-  tabsElement.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-timeline-index]");
+  function renderControls() {
+    const isFirst = selectedIndex === 0;
+    const isLast =
+      selectedIndex === timelineData.length - 1;
 
-    if (!button) {
+    controlsElement.innerHTML = `
+      <button
+        class="timeline-control-button"
+        type="button"
+        data-timeline-direction="previous"
+        ${isFirst ? "disabled" : ""}
+      >
+        ← Período anterior
+      </button>
+
+      <span class="timeline-control-status">
+        ${timelineData[selectedIndex].year}
+        ·
+        ${selectedIndex + 1} de
+        ${timelineData.length}
+      </span>
+
+      <button
+        class="timeline-control-button"
+        type="button"
+        data-timeline-direction="next"
+        ${isLast ? "disabled" : ""}
+      >
+        Próximo período →
+      </button>
+    `;
+  }
+
+  function renderTimeline() {
+    renderTabs();
+    renderPanel();
+    renderControls();
+  }
+
+  function scrollToPanel() {
+    const prefersReducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+    const panelElement =
+      titleElement.closest(".timeline-panel");
+
+    if (!panelElement) {
       return;
     }
 
-    selectedIndex = Number(button.dataset.timelineIndex);
-    renderTabs();
-    renderPanel();
-  });
+    const header =
+      document.querySelector(".header");
 
-  renderTabs();
-  renderPanel();
+    const navigation =
+      document.querySelector(
+        ".case-navigation"
+      );
+
+    const offset =
+      (header?.offsetHeight ?? 76) +
+      (navigation?.offsetHeight ?? 0) +
+      20;
+
+    const top =
+      panelElement.getBoundingClientRect().top +
+      window.scrollY -
+      offset;
+
+    window.scrollTo({
+      top,
+      behavior: prefersReducedMotion
+        ? "auto"
+        : "smooth"
+    });
+  }
+
+  function changePeriod(newIndex, shouldScroll) {
+    if (
+      newIndex < 0 ||
+      newIndex >= timelineData.length
+    ) {
+      return;
+    }
+
+    selectedIndex = newIndex;
+    renderTimeline();
+
+    if (shouldScroll) {
+      scrollToPanel();
+    }
+  }
+
+  tabsElement.addEventListener(
+    "click",
+    (event) => {
+      const button = event.target.closest(
+        "[data-timeline-index]"
+      );
+
+      if (!button) {
+        return;
+      }
+
+      changePeriod(
+        Number(button.dataset.timelineIndex),
+        false
+      );
+    }
+  );
+
+  controlsElement.addEventListener(
+    "click",
+    (event) => {
+      const button = event.target.closest(
+        "[data-timeline-direction]"
+      );
+
+      if (!button || button.disabled) {
+        return;
+      }
+
+      const direction =
+        button.dataset.timelineDirection;
+
+      const newIndex =
+        direction === "next"
+          ? selectedIndex + 1
+          : selectedIndex - 1;
+
+      changePeriod(newIndex, true);
+    }
+  );
+
+  renderTimeline();
 })();
