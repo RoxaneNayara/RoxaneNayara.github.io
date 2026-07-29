@@ -561,19 +561,6 @@
     justify-self: stretch;
   }
 
-  /* Agente selecionado — destaque mais forte */
-
-  .simulation-agent-button.is-selected {
-    border-color: var(--accent);
-    background:
-      color-mix(
-        in srgb,
-        var(--accent) 20%,
-        var(--surface)
-      );
-    color: var(--text);
-  }
-
   /* Pergunta selecionada — destaque mais suave */
 
   .simulation-question-button.is-selected {
