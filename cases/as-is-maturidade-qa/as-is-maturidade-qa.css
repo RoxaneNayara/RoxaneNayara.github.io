@@ -433,7 +433,7 @@
 /* CONTROLES DA EVOLUÇÃO POR PERÍODO */
 
 .timeline-controls {
-  display: grid;
+  display: none;
   grid-template-columns:
     minmax(0, 1fr)
     auto
@@ -490,6 +490,12 @@
   font-weight: 800;
   white-space: nowrap;
   color: var(--text-soft);
+}
+
+@media (max-width: 900px) {
+  .timeline-controls {
+    display: grid;
+  }
 }
 
 @media (max-width: 640px) {
