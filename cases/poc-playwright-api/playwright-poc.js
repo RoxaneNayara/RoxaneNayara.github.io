@@ -184,6 +184,22 @@
   const currentStateElement =
     document.querySelector("#poc-current-state");
 
+  const comparisonControlsElement =
+  document.createElement("div");
+
+comparisonControlsElement.className =
+  "poc-comparison-controls";
+
+comparisonControlsElement.setAttribute(
+  "aria-label",
+  "Navegação entre critérios da comparação"
+);
+
+comparisonCardsElement.insertAdjacentElement(
+  "afterend",
+  comparisonControlsElement
+);
+
   if (
     viewButtons.length === 0 ||
     !comparisonView ||
@@ -327,8 +343,74 @@
     renderCriteria();
     renderComparison();
   });
+  
+    function renderComparisonControls() {
+    comparisonControlsElement.innerHTML = `
+      <button
+        class="poc-comparison-control-button"
+        type="button"
+        data-comparison-direction="previous"
+        ${selectedCriterionIndex === 0 ? "disabled" : ""}
+      >
+        ← Anterior
+      </button>
+  
+      <span class="poc-comparison-control-status">
+        Critério ${selectedCriterionIndex + 1}
+        de ${comparisonData.length}
+      </span>
+  
+      <button
+        class="poc-comparison-control-button"
+        type="button"
+        data-comparison-direction="next"
+        ${
+          selectedCriterionIndex === comparisonData.length - 1
+            ? "disabled"
+            : ""
+        }
+      >
+        Próximo →
+      </button>
+    `;
+  }
 
-  renderCriteria();
-  renderComparison();
+    function renderSelectedComparison() {
+    renderCriteria();
+    renderComparison();
+    renderComparisonControls();
+  }
+
+    function scrollToComparisonStart() {
+    const prefersReducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+  
+    const header =
+      document.querySelector(".header");
+  
+    const caseNavigation =
+      document.querySelector(".case-navigation");
+  
+    const offset =
+      (header?.offsetHeight ?? 76) +
+      (caseNavigation?.offsetHeight ?? 0) +
+      24;
+  
+    const top =
+      criterionTitleElement.getBoundingClientRect().top +
+      window.scrollY -
+      offset;
+  
+    window.scrollTo({
+      top,
+      behavior: prefersReducedMotion
+        ? "auto"
+        : "smooth"
+    });
+  }
+
+  renderSelectedComparison();
   renderEvolution();
 })();
