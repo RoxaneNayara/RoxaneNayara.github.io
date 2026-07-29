@@ -9,6 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
       )
     : [];
 
+  const navigationInner = navigation
+  ? navigation.querySelector(".case-navigation-inner")
+  : null;
+
   const folderToCase = {
     "as-is-maturidade-qa": "case-01",
     "implantacao-processos-qa": "case-02",
@@ -134,11 +138,26 @@ document.addEventListener("DOMContentLoaded", () => {
           linkRect.left < navigationRect.left + 12 ||
           linkRect.right > navigationRect.right - 12;
 
-        if (isPartiallyHidden) {
-          link.scrollIntoView({
-            behavior: "smooth",
-            block: "nearest",
-            inline: "nearest"
+        if (isPartiallyHidden && navigationInner) {
+          const targetLeft =
+            link.offsetLeft -
+            navigationInner.clientWidth / 2 +
+            link.offsetWidth / 2;
+        
+          const maximumLeft =
+            navigationInner.scrollWidth -
+            navigationInner.clientWidth;
+        
+          navigationInner.scrollTo({
+            left: Math.max(
+              0,
+              Math.min(targetLeft, maximumLeft)
+            ),
+            behavior: window.matchMedia(
+              "(prefers-reduced-motion: reduce)"
+            ).matches
+              ? "auto"
+              : "smooth"
           });
         }
       } else {
