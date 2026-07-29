@@ -2735,14 +2735,14 @@ body.dark-theme.case-raci-page .raci-detail {
   }
 }
 
-/* CASE 11 — COMPACTAÇÃO DOS CARDS DO BOARD */
+/* CASE 11 — COLUNAS MAIS ESTREITAS E COM TAMANHO PADRÃO */
 
 @media (max-width: 1024px) {
   .kanban-column {
-    flex-basis: min(calc(100vw - 8rem), 25rem);
-    width: min(calc(100vw - 8rem), 25rem);
-    min-width: min(calc(100vw - 8rem), 25rem);
-    max-width: 25rem;
+    flex: 0 0 19rem;
+    width: 19rem;
+    min-width: 19rem;
+    max-width: 19rem;
 
     height: auto;
     min-height: 0;
@@ -2764,14 +2764,22 @@ body.dark-theme.case-raci-page .raci-detail {
   .kanban-task-card {
     min-height: 0;
   }
+
+  .kanban-urgent-lane {
+    padding: 1.1rem;
+  }
+
+  .kanban-urgent-lane .kanban-task-card {
+    max-width: 30rem;
+  }
 }
 
 @media (max-width: 640px) {
   .kanban-column {
-    flex-basis: calc(100vw - 5rem);
-    width: calc(100vw - 5rem);
-    min-width: calc(100vw - 5rem);
-    max-width: calc(100vw - 5rem);
+    flex: 0 0 min(18rem, calc(100vw - 5rem));
+    width: min(18rem, calc(100vw - 5rem));
+    min-width: min(18rem, calc(100vw - 5rem));
+    max-width: min(18rem, calc(100vw - 5rem));
 
     height: auto;
     min-height: 0;
