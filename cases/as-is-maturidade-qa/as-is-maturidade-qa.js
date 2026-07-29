@@ -205,44 +205,42 @@
     renderControls();
   }
 
-  function scrollToPanel() {
-    const prefersReducedMotion =
-      window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches;
+function scrollToPanel() {
+  const prefersReducedMotion =
+    window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
-    const panelElement =
-      titleElement.closest(".timeline-panel");
+  const panelElement =
+    titleElement.closest(".timeline-panel");
 
-    if (!panelElement) {
-      return;
-    }
-
-    const header =
-      document.querySelector(".header");
-
-    const navigation =
-      document.querySelector(
-        ".case-navigation"
-      );
-
-    const offset =
-      (header?.offsetHeight ?? 76) +
-      (navigation?.offsetHeight ?? 0) +
-      48;
-
-    const top =
-      panelElement.getBoundingClientRect().top +
-      window.scrollY -
-      offset;
-
-    window.scrollTo({
-      top,
-      behavior: prefersReducedMotion
-        ? "auto"
-        : "smooth"
-    });
+  if (!panelElement) {
+    return;
   }
+
+  const header =
+    document.querySelector(".header");
+
+  const caseNavigation =
+    document.querySelector(".case-navigation");
+
+  const offset =
+    (header?.offsetHeight ?? 76) +
+    (caseNavigation?.offsetHeight ?? 0) +
+    48;
+
+  const top =
+    panelElement.getBoundingClientRect().top +
+    window.scrollY -
+    offset;
+
+  window.scrollTo({
+    top,
+    behavior: prefersReducedMotion
+      ? "auto"
+      : "smooth"
+  });
+}
 
   function changePeriod(newIndex, shouldScroll) {
     if (
