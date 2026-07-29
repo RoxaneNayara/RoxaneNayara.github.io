@@ -348,36 +348,70 @@
     render();
   });
 
-  controlsElement.addEventListener(
-    "click",
-    (event) => {
-      const button = event.target.closest(
-        "[data-tmmi-direction]"
-      );
-  
-      if (!button || button.disabled) {
-        return;
+    controlsElement.addEventListener(
+      "click",
+      (event) => {
+        const button = event.target.closest(
+          "[data-tmmi-direction]"
+        );
+    
+        if (!button || button.disabled) {
+          return;
+        }
+    
+        const direction =
+          button.dataset.tmmiDirection;
+    
+        const newIndex =
+          direction === "next"
+            ? selectedAreaIndex + 1
+            : selectedAreaIndex - 1;
+    
+        if (
+          newIndex < 0 ||
+          newIndex >= tmmiData.length
+        ) {
+          return;
+        }
+    
+        selectedAreaIndex = newIndex;
+        render();
+    
+        requestAnimationFrame(() => {
+          scrollToAreaStart();
+        });
       }
+    );
+
+    function scrollToAreaStart() {
+    const prefersReducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
   
-      const direction =
-        button.dataset.tmmiDirection;
+    const header =
+      document.querySelector(".header");
   
-      const newIndex =
-        direction === "next"
-          ? selectedAreaIndex + 1
-          : selectedAreaIndex - 1;
+    const caseNavigation =
+      document.querySelector(".case-navigation");
   
-      if (
-        newIndex < 0 ||
-        newIndex >= tmmiData.length
-      ) {
-        return;
-      }
+    const offset =
+      (header?.offsetHeight ?? 76) +
+      (caseNavigation?.offsetHeight ?? 0) +
+      24;
   
-      selectedAreaIndex = newIndex;
-      render();
-    }
-  );
+    const top =
+      codeElement.getBoundingClientRect().top +
+      window.scrollY -
+      offset;
+  
+    window.scrollTo({
+      top,
+      behavior: prefersReducedMotion
+        ? "auto"
+        : "smooth"
+    });
+  }
 
   render();
 })();
