@@ -525,3 +525,17 @@
     justify-self: stretch;
   }
 }
+
+/* CASE 01 — CONTROLES SOMENTE EM TELAS RESPONSIVAS */
+
+@media (min-width: 901px) {
+  .timeline-demo .timeline-controls {
+    display: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .timeline-demo .timeline-controls {
+    display: grid !important;
+  }
+}
