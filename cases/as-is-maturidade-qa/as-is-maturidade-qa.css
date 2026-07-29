@@ -449,6 +449,7 @@
   border: 1px solid var(--border);
   border-radius: 999px;
   cursor: pointer;
+  white-space: nowrap;
   color: var(--primary);
   background: var(--surface);
   font: inherit;
@@ -505,9 +506,11 @@
   .timeline-control-button {
     width: 100%;
     min-height: 3rem;
+    padding: 0.7rem 0.65rem;
     border-radius: 0.9rem;
+    font-size: 0.82rem;
+    white-space: nowrap;
   }
-
   .timeline-control-button:first-child,
   .timeline-control-button:last-child {
     justify-self: stretch;
