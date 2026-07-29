@@ -126,7 +126,12 @@
 }
 
 .poc-result-card-conclusion {
-  background: color-mix(in srgb, var(--accent) 8%, var(--background));
+  grid-column: 1 / -1;
+  background: color-mix(
+    in srgb,
+    var(--accent) 8%,
+    var(--background)
+  );
 }
 
 .poc-timeline {
@@ -199,11 +204,6 @@
 }
 
 /* RESULTADO DO CRITÉRIO */
-
-.poc-result-card-conclusion {
-  grid-column: 1 / -1;
-}
-
 /* TABLET */
 
 @media (max-width: 980px) {
