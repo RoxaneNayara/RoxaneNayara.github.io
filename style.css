@@ -2330,3 +2330,88 @@ main section[id] {
     scroll-margin-top: 96px;
   }
 }
+
+/* Projetos técnicos */
+
+.projects-section {
+  padding-top: 6rem;
+}
+
+.projects-grid {
+  align-items: stretch;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card > a,
+.project-link-disabled {
+  margin-top: auto;
+}
+
+.project-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+}
+
+.project-status {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.03em;
+}
+
+.project-status-completed {
+  color: #2f855a;
+}
+
+.project-status-progress {
+  color: #b7791f;
+}
+
+.project-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.25rem 0 1.5rem;
+}
+
+.project-technologies span {
+  padding: 0.4rem 0.65rem;
+  border: 1px solid rgba(139, 76, 203, 0.35);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  line-height: 1.2;
+}
+
+.project-link-disabled {
+  display: inline-flex;
+  width: fit-content;
+  font-weight: 700;
+  opacity: 0.65;
+  cursor: default;
+}
+
+body.dark-theme .project-status-completed {
+  color: #68d391;
+}
+
+body.dark-theme .project-status-progress {
+  color: #f6c453;
+}
+
+@media (max-width: 700px) {
+  .projects-section {
+    padding-top: 4rem;
+  }
+}
