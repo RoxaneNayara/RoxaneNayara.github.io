@@ -290,9 +290,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const card = cards[index];
       if (!card) return;
 
+      const centeredPosition =
+        card.offsetLeft -
+        (highlightCards.clientWidth - card.clientWidth) / 2;
+
       highlightCards.scrollTo({
-        left: card.offsetLeft,
-        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        left: Math.max(0, centeredPosition),
+        behavior: window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches
           ? "auto"
           : "smooth"
       });
