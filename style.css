@@ -2534,21 +2534,22 @@ body:not(.dark-theme) .project-status-progress {
 
 @media (max-width: 900px) {
   .highlight-wrapper {
-    display: grid;
-    grid-template-columns: 42px minmax(0, 1fr) 42px;
-    align-items: center;
-    gap: 0.6rem;
+    position: relative;
+    display: block;
+    padding-inline: 1rem;
   }
 
   .highlight-grid {
     display: flex;
     width: 100%;
     min-width: 0;
-    gap: 0;
+    gap: 1rem;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
+    scroll-padding-inline: 7%;
     scrollbar-width: none;
+    padding: 0.75rem 0;
   }
 
   .highlight-grid::-webkit-scrollbar {
@@ -2556,15 +2557,18 @@ body:not(.dark-theme) .project-status-progress {
   }
 
   .highlight-item {
-    flex: 0 0 100%;
-    min-width: 100%;
+    flex: 0 0 86%;
+    min-width: 86%;
     min-height: 220px;
     margin: 0;
-    scroll-snap-align: start;
+    scroll-snap-align: center;
     scroll-snap-stop: always;
   }
 
   .highlight-nav {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
     display: grid;
     place-items: center;
     width: 42px;
@@ -2577,6 +2581,15 @@ body:not(.dark-theme) .project-status-progress {
     font-size: 1.65rem;
     line-height: 1;
     cursor: pointer;
+    transform: translateY(-50%);
+  }
+
+  .highlight-nav-previous {
+    left: 0;
+  }
+
+  .highlight-nav-next {
+    right: 0;
   }
 
   .highlight-nav:disabled {
@@ -2588,7 +2601,7 @@ body:not(.dark-theme) .project-status-progress {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
-    margin-top: 1rem;
+    margin-top: 0.75rem;
   }
 
   .highlight-dot {
@@ -2609,6 +2622,11 @@ body:not(.dark-theme) .project-status-progress {
     width: 24px;
     opacity: 1;
   }
+
+  .highlight-item:hover,
+  .highlight-item.reveal.is-visible:hover {
+    transform: none;
+  }
 }
 
 /* --------------------------------------------------
@@ -2628,18 +2646,24 @@ body:not(.dark-theme) .project-status-progress {
 
 @media (max-width: 560px) {
   .highlight-wrapper {
-    grid-template-columns: 36px minmax(0, 1fr) 36px;
-    gap: 0.35rem;
+    padding-inline: 0.75rem;
+  }
+
+  .highlight-grid {
+    gap: 0.85rem;
+    scroll-padding-inline: 6%;
+  }
+
+  .highlight-item {
+    flex-basis: 88%;
+    min-width: 88%;
+    min-height: 200px;
+    padding: 1.35rem 1.2rem;
   }
 
   .highlight-nav {
     width: 36px;
     height: 36px;
     font-size: 1.4rem;
-  }
-
-  .highlight-item {
-    min-height: 200px;
-    padding: 1.35rem 1.2rem;
   }
 }
