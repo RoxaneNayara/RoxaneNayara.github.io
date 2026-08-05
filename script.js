@@ -350,4 +350,56 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("pageshow", positionFromHash);
   positionFromHash();
 
+      </div>
+
+    <button
+      class="highlight-nav highlight-nav-next"
+      type="button"
+      aria-label="Ver próximo destaque"
+    >
+      ›
+    </button>
+  </div>
+
+  <div
+    class="highlight-pagination"
+    aria-label="Navegação dos destaques"
+  >
+    <button
+      class="highlight-dot is-active"
+      type="button"
+      data-highlight-index="0"
+      aria-label="Ir para o destaque 1"
+    ></button>
+
+    <button
+      class="highlight-dot"
+      type="button"
+      data-highlight-index="1"
+      aria-label="Ir para o destaque 2"
+    ></button>
+
+    <button
+      class="highlight-dot"
+      type="button"
+      data-highlight-index="2"
+      aria-label="Ir para o destaque 3"
+    ></button>
+
+    <button
+      class="highlight-dot"
+      type="button"
+      data-highlight-index="3"
+      aria-label="Ir para o destaque 4"
+    ></button>
+
+    <button
+      class="highlight-dot"
+      type="button"
+      data-highlight-index="4"
+      aria-label="Ir para o destaque 5"
+    ></button>
+  </div>
+</section>
+
 });
