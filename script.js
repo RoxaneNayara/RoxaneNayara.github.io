@@ -3,13 +3,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.querySelector("#menu-toggle");
   const mainMenu = document.querySelector("#main-menu");
-  const menuLinks = document.querySelectorAll(
-    "#main-menu a[href^='#']"
-  );
+  const menuLinks = document.querySelectorAll("#main-menu a[href^='#']");
 
   function closeMenu() {
     if (!menuToggle || !mainMenu) return;
-
     mainMenu.classList.remove("is-open");
     menuToggle.classList.remove("is-active");
     menuToggle.setAttribute("aria-expanded", "false");
@@ -19,21 +16,14 @@ document.addEventListener("DOMContentLoaded", () => {
   if (menuToggle && mainMenu) {
     menuToggle.addEventListener("click", (event) => {
       event.stopPropagation();
-
       const isOpen = mainMenu.classList.toggle("is-open");
       menuToggle.classList.toggle("is-active", isOpen);
       menuToggle.setAttribute("aria-expanded", String(isOpen));
-      menuToggle.setAttribute(
-        "aria-label",
-        isOpen ? "Fechar menu" : "Abrir menu"
-      );
+      menuToggle.setAttribute("aria-label", isOpen ? "Fechar menu" : "Abrir menu");
     });
 
     document.addEventListener("click", (event) => {
-      if (
-        !mainMenu.contains(event.target) &&
-        !menuToggle.contains(event.target)
-      ) {
+      if (!mainMenu.contains(event.target) && !menuToggle.contains(event.target)) {
         closeMenu();
       }
     });
@@ -50,22 +40,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function scrollToTarget(target, updateHash = true) {
     if (!target) return;
-
     const visibleTarget =
-      target.querySelector(
-        ".scroll-target, .section-heading, .contact-box"
-      ) ?? target;
-
+      target.querySelector(".scroll-target, .section-heading, .contact-box") ?? target;
     const top =
-      visibleTarget.getBoundingClientRect().top +
-      window.scrollY -
-      getHeaderOffset();
+      visibleTarget.getBoundingClientRect().top + window.scrollY - getHeaderOffset();
 
     window.scrollTo({
       top,
-      behavior: window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
         ? "auto"
         : "smooth"
     });
@@ -77,57 +59,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   menuLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
-      const targetId = link.getAttribute("href");
-      const target = document.querySelector(targetId);
-
+      const target = document.querySelector(link.getAttribute("href"));
       if (!target) return;
-
       event.preventDefault();
       closeMenu();
       scrollToTarget(target);
     });
   });
 
-  document
-    .querySelectorAll('.hero-actions a[href^="#"]')
-    .forEach((link) => {
-      link.addEventListener("click", (event) => {
-        const target = document.querySelector(
-          link.getAttribute("href")
-        );
-
-        if (!target) return;
-
-        event.preventDefault();
-        scrollToTarget(target);
-      });
+  document.querySelectorAll('.hero-actions a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const target = document.querySelector(link.getAttribute("href"));
+      if (!target) return;
+      event.preventDefault();
+      scrollToTarget(target);
     });
+  });
 
   const sections = document.querySelectorAll("main section[id]");
 
   function activateMenuLink(sectionId) {
     menuLinks.forEach((link) => {
-      link.classList.toggle(
-        "active",
-        link.getAttribute("href") === `#${sectionId}`
-      );
+      link.classList.toggle("active", link.getAttribute("href") === `#${sectionId}`);
     });
   }
 
   function updateActiveSection() {
-    const scrollPosition =
-      window.scrollY + getHeaderOffset() + 22;
-
+    const scrollPosition = window.scrollY + getHeaderOffset() + 22;
     let currentSectionId = "inicio";
 
     sections.forEach((section) => {
       const top = section.offsetTop;
       const bottom = top + section.offsetHeight;
-
-      if (
-        scrollPosition >= top &&
-        scrollPosition < bottom
-      ) {
+      if (scrollPosition >= top && scrollPosition < bottom) {
         currentSectionId = section.id;
       }
     });
@@ -137,83 +101,54 @@ document.addEventListener("DOMContentLoaded", () => {
       document.documentElement.scrollHeight - 10;
 
     if (nearBottom) currentSectionId = "contato";
-
     activateMenuLink(currentSectionId);
   }
 
-  window.addEventListener("scroll", updateActiveSection, {
-    passive: true
-  });
+  window.addEventListener("scroll", updateActiveSection, { passive: true });
   window.addEventListener("resize", updateActiveSection);
   updateActiveSection();
 
-  const revealElements =
-    document.querySelectorAll(".reveal");
+  const revealElements = document.querySelectorAll(".reveal");
 
-  if (
-    revealElements.length &&
-    "IntersectionObserver" in window
-  ) {
+  if (revealElements.length && "IntersectionObserver" in window) {
     document.body.classList.add("reveal-ready");
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          entry.target.classList.toggle(
-            "is-visible",
-            entry.isIntersecting
-          );
+          entry.target.classList.toggle("is-visible", entry.isIntersecting);
         });
       },
-      {
-        threshold: 0.14,
-        rootMargin: "0px 0px -50px 0px"
-      }
+      { threshold: 0.14, rootMargin: "0px 0px -50px 0px" }
     );
 
-    revealElements.forEach((element) => {
-      observer.observe(element);
-    });
+    revealElements.forEach((element) => observer.observe(element));
   } else {
-    revealElements.forEach((element) => {
-      element.classList.add("is-visible");
-    });
+    revealElements.forEach((element) => element.classList.add("is-visible"));
   }
 
   const backToTop = document.querySelector("#back-to-top");
 
   function updateBackToTop() {
     if (!backToTop) return;
-
-    backToTop.classList.toggle(
-      "is-visible",
-      window.scrollY > 600
-    );
+    backToTop.classList.toggle("is-visible", window.scrollY > 600);
   }
 
   if (backToTop) {
-    window.addEventListener("scroll", updateBackToTop, {
-      passive: true
-    });
-
+    window.addEventListener("scroll", updateBackToTop, { passive: true });
     backToTop.addEventListener("click", () => {
       window.scrollTo({
         top: 0,
-        behavior: window.matchMedia(
-          "(prefers-reduced-motion: reduce)"
-        ).matches
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
           ? "auto"
           : "smooth"
       });
     });
-
     updateBackToTop();
   }
 
-  const copyEmailButton =
-    document.querySelector("#copy-email");
-  const copyEmailStatus =
-    document.querySelector("#copy-email-status");
+  const copyEmailButton = document.querySelector("#copy-email");
+  const copyEmailStatus = document.querySelector("#copy-email-status");
 
   async function copyText(text) {
     if (navigator.clipboard && window.isSecureContext) {
@@ -232,9 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const copied = document.execCommand("copy");
     textarea.remove();
 
-    if (!copied) {
-      throw new Error("Não foi possível copiar.");
-    }
+    if (!copied) throw new Error("Não foi possível copiar.");
   }
 
   if (copyEmailButton) {
@@ -280,52 +213,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function applyTheme(theme) {
       const isDark = theme === "dark";
-
       document.body.classList.toggle("dark-theme", isDark);
 
-      if (themeIcon) {
-        themeIcon.textContent = isDark ? "☀" : "☾";
-      }
+      if (themeIcon) themeIcon.textContent = isDark ? "☀" : "☾";
 
       themeToggle.setAttribute(
         "aria-label",
         isDark ? "Ativar tema claro" : "Ativar tema escuro"
       );
-      themeToggle.setAttribute(
-        "aria-pressed",
-        String(isDark)
-      );
+      themeToggle.setAttribute("aria-pressed", String(isDark));
     }
 
-    const savedTheme =
-      localStorage.getItem("portfolio-theme");
+    const savedTheme = localStorage.getItem("portfolio-theme");
     const systemPrefersDark =
-      window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-    applyTheme(
-      savedTheme ??
-        (systemPrefersDark ? "dark" : "light")
-    );
+    applyTheme(savedTheme ?? (systemPrefersDark ? "dark" : "light"));
 
     themeToggle.addEventListener("click", () => {
       const nextTheme =
-        document.body.classList.contains("dark-theme")
-          ? "light"
-          : "dark";
-
-      localStorage.setItem(
-        "portfolio-theme",
-        nextTheme
-      );
+        document.body.classList.contains("dark-theme") ? "light" : "dark";
+      localStorage.setItem("portfolio-theme", nextTheme);
       applyTheme(nextTheme);
     });
   }
 
   function positionFromHash() {
     const hash = window.location.hash;
-
     if (!/^#case-\d{2}$/.test(hash)) return;
 
     const target = document.querySelector(hash);
@@ -338,11 +252,7 @@ document.addEventListener("DOMContentLoaded", () => {
         getHeaderOffset() -
         8;
 
-      window.scrollTo({
-        top,
-        behavior: "auto"
-      });
-
+      window.scrollTo({ top, behavior: "auto" });
       target.classList.add("is-visible");
     });
   }
@@ -350,56 +260,75 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("pageshow", positionFromHash);
   positionFromHash();
 
-      </div>
+  const highlightCards = document.querySelector("#highlight-cards");
+  const highlightPrevious = document.querySelector(".highlight-nav-previous");
+  const highlightNext = document.querySelector(".highlight-nav-next");
+  const highlightDots = document.querySelectorAll(".highlight-dot");
 
-    <button
-      class="highlight-nav highlight-nav-next"
-      type="button"
-      aria-label="Ver próximo destaque"
-    >
-      ›
-    </button>
-  </div>
+  if (
+    highlightCards &&
+    highlightPrevious &&
+    highlightNext &&
+    highlightDots.length
+  ) {
+    const cards = Array.from(
+      highlightCards.querySelectorAll(".highlight-item")
+    );
+    let currentHighlight = 0;
 
-  <div
-    class="highlight-pagination"
-    aria-label="Navegação dos destaques"
-  >
-    <button
-      class="highlight-dot is-active"
-      type="button"
-      data-highlight-index="0"
-      aria-label="Ir para o destaque 1"
-    ></button>
+    function updateHighlightNavigation(index) {
+      currentHighlight = Math.max(0, Math.min(index, cards.length - 1));
+      highlightPrevious.disabled = currentHighlight === 0;
+      highlightNext.disabled = currentHighlight === cards.length - 1;
 
-    <button
-      class="highlight-dot"
-      type="button"
-      data-highlight-index="1"
-      aria-label="Ir para o destaque 2"
-    ></button>
+      highlightDots.forEach((dot, dotIndex) => {
+        dot.classList.toggle("is-active", dotIndex === currentHighlight);
+      });
+    }
 
-    <button
-      class="highlight-dot"
-      type="button"
-      data-highlight-index="2"
-      aria-label="Ir para o destaque 3"
-    ></button>
+    function goToHighlight(index) {
+      const card = cards[index];
+      if (!card) return;
 
-    <button
-      class="highlight-dot"
-      type="button"
-      data-highlight-index="3"
-      aria-label="Ir para o destaque 4"
-    ></button>
+      highlightCards.scrollTo({
+        left: card.offsetLeft,
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "auto"
+          : "smooth"
+      });
 
-    <button
-      class="highlight-dot"
-      type="button"
-      data-highlight-index="4"
-      aria-label="Ir para o destaque 5"
-    ></button>
-  </div>
-</section>
+      updateHighlightNavigation(index);
+    }
 
+    highlightPrevious.addEventListener("click", () => {
+      goToHighlight(currentHighlight - 1);
+    });
+
+    highlightNext.addEventListener("click", () => {
+      goToHighlight(currentHighlight + 1);
+    });
+
+    highlightDots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        goToHighlight(Number(dot.dataset.highlightIndex));
+      });
+    });
+
+    highlightCards.addEventListener(
+      "scroll",
+      () => {
+        if (window.innerWidth > 900) return;
+        const cardWidth = cards[0]?.getBoundingClientRect().width;
+        if (!cardWidth) return;
+
+        const visibleIndex = Math.round(
+          highlightCards.scrollLeft / cardWidth
+        );
+        updateHighlightNavigation(visibleIndex);
+      },
+      { passive: true }
+    );
+
+    updateHighlightNavigation(0);
+  }
 });
