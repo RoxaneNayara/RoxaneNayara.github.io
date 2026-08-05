@@ -316,25 +316,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
     highlightDots.forEach((dot) => {
       dot.addEventListener("click", () => {
-        goToHighlight(Number(dot.dataset.highlightIndex));
-      });
+        goToHighlight(Number(dot.dataset.highlightIndex)
+      );
     });
+  });
 
     highlightCards.addEventListener(
-      "scroll",
-      () => {
-        if (window.innerWidth > 900) return;
-        const cardWidth = cards[0]?.getBoundingClientRect().width;
-        if (!cardWidth) return;
+    "scroll",
+    () => {
+      if (window.innerWidth > 900) return;
 
-        const visibleIndex = Math.round(
-          highlightCards.scrollLeft / cardWidth
+      const containerCenter =
+        highlightCards.scrollLeft +
+        highlightCards.clientWidth / 2;
+
+      let closestIndex = 0;
+      let closestDistance = Infinity;
+
+      cards.forEach((card, index) => {
+        const cardCenter =
+          card.offsetLeft + card.clientWidth / 2;
+
+        const distance = Math.abs(
+          containerCenter - cardCenter
         );
-        updateHighlightNavigation(visibleIndex);
-      },
-      { passive: true }
-    );
 
-    updateHighlightNavigation(0);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      updateHighlightNavigation(closestIndex);
+    },
+    { passive: true }
+  );
+
+  updateHighlightNavigation(0);
   }
 });
