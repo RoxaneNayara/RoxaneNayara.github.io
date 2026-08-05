@@ -2547,9 +2547,9 @@ body:not(.dark-theme) .project-status-progress {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    scroll-padding-inline: 7%;
+    scroll-padding-inline: 4%;
     scrollbar-width: none;
-    padding: 0.75rem 0;
+    padding: 0.75rem 4%;
   }
 
   .highlight-grid::-webkit-scrollbar {
@@ -2651,7 +2651,6 @@ body:not(.dark-theme) .project-status-progress {
 
   .highlight-grid {
     gap: 0.75rem;
-    scroll-padding-inline: 4%;
   }
 
   .highlight-item {
