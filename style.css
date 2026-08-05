@@ -2425,13 +2425,14 @@ body:not(.dark-theme) .project-status-progress {
   }
 }
 
-
-
 /* ==================================================
    CORREÇÕES FINAIS — DESTAQUES, SOBRE E PROJETOS
 ================================================== */
 
-/* Destaques: cinco cards no desktop */
+/* --------------------------------------------------
+   DESTAQUES
+-------------------------------------------------- */
+
 .highlight-wrapper {
   position: relative;
 }
@@ -2440,6 +2441,22 @@ body:not(.dark-theme) .project-status-progress {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 1rem;
+  min-width: 0;
+}
+
+.highlight-item {
+  min-width: 0;
+  padding: 1.4rem 1.15rem;
+}
+
+.highlight-item strong {
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.highlight-item span {
+  font-size: 0.88rem;
+  line-height: 1.55;
 }
 
 .highlight-nav,
@@ -2447,7 +2464,10 @@ body:not(.dark-theme) .project-status-progress {
   display: none;
 }
 
-/* Sobre: texto à esquerda e três cards à direita */
+/* --------------------------------------------------
+   SOBRE
+-------------------------------------------------- */
+
 .about-content {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
@@ -2466,38 +2486,69 @@ body:not(.dark-theme) .project-status-progress {
   gap: 1rem;
 }
 
-/* Status dos projetos dentro da paleta */
-.project-status-completed {
-  color: #efb9e6;
-  background: rgba(239, 185, 230, 0.08);
-  border-color: rgba(239, 185, 230, 0.75);
-  border-style: solid;
+.about-card {
+  width: 100%;
 }
 
-.project-status-progress {
-  color: #c8a7dc;
-  background: rgba(200, 167, 220, 0.12);
-  border-color: rgba(200, 167, 220, 0.75);
-  border-style: dashed;
+/* --------------------------------------------------
+   PROJETOS
+-------------------------------------------------- */
+
+.projects-grid {
+  align-items: stretch;
 }
+
+.project-card {
+  height: 100%;
+}
+
+/* --------------------------------------------------
+   TABLET
+-------------------------------------------------- */
+
+@media (min-width: 761px) and (max-width: 1100px) {
+  /* Sobre continua em duas colunas no tablet */
+
+  .about-content {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+    gap: 2.5rem;
+  }
+
+  /* Dois projetos na primeira linha e o terceiro centralizado */
+
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .projects-grid .project-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    width: min(100%, 560px);
+    justify-self: center;
+  }
+}
+
+/* --------------------------------------------------
+   DESTAQUES RESPONSIVOS
+-------------------------------------------------- */
 
 @media (max-width: 900px) {
-  /* Destaques: carrossel com um card por vez */
   .highlight-wrapper {
-    display: flex;
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr) 42px;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.6rem;
   }
 
   .highlight-grid {
     display: flex;
-    flex: 1;
+    width: 100%;
+    min-width: 0;
     gap: 0;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     scrollbar-width: none;
-    padding-bottom: 0;
   }
 
   .highlight-grid::-webkit-scrollbar {
@@ -2506,7 +2557,9 @@ body:not(.dark-theme) .project-status-progress {
 
   .highlight-item {
     flex: 0 0 100%;
+    min-width: 100%;
     min-height: 220px;
+    margin: 0;
     scroll-snap-align: start;
     scroll-snap-stop: always;
   }
@@ -2514,7 +2567,6 @@ body:not(.dark-theme) .project-status-progress {
   .highlight-nav {
     display: grid;
     place-items: center;
-    flex: 0 0 42px;
     width: 42px;
     height: 42px;
     padding: 0;
@@ -2523,6 +2575,7 @@ body:not(.dark-theme) .project-status-progress {
     background: var(--surface);
     color: var(--primary);
     font-size: 1.65rem;
+    line-height: 1;
     cursor: pointer;
   }
 
@@ -2547,16 +2600,46 @@ body:not(.dark-theme) .project-status-progress {
     background: var(--primary);
     opacity: 0.3;
     cursor: pointer;
+    transition:
+      width 0.2s ease,
+      opacity 0.2s ease;
   }
 
   .highlight-dot.is-active {
     width: 24px;
     opacity: 1;
   }
+}
 
-  /* Sobre em uma coluna no tablet/celular */
+/* --------------------------------------------------
+   CELULAR
+-------------------------------------------------- */
+
+@media (max-width: 760px) {
   .about-content {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .highlight-wrapper {
+    grid-template-columns: 36px minmax(0, 1fr) 36px;
+    gap: 0.35rem;
+  }
+
+  .highlight-nav {
+    width: 36px;
+    height: 36px;
+    font-size: 1.4rem;
+  }
+
+  .highlight-item {
+    min-height: 200px;
+    padding: 1.35rem 1.2rem;
   }
 }
