@@ -2415,3 +2415,123 @@ body.dark-theme .project-status-progress {
     padding-top: 4rem;
   }
 }
+
+/* Cards da seção Sobre */
+
+.about-content {
+  display: block;
+}
+
+.about-text {
+  max-width: 920px;
+  margin-bottom: 2.5rem;
+}
+
+.about-details-wrapper {
+  position: relative;
+}
+
+.about-details {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.about-card {
+  min-width: 0;
+  height: 100%;
+  padding: 1.35rem 1.1rem;
+  align-items: flex-start;
+}
+
+.about-card-number {
+  flex-shrink: 0;
+}
+
+.about-card h3 {
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.about-card p {
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.about-nav,
+.about-pagination {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .about-details-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .about-details {
+    display: flex;
+    flex: 1;
+    gap: 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+  }
+
+  .about-details::-webkit-scrollbar {
+    display: none;
+  }
+
+  .about-card {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-height: 190px;
+  }
+
+  .about-nav {
+    display: grid;
+    place-items: center;
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    background: var(--card-background);
+    color: var(--text-color);
+    font-size: 1.7rem;
+    cursor: pointer;
+  }
+
+  .about-nav:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  .about-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.55rem;
+    margin-top: 1.25rem;
+  }
+
+  .about-dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: currentColor;
+    color: var(--text-color);
+    opacity: 0.3;
+    cursor: pointer;
+  }
+
+  .about-dot.is-active {
+    width: 22px;
+    border-radius: 999px;
+    opacity: 1;
+  }
+}
