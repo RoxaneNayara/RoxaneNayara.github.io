@@ -2669,3 +2669,109 @@ body:not(.dark-theme) .project-status-progress {
     font-size: 1.4rem;
   }
 }
+
+/* ATUALIZAÇÃO HOME — avatar e formação */
+
+@media (min-width: 1101px) {
+  .profile-image-wrapper {
+    width: min(100%, 440px);
+  }
+
+  .profile-image {
+    max-height: 620px;
+  }
+}
+
+@media (min-width: 561px) and (max-width: 1100px) {
+  .profile-image-wrapper {
+    width: min(100%, 380px);
+  }
+
+  .profile-image {
+    max-height: 550px;
+  }
+}
+
+@media (max-width: 560px) {
+  .profile-image-wrapper {
+    width: min(100%, 325px);
+  }
+
+  .profile-image {
+    max-height: 475px;
+  }
+}
+
+.course-list {
+  grid-template-rows: none;
+}
+
+
+/* PRÉVIA 03 — ajuste fino do avatar responsivo */
+
+@media (min-width: 561px) and (max-width: 1100px) {
+  .profile-image-wrapper {
+    width: min(100%, 410px);
+  }
+
+  .profile-image {
+    max-height: 590px;
+    transform: scale(1.06);
+    transform-origin: center bottom;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-visual {
+    min-height: 540px;
+  }
+
+  .profile-image-wrapper {
+    width: min(100%, 345px);
+  }
+
+  .profile-image {
+    max-height: 505px;
+    transform: scale(1.1);
+    transform-origin: center bottom;
+  }
+}
+
+
+/* PRÉVIA 04 — centralização do avatar no tablet e celular */
+
+@media (max-width: 1100px) {
+  .hero-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-visual .decorative-shape {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(7deg);
+  }
+
+  .profile-image-wrapper {
+    position: relative;
+    z-index: 1;
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 561px) and (max-width: 1100px) {
+  .profile-image {
+    transform: scale(1.06) translateY(1.5%);
+    transform-origin: center center;
+  }
+}
+
+@media (max-width: 560px) {
+  .profile-image {
+    transform: scale(1.10) translateY(1.5%);
+    transform-origin: center center;
+  }
+}
+
