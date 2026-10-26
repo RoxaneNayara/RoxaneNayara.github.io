@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Case profissional de Roxane Nayara sobre gestão de riscos aplicada à Qualidade de Software e testes baseados em risco."
+  >
+
+  <meta name="author" content="Roxane Nayara">
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>
+    Gestão de Riscos Aplicada à Qualidade de Software |
+    Roxane Nayara
+  </title>
+
+  <link rel="icon" type="image/png" href="../../favicon.png?v=2">
+  <link rel="apple-touch-icon" href="../../favicon.png?v=2">
+  <link rel="stylesheet" href="../../style.css?v=21">
+  <link rel="stylesheet" href="../cases.css?v=23">
+  <link rel="stylesheet" href="./gestao-riscos-qualidade.css?v=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Allura&display=swap"
+    rel="stylesheet"
+  >
+</head>
+
+<body class="case-page">
+
+  <div class="floating-particles" aria-hidden="true">
+    <span style="--x: 6%; --size: 8px; --delay: 0s; --duration: 20s;"></span>
+    <span style="--x: 14%; --size: 10px; --delay: 2s; --duration: 24s;"></span>
+    <span style="--x: 22%; --size: 7px; --delay: 4s; --duration: 18s;"></span>
+    <span style="--x: 31%; --size: 11px; --delay: 1s; --duration: 22s;"></span>
+    <span style="--x: 39%; --size: 8px; --delay: 5s; --duration: 26s;"></span>
+    <span style="--x: 48%; --size: 9px; --delay: 3s; --duration: 21s;"></span>
+    <span style="--x: 57%; --size: 12px; --delay: 6s; --duration: 28s;"></span>
+    <span style="--x: 66%; --size: 7px; --delay: 2.5s; --duration: 19s;"></span>
+    <span style="--x: 74%; --size: 10px; --delay: 7s; --duration: 25s;"></span>
+    <span style="--x: 82%; --size: 8px; --delay: 1.5s; --duration: 20s;"></span>
+    <span style="--x: 90%; --size: 11px; --delay: 4.5s; --duration: 23s;"></span>
+    <span style="--x: 96%; --size: 7px; --delay: 6.5s; --duration: 18s;"></span>
+  </div>
+
+  <header class="header">
+    <nav class="navigation container">
+
+      <a
+        class="logo"
+        href="../../#inicio"
+        aria-label="Voltar para a página inicial"
+      >
+        Roxy
+      </a>
+
+      <div class="nav-actions">
+
+        <button
+          id="menu-toggle"
+          class="menu-toggle"
+          type="button"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="main-menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div id="main-menu" class="menu">
+          <a href="../../#inicio">Início</a>
+          <a href="../../#sobre">Sobre</a>
+          <a href="../../#experiencia">Experiência</a>
+          <a href="../../#cases">Cases</a>
+          <a href="../../#competencias">Competências</a>
+          <a href="../../#formacao">Formação</a>
+          <a href="../../#contato">Contato</a>
+        </div>
+
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Ativar tema escuro"
+          aria-pressed="false"
+        >
+          <span aria-hidden="true">☾</span>
+        </button>
+
+      </div>
+    </nav>
+  </header>
+
+  <nav class="case-navigation" aria-label="Navegação desta página">
+    <div class="container case-navigation-inner">
+      <a href="#inicio">Visão geral</a>
+      <a href="#contexto">Contexto</a>
+      <a href="#abordagem">Abordagem</a>
+      <a href="#estrategia">Estratégia de testes</a>
+      <a href="#estagio">Estágio</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#competencias">Competências</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <section id="inicio" class="case-hero">
+      <div class="container">
+
+        <a class="case-breadcrumb" href="../../#cases">
+          ← Voltar para todos os cases
+        </a>
+
+        <div class="case-hero-grid">
+
+          <div class="reveal">
+
+            <p class="case-label">
+              Case 13 · Gestão de riscos e estratégia de testes
+            </p>
+
+            <h1 class="case-title">
+              Gestão de Riscos Aplicada à Qualidade de Software
+            </h1>
+
+            <p class="case-introduction">
+              Iniciativa multidisciplinar de análise de riscos conduzida
+              com participação de QA, Produto, Desenvolvimento, Arquitetura
+              e Privacidade, conectando diferentes perspectivas ao
+              planejamento e à estratégia de testes.
+            </p>
+
+            <div class="case-tags">
+              <span>Gestão de Riscos</span>
+              <span>Risk-Based Testing</span>
+              <span>Estratégia de Testes</span>
+              <span>Planejamento de Testes</span>
+              <span>Governança</span>
+              <span>Colaboração Multidisciplinar</span>
+            </div>
+
+          </div>
+
+          <aside
+            class="case-summary reveal reveal-delay-1"
+            aria-labelledby="resumo-case"
+          >
+            <h2 id="resumo-case">Visão geral</h2>
+
+            <ul class="case-summary-list">
+              <li>
+                <strong>Período</strong>
+                <span>Março a dezembro de 2025</span>
+              </li>
+
+              <li>
+                <strong>Objetivo</strong>
+                <span>Ampliar a análise antecipada de riscos das entregas</span>
+              </li>
+
+              <li>
+                <strong>Participação</strong>
+                <span>QA, Produto, Desenvolvimento, Arquitetura e Privacidade</span>
+              </li>
+
+              <li>
+                <strong>Status</strong>
+                <span>Prática realizada e interrompida antes da institucionalização</span>
+              </li>
+            </ul>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="contexto" class="case-section">
+      <div class="container">
+
+        <div class="case-section-heading reveal">
+          <p>Contexto</p>
+
+          <h2>
+            Qualidade não depende apenas da execução dos testes,
+            mas também da capacidade de antecipar riscos.
+          </h2>
+
+          <p class="case-section-description">
+            A análise de riscos já fazia parte do raciocínio aplicado
+            ao planejamento e à execução dos testes. A evolução natural
+            foi ampliar essa discussão para outras áreas envolvidas nas
+            decisões de produto e tecnologia.
+          </p>
+        </div>
+
+        <div class="case-content-grid">
+
+          <article class="case-content-card reveal">
+            <h3>Regras de negócio</h3>
+
+            <p>
+              Alterações em fluxos críticos podiam exigir maior profundidade
+              de validação e alinhamento antes da execução dos testes.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal reveal-delay-1">
+            <h3>Dependências técnicas</h3>
+
+            <p>
+              Integrações, arquitetura e dependências entre sistemas
+              precisavam ser consideradas na análise do impacto.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal">
+            <h3>Privacidade e dados</h3>
+
+            <p>
+              Algumas iniciativas exigiam uma visão que extrapolava
+              o comportamento funcional e incluía aspectos de privacidade.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal reveal-delay-1">
+            <h3>Impacto em produção</h3>
+
+            <p>
+              A discussão antecipada ajudava a direcionar a atenção
+              para riscos que poderiam afetar a entrega ou o ambiente produtivo.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="abordagem" class="case-section">
+      <div class="container">
+
+        <div class="case-section-heading reveal">
+          <p>Abordagem adotada</p>
+
+          <h2>
+            Um fórum multidisciplinar para ampliar a leitura
+            dos riscos antes da entrega.
+          </h2>
+
+          <p class="case-section-description">
+            As reuniões reuniam diferentes perspectivas técnicas e de negócio
+            para discutir riscos, avaliar impactos e direcionar possíveis
+            ações ou tratamentos.
+          </p>
+        </div>
+
+        <div class="risk-flow reveal">
+          <div class="risk-step">
+            <span>01</span>
+            <strong>Identificação do risco</strong>
+          </div>
+
+          <div class="risk-arrow" aria-hidden="true">→</div>
+
+          <div class="risk-step">
+            <span>02</span>
+            <strong>Discussão multidisciplinar</strong>
+          </div>
+
+          <div class="risk-arrow" aria-hidden="true">→</div>
+
+          <div class="risk-step">
+            <span>03</span>
+            <strong>Avaliação de impacto</strong>
+          </div>
+
+          <div class="risk-arrow" aria-hidden="true">→</div>
+
+          <div class="risk-step">
+            <span>04</span>
+            <strong>Ação ou tratamento</strong>
+          </div>
+
+          <div class="risk-arrow" aria-hidden="true">→</div>
+
+          <div class="risk-step">
+            <span>05</span>
+            <strong>Reflexo nas validações</strong>
+          </div>
+        </div>
+
+        <figure class="risk-visual reveal">
+          <img
+            src="https://raw.githubusercontent.com/RoxaneNayara/portfolio-qa-process-improvement/main/13-gestao-riscos-qualidade/assets/gestao-riscos-fluxo.png"
+            alt="Representação anonimizada do fluxo de gestão de riscos"
+            loading="lazy"
+          >
+          <figcaption>
+            Representação visual recriada e anonimizada para demonstrar
+            a lógica do processo sem expor informações internas.
+          </figcaption>
+        </figure>
+
+      </div>
+    </section>
+
+    <section id="estrategia" class="case-section">
+      <div class="container">
+
+        <div class="case-section-heading reveal">
+          <p>Risco como parte da estratégia de testes</p>
+
+          <h2>
+            O risco identificado orientava profundidade,
+            prioridade e tipo de validação.
+          </h2>
+
+          <p class="case-section-description">
+            O fórum não substituía a análise de QA. As informações
+            discutidas eram incorporadas ao planejamento e às decisões
+            de teste conforme o contexto de cada entrega.
+          </p>
+        </div>
+
+        <div class="case-content-grid">
+
+          <article class="case-content-card reveal">
+            <h3>Regra de negócio crítica</h3>
+
+            <p>
+              Maior cobertura e validação direcionada aos fluxos
+              de maior impacto.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal reveal-delay-1">
+            <h3>Critério de aceite incompleto</h3>
+
+            <p>
+              Refinamento, alinhamento e testes exploratórios para
+              reduzir incertezas antes da validação.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal">
+            <h3>Dependência entre sistemas</h3>
+
+            <p>
+              Validação de integração e atenção aos pontos
+              de comunicação entre componentes.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal reveal-delay-1">
+            <h3>Alteração em fluxo sensível</h3>
+
+            <p>
+              Regressão focada e priorização dos cenários
+              com maior potencial de impacto.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal">
+            <h3>Incerteza funcional</h3>
+
+            <p>
+              Exploração e alinhamento com Produto para ampliar
+              o entendimento antes da decisão.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal reveal-delay-1">
+            <h3>Risco próximo à liberação</h3>
+
+            <p>
+              Smoke test e validações direcionadas antes
+              da continuidade do fluxo de entrega.
+            </p>
+          </article>
+
+        </div>
+
+        <figure class="risk-visual reveal">
+          <img
+            src="https://raw.githubusercontent.com/RoxaneNayara/portfolio-qa-process-improvement/main/13-gestao-riscos-qualidade/assets/gestao-riscos-resposta-testes.png"
+            alt="Representação anonimizada da relação entre riscos e respostas de teste"
+            loading="lazy"
+          >
+          <figcaption>
+            Modelo ilustrativo da relação entre situações de risco
+            e possíveis respostas de Qualidade. Não representa
+            uma matriz formal utilizada pela empresa.
+          </figcaption>
+        </figure>
+
+      </div>
+    </section>
+
+    <section id="estagio" class="case-section">
+      <div class="container">
+
+        <div class="case-section-heading reveal">
+          <p>Estágio da iniciativa</p>
+
+          <h2>
+            Uma prática efetivamente realizada,
+            mas que não chegou a virar um processo institucional.
+          </h2>
+        </div>
+
+        <div class="case-content-grid">
+
+          <article class="case-content-card reveal">
+            <h3>O que foi realizado</h3>
+
+            <p>
+              O fórum esteve ativo entre 18 de março e dezembro de 2025,
+              reunindo diferentes áreas para discutir riscos relacionados
+              às iniciativas e entregas.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal reveal-delay-1">
+            <h3>O que estava evoluindo</h3>
+
+            <p>
+              A abordagem buscava amadurecer a conexão entre risco,
+              planejamento e estratégia de testes.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal">
+            <h3>O que não foi implementado</h3>
+
+            <p>
+              A iniciativa não evoluiu para uma matriz formal de riscos
+              nem para um processo corporativo permanente.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal reveal-delay-1">
+            <h3>Encerramento</h3>
+
+            <p>
+              O fórum foi interrompido em dezembro de 2025
+              em um contexto de mudanças organizacionais.
+            </p>
+          </article>
+
+        </div>
+
+        <div class="case-note reveal">
+          <strong>Importante:</strong>
+          este case apresenta uma prática real e seus aprendizados.
+          Ele não é apresentado como framework corporativo concluído
+          ou institucionalizado.
+        </div>
+
+      </div>
+    </section>
+
+    <section id="resultados" class="case-section">
+      <div class="container">
+
+        <div class="case-section-heading reveal">
+          <p>Resultados observados</p>
+
+          <h2>
+            Mais perspectivas incorporadas à análise
+            antes da validação das entregas.
+          </h2>
+        </div>
+
+        <div class="case-content-grid">
+
+          <article class="case-content-card reveal">
+            <h3>Discussão ampliada</h3>
+
+            <p>
+              A análise de riscos deixou de permanecer restrita
+              ao olhar do time de QA.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal reveal-delay-1">
+            <h3>Decisão multidisciplinar</h3>
+
+            <p>
+              Produto, Desenvolvimento, Arquitetura, Privacidade e QA
+              puderam contribuir com perspectivas diferentes.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal">
+            <h3>Risco no planejamento</h3>
+
+            <p>
+              A visão de risco foi reforçada como critério para
+              priorização, profundidade e escolha das validações.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal reveal-delay-1">
+            <h3>Qualidade compartilhada</h3>
+
+            <p>
+              A iniciativa fortaleceu a percepção de Qualidade
+              como responsabilidade distribuída entre diferentes áreas.
+            </p>
+          </article>
+
+        </div>
+
+        <div class="case-note reveal">
+          <strong>Resultados não mensurados:</strong>
+          não foram estabelecidas métricas quantitativas específicas
+          para medir isoladamente o impacto do fórum.
+        </div>
+
+      </div>
+    </section>
+
+    <section id="competencias" class="case-section">
+      <div class="container">
+
+        <div class="case-section-heading reveal">
+          <p>Competências demonstradas</p>
+
+          <h2>
+            Gestão de riscos conectada à estratégia,
+            governança e tomada de decisão em Qualidade.
+          </h2>
+        </div>
+
+        <div class="case-tags reveal">
+          <span>Gestão de Riscos</span>
+          <span>Risk-Based Testing</span>
+          <span>Estratégia de Testes</span>
+          <span>Planejamento de Testes</span>
+          <span>Análise de Impacto</span>
+          <span>Análise Crítica</span>
+          <span>Governança</span>
+          <span>Liderança de QA</span>
+          <span>Colaboração Multidisciplinar</span>
+          <span>Melhoria Contínua</span>
+        </div>
+
+        <div class="case-actions reveal">
+
+          <a
+            class="button button-primary"
+            href="https://github.com/RoxaneNayara/portfolio-qa-process-improvement/tree/main/13-gestao-riscos-qualidade"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ver documentação no GitHub
+          </a>
+
+          <a
+            class="button button-secondary"
+            href="../../#cases"
+          >
+            Voltar para todos os cases
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+
+        <div class="case-note reveal">
+          <strong>Confidencialidade:</strong>
+          nomes de sistemas, produtos, clientes e informações internas
+          foram omitidos ou generalizados. As representações visuais
+          foram recriadas e anonimizadas.
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <button
+    id="back-to-top"
+    class="back-to-top"
+    type="button"
+    aria-label="Voltar ao topo"
+    title="Voltar ao topo"
+  >
+    <span aria-hidden="true">↑</span>
+  </button>
+
+  <footer class="footer">
+    <div class="container footer-content">
+
+      <p>
+        © 2026 Roxane Nayara. Alguns direitos reservados.
+      </p>
+
+      <p class="footer-note">
+        Portfólio profissional de QA com foco em processos,
+        governança, rastreabilidade e melhoria contínua.
+      </p>
+
+    </div>
+  </footer>
+
+  <script src="../../script.js?v=17"></script>
+  <script src="../case-navigation.js?v=5"></script>
+
+</body>
+</html>
