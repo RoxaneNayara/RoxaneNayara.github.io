@@ -1,0 +1,99 @@
+/* ==================================================
+   CASE 13 — GESTÃO DE RISCOS
+================================================== */
+
+.risk-flow {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr) auto
+    minmax(0, 1fr) auto
+    minmax(0, 1fr) auto
+    minmax(0, 1fr) auto
+    minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+.risk-step {
+  min-height: 126px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--background);
+}
+
+.risk-step span {
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: var(--primary);
+}
+
+.risk-step strong {
+  line-height: 1.4;
+  color: var(--primary-dark);
+}
+
+.risk-arrow {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.risk-visual {
+  margin: 42px 0 0;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--background);
+}
+
+.risk-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+
+.risk-visual figcaption {
+  margin-top: 14px;
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+
+body.dark-theme .risk-step,
+body.dark-theme .risk-visual {
+  background: var(--surface);
+}
+
+@media (max-width: 1024px) {
+  .risk-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .risk-arrow {
+    transform: rotate(90deg);
+    justify-self: center;
+  }
+
+  .risk-step {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .risk-visual {
+    padding: 12px;
+    border-radius: 18px;
+  }
+
+  .risk-visual img {
+    border-radius: 12px;
+  }
+}
