@@ -26,7 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "processo-seletivo-qa": "case-10",
     "kanban-operacional": "case-11",
     "agentes-ia-qualidade": "case-12",
-    "gestao-riscos-qualidade": "case-13"
+    "gestao-riscos-qualidade": "case-13",
+    "kpis-governanca-qualidade": "case-14"
   };
 
   const currentFolder =
