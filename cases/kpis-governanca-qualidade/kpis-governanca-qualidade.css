@@ -1,0 +1,640 @@
+/* ==================================================
+   CASE 14 — KPIs E GOVERNANÇA DE QUALIDADE
+================================================== */
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.kpi-card {
+  padding: 30px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--background);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 18px 40px rgba(75, 42, 82, 0.12);
+}
+
+.kpi-card > span {
+  display: inline-block;
+  margin-bottom: 16px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: var(--primary);
+}
+
+.kpi-card h3 {
+  margin-bottom: 12px;
+  color: var(--primary-dark);
+}
+
+.kpi-card p {
+  color: var(--text-soft);
+}
+
+.kpi-card small {
+  display: block;
+  margin-top: 18px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.kpi-visual {
+  margin: 0;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--background);
+}
+
+.kpi-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+
+.kpi-visual figcaption {
+  margin-top: 14px;
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+
+.kpi-note {
+  margin-top: 1.5rem;
+}
+
+.qa-flow {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+.qa-flow div {
+  min-width: 0;
+  flex: 1;
+  display: grid;
+  place-items: center;
+  min-height: 96px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  text-align: center;
+  font-weight: 800;
+  color: var(--primary-dark);
+  background: var(--background);
+}
+
+.qa-flow span {
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+  font-size: 1.35rem;
+  font-weight: 900;
+}
+
+.qa-metric {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 28px;
+  margin: 0 0 42px;
+  padding: 30px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--surface-soft);
+}
+
+.qa-metric > div:not(.qa-metric-arrow) {
+  text-align: center;
+}
+
+.qa-metric span {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.qa-metric strong {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.7rem, 6vw, 4.8rem);
+  line-height: 1;
+  color: var(--primary-dark);
+}
+
+.qa-metric p {
+  margin-top: 10px;
+  color: var(--text-soft);
+}
+
+.qa-metric-arrow {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.qa-limits {
+  margin-top: 36px;
+}
+
+.results-note,
+.confidentiality-note {
+  margin-top: 1.5rem;
+}
+
+#competencias {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+#competencias .case-section-heading {
+  margin-bottom: 36px;
+}
+
+#competencias .case-tags {
+  margin-top: 0;
+}
+
+#competencias .case-actions {
+  margin-top: 32px;
+}
+
+body.dark-theme .kpi-card,
+body.dark-theme .kpi-visual,
+body.dark-theme .qa-flow div {
+  background: var(--surface);
+}
+
+@media (max-width: 900px) {
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .qa-flow {
+    flex-direction: column;
+  }
+
+  .qa-flow span {
+    transform: rotate(90deg);
+  }
+
+  .qa-metric {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .qa-metric-arrow {
+    transform: rotate(90deg);
+    justify-self: center;
+  }
+
+  #competencias {
+    padding-top: 54px;
+    padding-bottom: 54px;
+  }
+
+  #competencias .case-section-heading {
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 560px) {
+  .kpi-card {
+    padding: 24px;
+  }
+
+  .kpi-visual {
+    padding: 12px;
+    border-radius: 18px;
+  }
+
+  .kpi-visual img {
+    border-radius: 12px;
+  }
+
+  .qa-metric {
+    padding: 24px;
+  }
+
+  #competencias {
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+
+  #competencias .case-section-heading {
+    margin-bottom: 28px;
+  }
+
+  #competencias .case-actions {
+    margin-top: 26px;
+  }
+}
+
+@media (hover: none) {
+  .kpi-card:hover {
+    transform: none;
+    border-color: var(--accent);
+    box-shadow: 0 18px 40px rgba(75, 42, 82, 0.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kpi-card {
+    transition: none;
+  }
+}
+
+
+/* ==================================================
+   QA INTELLIGENCE — FLUXO RESPONSIVO EM HTML/CSS
+================================================== */
+
+.qa-intelligence-visual {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr) auto
+    minmax(0, 1fr) auto
+    minmax(0, 1fr) auto
+    minmax(0, 1.2fr) auto
+    minmax(0, 1fr);
+  align-items: stretch;
+  gap: 12px;
+  margin-top: 42px;
+}
+
+.qa-intelligence-stage {
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--background);
+}
+
+.qa-intelligence-label {
+  display: block;
+  margin: -20px -20px 18px;
+  padding: 12px 16px;
+  border-radius: 20px 20px 0 0;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.qa-intelligence-stage h3 {
+  margin-bottom: 10px;
+  color: var(--primary-dark);
+}
+
+.qa-intelligence-stage p,
+.qa-intelligence-stage li {
+  color: var(--text-soft);
+}
+
+.qa-intelligence-stage ul {
+  display: grid;
+  gap: 6px;
+  padding-left: 18px;
+}
+
+.qa-intelligence-stage-blue .qa-intelligence-label {
+  background: #1677d2;
+}
+
+.qa-intelligence-stage-purple .qa-intelligence-label {
+  background: #7150cf;
+}
+
+.qa-intelligence-stage-green .qa-intelligence-label {
+  background: #2ba968;
+}
+
+.qa-intelligence-stage-orange .qa-intelligence-label {
+  background: #e89223;
+}
+
+.qa-intelligence-arrow {
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.qa-automation-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.qa-automation-summary article {
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--background);
+}
+
+.qa-automation-summary article:first-child {
+  border-color: rgba(43, 169, 104, 0.45);
+}
+
+.qa-automation-summary article:last-child {
+  border-color: rgba(205, 78, 78, 0.45);
+}
+
+.qa-automation-summary strong {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--primary-dark);
+}
+
+.qa-automation-summary ul {
+  display: grid;
+  gap: 7px;
+  padding-left: 20px;
+  color: var(--text-soft);
+}
+
+.qa-intelligence-note {
+  margin-top: 1.5rem;
+}
+
+body.dark-theme .qa-intelligence-stage,
+body.dark-theme .qa-automation-summary article {
+  background: var(--surface);
+}
+
+@media (max-width: 1180px) {
+  .qa-intelligence-visual {
+    grid-template-columns: 1fr;
+  }
+
+  .qa-intelligence-arrow {
+    transform: rotate(90deg);
+  }
+}
+
+@media (max-width: 760px) {
+  .qa-automation-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .qa-intelligence-stage {
+    padding: 18px;
+  }
+
+  .qa-intelligence-label {
+    margin: -18px -18px 16px;
+  }
+}
+
+
+/* ==================================================
+   DASHBOARD DE INDICADORES — HTML/CSS RESPONSIVO
+================================================== */
+
+.quality-dashboard {
+  padding: 26px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--background);
+}
+
+.quality-dashboard-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.quality-dashboard-eyebrow {
+  margin: 0 0 6px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.quality-dashboard-header h3 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  color: var(--primary-dark);
+}
+
+.quality-dashboard-period {
+  flex: 0 0 auto;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--primary);
+  background: var(--surface-soft);
+}
+
+.quality-dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.dashboard-card {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+}
+
+.dashboard-card-wide {
+  grid-column: span 2;
+}
+
+.dashboard-card h4 {
+  margin: 0 0 14px;
+  font-size: 0.95rem;
+  color: var(--primary-dark);
+}
+
+.dashboard-card p {
+  margin: 12px 0 0;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--text-soft);
+}
+
+.mini-bars,
+.bug-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 92px;
+  padding-top: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.mini-bars span,
+.bug-bars span {
+  flex: 1;
+  height: var(--value);
+  min-height: 10px;
+  border-radius: 7px 7px 0 0;
+  background:
+    linear-gradient(
+      to top,
+      rgba(55, 135, 225, 0.9) 0 62%,
+      rgba(139, 92, 220, 0.82) 62% 100%
+    );
+}
+
+.mini-bars-purple span {
+  background: rgba(139, 92, 220, 0.82);
+}
+
+.mini-bars-alert span {
+  background: rgba(232, 93, 93, 0.84);
+}
+
+.bug-bars span:nth-child(odd) {
+  background: rgba(55, 135, 225, 0.9);
+}
+
+.bug-bars span:nth-child(even) {
+  background: rgba(139, 92, 220, 0.82);
+}
+
+.horizontal-bars {
+  display: grid;
+  gap: 8px;
+}
+
+.horizontal-bars span {
+  display: block;
+  width: var(--value);
+  height: 12px;
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(55, 135, 225, 0.9),
+      rgba(139, 92, 220, 0.72)
+    );
+}
+
+.compact-bars span {
+  height: 10px;
+  background: rgba(139, 92, 220, 0.78);
+}
+
+.donut-chart {
+  width: 92px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  border-radius: 50%;
+  position: relative;
+}
+
+.donut-chart::after {
+  content: "";
+  position: absolute;
+  inset: 24%;
+  border-radius: 50%;
+  background: var(--surface);
+}
+
+.donut-products {
+  background: conic-gradient(
+    #3787e1 0 28%,
+    #ef674b 28% 48%,
+    #f2bd33 48% 66%,
+    #2ca966 66% 82%,
+    #8b5cdc 82% 100%
+  );
+}
+
+.donut-prerequisites {
+  background: conic-gradient(
+    #2ca966 0 50%,
+    #f2bd33 50% 82%,
+    #ef5350 82% 100%
+  );
+}
+
+.donut-severity {
+  background: conic-gradient(
+    #ef5350 0 24%,
+    #ef8d30 24% 65%,
+    #f2bd33 65% 82%,
+    #2ca966 82% 100%
+  );
+}
+
+.donut-classification {
+  background: conic-gradient(
+    #3787e1 0 38%,
+    #8b5cdc 38% 76%,
+    #6a48bb 76% 100%
+  );
+}
+
+.dashboard-note {
+  margin-top: 1.5rem;
+}
+
+body.dark-theme .quality-dashboard {
+  background: var(--surface);
+}
+
+@media (max-width: 1000px) {
+  .quality-dashboard-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-card-wide {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .quality-dashboard {
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .quality-dashboard-header {
+    flex-direction: column;
+  }
+
+  .quality-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-card-wide {
+    grid-column: auto;
+  }
+
+  .quality-dashboard-period {
+    white-space: normal;
+  }
+}
