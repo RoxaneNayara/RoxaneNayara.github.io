@@ -103,13 +103,13 @@ body.dark-theme .risk-visual {
 
 .case-page #estagio .case-note,
 .case-page #resultados .case-note {
-  margin-top: 36px;
+  margin-top: 1.5rem;
 }
 
 @media (max-width: 560px) {
   .case-page #estagio .case-note,
   .case-page #resultados .case-note {
-    margin-top: 28px;
+    margin-top: 1.25rem;
   }
 }
 
@@ -316,10 +316,12 @@ body.dark-theme .risk-response-header > div {
 }
 
 .risk-image-crop img {
-  width: calc(100% + 16px);
-  max-width: none;
-  margin-left: -8px;
+  display: block;
+  width: 100%;
+  height: auto;
   border-radius: 0;
+  transform: scale(1.035);
+  transform-origin: center center;
 }
 
 @media (max-width: 560px) {
@@ -328,8 +330,7 @@ body.dark-theme .risk-response-header > div {
   }
 
   .risk-image-crop img {
-    width: calc(100% + 12px);
-    margin-left: -6px;
+    transform: scale(1.045);
   }
 }
 
