@@ -802,3 +802,25 @@ body.dark-theme .risk-forum-visual {
     font-size: 0.76rem !important;
   }
 }
+
+
+/* CORREÇÃO DESKTOP DO BADGE DO PERÍODO */
+
+@media (min-width: 901px) {
+  .risk-forum-header {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: start !important;
+    column-gap: 24px !important;
+  }
+
+  .risk-forum-period {
+    justify-self: end !important;
+    align-self: start !important;
+    margin-top: 4px !important;
+    padding: 9px 16px !important;
+    min-height: 40px !important;
+    font-size: 0.78rem !important;
+    line-height: 1 !important;
+  }
+}
