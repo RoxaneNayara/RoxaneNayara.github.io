@@ -145,25 +145,16 @@ document.addEventListener("DOMContentLoaded", () => {
           navigationInner &&
           (isPartiallyHidden || shouldCenterActive)
         ) {
-          const targetLeft =
-            link.offsetLeft -
-            navigationInner.clientWidth / 2 +
-            link.offsetWidth / 2;
-
-          const maximumLeft =
-            navigationInner.scrollWidth -
-            navigationInner.clientWidth;
-
-          navigationInner.scrollTo({
-            left: Math.max(
-              0,
-              Math.min(targetLeft, maximumLeft)
-            ),
+          link.scrollIntoView({
             behavior: window.matchMedia(
               "(prefers-reduced-motion: reduce)"
             ).matches
               ? "auto"
-              : "smooth"
+              : "smooth",
+            block: "nearest",
+            inline: shouldCenterActive
+              ? "center"
+              : "nearest"
           });
         }
       } else {
