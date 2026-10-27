@@ -698,3 +698,52 @@ body.dark-theme .risk-forum-visual {
     padding: 16px !important;
   }
 }
+
+
+/* AJUSTE FINAL DESKTOP — DATA E LARGURA DOS CARDS DO FÓRUM */
+
+.risk-forum-period {
+  padding: 7px 12px !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 999px !important;
+  font-size: 0.72rem !important;
+  line-height: 1.2 !important;
+  font-weight: 800 !important;
+  white-space: nowrap !important;
+  background: var(--surface-soft) !important;
+}
+
+.risk-forum-flow {
+  grid-template-columns:
+    minmax(150px, 1fr) auto
+    minmax(180px, 1.15fr) auto
+    minmax(150px, 1fr) auto
+    minmax(150px, 1fr) auto
+    minmax(170px, 1.1fr) !important;
+}
+
+.risk-forum-flow article {
+  min-width: 0 !important;
+  overflow: hidden;
+}
+
+.risk-forum-flow h4 {
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: auto;
+}
+
+.risk-forum-flow p {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 1400px) and (min-width: 901px) {
+  .risk-forum-flow {
+    grid-template-columns:
+      minmax(140px, 1fr) auto
+      minmax(170px, 1.18fr) auto
+      minmax(140px, 1fr) auto
+      minmax(140px, 1fr) auto
+      minmax(160px, 1.08fr) !important;
+  }
+}
