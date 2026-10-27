@@ -238,3 +238,71 @@ body.dark-theme .risk-response-header > div {
 #competencias .case-actions {
   margin-top: 2.4rem;
 }
+
+
+/* ==================================================
+   COMPACTAÇÃO FINAL — MESMO RITMO DOS CASES PUBLICADOS
+================================================== */
+
+#resultados {
+  padding-bottom: 64px;
+}
+
+#competencias {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+#competencias .case-section-heading {
+  margin-bottom: 36px;
+}
+
+#competencias .case-tags {
+  margin-top: 0;
+}
+
+#competencias .confidentiality-note {
+  margin-top: 24px;
+}
+
+#competencias .case-actions {
+  margin-top: 32px;
+}
+
+@media (max-width: 900px) {
+  #resultados {
+    padding-bottom: 54px;
+  }
+
+  #competencias {
+    padding-top: 54px;
+    padding-bottom: 54px;
+  }
+
+  #competencias .case-section-heading {
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 560px) {
+  #resultados {
+    padding-bottom: 44px;
+  }
+
+  #competencias {
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+
+  #competencias .case-section-heading {
+    margin-bottom: 28px;
+  }
+
+  #competencias .confidentiality-note {
+    margin-top: 20px;
+  }
+
+  #competencias .case-actions {
+    margin-top: 26px;
+  }
+}
