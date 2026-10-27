@@ -21,7 +21,7 @@
   <link rel="apple-touch-icon" href="../../favicon.png?v=2">
   <link rel="stylesheet" href="../../style.css?v=21">
   <link rel="stylesheet" href="../cases.css?v=25">
-  <link rel="stylesheet" href="./kpis-governanca-qualidade.css?v=1">
+  <link rel="stylesheet" href="./kpis-governanca-qualidade.css?v=2">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -409,17 +409,93 @@
           </div>
         </div>
 
-        <figure class="kpi-visual reveal">
-          <img
-            src="https://raw.githubusercontent.com/RoxaneNayara/portfolio-qa-process-improvement/main/14-kpis-governanca-qualidade/assets/qa-intelligence-fluxo.png"
-            alt="Representação da integração entre Azure DevOps, Action e QA Intelligence"
-            loading="lazy"
-          >
-          <figcaption>
-            Representação simplificada da integração utilizada
-            para consultar dados do Azure DevOps por meio de prompts.
-          </figcaption>
-        </figure>
+        <div class="qa-intelligence-visual reveal" aria-label="Fluxo do QA Intelligence integrado ao Azure DevOps">
+          <div class="qa-intelligence-stage qa-intelligence-stage-blue">
+            <span class="qa-intelligence-label">Azure DevOps</span>
+            <h3>Fonte de dados</h3>
+            <ul>
+              <li>Tarefas de teste</li>
+              <li>Bugs</li>
+              <li>Produtos</li>
+              <li>Times</li>
+              <li>Sprints</li>
+              <li>Impedimentos</li>
+              <li>Pré-requisitos</li>
+            </ul>
+          </div>
+
+          <span class="qa-intelligence-arrow" aria-hidden="true">→</span>
+
+          <div class="qa-intelligence-stage qa-intelligence-stage-purple">
+            <span class="qa-intelligence-label">Action</span>
+            <h3>Consulta por API</h3>
+            <p>
+              Action configurada para consultar dados do Azure DevOps
+              e disponibilizá-los ao agente.
+            </p>
+          </div>
+
+          <span class="qa-intelligence-arrow" aria-hidden="true">→</span>
+
+          <div class="qa-intelligence-stage qa-intelligence-stage-green">
+            <span class="qa-intelligence-label">QA Intelligence</span>
+            <h3>Agente de IA</h3>
+            <p>
+              Agente integrado via Action e capaz de consultar
+              as informações disponíveis no Azure DevOps.
+            </p>
+          </div>
+
+          <span class="qa-intelligence-arrow" aria-hidden="true">→</span>
+
+          <div class="qa-intelligence-stage qa-intelligence-stage-orange">
+            <span class="qa-intelligence-label">Consulta via prompt</span>
+            <h3>Exemplos</h3>
+            <ul>
+              <li>Atividades de teste no mês</li>
+              <li>Bugs em homologação por severidade</li>
+              <li>Itens em impedimento por time</li>
+              <li>Atividades que passaram de Sprint</li>
+            </ul>
+          </div>
+
+          <span class="qa-intelligence-arrow" aria-hidden="true">→</span>
+
+          <div class="qa-intelligence-stage qa-intelligence-stage-blue">
+            <span class="qa-intelligence-label">Informação para análise</span>
+            <h3>Indicadores</h3>
+            <p>
+              Dados organizados para acompanhamento,
+              consolidação e apresentação à gestão.
+            </p>
+          </div>
+        </div>
+
+        <div class="qa-automation-summary reveal">
+          <article>
+            <strong>O que foi automatizado</strong>
+            <ul>
+              <li>Consulta de dados do Azure DevOps por prompt</li>
+              <li>Apoio à extração e consolidação dos indicadores</li>
+              <li>Redução aproximada de 6h para 2h na extração mensal</li>
+            </ul>
+          </article>
+
+          <article>
+            <strong>O que não foi automatizado</strong>
+            <ul>
+              <li>Dados de esforço e tempo do 7pace Timetracker</li>
+              <li>Horas por colaborador</li>
+              <li>Integração entre QA Intelligence e 7pace</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="case-note reveal qa-intelligence-note">
+          <strong>Representação pública:</strong>
+          o fluxo acima recria a lógica da integração real implementada
+          com o Azure DevOps, sem reproduzir informações confidenciais.
+        </div>
 
         <div class="case-content-grid qa-limits">
 
