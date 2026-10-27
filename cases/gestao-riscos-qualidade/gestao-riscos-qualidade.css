@@ -625,3 +625,76 @@ body.dark-theme .risk-forum-visual {
     white-space: normal;
   }
 }
+
+
+/* ==================================================
+   AJUSTE DEFINITIVO DO FÓRUM POR LARGURA DO COMPONENTE
+================================================== */
+
+.risk-forum-visual {
+  container-type: inline-size;
+}
+
+@container (max-width: 900px) {
+  .risk-forum-header {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  .risk-forum-period {
+    align-self: flex-start !important;
+    max-width: 100% !important;
+    padding: 6px 10px !important;
+    font-size: 0.7rem !important;
+    line-height: 1.25 !important;
+    white-space: normal !important;
+  }
+
+  .risk-forum-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .risk-forum-participants ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .risk-forum-flow {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+  }
+
+  .risk-forum-flow article {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 18px !important;
+  }
+
+  .risk-forum-flow h4 {
+    font-size: 1rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .risk-forum-flow p {
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .risk-forum-arrow {
+    display: none !important;
+  }
+
+  .risk-forum-footer {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@container (max-width: 520px) {
+  .risk-forum-participants ul {
+    grid-template-columns: 1fr !important;
+  }
+
+  .risk-forum-visual {
+    padding: 16px !important;
+  }
+}
