@@ -1,0 +1,264 @@
+/* ==================================================
+   CASE 14 — KPIs E GOVERNANÇA DE QUALIDADE
+================================================== */
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.kpi-card {
+  padding: 30px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--background);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 18px 40px rgba(75, 42, 82, 0.12);
+}
+
+.kpi-card > span {
+  display: inline-block;
+  margin-bottom: 16px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: var(--primary);
+}
+
+.kpi-card h3 {
+  margin-bottom: 12px;
+  color: var(--primary-dark);
+}
+
+.kpi-card p {
+  color: var(--text-soft);
+}
+
+.kpi-card small {
+  display: block;
+  margin-top: 18px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.kpi-visual {
+  margin: 0;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--background);
+}
+
+.kpi-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+
+.kpi-visual figcaption {
+  margin-top: 14px;
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+
+.kpi-note {
+  margin-top: 1.5rem;
+}
+
+.qa-flow {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+.qa-flow div {
+  min-width: 0;
+  flex: 1;
+  display: grid;
+  place-items: center;
+  min-height: 96px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  text-align: center;
+  font-weight: 800;
+  color: var(--primary-dark);
+  background: var(--background);
+}
+
+.qa-flow span {
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+  font-size: 1.35rem;
+  font-weight: 900;
+}
+
+.qa-metric {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 28px;
+  margin: 0 0 42px;
+  padding: 30px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--surface-soft);
+}
+
+.qa-metric > div:not(.qa-metric-arrow) {
+  text-align: center;
+}
+
+.qa-metric span {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.qa-metric strong {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.7rem, 6vw, 4.8rem);
+  line-height: 1;
+  color: var(--primary-dark);
+}
+
+.qa-metric p {
+  margin-top: 10px;
+  color: var(--text-soft);
+}
+
+.qa-metric-arrow {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.qa-limits {
+  margin-top: 36px;
+}
+
+.results-note,
+.confidentiality-note {
+  margin-top: 1.5rem;
+}
+
+#competencias {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+#competencias .case-section-heading {
+  margin-bottom: 36px;
+}
+
+#competencias .case-tags {
+  margin-top: 0;
+}
+
+#competencias .case-actions {
+  margin-top: 32px;
+}
+
+body.dark-theme .kpi-card,
+body.dark-theme .kpi-visual,
+body.dark-theme .qa-flow div {
+  background: var(--surface);
+}
+
+@media (max-width: 900px) {
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .qa-flow {
+    flex-direction: column;
+  }
+
+  .qa-flow span {
+    transform: rotate(90deg);
+  }
+
+  .qa-metric {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .qa-metric-arrow {
+    transform: rotate(90deg);
+    justify-self: center;
+  }
+
+  #competencias {
+    padding-top: 54px;
+    padding-bottom: 54px;
+  }
+
+  #competencias .case-section-heading {
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 560px) {
+  .kpi-card {
+    padding: 24px;
+  }
+
+  .kpi-visual {
+    padding: 12px;
+    border-radius: 18px;
+  }
+
+  .kpi-visual img {
+    border-radius: 12px;
+  }
+
+  .qa-metric {
+    padding: 24px;
+  }
+
+  #competencias {
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+
+  #competencias .case-section-heading {
+    margin-bottom: 28px;
+  }
+
+  #competencias .case-actions {
+    margin-top: 26px;
+  }
+}
+
+@media (hover: none) {
+  .kpi-card:hover {
+    transform: none;
+    border-color: var(--accent);
+    box-shadow: 0 18px 40px rgba(75, 42, 82, 0.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kpi-card {
+    transition: none;
+  }
+}
