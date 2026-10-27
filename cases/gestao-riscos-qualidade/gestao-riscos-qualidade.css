@@ -824,3 +824,50 @@ body.dark-theme .risk-forum-visual {
     line-height: 1 !important;
   }
 }
+
+
+/* CORREÇÃO DE OVERFLOW DO FLUXO NO DESKTOP */
+
+@media (min-width: 901px) {
+  .risk-forum-layout {
+    grid-template-columns: minmax(210px, 0.72fr) minmax(0, 2.8fr) !important;
+  }
+
+  .risk-forum-flow {
+    width: 100%;
+    min-width: 0;
+    grid-template-columns:
+      minmax(0, 1fr) auto
+      minmax(0, 1.12fr) auto
+      minmax(0, 1fr) auto
+      minmax(0, 1fr) auto
+      minmax(0, 1.08fr) !important;
+    gap: 8px !important;
+  }
+
+  .risk-forum-flow article {
+    min-width: 0 !important;
+    width: auto !important;
+    padding: 16px !important;
+  }
+
+  .risk-forum-flow h4 {
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+    hyphens: none !important;
+    font-size: 0.92rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .risk-forum-flow p {
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+    hyphens: none !important;
+    font-size: 0.82rem !important;
+  }
+
+  .risk-forum-arrow {
+    min-width: 20px;
+    font-size: 1.15rem !important;
+  }
+}
