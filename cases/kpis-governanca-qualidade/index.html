@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Case profissional de Roxane Nayara sobre KPIs, governança de Qualidade, Azure DevOps e evolução da consulta de indicadores com QA Intelligence."
+  >
+
+  <meta name="author" content="Roxane Nayara">
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>
+    KPIs e Governança de Qualidade com Azure DevOps |
+    Roxane Nayara
+  </title>
+
+  <link rel="icon" type="image/png" href="../../favicon.png?v=2">
+  <link rel="apple-touch-icon" href="../../favicon.png?v=2">
+  <link rel="stylesheet" href="../../style.css?v=21">
+  <link rel="stylesheet" href="../cases.css?v=25">
+  <link rel="stylesheet" href="./kpis-governanca-qualidade.css?v=3">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Allura&display=swap"
+    rel="stylesheet"
+  >
+</head>
+
+<body class="case-page">
+
+  <div class="floating-particles" aria-hidden="true">
+    <span style="--x: 6%; --size: 8px; --delay: 0s; --duration: 20s;"></span>
+    <span style="--x: 14%; --size: 10px; --delay: 2s; --duration: 24s;"></span>
+    <span style="--x: 22%; --size: 7px; --delay: 4s; --duration: 18s;"></span>
+    <span style="--x: 31%; --size: 11px; --delay: 1s; --duration: 22s;"></span>
+    <span style="--x: 39%; --size: 8px; --delay: 5s; --duration: 26s;"></span>
+    <span style="--x: 48%; --size: 9px; --delay: 3s; --duration: 21s;"></span>
+    <span style="--x: 57%; --size: 12px; --delay: 6s; --duration: 28s;"></span>
+    <span style="--x: 66%; --size: 7px; --delay: 2.5s; --duration: 19s;"></span>
+    <span style="--x: 74%; --size: 10px; --delay: 7s; --duration: 25s;"></span>
+    <span style="--x: 82%; --size: 8px; --delay: 1.5s; --duration: 20s;"></span>
+    <span style="--x: 90%; --size: 11px; --delay: 4.5s; --duration: 23s;"></span>
+    <span style="--x: 96%; --size: 7px; --delay: 6.5s; --duration: 18s;"></span>
+  </div>
+
+  <header class="header">
+    <nav class="navigation container">
+
+      <a
+        class="logo"
+        href="../../#inicio"
+        aria-label="Voltar para a página inicial"
+      >
+        Roxy
+      </a>
+
+      <div class="nav-actions">
+
+        <button
+          id="menu-toggle"
+          class="menu-toggle"
+          type="button"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="main-menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div id="main-menu" class="menu">
+          <a href="../../#inicio">Início</a>
+          <a href="../../#sobre">Sobre</a>
+          <a href="../../#experiencia">Experiência</a>
+          <a href="../../#cases">Cases</a>
+          <a href="../../#competencias">Competências</a>
+          <a href="../../#formacao">Formação</a>
+          <a href="../../#contato">Contato</a>
+        </div>
+
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Ativar tema escuro"
+          aria-pressed="false"
+        >
+          <span aria-hidden="true">☾</span>
+        </button>
+
+      </div>
+    </nav>
+  </header>
+
+  <nav class="case-navigation" aria-label="Navegação desta página">
+    <div class="container case-navigation-inner">
+      <a href="#inicio">Visão geral</a>
+      <a href="#contexto">Contexto</a>
+      <a href="#indicadores">Indicadores</a>
+      <a href="#governanca">Governança</a>
+      <a href="#qa-intelligence">QA Intelligence</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#competencias">Competências</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <section id="inicio" class="case-hero">
+      <div class="container">
+
+        <a class="case-breadcrumb" href="../../#cases">
+          ← Voltar para todos os cases
+        </a>
+
+        <div class="case-hero-grid">
+
+          <div class="reveal">
+
+            <p class="case-label">
+              Case 14 · KPIs, governança e IA aplicada à Qualidade
+            </p>
+
+            <h1 class="case-title">
+              KPIs e Governança de Qualidade com Azure DevOps
+            </h1>
+
+            <p class="case-introduction">
+              Estruturação e evolução de indicadores para acompanhar
+              esforço, fluxo, pré-requisitos, impedimentos e defeitos,
+              apoiando a análise da operação de QA e a comunicação
+              com a gestão.
+            </p>
+
+            <div class="case-tags">
+              <span>KPIs de Qualidade</span>
+              <span>Azure DevOps</span>
+              <span>7pace Timetracker</span>
+              <span>Governança</span>
+              <span>Rastreabilidade</span>
+              <span>QA Intelligence</span>
+            </div>
+
+          </div>
+
+          <aside
+            class="case-summary reveal reveal-delay-1"
+            aria-labelledby="resumo-case"
+          >
+            <h2 id="resumo-case">Visão geral</h2>
+
+            <ul class="case-summary-list">
+              <li>
+                <strong>Objetivo</strong>
+                <span>Transformar registros operacionais em informação para gestão</span>
+              </li>
+
+              <li>
+                <strong>Fontes</strong>
+                <span>Azure DevOps e 7pace Timetracker</span>
+              </li>
+
+              <li>
+                <strong>Evolução</strong>
+                <span>Consulta ao Azure DevOps com apoio do QA Intelligence</span>
+              </li>
+
+              <li>
+                <strong>Resultado observado</strong>
+                <span>Extração mensal reduzida de ~6h para ~2h</span>
+              </li>
+            </ul>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="contexto" class="case-section">
+      <div class="container">
+
+        <div class="case-section-heading reveal">
+          <p>Contexto</p>
+
+          <h2>
+            Medir não era contar testes.
+            Era entender o comportamento da operação de Qualidade.
+          </h2>
+
+          <p class="case-section-description">
+            Com a evolução da área de QA e o aumento do volume de atividades,
+            tornou-se necessário organizar indicadores que ajudassem a responder
+            perguntas sobre esforço, fluxo, impedimentos, pré-requisitos,
+            defeitos e distribuição das demandas.
+          </p>
+        </div>
+
+        <div class="case-content-grid">
+
+          <article class="case-content-card reveal">
+            <h3>Azure DevOps</h3>
+            <p>
+              Fonte para dados de atividades de teste, produtos, times,
+              Sprints, impedimentos, bugs, severidade, classificação,
+              motivo e ambiente de identificação do defeito.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal reveal-delay-1">
+            <h3>7pace Timetracker</h3>
+            <p>
+              Fonte para o registro das horas dedicadas pelo time
+              às diferentes atividades de QA e análise da distribuição
+              de esforço por colaborador.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal">
+            <h3>Referências de gestão</h3>
+            <p>
+              A estruturação dos indicadores considerou práticas
+              de gestão de testes e maturidade estudadas a partir
+              do TMMi e de conteúdos do BSTQB/ISTQB.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal reveal-delay-1">
+            <h3>Uso da informação</h3>
+            <p>
+              Os indicadores eram consolidados e apresentados
+              periodicamente à gestão para apoiar análise,
+              discussão e tomada de decisão.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="indicadores" class="case-section">
+      <div class="container">
+
+        <div class="case-section-heading reveal">
+          <p>Indicadores acompanhados</p>
+
+          <h2>
+            Uma visão distribuída entre esforço,
+            fluxo, condições de teste e defeitos.
+          </h2>
+        </div>
+
+        <div class="kpi-grid">
+
+          <article class="kpi-card reveal">
+            <span>01</span>
+            <h3>Esforço e utilização do tempo</h3>
+            <p>
+              Horas em testes, reuniões, documentação, retestes,
+              retrabalho e outras atividades de QA.
+            </p>
+            <small>Fonte: 7pace Timetracker</small>
+          </article>
+
+          <article class="kpi-card reveal reveal-delay-1">
+            <span>02</span>
+            <h3>Atividades de teste</h3>
+            <p>
+              Volume mensal, execução em Desenvolvimento e Homologação,
+              distribuição por produto e time e itens entre Sprints.
+            </p>
+            <small>Fonte: Azure DevOps</small>
+          </article>
+
+          <article class="kpi-card reveal">
+            <span>03</span>
+            <h3>Pré-requisitos de teste</h3>
+            <p>
+              Classificação das condições necessárias para execução
+              como completas, incompletas ou inexistentes.
+            </p>
+            <small>Fonte: Azure DevOps</small>
+          </article>
+
+          <article class="kpi-card reveal reveal-delay-1">
+            <span>04</span>
+            <h3>Impedimentos</h3>
+            <p>
+              Acompanhamento de itens bloqueados por dependências
+              ou condições que impediam o avanço das validações.
+            </p>
+            <small>Fonte: Azure DevOps</small>
+          </article>
+
+          <article class="kpi-card reveal">
+            <span>05</span>
+            <h3>Defeitos por ambiente</h3>
+            <p>
+              Bugs em Desenvolvimento e Homologação,
+              itens solucionados e ocorrências reportadas pelo cliente.
+            </p>
+            <small>Fonte: Azure DevOps</small>
+          </article>
+
+          <article class="kpi-card reveal reveal-delay-1">
+            <span>06</span>
+            <h3>Defeitos por severidade, classificação e motivo</h3>
+            <p>
+              Leitura de padrões para apoiar investigação
+              e oportunidades de melhoria no processo.
+            </p>
+            <small>Fonte: Azure DevOps</small>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="governanca" class="case-section">
+      <div class="container">
+
+        <div class="case-section-heading reveal">
+          <p>Governança e comunicação</p>
+
+          <h2>
+            Os dados só ganhavam valor quando
+            eram transformados em contexto para decisão.
+          </h2>
+
+          <p class="case-section-description">
+            Os indicadores eram consolidados em materiais visuais
+            e apresentados periodicamente à gestão, permitindo
+            acompanhar diferentes dimensões da operação de QA.
+          </p>
+        </div>
+
+        <div class="quality-dashboard reveal" aria-label="Painel ilustrativo de indicadores de Qualidade">
+          <div class="quality-dashboard-header">
+            <div>
+              <p class="quality-dashboard-eyebrow">Painel de Indicadores de Qualidade</p>
+              <h3>Visão geral dos principais indicadores acompanhados</h3>
+            </div>
+            <span class="quality-dashboard-period">Período ilustrativo · Mar/2025 a Dez/2025</span>
+          </div>
+
+          <div class="quality-dashboard-grid">
+
+            <article class="dashboard-card dashboard-card-wide">
+              <h4>Atividades de teste por mês</h4>
+              <div class="mini-bars" aria-hidden="true">
+                <span style="--value:52%"></span>
+                <span style="--value:78%"></span>
+                <span style="--value:64%"></span>
+                <span style="--value:84%"></span>
+                <span style="--value:69%"></span>
+                <span style="--value:80%"></span>
+              </div>
+              <p>Desenvolvimento e Homologação</p>
+            </article>
+
+            <article class="dashboard-card">
+              <h4>Atividades por produto</h4>
+              <div class="donut-chart donut-products" aria-hidden="true"></div>
+              <p>Distribuição entre produtos e outros fluxos.</p>
+            </article>
+
+            <article class="dashboard-card">
+              <h4>Atividades por time</h4>
+              <div class="horizontal-bars" aria-hidden="true">
+                <span style="--value:88%"></span>
+                <span style="--value:72%"></span>
+                <span style="--value:58%"></span>
+                <span style="--value:46%"></span>
+                <span style="--value:38%"></span>
+              </div>
+            </article>
+
+            <article class="dashboard-card">
+              <h4>Pré-requisitos de teste</h4>
+              <div class="donut-chart donut-prerequisites" aria-hidden="true"></div>
+              <p>Completos · Incompletos · Inexistentes</p>
+            </article>
+
+            <article class="dashboard-card">
+              <h4>Atividades que passaram de Sprint</h4>
+              <div class="mini-bars mini-bars-purple" aria-hidden="true">
+                <span style="--value:32%"></span>
+                <span style="--value:58%"></span>
+                <span style="--value:38%"></span>
+                <span style="--value:42%"></span>
+                <span style="--value:50%"></span>
+                <span style="--value:61%"></span>
+              </div>
+            </article>
+
+            <article class="dashboard-card">
+              <h4>Itens em impedimento</h4>
+              <div class="mini-bars mini-bars-alert" aria-hidden="true">
+                <span style="--value:38%"></span>
+                <span style="--value:52%"></span>
+                <span style="--value:66%"></span>
+                <span style="--value:40%"></span>
+                <span style="--value:44%"></span>
+                <span style="--value:55%"></span>
+              </div>
+            </article>
+
+            <article class="dashboard-card">
+              <h4>Bugs por ambiente</h4>
+              <div class="bug-bars" aria-hidden="true">
+                <span style="--value:76%"></span>
+                <span style="--value:44%"></span>
+                <span style="--value:68%"></span>
+                <span style="--value:42%"></span>
+              </div>
+              <p>Desenvolvimento e Homologação</p>
+            </article>
+
+            <article class="dashboard-card">
+              <h4>Bugs por severidade</h4>
+              <div class="donut-chart donut-severity" aria-hidden="true"></div>
+              <p>Critical · High · Medium · Low</p>
+            </article>
+
+            <article class="dashboard-card">
+              <h4>Bugs por classificação</h4>
+              <div class="donut-chart donut-classification" aria-hidden="true"></div>
+              <p>Erro · Defeito · Falha</p>
+            </article>
+
+            <article class="dashboard-card">
+              <h4>Motivo de abertura dos bugs</h4>
+              <div class="horizontal-bars compact-bars" aria-hidden="true">
+                <span style="--value:90%"></span>
+                <span style="--value:52%"></span>
+                <span style="--value:43%"></span>
+                <span style="--value:35%"></span>
+                <span style="--value:58%"></span>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <div class="case-note reveal dashboard-note">
+          <strong>Representação anonimizada:</strong>
+          os gráficos acima são ilustrativos e demonstram os tipos de indicadores
+          efetivamente acompanhados, sem reproduzir valores reais, produtos,
+          colaboradores ou informações internas.
+        </div>
+
+        <div class="case-note reveal kpi-note">
+          <strong>Importante:</strong>
+          o objetivo dos KPIs não era automatizar a decisão.
+          A interpretação dependia de contexto, análise crítica,
+          conhecimento do fluxo e acompanhamento do time.
+        </div>
+
+      </div>
+    </section>
+
+    <section id="qa-intelligence" class="case-section">
+      <div class="container">
+
+        <div class="case-section-heading reveal">
+          <p>Evolução com QA Intelligence</p>
+
+          <h2>
+            Automatizar a obtenção da informação
+            sem automatizar a decisão.
+          </h2>
+
+          <p class="case-section-description">
+            Parte da consulta aos dados do Azure DevOps evoluiu
+            com a criação do QA Intelligence, agente de IA configurado
+            com uma Action integrada à ferramenta e consultado por prompt.
+          </p>
+        </div>
+
+        <div class="qa-flow reveal" aria-label="Fluxo simplificado do QA Intelligence">
+          <div>Azure DevOps</div>
+          <span aria-hidden="true">→</span>
+          <div>Action</div>
+          <span aria-hidden="true">→</span>
+          <div>QA Intelligence</div>
+          <span aria-hidden="true">→</span>
+          <div>Prompt</div>
+          <span aria-hidden="true">→</span>
+          <div>Informação para análise</div>
+        </div>
+
+        <div class="qa-metric reveal">
+          <div>
+            <span>Antes</span>
+            <strong>~6h</strong>
+            <p>extração mensal das informações</p>
+          </div>
+
+          <div class="qa-metric-arrow" aria-hidden="true">→</div>
+
+          <div>
+            <span>Com QA Intelligence</span>
+            <strong>~2h</strong>
+            <p>extração mensal das informações</p>
+          </div>
+        </div>
+
+        <div class="qa-intelligence-visual reveal" aria-label="Fluxo do QA Intelligence integrado ao Azure DevOps">
+          <div class="qa-intelligence-stage qa-intelligence-stage-blue">
+            <span class="qa-intelligence-label">Azure DevOps</span>
+            <h3>Fonte de dados</h3>
+            <ul>
+              <li>Tarefas de teste</li>
+              <li>Bugs</li>
+              <li>Produtos</li>
+              <li>Times</li>
+              <li>Sprints</li>
+              <li>Impedimentos</li>
+              <li>Pré-requisitos</li>
+            </ul>
+          </div>
+
+          <span class="qa-intelligence-arrow" aria-hidden="true">→</span>
+
+          <div class="qa-intelligence-stage qa-intelligence-stage-purple">
+            <span class="qa-intelligence-label">Action</span>
+            <h3>Consulta por API</h3>
+            <p>
+              Action configurada para consultar dados do Azure DevOps
+              e disponibilizá-los ao agente.
+            </p>
+          </div>
+
+          <span class="qa-intelligence-arrow" aria-hidden="true">→</span>
+
+          <div class="qa-intelligence-stage qa-intelligence-stage-green">
+            <span class="qa-intelligence-label">QA Intelligence</span>
+            <h3>Agente de IA</h3>
+            <p>
+              Agente integrado via Action e capaz de consultar
+              as informações disponíveis no Azure DevOps.
+            </p>
+          </div>
+
+          <span class="qa-intelligence-arrow" aria-hidden="true">→</span>
+
+          <div class="qa-intelligence-stage qa-intelligence-stage-orange">
+            <span class="qa-intelligence-label">Consulta via prompt</span>
+            <h3>Exemplos</h3>
+            <ul>
+              <li>Atividades de teste no mês</li>
+              <li>Bugs em homologação por severidade</li>
+              <li>Itens em impedimento por time</li>
+              <li>Atividades que passaram de Sprint</li>
+            </ul>
+          </div>
+
+          <span class="qa-intelligence-arrow" aria-hidden="true">→</span>
+
+          <div class="qa-intelligence-stage qa-intelligence-stage-blue">
+            <span class="qa-intelligence-label">Informação para análise</span>
+            <h3>Indicadores</h3>
+            <p>
+              Dados organizados para acompanhamento,
+              consolidação e apresentação à gestão.
+            </p>
+          </div>
+        </div>
+
+        <div class="qa-automation-summary reveal">
+          <article>
+            <strong>O que foi automatizado</strong>
+            <ul>
+              <li>Consulta de dados do Azure DevOps por prompt</li>
+              <li>Apoio à extração e consolidação dos indicadores</li>
+              <li>Redução aproximada de 6h para 2h na extração mensal</li>
+            </ul>
+          </article>
+
+          <article>
+            <strong>O que não foi automatizado</strong>
+            <ul>
+              <li>Dados de esforço e tempo do 7pace Timetracker</li>
+              <li>Horas por colaborador</li>
+              <li>Integração entre QA Intelligence e 7pace</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="case-note reveal qa-intelligence-note">
+          <strong>Representação pública:</strong>
+          o fluxo acima recria a lógica da integração real implementada
+          com o Azure DevOps, sem reproduzir informações confidenciais.
+        </div>
+
+        <div class="case-content-grid qa-limits">
+
+          <article class="case-content-card reveal">
+            <h3>O que foi automatizado</h3>
+            <p>
+              Consulta e consolidação de informações disponíveis
+              no Azure DevOps para apoio à preparação dos KPIs.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal reveal-delay-1">
+            <h3>O que permaneceu manual</h3>
+            <p>
+              Os dados de esforço registrados no 7pace Timetracker
+              continuaram sendo extraídos manualmente.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal">
+            <h3>Evolução considerada</h3>
+            <p>
+              A integração com o 7pace foi considerada,
+              mas não foi implementada antes do encerramento
+              da atuação na empresa.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal reveal-delay-1">
+            <h3>Papel da análise humana</h3>
+            <p>
+              A interpretação, contextualização e tomada de decisão
+              continuaram sendo responsabilidades humanas.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="resultados" class="case-section">
+      <div class="container">
+
+        <div class="case-section-heading reveal">
+          <p>Resultados observados</p>
+
+          <h2>
+            Mais visibilidade para a operação
+            e menos esforço manual para consultar os dados.
+          </h2>
+        </div>
+
+        <div class="case-content-grid">
+
+          <article class="case-content-card reveal">
+            <h3>Visibilidade operacional</h3>
+            <p>
+              Maior clareza sobre esforço, volume de atividades,
+              fluxo de validação, impedimentos e defeitos.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal reveal-delay-1">
+            <h3>Rastreabilidade</h3>
+            <p>
+              Informações de diferentes dimensões da operação
+              passaram a ser acompanhadas de forma mais estruturada.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal">
+            <h3>Comunicação com a gestão</h3>
+            <p>
+              Os materiais periódicos facilitaram a discussão
+              dos indicadores e o acompanhamento da operação de QA.
+            </p>
+          </article>
+
+          <article class="case-content-card reveal reveal-delay-1">
+            <h3>Redução do esforço de extração</h3>
+            <p>
+              A consulta com o QA Intelligence reduziu
+              de aproximadamente 6 para 2 horas o tempo mensal
+              dedicado à extração das informações do Azure DevOps.
+            </p>
+          </article>
+
+        </div>
+
+        <div class="case-note reveal results-note">
+          <strong>Escopo do resultado:</strong>
+          a redução de tempo refere-se à extração das informações
+          provenientes do Azure DevOps. Os dados do 7pace permaneceram manuais.
+        </div>
+
+      </div>
+    </section>
+
+    <section id="competencias" class="case-section">
+      <div class="container">
+
+        <div class="case-section-heading reveal">
+          <p>Competências demonstradas</p>
+
+          <h2>
+            Indicadores, governança, rastreabilidade
+            e IA aplicada como apoio à liderança de QA.
+          </h2>
+        </div>
+
+        <div class="case-tags reveal">
+          <span>Gestão de Indicadores</span>
+          <span>KPIs de Qualidade</span>
+          <span>Governança</span>
+          <span>Azure DevOps</span>
+          <span>7pace Timetracker</span>
+          <span>Rastreabilidade</span>
+          <span>Análise de Dados</span>
+          <span>Gestão de Fluxo</span>
+          <span>Gestão de Defeitos</span>
+          <span>Liderança de QA</span>
+          <span>Melhoria Contínua</span>
+          <span>QA Intelligence</span>
+          <span>IA aplicada à Qualidade</span>
+        </div>
+
+        <div class="case-note reveal confidentiality-note">
+          <strong>Confidencialidade:</strong>
+          dados, números, produtos, colaboradores e informações internas
+          foram omitidos, anonimizados ou recriados nas representações públicas.
+        </div>
+
+        <div class="case-actions reveal">
+
+          <a
+            class="button button-primary"
+            href="https://github.com/RoxaneNayara/portfolio-qa-process-improvement/tree/main/14-kpis-governanca-qualidade"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ver documentação no GitHub
+          </a>
+
+          <a
+            class="button button-secondary"
+            href="../../#cases-heading"
+          >
+            Voltar para todos os cases
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <button
+    id="back-to-top"
+    class="back-to-top"
+    type="button"
+    aria-label="Voltar ao topo"
+    title="Voltar ao topo"
+  >
+    <span aria-hidden="true">↑</span>
+  </button>
+
+  <footer class="footer">
+    <div class="container footer-content">
+
+      <p>
+        © 2026 Roxane Nayara. Alguns direitos reservados.
+      </p>
+
+      <p class="footer-note">
+        Portfólio profissional de QA com foco em processos,
+        governança, rastreabilidade e melhoria contínua.
+      </p>
+
+    </div>
+  </footer>
+
+  <script src="../../script.js?v=17"></script>
+  <script src="../case-navigation.js?v=8"></script>
+
+</body>
+</html>
