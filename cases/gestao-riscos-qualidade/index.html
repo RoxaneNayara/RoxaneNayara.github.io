@@ -25,7 +25,7 @@
   <link rel="apple-touch-icon" href="../../favicon.png?v=2">
   <link rel="stylesheet" href="../../style.css?v=21">
   <link rel="stylesheet" href="../cases.css?v=25">
-  <link rel="stylesheet" href="./gestao-riscos-qualidade.css?v=3">
+  <link rel="stylesheet" href="./gestao-riscos-qualidade.css?v=4">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -394,18 +394,56 @@
 
         </div>
 
-        <figure class="risk-visual reveal">
-          <img
-            src="https://raw.githubusercontent.com/RoxaneNayara/portfolio-qa-process-improvement/main/13-gestao-riscos-qualidade/assets/gestao-riscos-resposta-testes.png"
-            alt="Representação anonimizada da relação entre riscos e respostas de teste"
-            loading="lazy"
-          >
-          <figcaption>
-            Modelo ilustrativo da relação entre situações de risco
-            e possíveis respostas de Qualidade. Não representa
-            uma matriz formal utilizada pela empresa.
-          </figcaption>
-        </figure>
+        <div class="risk-response-table reveal" role="table" aria-label="Exemplos de riscos e respostas de Qualidade">
+          <div class="risk-response-row risk-response-header" role="row">
+            <div role="columnheader">Situação de risco</div>
+            <div role="columnheader">Impacto potencial</div>
+            <div role="columnheader">Possível resposta de Qualidade</div>
+          </div>
+
+          <div class="risk-response-row" role="row">
+            <div role="cell"><strong>Regra de negócio crítica ou sensível</strong></div>
+            <div role="cell">Impacto no negócio, dados ou conformidade.</div>
+            <div role="cell">Maior cobertura de testes e validação direcionada de cenários críticos.</div>
+          </div>
+
+          <div class="risk-response-row" role="row">
+            <div role="cell"><strong>Critério de aceite incompleto ou ambíguo</strong></div>
+            <div role="cell">Entendimento incorreto, retrabalho e risco de defeitos.</div>
+            <div role="cell">Refinamento com Produto, revisão de critérios e testes exploratórios.</div>
+          </div>
+
+          <div class="risk-response-row" role="row">
+            <div role="cell"><strong>Dependência entre sistemas ou times</strong></div>
+            <div role="cell">Falhas de integração e indisponibilidade de funcionalidades.</div>
+            <div role="cell">Validação de integrações, cenários de fallback e acompanhamento entre áreas.</div>
+          </div>
+
+          <div class="risk-response-row" role="row">
+            <div role="cell"><strong>Alteração em fluxo sensível</strong></div>
+            <div role="cell">Comportamento inesperado e impacto na experiência do usuário.</div>
+            <div role="cell">Regressão focada, testes de ponta a ponta e execução de cenários prioritários.</div>
+          </div>
+
+          <div class="risk-response-row" role="row">
+            <div role="cell"><strong>Incerteza funcional ou baixa previsibilidade</strong></div>
+            <div role="cell">Dificuldade de validação e maior probabilidade de defeitos.</div>
+            <div role="cell">Testes exploratórios, alinhamento com Produto e Desenvolvimento e acompanhamento próximo da entrega.</div>
+          </div>
+
+          <div class="risk-response-row" role="row">
+            <div role="cell"><strong>Risco próximo à liberação</strong></div>
+            <div role="cell">Defeitos em produção e impacto no cliente.</div>
+            <div role="cell">Smoke test, validação direcionada e revisão final dos itens de maior risco.</div>
+          </div>
+        </div>
+
+        <div class="case-note reveal risk-response-note">
+          <strong>Representação ilustrativa:</strong>
+          este quadro demonstra a lógica de análise e resposta de testes
+          aplicada ao processo. Não corresponde a uma matriz formal
+          utilizada pela empresa.
+        </div>
 
       </div>
     </section>
