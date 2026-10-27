@@ -112,3 +112,10 @@ body.dark-theme .risk-visual {
     margin-top: 28px;
   }
 }
+
+
+/* ALINHAMENTO DO BLOCO FINAL COM OS CASES PUBLICADOS */
+
+.confidentiality-note {
+  margin-top: 1.5rem;
+}
