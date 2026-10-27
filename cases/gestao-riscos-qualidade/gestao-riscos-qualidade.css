@@ -747,3 +747,32 @@ body.dark-theme .risk-forum-visual {
       minmax(160px, 1.08fr) !important;
   }
 }
+
+
+/* PADRONIZAÇÃO FINAL DO PERÍODO DO FÓRUM */
+
+.risk-forum-header {
+  align-items: flex-start;
+}
+
+.risk-forum-period {
+  position: static !important;
+  flex: 0 0 auto !important;
+  align-self: flex-start !important;
+  margin-top: 2px !important;
+  padding: 7px 12px !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 999px !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  color: var(--primary) !important;
+  background: var(--surface-soft) !important;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 760px) {
+  .risk-forum-period {
+    margin-top: 0 !important;
+  }
+}
