@@ -21,7 +21,7 @@
   <link rel="apple-touch-icon" href="../../favicon.png?v=2">
   <link rel="stylesheet" href="../../style.css?v=21">
   <link rel="stylesheet" href="../cases.css?v=25">
-  <link rel="stylesheet" href="./kpis-governanca-qualidade.css?v=2">
+  <link rel="stylesheet" href="./kpis-governanca-qualidade.css?v=3">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -341,17 +341,120 @@
           </p>
         </div>
 
-        <figure class="kpi-visual reveal">
-          <img
-            src="https://raw.githubusercontent.com/RoxaneNayara/portfolio-qa-process-improvement/main/14-kpis-governanca-qualidade/assets/kpis-dashboard-anonimizado.png"
-            alt="Representação anonimizada de indicadores de Qualidade"
-            loading="lazy"
-          >
-          <figcaption>
-            Representação anonimizada e recriada com base nos tipos
-            de indicadores efetivamente utilizados, sem dados internos.
-          </figcaption>
-        </figure>
+        <div class="quality-dashboard reveal" aria-label="Painel ilustrativo de indicadores de Qualidade">
+          <div class="quality-dashboard-header">
+            <div>
+              <p class="quality-dashboard-eyebrow">Painel de Indicadores de Qualidade</p>
+              <h3>Visão geral dos principais indicadores acompanhados</h3>
+            </div>
+            <span class="quality-dashboard-period">Período ilustrativo · Mar/2025 a Dez/2025</span>
+          </div>
+
+          <div class="quality-dashboard-grid">
+
+            <article class="dashboard-card dashboard-card-wide">
+              <h4>Atividades de teste por mês</h4>
+              <div class="mini-bars" aria-hidden="true">
+                <span style="--value:52%"></span>
+                <span style="--value:78%"></span>
+                <span style="--value:64%"></span>
+                <span style="--value:84%"></span>
+                <span style="--value:69%"></span>
+                <span style="--value:80%"></span>
+              </div>
+              <p>Desenvolvimento e Homologação</p>
+            </article>
+
+            <article class="dashboard-card">
+              <h4>Atividades por produto</h4>
+              <div class="donut-chart donut-products" aria-hidden="true"></div>
+              <p>Distribuição entre produtos e outros fluxos.</p>
+            </article>
+
+            <article class="dashboard-card">
+              <h4>Atividades por time</h4>
+              <div class="horizontal-bars" aria-hidden="true">
+                <span style="--value:88%"></span>
+                <span style="--value:72%"></span>
+                <span style="--value:58%"></span>
+                <span style="--value:46%"></span>
+                <span style="--value:38%"></span>
+              </div>
+            </article>
+
+            <article class="dashboard-card">
+              <h4>Pré-requisitos de teste</h4>
+              <div class="donut-chart donut-prerequisites" aria-hidden="true"></div>
+              <p>Completos · Incompletos · Inexistentes</p>
+            </article>
+
+            <article class="dashboard-card">
+              <h4>Atividades que passaram de Sprint</h4>
+              <div class="mini-bars mini-bars-purple" aria-hidden="true">
+                <span style="--value:32%"></span>
+                <span style="--value:58%"></span>
+                <span style="--value:38%"></span>
+                <span style="--value:42%"></span>
+                <span style="--value:50%"></span>
+                <span style="--value:61%"></span>
+              </div>
+            </article>
+
+            <article class="dashboard-card">
+              <h4>Itens em impedimento</h4>
+              <div class="mini-bars mini-bars-alert" aria-hidden="true">
+                <span style="--value:38%"></span>
+                <span style="--value:52%"></span>
+                <span style="--value:66%"></span>
+                <span style="--value:40%"></span>
+                <span style="--value:44%"></span>
+                <span style="--value:55%"></span>
+              </div>
+            </article>
+
+            <article class="dashboard-card">
+              <h4>Bugs por ambiente</h4>
+              <div class="bug-bars" aria-hidden="true">
+                <span style="--value:76%"></span>
+                <span style="--value:44%"></span>
+                <span style="--value:68%"></span>
+                <span style="--value:42%"></span>
+              </div>
+              <p>Desenvolvimento e Homologação</p>
+            </article>
+
+            <article class="dashboard-card">
+              <h4>Bugs por severidade</h4>
+              <div class="donut-chart donut-severity" aria-hidden="true"></div>
+              <p>Critical · High · Medium · Low</p>
+            </article>
+
+            <article class="dashboard-card">
+              <h4>Bugs por classificação</h4>
+              <div class="donut-chart donut-classification" aria-hidden="true"></div>
+              <p>Erro · Defeito · Falha</p>
+            </article>
+
+            <article class="dashboard-card">
+              <h4>Motivo de abertura dos bugs</h4>
+              <div class="horizontal-bars compact-bars" aria-hidden="true">
+                <span style="--value:90%"></span>
+                <span style="--value:52%"></span>
+                <span style="--value:43%"></span>
+                <span style="--value:35%"></span>
+                <span style="--value:58%"></span>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <div class="case-note reveal dashboard-note">
+          <strong>Representação anonimizada:</strong>
+          os gráficos acima são ilustrativos e demonstram os tipos de indicadores
+          efetivamente acompanhados, sem reproduzir valores reais, produtos,
+          colaboradores ou informações internas.
+        </div>
 
         <div class="case-note reveal kpi-note">
           <strong>Importante:</strong>
