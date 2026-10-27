@@ -871,3 +871,36 @@ body.dark-theme .risk-forum-visual {
     font-size: 1.15rem !important;
   }
 }
+
+
+/* AJUSTE TABLET — CARD PARTICIPANTES */
+
+@media (min-width: 901px) and (max-width: 1400px) {
+  .risk-forum-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .risk-forum-participants {
+    width: 100%;
+  }
+
+  .risk-forum-participants ul {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    align-items: start;
+    gap: 12px !important;
+  }
+
+  .risk-forum-participants li {
+    min-width: 0;
+    padding-left: 18px;
+    font-size: 0.9rem;
+    line-height: 1.35;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+  }
+
+  .risk-forum-participants li::before {
+    top: 0.42em;
+  }
+}
