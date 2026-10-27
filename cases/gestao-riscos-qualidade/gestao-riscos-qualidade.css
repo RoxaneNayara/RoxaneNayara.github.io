@@ -103,12 +103,12 @@ body.dark-theme .risk-visual {
 
 .case-page #estagio .case-note,
 .case-page #resultados .case-note {
-  margin-top: 28px;
+  margin-top: 36px;
 }
 
 @media (max-width: 560px) {
   .case-page #estagio .case-note,
   .case-page #resultados .case-note {
-    margin-top: 22px;
+    margin-top: 28px;
   }
 }
