@@ -138,16 +138,22 @@ document.addEventListener("DOMContentLoaded", () => {
           linkRect.left < navigationRect.left + 12 ||
           linkRect.right > navigationRect.right - 12;
 
-        if (isPartiallyHidden && navigationInner) {
+        const shouldCenterActive =
+          window.innerWidth <= 900;
+
+        if (
+          navigationInner &&
+          (isPartiallyHidden || shouldCenterActive)
+        ) {
           const targetLeft =
             link.offsetLeft -
             navigationInner.clientWidth / 2 +
             link.offsetWidth / 2;
-        
+
           const maximumLeft =
             navigationInner.scrollWidth -
             navigationInner.clientWidth;
-        
+
           navigationInner.scrollTo({
             left: Math.max(
               0,
