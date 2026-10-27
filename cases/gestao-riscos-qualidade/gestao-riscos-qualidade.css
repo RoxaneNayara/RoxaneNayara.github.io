@@ -306,3 +306,29 @@ body.dark-theme .risk-response-header > div {
     margin-top: 26px;
   }
 }
+
+
+/* AJUSTE DA MOLDURA INTERNA DAS ARTES */
+
+.risk-image-crop {
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.risk-image-crop img {
+  width: calc(100% + 16px);
+  max-width: none;
+  margin-left: -8px;
+  border-radius: 0;
+}
+
+@media (max-width: 560px) {
+  .risk-image-crop {
+    border-radius: 12px;
+  }
+
+  .risk-image-crop img {
+    width: calc(100% + 12px);
+    margin-left: -6px;
+  }
+}
