@@ -25,7 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "cultura-qualidade-conhecimento": "case-09",
     "processo-seletivo-qa": "case-10",
     "kanban-operacional": "case-11",
-    "agentes-ia-qualidade": "case-12"
+    "agentes-ia-qualidade": "case-12",
+    "gestao-riscos-qualidade": "case-13"
   };
 
   const currentFolder =
@@ -138,26 +139,23 @@ document.addEventListener("DOMContentLoaded", () => {
           linkRect.left < navigationRect.left + 12 ||
           linkRect.right > navigationRect.right - 12;
 
-        if (isPartiallyHidden && navigationInner) {
-          const targetLeft =
-            link.offsetLeft -
-            navigationInner.clientWidth / 2 +
-            link.offsetWidth / 2;
-        
-          const maximumLeft =
-            navigationInner.scrollWidth -
-            navigationInner.clientWidth;
-        
-          navigationInner.scrollTo({
-            left: Math.max(
-              0,
-              Math.min(targetLeft, maximumLeft)
-            ),
+        const shouldCenterActive =
+          window.innerWidth <= 900;
+
+        if (
+          navigationInner &&
+          (isPartiallyHidden || shouldCenterActive)
+        ) {
+          link.scrollIntoView({
             behavior: window.matchMedia(
               "(prefers-reduced-motion: reduce)"
             ).matches
               ? "auto"
-              : "smooth"
+              : "smooth",
+            block: "nearest",
+            inline: shouldCenterActive
+              ? "center"
+              : "nearest"
           });
         }
       } else {
