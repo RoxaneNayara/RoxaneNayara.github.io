@@ -97,3 +97,18 @@ body.dark-theme .risk-visual {
     border-radius: 12px;
   }
 }
+
+
+/* RESPIRO DOS AVISOS APÓS OS GRIDS */
+
+.case-page #estagio .case-note,
+.case-page #resultados .case-note {
+  margin-top: 28px;
+}
+
+@media (max-width: 560px) {
+  .case-page #estagio .case-note,
+  .case-page #resultados .case-note {
+    margin-top: 22px;
+  }
+}
