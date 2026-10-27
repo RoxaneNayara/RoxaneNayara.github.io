@@ -25,7 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
     "cultura-qualidade-conhecimento": "case-09",
     "processo-seletivo-qa": "case-10",
     "kanban-operacional": "case-11",
-    "agentes-ia-qualidade": "case-12"
+    "agentes-ia-qualidade": "case-12",
+    "gestao-riscos-qualidade": "case-13",
+    "kpis-governanca-qualidade": "case-14"
   };
 
   const currentFolder =
