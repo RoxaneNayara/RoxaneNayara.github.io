@@ -119,3 +119,122 @@ body.dark-theme .risk-visual {
 .confidentiality-note {
   margin-top: 1.5rem;
 }
+
+
+/* ==================================================
+   MATRIZ ILUSTRATIVA DE RISCO — HTML RESPONSIVO
+================================================== */
+
+.risk-response-table {
+  display: grid;
+  gap: 10px;
+  margin-top: 42px;
+}
+
+.risk-response-row {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.05fr)
+    minmax(0, 0.95fr)
+    minmax(0, 1.4fr);
+  gap: 12px;
+}
+
+.risk-response-row > div {
+  min-width: 0;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  color: var(--text-soft);
+  background: var(--background);
+}
+
+.risk-response-row strong {
+  color: var(--primary-dark);
+}
+
+.risk-response-header > div {
+  font-weight: 800;
+  color: var(--primary-dark);
+  background: var(--surface-soft);
+}
+
+.risk-response-note {
+  margin-top: 20px;
+}
+
+body.dark-theme .risk-response-row > div {
+  background: var(--surface);
+}
+
+body.dark-theme .risk-response-header > div {
+  background: var(--surface-soft);
+}
+
+@media (max-width: 760px) {
+  .risk-response-table {
+    gap: 16px;
+  }
+
+  .risk-response-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--background);
+  }
+
+  .risk-response-row > div {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .risk-response-header {
+    display: none;
+  }
+
+  .risk-response-row > div:nth-child(1)::before,
+  .risk-response-row > div:nth-child(2)::before,
+  .risk-response-row > div:nth-child(3)::before {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+
+  .risk-response-row > div:nth-child(1)::before {
+    content: "Situação de risco";
+  }
+
+  .risk-response-row > div:nth-child(2)::before {
+    content: "Impacto potencial";
+  }
+
+  .risk-response-row > div:nth-child(3)::before {
+    content: "Resposta de Qualidade";
+  }
+
+  body.dark-theme .risk-response-row {
+    background: var(--surface);
+  }
+}
+
+/* AJUSTE FINO DO BLOCO FINAL */
+
+#competencias .case-tags {
+  margin-bottom: 0;
+}
+
+#competencias .confidentiality-note {
+  margin-top: 1.5rem;
+}
+
+#competencias .case-actions {
+  margin-top: 2.4rem;
+}
