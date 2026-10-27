@@ -776,3 +776,29 @@ body.dark-theme .risk-forum-visual {
     margin-top: 0 !important;
   }
 }
+
+
+/* AJUSTE FINAL DO BADGE DE PERÍODO */
+
+.risk-forum-period {
+  margin-top: 10px !important;
+  padding: 10px 18px !important;
+  min-height: 42px;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px !important;
+  font-size: 0.82rem !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 760px) {
+  .risk-forum-period {
+    margin-top: 0 !important;
+    padding: 8px 14px !important;
+    min-height: 38px;
+    font-size: 0.76rem !important;
+  }
+}
