@@ -332,3 +332,25 @@ body.dark-theme .risk-response-header > div {
     margin-left: -6px;
   }
 }
+
+
+/* AJUSTE FINO — ESTÁGIO E RESULTADOS */
+
+#estagio .case-section-heading,
+#resultados .case-section-heading {
+  margin-bottom: 34px;
+}
+
+@media (max-width: 900px) {
+  #estagio .case-section-heading,
+  #resultados .case-section-heading {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 560px) {
+  #estagio .case-section-heading,
+  #resultados .case-section-heading {
+    margin-bottom: 26px;
+  }
+}
