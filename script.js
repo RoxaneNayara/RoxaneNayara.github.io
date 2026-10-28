@@ -316,42 +316,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
     highlightDots.forEach((dot) => {
       dot.addEventListener("click", () => {
-        goToHighlight(Number(dot.dataset.highlightIndex)
-      );
+        goToHighlight(Number(dot.dataset.highlightIndex));
+      });
     });
-  });
 
     highlightCards.addEventListener(
-    "scroll",
-    () => {
-      if (window.innerWidth > 900) return;
+      "scroll",
+      () => {
+        if (window.innerWidth > 900) return;
 
-      const containerCenter =
-        highlightCards.scrollLeft +
-        highlightCards.clientWidth / 2;
+        const containerCenter =
+          highlightCards.scrollLeft +
+          highlightCards.clientWidth / 2;
 
-      let closestIndex = 0;
-      let closestDistance = Infinity;
+        let closestIndex = 0;
+        let closestDistance = Infinity;
 
-      cards.forEach((card, index) => {
-        const cardCenter =
-          card.offsetLeft + card.clientWidth / 2;
+        cards.forEach((card, index) => {
+          const cardCenter =
+            card.offsetLeft + card.clientWidth / 2;
 
-        const distance = Math.abs(
-          containerCenter - cardCenter
-        );
+          const distance = Math.abs(
+            containerCenter - cardCenter
+          );
 
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestIndex = index;
-        }
-      });
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestIndex = index;
+          }
+        });
 
-      updateHighlightNavigation(closestIndex);
-    },
-    { passive: true }
-  );
+        updateHighlightNavigation(closestIndex);
+      },
+      { passive: true }
+    );
 
-  updateHighlightNavigation(0);
+    updateHighlightNavigation(0);
   }
 });
